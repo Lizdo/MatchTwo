@@ -1,5 +1,5 @@
 //
-//  HelloWorldLayer.m
+//  MainSceneLayer.m
 //  MatchTwo
 //
 //  Created by  on 11-8-1.
@@ -8,10 +8,12 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
+#import "MainSceneLayer.h"
 
-// HelloWorldLayer implementation
-@implementation HelloWorldLayer
+// MainSceneLayer implementation
+@implementation MainSceneLayer
+
+@synthesize game;
 
 +(CCScene *) scene
 {
@@ -19,7 +21,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	MainSceneLayer *layer = [MainSceneLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -35,17 +37,20 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
 		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
-		// ask director the the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
+//		// create and initialize a Label
+//		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+//
+//		// ask director the the window size
+//		CGSize size = [[CCDirector sharedDirector] winSize];
+//	
+//		// position the label on the center of the screen
+//		label.position =  ccp( size.width /2 , size.height/2 );
+//		
+//		// add the label as a child to this Layer
+//		[self addChild: label];
+        
+        self.game = [[MTGame alloc]init];
+        [self addChild:game];
 	}
 	return self;
 }
