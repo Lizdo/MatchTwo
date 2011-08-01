@@ -3,7 +3,7 @@
 //  MatchTwo
 //
 //  Created by  on 11-8-1.
-//  Copyright __MyCompanyName__ 2011年. All rights reserved.
+//  Copyright StupidTent co. 2011年. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

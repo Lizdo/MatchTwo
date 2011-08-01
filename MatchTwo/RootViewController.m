@@ -3,7 +3,7 @@
 //  MatchTwo
 //
 //  Created by  on 11-8-1.
-//  Copyright __MyCompanyName__ 2011年. All rights reserved.
+//  Copyright StupidTent co. 2011年. All rights reserved.
 //
 
 //
@@ -44,7 +44,7 @@
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	
+    
 	//
 	// There are 2 ways to support auto-rotation:
 	//  - The OpenGL / cocos2d way
@@ -52,6 +52,7 @@
 	//  - The ViewController way
 	//    - A bit slower, but the UiKit objects are placed in the right place
 	//
+    
 	
 #if GAME_AUTOROTATION==kGameAutorotationNone
 	//
@@ -85,7 +86,7 @@
 	//
 	// return YES for the supported orientations
 	
-	return ( UIInterfaceOrientationIsLandscape( interfaceOrientation ) );
+	return ( UIInterfaceOrientationIsPortrait( interfaceOrientation ) );
 	
 #else
 #error Unknown value in GAME_AUTOROTATION
