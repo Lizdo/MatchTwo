@@ -9,10 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface MTPiece : CCNode {
+static float MTPieceSize = 64.0;
+static float MTPieceMargin = 2.0;
+static ccTime ScaleTime = 0.1;
+
+@interface MTPiece : CCNode <CCTargetedTouchDelegate>{
     int row;
-    int column;    
+    int column;
+    
+    int type;
+    
+    BOOL selected;
 }
+
+@property int row;
+@property int column;
+@property int type;
+@property BOOL selected;
+
 
 - (id)initWithRow:(int)theRow andColumn:(int)theColumn;
 + (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;

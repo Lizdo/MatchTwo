@@ -22,6 +22,8 @@
     int colomnNumber;
     
     NSMutableArray * MTPieces;
+    
+    CCNode * board;
     MTLine * line;
 }
 

@@ -26,11 +26,16 @@
         
         // TODO: Add Background Layer
         
+        board = [[CCNode alloc]init];
+        [self addChild:board];
+        
         for (int i=0; i<colomnNumber; i++) {
             for (int j=0; j<rowNumber; j++) {
                 // Add initial pieces
                 MTPiece * piece = [MTPiece pieceWithRow:i andColumn:j];
-                [self addChild:piece];
+                piece.position = ccp(64 + i* MTPieceSize, 300 + j* MTPieceSize);
+                piece.type = arc4random() % 4;
+                [board addChild:piece];
                 [MTPieces addObject:piece];
             }
         }
@@ -51,6 +56,12 @@
     remainingTime -= dt;
     if (remainingTime <= 0) {
         remainingTime = 0;
+    }
+    
+    for (MTPiece * piece in board.children) {
+        if ([piece class] == [MTPiece class] && piece.selected) {
+            [board reorderChild:piece z:100];
+        }
     }
 }
 
