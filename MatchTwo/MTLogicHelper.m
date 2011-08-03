@@ -10,6 +10,10 @@
 
 @implementation MTLogicHelper
 
+static int** g;
+static int row;
+static int col;
+
 //        //Original Graph
 //        00000000
 //        01000000
@@ -36,15 +40,23 @@
 //        33333323
 //        00000030
 
-+ (NSArray*)lineFromTileGraph:(int**)graph{
-	// Step 0: Check if they're on the same Row/Colmn
-	
++ (NSArray*)lineFromTileGraph:(int**)graph numberOfRows:(int)rownum andColumns:(int)colnum{
+    g = graph;
+    row = rownum;
+    col = colnum;
+    // Step 0: Check if they're on the same Row/Colmn
+    
+    
 	// Step 1: Replace adjucent 0 with 3
 	
 	// Step 1.1: Check if there are any corners
 	
 	// Step 2: for each 3, see if each 3 can be connected
     
+    return nil;
+}
+
++ (int*)firstGridInGraph{
     return nil;
 }
 
