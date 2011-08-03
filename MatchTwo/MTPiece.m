@@ -13,6 +13,9 @@
 
 @synthesize row,column,type;
 
+static float MTPieceMargin = 2.0;
+static ccTime ScaleTime = 0.1;
+
 - (void)setSelected:(BOOL)toBeSelected{
     if (toBeSelected != selected) {
         selected = toBeSelected;
