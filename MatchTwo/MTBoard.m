@@ -124,11 +124,9 @@
     }
 }
 
-- (void)checkConnection{;
-   
-    if (selectedPiece1 == nil || selectedPiece2 == nil) {
-        return;
-    }
+- (void)checkConnection{
+    NSAssert(selectedPiece1 != nil, @"Selected Piece is nil!");
+    NSAssert(selectedPiece2 != nil, @"Selected Piece is nil!");    
     
     // Prepare a graph, init with 0
     int graph[rowNumber+2][columnNumber+2];
@@ -138,19 +136,17 @@
         }
     }
     
-    // Occupied Grid is 9
+    // Occupied Grid is 3
     for (MTPiece * piece in self.children){
         if (piece.visible == YES) {
-            graph[piece.row][piece.column] = 9;
+            graph[piece.row][piece.column] = 3;
         }
     }
     
     graph[selectedPiece1.row][selectedPiece1.column] = 1;
     graph[selectedPiece2.row][selectedPiece2.column] = 2;
     
-    NSArray * result = [MTLogicHelper lineFromTileGraph:graph
-                                       numberOfRows:rowNumber+2
-                                         andColumns:colomnNumber+2];
+    NSArray * result = [MTLogicHelper lineFromGraph:graph];
     if (result == nil) {
         [self deselectPiece:selectedPiece2];
         [self deselectPiece:selectedPiece1];        

@@ -10,6 +10,7 @@
 
 @interface MTLogicHelper : NSObject
 
-+ (NSArray*)lineFromTileGraph:(int**)graph numberOfRows:(int)row andColumns:(int)col;
+
++ (NSArray*)lineFromTileGraph:(int**)graph;
 
 @end

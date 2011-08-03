@@ -10,7 +10,8 @@
 #import "cocos2d.h"
 
 static float MTPieceSize = 64.0;
-
+static float MTPieceMargin = 2.0;
+static ccTime ScaleTime = 0.1;
 
 @interface MTPiece : CCNode {
     int row;
