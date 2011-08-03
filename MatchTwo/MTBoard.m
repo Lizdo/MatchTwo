@@ -33,7 +33,7 @@
 - (id)initWithRowNumber:(int)row andColumnNumber:(int)col{
     if ([self init]) {
         rowNumber = row;
-        colomnNumber = col;
+        columnNumber = col;
     }
     return self;
 }
@@ -133,7 +133,7 @@
     // Prepare a graph, init with 0
     int graph[rowNumber+2][columnNumber+2];
     for (int i=0;i<rowNumber + 2;i++) {
-        for (int j=0; j<colomnNumber+2; j++) {
+        for (int j=0; j<columnNumber+2; j++) {
             graph[i][j] = 0;
         }
     }
@@ -150,7 +150,7 @@
     
     NSArray * result = [MTLogicHelper lineFromTileGraph:graph
                                        numberOfRows:rowNumber+2
-                                         andColumns:colomnNumber+2];
+                                         andColumns:columnNumber+2];
     if (result == nil) {
         [self deselectPiece:selectedPiece2];
         [self deselectPiece:selectedPiece1];        

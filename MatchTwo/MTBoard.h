@@ -18,7 +18,7 @@
     
     // Initial Value
     int rowNumber;
-    int colomnNumber;    
+    int columnNumber;    
 }
 
 @property (readonly) int rowNumber;

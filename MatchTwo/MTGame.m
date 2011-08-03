@@ -10,7 +10,7 @@
 
 @implementation MTGame
 
-#define DefaultColomnNumber 10
+#define DefaultcolumnNumber 10
 #define DefaultRowNumber 10
 #define DefaultGameTime 100.0f
 
@@ -25,7 +25,7 @@
         // TODO: Add Background Layer
         
         board = [[MTBoard alloc]initWithRowNumber:DefaultRowNumber 
-                                  andColumnNumber:DefaultColomnNumber];
+                                  andColumnNumber:DefaultcolumnNumber];
         [self addChild:board];
    
 
