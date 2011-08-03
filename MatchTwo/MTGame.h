@@ -10,20 +10,15 @@
 #import "cocos2d.h"
 #import "MTPiece.h"
 #import "MTLine.h"
+#import "MTBoard.h"
 
 @interface MTGame : CCNode{
     // Gameplay Related
     int score;
     float initialTime;
     float remainingTime;
-
-    // Initial Value
-    int rowNumber;
-    int colomnNumber;
-    
-    NSMutableArray * MTPieces;
-    
-    CCNode * board;
+        
+    MTBoard * board;
     MTLine * line;
 }
 

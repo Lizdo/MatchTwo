@@ -13,7 +13,7 @@ static float MTPieceSize = 64.0;
 static float MTPieceMargin = 2.0;
 static ccTime ScaleTime = 0.1;
 
-@interface MTPiece : CCNode <CCTargetedTouchDelegate>{
+@interface MTPiece : CCNode {
     int row;
     int column;
     
@@ -30,5 +30,7 @@ static ccTime ScaleTime = 0.1;
 
 - (id)initWithRow:(int)theRow andColumn:(int)theColumn;
 + (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;
+
+- (void)disappear;
 
 @end

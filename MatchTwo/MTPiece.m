@@ -32,9 +32,8 @@
     if (self = [super init]) {
         row = theRow;
         column = theColumn;
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         self.contentSize = CGSizeMake(MTPieceSize, MTPieceSize);
-        self.anchorPoint = ccp(0.5, 0.5);
+        self.anchorPoint = ccp(0.5, 0.5);        
     }
     return self;
 }
@@ -57,21 +56,11 @@
     ccDrawPoly(points, 4, YES);
 }
 
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
-    CGPoint location = [touch locationInView:[touch view]];
-    CGPoint convertedLocation = [[CCDirector sharedDirector] convertToGL:location];
-    
-    if (CGRectContainsPoint(self.boundingBox, convertedLocation)) 
-    {
-        self.selected = !self.selected;
-        return YES;
-    }
-    
-    // Not in Rect, not hit.
-    return NO;
+
+- (void)disappear{
+    // TODO: Spawn a particle
+    self.visible = NO;
 }
-
-
 
 
 @end

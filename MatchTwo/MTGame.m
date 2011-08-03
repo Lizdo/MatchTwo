@@ -19,24 +19,24 @@
     self = [super init];
     if (self) {
         // Initialization code here.
-        colomnNumber = DefaultColomnNumber;
-        rowNumber = DefaultRowNumber;
         initialTime = DefaultGameTime;
         remainingTime = initialTime;
         
         // TODO: Add Background Layer
         
-        board = [[CCNode alloc]init];
+        board = [[MTBoard alloc]initWithRowNumber:DefaultRowNumber 
+                                  andColumnNumber:DefaultColomnNumber];
         [self addChild:board];
-        
-        for (int i=0; i<colomnNumber; i++) {
-            for (int j=0; j<rowNumber; j++) {
+   
+
+        for (int i=1; i<=board.columnNumber; i++) {
+            for (int j=1; j<=board.rowNumber; j++) {
                 // Add initial pieces
                 MTPiece * piece = [MTPiece pieceWithRow:i andColumn:j];
-                piece.position = ccp(64 + i* MTPieceSize, 300 + j* MTPieceSize);
+                // Add 0.5 * MTPieceSize because the anchor is in the middle;
+                piece.position = ccp(64+(i-0.5)* MTPieceSize,200+(j-0.5)* MTPieceSize);
                 piece.type = arc4random() % 4;
                 [board addChild:piece];
-                [MTPieces addObject:piece];
             }
         }
         
@@ -58,11 +58,13 @@
         remainingTime = 0;
     }
     
+    // Selected pieces should be in the front
     for (MTPiece * piece in board.children) {
         if ([piece class] == [MTPiece class] && piece.selected) {
             [board reorderChild:piece z:100];
         }
     }
+    
 }
 
 @end

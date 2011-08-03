@@ -11,4 +11,6 @@
 @interface MTLogicHelper : NSObject
 
 
++ (NSArray*)lineFromTileGraph:(int**)graph;
+
 @end
