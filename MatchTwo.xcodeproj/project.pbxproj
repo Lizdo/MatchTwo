@@ -371,8 +371,8 @@
 		6E05296313E6FFA8002BA347 /* MTGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGame.m; sourceTree = "<group>"; };
 		6E05296513E6FFCB002BA347 /* MTPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPiece.h; sourceTree = "<group>"; };
 		6E05296613E6FFCB002BA347 /* MTPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPiece.m; sourceTree = "<group>"; };
-		6E05296913E7001B002BA347 /* MTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLine.h; path = ../MTLine.h; sourceTree = "<group>"; };
-		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTLine.m; path = ../MTLine.m; sourceTree = "<group>"; };
+		6E05296913E7001B002BA347 /* MTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLine.h; sourceTree = "<group>"; };
+		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLine.m; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
 		6E3C558413E98A2700F4C238 /* MTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
