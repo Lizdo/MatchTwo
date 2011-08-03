@@ -21,7 +21,8 @@ static ccTime ScaleTime = 0.1;
         if (selected) {
             [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:1.2]];
         }else{
-            self.scale = 1.0;
+//            self.scale = 1.0;
+            [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:1.0]];            
         }
     }
 }
@@ -56,6 +57,10 @@ static ccTime ScaleTime = 0.1;
         ccp(MTPieceSize-MTPieceMargin, MTPieceMargin)
     };
     ccDrawPoly(points, 4, YES);
+}
+
+- (NSString *)description{
+    return [NSString stringWithFormat:@"Piece at Row: %d, Column: %d",row,column];
 }
 
 

@@ -86,11 +86,12 @@
 
 
 - (void)selectPiece:(MTPiece *)piece{
-    piece.selected = YES;
     
     if (piece == selectedPiece1 || piece == selectedPiece2) {
         return;
     }
+    
+    piece.selected = YES;
     
     if (selectedPiece1 == nil) {
         selectedPiece1 = piece;
@@ -104,10 +105,8 @@
     }
     
     // Rotate piece 1/2/current selection
-    selectedPiece1.selected = NO;
-    selectedPiece1 = selectedPiece2;
-    selectedPiece2 = piece;
-    [self checkConnection];
+    [self deselectAllPieces];
+    selectedPiece1 = piece;
     return;
 }
 
@@ -117,6 +116,7 @@
     
     if (piece == selectedPiece1) {
         selectedPiece1 = selectedPiece2;
+        selectedPiece2 = nil;
     }
     
     if (piece == selectedPiece2) {
@@ -124,11 +124,20 @@
     }
 }
 
+- (void)deselectAllPieces{                  
+    selectedPiece1.selected = NO;
+    selectedPiece2.selected = NO;
+    selectedPiece1 = nil;
+    selectedPiece2 = nil;
+}
+
 - (void)checkConnection{;
    
     if (selectedPiece1 == nil || selectedPiece2 == nil) {
         return;
     }
+    
+    checkingInProgress = YES;
     
     // Prepare a graph, init with 0
     int graph[rowNumber+2][columnNumber+2];
@@ -152,13 +161,13 @@
                                        numberOfRows:rowNumber+2
                                          andColumns:columnNumber+2];
     if (result == nil) {
-        [self deselectPiece:selectedPiece2];
-        [self deselectPiece:selectedPiece1];        
+        [self deselectAllPieces];
     }else{
         [selectedPiece1 disappear];
         [selectedPiece2 disappear];        
     }
     
+    checkingInProgress = NO;
     
 }
 

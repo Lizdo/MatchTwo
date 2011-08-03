@@ -46,6 +46,7 @@ static int col;
     col = colnum;
     // Step 0: Check if they're on the same Row/Colmn
     
+    NSLog(@"%d, %d, %d", g[2][2], g[2][3], g[4][6]);
     
 	// Step 1: Replace adjucent 0 with 3
 	
