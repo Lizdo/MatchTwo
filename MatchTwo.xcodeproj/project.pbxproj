@@ -361,7 +361,7 @@
 		6E05294E13E6EE8C002BA347 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6E05295013E6EE8C002BA347 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RootViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6E05295113E6EE8C002BA347 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6E05295313E6EE8C002BA347 /* MainSceneLayer.h */ = {isa = PBXFileReference; lineEnding = 0; path = MainSceneLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6E05295313E6EE8C002BA347 /* MainSceneLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainSceneLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6E05295413E6EE8D002BA347 /* MainSceneLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainSceneLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6E05295613E6EE8D002BA347 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GameConfig.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6E05295F13E6FF01002BA347 /* MTLogicHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLogicHelper.h; sourceTree = "<group>"; };
@@ -370,8 +370,8 @@
 		6E05296313E6FFA8002BA347 /* MTGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGame.m; sourceTree = "<group>"; };
 		6E05296513E6FFCB002BA347 /* MTPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPiece.h; sourceTree = "<group>"; };
 		6E05296613E6FFCB002BA347 /* MTPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPiece.m; sourceTree = "<group>"; };
-		6E05296913E7001B002BA347 /* MTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLine.h; sourceTree = "<group>"; };
-		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLine.m; sourceTree = "<group>"; };
+		6E05296913E7001B002BA347 /* MTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLine.h; path = ../MTLine.h; sourceTree = "<group>"; };
+		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTLine.m; path = ../MTLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,8 +396,6 @@
 		6E0527DC13E6EE87002BA347 = {
 			isa = PBXGroup;
 			children = (
-				6E05296913E7001B002BA347 /* MTLine.h */,
-				6E05296A13E7001B002BA347 /* MTLine.m */,
 				6E0527FB13E6EE88002BA347 /* MatchTwo */,
 				6E0527EA13E6EE88002BA347 /* Frameworks */,
 				6E0527E813E6EE88002BA347 /* Products */,
@@ -782,6 +780,8 @@
 				6E05296613E6FFCB002BA347 /* MTPiece.m */,
 				6E05295F13E6FF01002BA347 /* MTLogicHelper.h */,
 				6E05296013E6FF01002BA347 /* MTLogicHelper.m */,
+				6E05296913E7001B002BA347 /* MTLine.h */,
+				6E05296A13E7001B002BA347 /* MTLine.m */,
 			);
 			name = MT;
 			sourceTree = "<group>";

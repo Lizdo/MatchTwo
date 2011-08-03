@@ -17,7 +17,6 @@
     if (toBeSelected != selected) {
         selected = toBeSelected;
         if (selected) {
-            self.anchorPoint = ccp(-0.5, 0.5);            
             [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:1.2]];
         }else{
             self.scale = 1.0;
@@ -34,6 +33,8 @@
         row = theRow;
         column = theColumn;
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        self.contentSize = CGSizeMake(MTPieceSize, MTPieceSize);
+        self.anchorPoint = ccp(0.5, 0.5);
     }
     return self;
 }
@@ -60,11 +61,7 @@
     CGPoint location = [touch locationInView:[touch view]];
     CGPoint convertedLocation = [[CCDirector sharedDirector] convertToGL:location];
     
-    CGSize size = CGSizeMake(MTPieceSize, MTPieceSize);
-    CGPoint point = [self position];
-    CGRect rect = CGRectMake(point.x, point.y, size.width, size.height); 
-    
-    if (CGRectContainsPoint(rect, convertedLocation)) 
+    if (CGRectContainsPoint(self.boundingBox, convertedLocation)) 
     {
         self.selected = !self.selected;
         return YES;
