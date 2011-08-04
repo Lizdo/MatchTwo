@@ -8,57 +8,193 @@
 
 #import "MTLogicHelper.h"
 
+@implementation MTTile
+@synthesize x,y,state,lastConnectedTile;
+
++ (MTTile *)tileWithX:(int)idx andY:(int)idy{
+    MTTile * t = [[MTTile alloc]init];
+    t.x = idx;
+    t.y = idy;
+    return [t autorelease];
+}
+
+- (BOOL)isEmpty{
+    if (state == TileState_Empty) {
+        return YES;
+    }
+    if (state == TileState_Source) {
+        return YES;
+    }
+    if (state == TileState_Destination) {
+        return YES;
+    }    
+    return NO;
+}
+
+@end
+
+
 @implementation MTLogicHelper
 
-static int** g;
-static int row;
-static int col;
+- (id)initWithRows:(int)row andColumns:(int)col{
+    self = [super init];
+    if (self) {
+        rowNumber = row + 2;
+        columnNumber = col + 2;
+        tiles = [[NSMutableArray alloc] initWithCapacity:rowNumber*columnNumber];
+        for (int i = 0; i < rowNumber; i++) {
+            for (int j = 0; j < columnNumber; j++) {
+                [tiles insertObject:[MTTile tileWithX:i andY:j] atIndex:i*columnNumber+j];
+            }
+        }
+    }
+    return self;
+}
 
-//        //Original Graph
-//        00000000
-//        01000000
-//        09999000
-//        00990090
-//        00000020
-//        00000000
-//
-//
-//        //Step 1
-//        03000000
-//        31333333
-//        09999900
-//        00990090
-//        33333323
-//        00000030
-//
-//
-//        //Step 2
-//        03000000
-//        31333333
-//        09999903
-//        00990093
-//        33333323
-//        00000030
 
-+ (NSArray*)lineFromTileGraph:(int**)graph numberOfRows:(int)rownum andColumns:(int)colnum{
-    g = graph;
-    row = rownum;
-    col = colnum;
-    // Step 0: Check if they're on the same Row/Colmn
+- (MTTile *)tileWithRow:(int)row andColumn:(int)column{
+    return [tiles objectAtIndex:row*columnNumber+column];
+}
+
+- (NSArray *)adjucentEmptyTilesFrom:(MTTile*)sourceTile{
+    NSMutableArray * returnArray = [NSMutableArray arrayWithCapacity:0];
+    MTTile * t;
     
-    NSLog(@"%d, %d, %d", g[2][2], g[2][3], g[4][6]);
+    // Go Up
+    for (int i = sourceTile.x - 1; i >= 0; i--) {
+        t = [self tileWithRow:i andColumn:sourceTile.y];
+        if ([t isEmpty]) {
+            [returnArray addObject:t];
+        }else{
+            break;
+        }
+    }
+
+    // Go Down
+    for (int i = sourceTile.x + 1; i < rowNumber; i++) {
+        t = [self tileWithRow:i andColumn:sourceTile.y];
+        if ([t isEmpty]) {
+            [returnArray addObject:t];
+        }else{
+            break;
+        }
+    }
     
-	// Step 1: Replace adjucent 0 with 3
-	
-	// Step 1.1: Check if there are any corners
-	
-	// Step 2: for each 3, see if each 3 can be connected
+    // Go Left
+    for (int j = sourceTile.y - 1; j >= 0; j--) {
+        t = [self tileWithRow:sourceTile.x andColumn:j];
+        if ([t isEmpty]) {
+            [returnArray addObject:t];
+        }else{
+            break;
+        }
+    }
     
+    // Go Right
+    for (int j = sourceTile.y + 1; j < columnNumber; j++) {
+        t = [self tileWithRow:sourceTile.x andColumn:j];
+        if ([t isEmpty]) {
+            [returnArray addObject:t];
+        }else{
+            break;
+        }
+    }
+    
+    return returnArray;
+}
+
+
+- (void)setSourceRow:(int)row andColumn:(int)column{
+    source = [self tileWithRow:row andColumn:column];
+    source.state = TileState_Source;
+}
+
+- (void)setDestinationRow:(int)row andColumn:(int)column{
+    destination = [self tileWithRow:row andColumn:column];
+    destination.state = TileState_Destination;    
+}
+
+- (void)reset{
+    for (MTTile * t in tiles) {
+        t.state = TileState_Empty;
+    }
+}
+
+- (NSArray *)check{
+    // Step.1 Start from S, mark all adjucent 0 to 1
+    NSArray * adjucentTiles = [self adjucentEmptyTilesFrom:source];
+    
+    for (MTTile * t in adjucentTiles) {
+        if (t == destination) {
+            return [NSArray arrayWithObjects:source,destination, nil];
+        }
+        t.state = TileState_FirstStep;
+        t.lastConnectedTile = source;
+    }
+    NSLog(@"%@", [self description]);
+
+    // Step.2 Start from 1, mark all adjucent 0 to 2, remember the 1
+    for (MTTile * tile in tiles) {
+        if (tile.state == TileState_FirstStep) {
+            adjucentTiles = [self adjucentEmptyTilesFrom:tile];
+            for (MTTile * t in adjucentTiles){
+                if (t == destination) {
+                    return [NSArray arrayWithObjects:source,tile,destination, nil];
+                }
+                t.state = TileState_SecondStep;
+                t.lastConnectedTile = tile;
+            }
+        }
+    }
+    NSLog(@"%@", [self description]);
+    // Step.3 Start from 2, try to find destination tile
+    for (MTTile * tile in tiles) {
+        if (tile.state == TileState_SecondStep) {
+            adjucentTiles = [self adjucentEmptyTilesFrom:tile];
+            for (MTTile * t in adjucentTiles){
+                if (t == destination) {
+                    return [NSArray arrayWithObjects:source,tile,tile.lastConnectedTile,destination, nil];
+                }
+            }            
+        }
+    }
+    NSLog(@"%@", [self description]);
+    // Still not found, bye bye
     return nil;
 }
 
-+ (int*)firstGridInGraph{
-    return nil;
+- (NSString *)description{
+    NSString * returnString = @"";
+    NSString * s;
+    for (int i = 0; i<rowNumber; i++) {
+        for (int j = 0; j<columnNumber; j++) {
+            switch ([self tileWithRow:i andColumn:j].state) {
+                case TileState_Empty:
+                    s = @"0";
+                    break;
+                case TileState_Source:
+                    s = @"S";
+                    break;
+                case TileState_Destination:
+                    s = @"D";
+                    break;                    
+                case TileState_FirstStep:
+                    s = @"1";
+                    break;
+                case TileState_SecondStep:
+                    s = @"2";                    
+                    break;                   
+                default:
+                    s = @"X";
+                    break;
+            }
+            returnString = [returnString stringByAppendingString:s];
+        }
+        returnString = [returnString stringByAppendingString:@"\n"];
+    }
+    return returnString;
 }
+
+
 
 @end

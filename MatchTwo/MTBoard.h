@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 
 @class MTPiece;
+@class MTLogicHelper;
 
 @interface MTBoard : CCLayer <CCTargetedTouchDelegate>{
     MTPiece * selectedPiece1;
@@ -21,6 +22,8 @@
     int columnNumber;
     
     BOOL checkingInProgress;
+    
+    MTLogicHelper * helper;
 }
 
 @property (readonly) int rowNumber;

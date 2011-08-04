@@ -12,9 +12,13 @@
 
 @interface MTBoard (private)
 - (MTPiece *)pieceOnLocation:(CGPoint)location;
+
 - (void)selectPiece:(MTPiece *)piece;
 - (void)deselectPiece:(MTPiece *)piece;
+- (void)deselectAllPieces;
+
 - (void)checkConnection;
+
 @end
 
 @implementation MTBoard
@@ -34,6 +38,7 @@
     if ([self init]) {
         rowNumber = row;
         columnNumber = col;
+        helper = [[MTLogicHelper alloc]initWithRows:rowNumber andColumns:columnNumber];
     }
     return self;
 }
@@ -137,29 +142,30 @@
         return;
     }
     
+    if (selectedPiece1.type != selectedPiece2.type) {
+        [self deselectAllPieces];
+        return;
+    }
+    
     checkingInProgress = YES;
     
-    // Prepare a graph, init with 0
-    int graph[rowNumber+2][columnNumber+2];
-    for (int i=0;i<rowNumber + 2;i++) {
-        for (int j=0; j<columnNumber+2; j++) {
-            graph[i][j] = 0;
+    // Reset the MTLogicHelper
+    [helper reset];
+    
+    // Set Occupied Tiles
+    for (MTPiece * piece in self.children) {
+        if (piece == selectedPiece1) {
+            [helper setSourceRow:piece.row andColumn:piece.column];
+        }else if (piece == selectedPiece2) {
+            [helper setDestinationRow:piece.row andColumn:piece.column];
+        }
+        else if (piece.visible) {
+            [helper tileWithRow:piece.row andColumn:piece.column].state = TileState_Occupied;            
         }
     }
     
-    // Occupied Grid is 9
-    for (MTPiece * piece in self.children){
-        if (piece.visible == YES) {
-            graph[piece.row][piece.column] = 9;
-        }
-    }
+    NSArray * result = [helper check];
     
-    graph[selectedPiece1.row][selectedPiece1.column] = 1;
-    graph[selectedPiece2.row][selectedPiece2.column] = 2;
-    
-    NSArray * result = [MTLogicHelper lineFromTileGraph:graph
-                                       numberOfRows:rowNumber+2
-                                         andColumns:columnNumber+2];
     if (result == nil) {
         [self deselectAllPieces];
     }else{

@@ -8,8 +8,53 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MTLogicHelper : NSObject
+typedef enum{
+    TileState_Empty,
+    TileState_Source,
+    TileState_Destination,
+    TileState_FirstStep,
+    TileState_SecondStep,
+    TileState_Occupied
+}TileState;
 
-+ (NSArray*)lineFromTileGraph:(int**)graph numberOfRows:(int)row andColumns:(int)col;
+@interface MTTile : NSObject {
+    int x;
+    int y;
+    TileState state;
+    MTTile * lastConnectedTile;
+}
+
+@property int x;
+@property int y;
+@property (assign) MTTile * lastConnectedTile;
+@property TileState state;
+
++ (MTTile *)tileWithX:(int)idx andY:(int)idy;
+- (BOOL)isEmpty;
+
+@end
+
+@interface MTLogicHelper : NSObject{
+    NSMutableArray * tiles;
+    NSMutableArray * lineTiles;
+    
+    MTTile * source;
+    MTTile * destination;    
+    
+    int rowNumber;
+    int columnNumber;    
+}
+
+- (id)initWithRows:(int)rowNumber andColumns:(int)colNumber;
+
+- (void)reset;  // Reset all tiles to Empty;
+- (NSArray *)check;
+
+- (MTTile *)tileWithRow:(int)row andColumn:(int)column;
+- (void)setSourceRow:(int)row andColumn:(int)column;
+- (void)setDestinationRow:(int)row andColumn:(int)column;
+
+- (NSArray *)adjucentEmptyTilesFrom:(MTTile*)t;
+
 
 @end

@@ -28,9 +28,11 @@ static float MTPieceMargin = 2.0;
 @property BOOL selected;
 
 
+
 - (id)initWithRow:(int)theRow andColumn:(int)theColumn;
 + (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;
 
 - (void)disappear;
+
 
 @end
