@@ -11,9 +11,15 @@
 
 @implementation MTPiece
 
-@synthesize row,column,type;
+@synthesize row,column,type,enabled;
 
+static float MTPieceSize = 64.0;
+static float MTPieceMargin = 2.0;
 static ccTime ScaleTime = 0.1;
+
++ (int)MTPieceSize{
+    return MTPieceSize;
+}
 
 - (void)setSelected:(BOOL)toBeSelected{
     if (toBeSelected != selected) {
@@ -36,7 +42,8 @@ static ccTime ScaleTime = 0.1;
         row = theRow;
         column = theColumn;
         self.contentSize = CGSizeMake(MTPieceSize, MTPieceSize);
-        self.anchorPoint = ccp(0.5, 0.5);        
+        self.anchorPoint = ccp(0.5, 0.5); 
+        self.enabled = YES;
     }
     return self;
 }
@@ -47,6 +54,9 @@ static ccTime ScaleTime = 0.1;
 
 
 - (void)draw{
+    if (!self.enabled) {
+        return;
+    }
     glColor4f(type/4.0, 1.0, 0.0, 1.0);  
     glLineWidth(2.0);
     glEnable(GL_LINE_SMOOTH);
@@ -66,7 +76,8 @@ static ccTime ScaleTime = 0.1;
 
 - (void)disappear{
     // TODO: Spawn a particle
-    self.visible = NO;
+    self.enabled = NO;
+    [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:0]];
 }
 
 

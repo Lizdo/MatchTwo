@@ -34,7 +34,7 @@
                 // Add initial pieces
                 MTPiece * piece = [MTPiece pieceWithRow:i andColumn:j];
                 // Add 0.5 * MTPieceSize because the anchor is in the middle;
-                piece.position = ccp(64+(i-0.5)* MTPieceSize,200+(j-0.5)* MTPieceSize);
+                piece.position = ccp(64+(i-0.5)* [MTPiece MTPieceSize],200+(j-0.5)* [MTPiece MTPieceSize]);
                 piece.type = arc4random() % 4;
                 [board addChild:piece];
             }

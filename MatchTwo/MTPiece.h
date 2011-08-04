@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-static float MTPieceSize = 64.0;
-static float MTPieceMargin = 2.0;
+
 
 
 @interface MTPiece : CCNode {
@@ -20,14 +19,16 @@ static float MTPieceMargin = 2.0;
     int type;
     
     BOOL selected;
+    BOOL enabled;
 }
 
 @property int row;
 @property int column;
 @property int type;
 @property BOOL selected;
+@property BOOL enabled;
 
-
++ (int)MTPieceSize;
 
 - (id)initWithRow:(int)theRow andColumn:(int)theColumn;
 + (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;

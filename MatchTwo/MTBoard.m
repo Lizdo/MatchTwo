@@ -159,7 +159,7 @@
         }else if (piece == selectedPiece2) {
             [helper setDestinationRow:piece.row andColumn:piece.column];
         }
-        else if (piece.visible) {
+        else if (piece.enabled) {
             [helper tileWithRow:piece.row andColumn:piece.column].state = TileState_Occupied;            
         }
     }
