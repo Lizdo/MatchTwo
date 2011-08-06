@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
-
-
+#import "GameConfig.h"
 
 @interface MTPiece : CCNode {
     int row;
@@ -27,8 +25,6 @@
 @property int type;
 @property BOOL selected;
 @property BOOL enabled;
-
-+ (int)MTPieceSize;
 
 - (id)initWithRow:(int)theRow andColumn:(int)theColumn;
 + (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;

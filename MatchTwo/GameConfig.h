@@ -43,3 +43,8 @@
 
 #endif // __GAME_CONFIG_H
 
+// Match Two Specific Settings
+#define kMTPieceSize 64.0f
+#define kMTPieceMargin 4.0f
+#define kMTPieceScaleTime 0.4f
+#define kMTPieceDisappearTime 0.4f

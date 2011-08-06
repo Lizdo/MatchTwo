@@ -10,7 +10,13 @@
 #import "cocos2d.h"
 
 @interface MTLine : CCSprite {
-    
+    NSArray * points;
 }
+
+
+- (MTLine *)initWithPoints:(NSArray *)thePoints;
++ (id)lineWithPoints:(NSArray *)thePoints;
+
+
 
 @end

@@ -13,22 +13,14 @@
 
 @synthesize row,column,type,enabled;
 
-static float MTPieceSize = 64.0;
-static float MTPieceMargin = 2.0;
-static ccTime ScaleTime = 0.1;
-
-+ (int)MTPieceSize{
-    return MTPieceSize;
-}
-
 - (void)setSelected:(BOOL)toBeSelected{
     if (toBeSelected != selected) {
         selected = toBeSelected;
         if (selected) {
-            [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:1.2]];
+            [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.2]];
         }else{
 //            self.scale = 1.0;
-            [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:1.0]];            
+            [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.0]];            
         }
     }
 }
@@ -41,7 +33,7 @@ static ccTime ScaleTime = 0.1;
     if (self = [super init]) {
         row = theRow;
         column = theColumn;
-        self.contentSize = CGSizeMake(MTPieceSize, MTPieceSize);
+        self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);
         self.anchorPoint = ccp(0.5, 0.5); 
         self.enabled = YES;
     }
@@ -61,10 +53,10 @@ static ccTime ScaleTime = 0.1;
     glLineWidth(2.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {
-        ccp(MTPieceMargin, MTPieceMargin),
-        ccp(MTPieceMargin, MTPieceSize - MTPieceMargin),
-        ccp(MTPieceSize-MTPieceMargin, MTPieceSize-MTPieceMargin),
-        ccp(MTPieceSize-MTPieceMargin, MTPieceMargin)
+        ccp(kMTPieceMargin, kMTPieceMargin),
+        ccp(kMTPieceMargin, kMTPieceSize - kMTPieceMargin),
+        ccp(kMTPieceSize-kMTPieceMargin, kMTPieceSize-kMTPieceMargin),
+        ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
     };
     ccDrawPoly(points, 4, YES);
 }
@@ -77,7 +69,7 @@ static ccTime ScaleTime = 0.1;
 - (void)disappear{
     // TODO: Spawn a particle
     self.enabled = NO;
-    [self runAction:[CCScaleTo actionWithDuration:ScaleTime scale:0]];
+    [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
 }
 
 

@@ -11,6 +11,8 @@
 #import "MTPiece.h"
 #import "MTLine.h"
 #import "MTBoard.h"
+#import "GameConfig.h"
+
 
 @interface MTGame : CCNode{
     // Gameplay Related
@@ -21,6 +23,8 @@
     MTBoard * board;
     MTLine * line;
 }
+
+- (void)drawLinesWithPoints:(NSArray *)points;
 
 
 @end

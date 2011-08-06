@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameConfig.h"
 
 typedef enum{
     TileState_Empty,
@@ -49,6 +50,9 @@ typedef enum{
 
 - (void)reset;  // Reset all tiles to Empty;
 - (NSArray *)check;
+
+- (CGPoint)GLLocationForTile:(MTTile *)t;
+- (NSArray *)GLLocationForTiles:(NSArray *)array;
 
 - (MTTile *)tileWithRow:(int)row andColumn:(int)column;
 - (void)setSourceRow:(int)row andColumn:(int)column;

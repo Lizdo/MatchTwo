@@ -11,6 +11,7 @@
 
 @class MTPiece;
 @class MTLogicHelper;
+@class MTGame;
 
 @interface MTBoard : CCLayer <CCTargetedTouchDelegate>{
     MTPiece * selectedPiece1;
@@ -24,10 +25,12 @@
     BOOL checkingInProgress;
     
     MTLogicHelper * helper;
+    MTGame * game;
 }
 
 @property (readonly) int rowNumber;
 @property (readonly) int columnNumber;
+@property (assign) MTGame * game;
 
 - (id)initWithRowNumber:(int)row andColumnNumber:(int)col;
 

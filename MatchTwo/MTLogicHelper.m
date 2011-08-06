@@ -7,6 +7,7 @@
 //
 
 #import "MTLogicHelper.h"
+#import "MTPiece.h"
 
 @implementation MTTile
 @synthesize x,y,state,lastConnectedTile;
@@ -126,7 +127,7 @@
     
     for (MTTile * t in adjucentTiles) {
         if (t == destination) {
-            return [NSArray arrayWithObjects:source,destination, nil];
+            return [self GLLocationForTiles:[NSArray arrayWithObjects:source,destination, nil]];
         }
         t.state = TileState_FirstStep;
         t.lastConnectedTile = source;
@@ -139,7 +140,7 @@
             adjucentTiles = [self adjucentEmptyTilesFrom:tile];
             for (MTTile * t in adjucentTiles){
                 if (t == destination) {
-                    return [NSArray arrayWithObjects:source,tile,destination, nil];
+                    return [self GLLocationForTiles:[NSArray arrayWithObjects:source,tile,destination, nil]];
                 }
                 t.state = TileState_SecondStep;
                 t.lastConnectedTile = tile;
@@ -153,15 +154,33 @@
             adjucentTiles = [self adjucentEmptyTilesFrom:tile];
             for (MTTile * t in adjucentTiles){
                 if (t == destination) {
-                    return [NSArray arrayWithObjects:source,tile,tile.lastConnectedTile,destination, nil];
+                    return [self GLLocationForTiles:[NSArray arrayWithObjects:source,tile.lastConnectedTile,tile,destination, nil]];
                 }
-            }            
+            }
         }
     }
     NSLog(@"%@", [self description]);
     // Still not found, bye bye
     return nil;
 }
+
+- (CGPoint)GLLocationForTile:(MTTile *)t{
+    CGPoint p = ccp(64+(t.x-0.5)* kMTPieceSize,200+(t.y-0.5)* kMTPieceSize);
+    return p;
+}
+
+- (NSArray *)GLLocationForTiles:(NSArray *)array{
+    if (array == nil) {
+        return nil;
+    }
+    
+    NSMutableArray * returnArray = [NSMutableArray arrayWithCapacity:0];
+    for (MTTile * t in array){
+        [returnArray addObject:[NSValue valueWithCGPoint:[self GLLocationForTile:t]]];
+    }
+    return returnArray;
+}
+
 
 - (NSString *)description{
     NSString * returnString = @"";

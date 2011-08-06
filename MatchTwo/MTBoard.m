@@ -9,6 +9,7 @@
 #import "MTBoard.h"
 #import "MTPiece.h"
 #import "MTLogicHelper.h"
+#import "MTGame.h"
 
 @interface MTBoard (private)
 - (MTPiece *)pieceOnLocation:(CGPoint)location;
@@ -23,7 +24,7 @@
 
 @implementation MTBoard
 
-@synthesize rowNumber, columnNumber;
+@synthesize rowNumber, columnNumber, game;
 
 
 - (id)init{
@@ -169,6 +170,7 @@
     if (result == nil) {
         [self deselectAllPieces];
     }else{
+        [game drawLinesWithPoints:result];
         [selectedPiece1 disappear];
         [selectedPiece2 disappear];        
     }
