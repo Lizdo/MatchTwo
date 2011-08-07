@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "GameConfig.h"
 
-@interface MTPiece : CCNode {
+@interface MTPiece : CCSprite {
     int row;
     int column;
     

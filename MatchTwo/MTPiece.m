@@ -14,12 +14,14 @@
 @synthesize row,column,type,enabled;
 
 - (void)setSelected:(BOOL)toBeSelected{
+    if (!enabled) {
+        return;
+    }
     if (toBeSelected != selected) {
         selected = toBeSelected;
         if (selected) {
             [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.2]];
         }else{
-//            self.scale = 1.0;
             [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.0]];            
         }
     }
@@ -71,6 +73,8 @@
     self.enabled = NO;
     [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
 }
+
+
 
 
 @end

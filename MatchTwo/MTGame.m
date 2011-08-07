@@ -13,6 +13,7 @@
 #define DefaultcolumnNumber 10
 #define DefaultRowNumber 10
 #define DefaultGameTime 100.0f
+#define DefaultTypeNumber 10
 
 - (id)init
 {
@@ -37,7 +38,7 @@
                 // Add 0.5 * kMTPieceSize because the anchor is in the middle;
                 piece.position = ccp(kMTBoardStartingX+(i-0.5)* kMTPieceSize,
                                      kMTBoardStartingY+(j-0.5)* kMTPieceSize);
-                piece.type = arc4random() % 4;
+                piece.type = arc4random() % DefaultTypeNumber;
                 [board addChild:piece];
             }
         }
@@ -63,6 +64,8 @@
     remainingTime -= dt;
     if (remainingTime <= 0) {
         remainingTime = 0;
+        // End Game Here.
+        board.isTouchEnabled = NO;
     }
     
     // Selected pieces should be in the front

@@ -49,7 +49,7 @@
 //		// add the label as a child to this Layer
 //		[self addChild: label];
         
-        self.game = [[MTGame alloc]init];
+        self.game = [[[MTGame alloc]init]autorelease];
         [self addChild:game];
 	}
 	return self;

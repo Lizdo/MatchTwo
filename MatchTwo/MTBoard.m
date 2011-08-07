@@ -57,7 +57,7 @@
     if (CGRectContainsPoint(self.boundingBox, convertedLocation)) 
     {
         MTPiece * piece = [self pieceOnLocation:convertedLocation];
-        if (piece != nil) {
+        if (piece != nil && piece.enabled) {
             piece.selected ? [self deselectPiece:piece]:[self selectPiece:piece];
         }
         return YES;
@@ -93,6 +93,10 @@
 
 
 - (void)selectPiece:(MTPiece *)piece{
+    
+    if (!piece.enabled) {
+        return;
+    }
     
     if (piece == selectedPiece1 || piece == selectedPiece2) {
         return;
@@ -131,9 +135,13 @@
     }
 }
 
-- (void)deselectAllPieces{                  
-    selectedPiece1.selected = NO;
-    selectedPiece2.selected = NO;
+- (void)deselectAllPieces{
+    if (selectedPiece1) {
+        selectedPiece1.selected = NO;
+    }
+    if (selectedPiece2) {
+        selectedPiece2.selected = NO;
+    }
     selectedPiece1 = nil;
     selectedPiece2 = nil;
 }
