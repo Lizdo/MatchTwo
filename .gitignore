@@ -1,11 +1,3 @@
 .DS_Store
-MatchTwo.xcodeproj/project.xcworkspace/xcuserdata/*
-MatchTwo.xcodeproj/xcuserdata/*
-
-MatchTwo.xcodeproj/xcuserdata/Liz.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
-
-MatchTwo.xcodeproj/xcuserdata/Liz.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
-
-MatchTwo.xcodeproj/project.xcworkspace/xcuserdata/Liz.xcuserdatad/UserInterfaceState.xcuserstate
-
-MatchTwo.xcodeproj/xcuserdata/Liz.xcuserdatad/xcschemes/MatchTwo.xcscheme
+MatchTwo.xcodeproj/project.xcworkspace/xcuserdata/*.*
+MatchTwo.xcodeproj/xcuserdata/*.*
