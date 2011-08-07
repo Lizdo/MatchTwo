@@ -86,6 +86,16 @@
 - (void)drawLinesWithPoints:(NSArray *)points{
     MTLine * line = [MTLine lineWithPoints:points];
     [self addChild:line];
+    
+    MTParticleDisappear * p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
+    [self addChild:p];
+    p.position = [[points objectAtIndex:0] CGPointValue];    
+    
+    p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
+    [self addChild:p];
+    p.position = [[points lastObject] CGPointValue];
+
+    
 }
 
 

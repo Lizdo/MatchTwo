@@ -12,7 +12,7 @@
 
 // Tile is a 512 x 512 texture, each grid is 64 * 64
 
-CGRect rectFromType(int type){
+CGRect rectForType(int type){
     int idX = type % 8;
     int idY = type / 8;
     return CGRectMake(idX * 64, idY * 64, 64, 64);
@@ -43,7 +43,7 @@ CGRect rectFromType(int type){
 
 
 - (id)initWithType:(int)theType{
-    self = [super initWithFile:@"Tile.png" rect:rectFromType(theType)];
+    self = [super initWithFile:@"Tile.png" rect:rectForType(theType)];
     if (self) {
         self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);
         self.anchorPoint = ccp(0.5, 0.5); 
@@ -55,12 +55,8 @@ CGRect rectFromType(int type){
 
 
 - (void)draw{
-    if (!self.enabled) {
-        return;
-    }
     
-    
-    glColor4f((type+1.0)/5.0, 1.0, 0.0, 0.1);  
+    glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1);  
     glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {

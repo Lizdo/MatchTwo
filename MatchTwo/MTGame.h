@@ -13,6 +13,7 @@
 #import "MTTimeLine.h"
 #import "MTBoard.h"
 #import "GameConfig.h"
+#import "MTSFX.h"
 
 
 @interface MTGame : CCNode{
