@@ -36,7 +36,8 @@
 }
 
 - (id)initWithRowNumber:(int)row andColumnNumber:(int)col{
-    if ([self init]) {
+    self = [self init];
+    if (self) {
         rowNumber = row;
         columnNumber = col;
         helper = [[MTLogicHelper alloc]initWithRows:rowNumber andColumns:columnNumber];

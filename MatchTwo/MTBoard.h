@@ -17,7 +17,6 @@
     MTPiece * selectedPiece1;
     MTPiece * selectedPiece2;
     
-    
     // Initial Value
     int rowNumber;
     int columnNumber;

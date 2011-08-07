@@ -41,7 +41,7 @@
 }
 
 + (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn{
-    return [[MTPiece alloc] initWithRow:theRow andColumn:theColumn];    
+    return [[[MTPiece alloc] initWithRow:theRow andColumn:theColumn]autorelease];    
 }
 
 
@@ -49,7 +49,7 @@
     if (!self.enabled) {
         return;
     }
-    glColor4f(type/4.0, 1.0, 0.0, 1.0);  
+    glColor4f((type+1.0)/5.0, 1.0, 0.0, 1.0);  
     glLineWidth(2.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {

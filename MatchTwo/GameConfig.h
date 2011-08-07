@@ -48,3 +48,12 @@
 #define kMTPieceMargin 4.0f
 #define kMTPieceScaleTime 0.4f
 #define kMTPieceDisappearTime 0.4f
+
+#define kMTBoardStartingX 64.0f
+#define kMTBoardStartingY 200.0f
+
+#define kMTTimeLineWidth 768.0f
+#define kMTTimeLineHeight 20.0f
+#define kMTTimeLineStartingX 0.0f
+#define kMTTimeLineStartingY 1024.0 - kMTTimeLineHeight
+

@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "MTPiece.h"
 #import "MTLine.h"
+#import "MTTimeLine.h"
 #import "MTBoard.h"
 #import "GameConfig.h"
 
@@ -21,7 +22,7 @@
     float remainingTime;
         
     MTBoard * board;
-    MTLine * line;
+    MTTimeLine * timeLine;
 }
 
 - (void)drawLinesWithPoints:(NSArray *)points;

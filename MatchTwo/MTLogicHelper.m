@@ -163,7 +163,8 @@
 }
 
 - (CGPoint)GLLocationForTile:(MTTile *)t{
-    CGPoint p = ccp(64+(t.x-0.5)* kMTPieceSize,200+(t.y-0.5)* kMTPieceSize);
+    CGPoint p = ccp(kMTBoardStartingX+(t.x-0.5)* kMTPieceSize,
+                    kMTBoardStartingY+(t.y-0.5)* kMTPieceSize);
     return p;
 }
 

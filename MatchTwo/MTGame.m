@@ -35,7 +35,8 @@
                 // Add initial pieces
                 MTPiece * piece = [MTPiece pieceWithRow:i andColumn:j];
                 // Add 0.5 * kMTPieceSize because the anchor is in the middle;
-                piece.position = ccp(64+(i-0.5)* kMTPieceSize,200+(j-0.5)* kMTPieceSize);
+                piece.position = ccp(kMTBoardStartingX+(i-0.5)* kMTPieceSize,
+                                     kMTBoardStartingY+(j-0.5)* kMTPieceSize);
                 piece.type = arc4random() % 4;
                 [board addChild:piece];
             }
@@ -44,6 +45,11 @@
         // Line should be on top of the Pieces
 //        lines = [[MTLine alloc] init];
 //        [self addChild:lines];
+        
+        timeLine = [[MTTimeLine alloc] init];
+        timeLine.position = ccp(kMTTimeLineStartingX, kMTTimeLineStartingY);        
+        [self addChild:timeLine];
+
 //        
         // TODO: Add SFX Layer        
         
@@ -66,10 +72,13 @@
         }
     }
     
+    timeLine.percentage = remainingTime/initialTime;
+    [timeLine visit];
+    
 }
 
 - (void)drawLinesWithPoints:(NSArray *)points{
-    line = [MTLine lineWithPoints:points];
+    MTLine * line = [MTLine lineWithPoints:points];
     [self addChild:line];
 }
 

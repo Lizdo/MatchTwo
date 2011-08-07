@@ -127,6 +127,7 @@
 		6E05296713E6FFCC002BA347 /* MTPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296613E6FFCB002BA347 /* MTPiece.m */; };
 		6E05296B13E7001B002BA347 /* MTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296A13E7001B002BA347 /* MTLine.m */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
+		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -375,6 +376,8 @@
 		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLine.m; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
 		6E3C558413E98A2700F4C238 /* MTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBoard.m; sourceTree = "<group>"; };
+		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
+		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -787,6 +790,8 @@
 				6E05296013E6FF01002BA347 /* MTLogicHelper.m */,
 				6E05296913E7001B002BA347 /* MTLine.h */,
 				6E05296A13E7001B002BA347 /* MTLine.m */,
+				6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */,
+				6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */,
 			);
 			name = MT;
 			sourceTree = "<group>";
@@ -964,6 +969,7 @@
 				6E05296713E6FFCC002BA347 /* MTPiece.m in Sources */,
 				6E05296B13E7001B002BA347 /* MTLine.m in Sources */,
 				6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */,
+				6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
