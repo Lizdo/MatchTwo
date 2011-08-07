@@ -147,7 +147,6 @@
             }
         }
     }
-    NSLog(@"%@", [self description]);
     // Step.3 Start from 2, try to find destination tile
     for (MTTile * tile in tiles) {
         if (tile.state == TileState_SecondStep) {
@@ -159,7 +158,6 @@
             }
         }
     }
-    NSLog(@"%@", [self description]);
     // Still not found, bye bye
     return nil;
 }
@@ -183,9 +181,9 @@
 
 
 - (NSString *)description{
-    NSString * returnString = @"";
+    NSString * returnString = @"\n";
     NSString * s;
-    for (int i = 0; i<rowNumber; i++) {
+    for (int i = rowNumber - 1; i>=0; i--) {
         for (int j = 0; j<columnNumber; j++) {
             switch ([self tileWithRow:i andColumn:j].state) {
                 case TileState_Empty:
