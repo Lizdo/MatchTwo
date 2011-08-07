@@ -9,6 +9,16 @@
 #import "MTPiece.h"
 #import "CCTouchDispatcher.h"
 
+
+// Tile is a 512 x 512 texture, each grid is 64 * 64
+
+CGRect rectFromType(int type){
+    int idX = type % 8;
+    int idY = type / 8;
+    return CGRectMake(idX * 64, idY * 64, 64, 64);
+}
+
+
 @implementation MTPiece
 
 @synthesize row,column,type,enabled;
@@ -31,19 +41,16 @@
     return selected;
 }
 
-- (id)initWithRow:(int)theRow andColumn:(int)theColumn{
-    if (self = [super init]) {
-        row = theRow;
-        column = theColumn;
+
+- (id)initWithType:(int)theType{
+    self = [super initWithFile:@"Tile.png" rect:rectFromType(theType)];
+    if (self) {
         self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);
         self.anchorPoint = ccp(0.5, 0.5); 
         self.enabled = YES;
+        self.type = theType;
     }
     return self;
-}
-
-+ (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn{
-    return [[[MTPiece alloc] initWithRow:theRow andColumn:theColumn]autorelease];    
 }
 
 
@@ -51,8 +58,10 @@
     if (!self.enabled) {
         return;
     }
-    glColor4f((type+1.0)/5.0, 1.0, 0.0, 1.0);  
-    glLineWidth(2.0);
+    
+    
+    glColor4f((type+1.0)/5.0, 1.0, 0.0, 0.1);  
+    glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {
         ccp(kMTPieceMargin, kMTPieceMargin),
@@ -61,6 +70,9 @@
         ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
     };
     ccDrawPoly(points, 4, YES);
+    
+    [super draw];
+
 }
 
 - (NSString *)description{

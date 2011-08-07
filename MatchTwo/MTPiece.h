@@ -26,8 +26,10 @@
 @property BOOL selected;
 @property BOOL enabled;
 
-- (id)initWithRow:(int)theRow andColumn:(int)theColumn;
-+ (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;
+- (id)initWithType:(int)type;
+
+//- (id)initWithRow:(int)theRow andColumn:(int)theColumn;
+//+ (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;
 
 - (void)disappear;
 

@@ -127,6 +127,7 @@
 		6E05296713E6FFCC002BA347 /* MTPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296613E6FFCB002BA347 /* MTPiece.m */; };
 		6E05296B13E7001B002BA347 /* MTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296A13E7001B002BA347 /* MTLine.m */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
+		6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB113EEA21E00D623A6 /* Tile.png */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 /* End PBXBuildFile section */
 
@@ -376,6 +377,7 @@
 		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLine.m; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
 		6E3C558413E98A2700F4C238 /* MTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBoard.m; sourceTree = "<group>"; };
+		6E79DFB113EEA21E00D623A6 /* Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tile.png; path = Resources/Tile.png; sourceTree = "<group>"; };
 		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,6 +454,7 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E79DFB113EEA21E00D623A6 /* Tile.png */,
 				6E0527FD13E6EE88002BA347 /* Default.png */,
 				6E0527FF13E6EE88002BA347 /* fps_images.png */,
 				6E05280113E6EE88002BA347 /* Icon-72.png */,
@@ -856,6 +859,7 @@
 				6E05280A13E6EE88002BA347 /* Icon.png in Resources */,
 				6E05280C13E6EE88002BA347 /* Icon@2x.png in Resources */,
 				6E05280F13E6EE88002BA347 /* iTunesArtwork in Resources */,
+				6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

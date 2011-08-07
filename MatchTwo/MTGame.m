@@ -13,7 +13,7 @@
 #define DefaultcolumnNumber 10
 #define DefaultRowNumber 10
 #define DefaultGameTime 100.0f
-#define DefaultTypeNumber 10
+#define DefaultTypeNumber 9
 
 - (id)init
 {
@@ -34,11 +34,14 @@
         for (int i=1; i<=board.columnNumber; i++) {
             for (int j=1; j<=board.rowNumber; j++) {
                 // Add initial pieces
-                MTPiece * piece = [MTPiece pieceWithRow:i andColumn:j];
+                MTPiece * piece = [[[MTPiece alloc] 
+                                    initWithType:arc4random() % DefaultTypeNumber]
+                                   autorelease];
+                piece.row = i;
+                piece.column = j;
                 // Add 0.5 * kMTPieceSize because the anchor is in the middle;
                 piece.position = ccp(kMTBoardStartingX+(i-0.5)* kMTPieceSize,
                                      kMTBoardStartingY+(j-0.5)* kMTPieceSize);
-                piece.type = arc4random() % DefaultTypeNumber;
                 [board addChild:piece];
             }
         }
