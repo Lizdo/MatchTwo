@@ -46,8 +46,8 @@
 // Match Two Specific Settings
 #define kMTPieceSize 64.0f
 #define kMTPieceMargin 4.0f
-#define kMTPieceScaleTime 0.4f
-#define kMTPieceDisappearTime 0.4f
+#define kMTPieceScaleTime 0.2f
+#define kMTPieceDisappearTime 0.2f
 
 #define kMTBoardStartingX 64.0f
 #define kMTBoardStartingY 200.0f
