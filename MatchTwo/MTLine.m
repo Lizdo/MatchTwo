@@ -15,6 +15,9 @@
     self = [super init];
     if (self) {
         points = [thePoints copy];
+        id fadeOut = [CCFadeOut actionWithDuration:kMTPieceScaleTime];
+        id remove = [CCCallBlock actionWithBlock:^{[self removeFromParentAndCleanup:YES];}];
+        [self runAction:[CCSequence actions:fadeOut,remove,nil]];
     }
     return self;
 }
