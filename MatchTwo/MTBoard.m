@@ -195,6 +195,11 @@
     
 }
 
+- (void)pause{
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+
+}
+
 
 
 @end

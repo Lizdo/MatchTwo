@@ -35,4 +35,6 @@
 
 - (id)initWithRowNumber:(int)row andColumnNumber:(int)col;
 
+- (void)pause;
+
 @end

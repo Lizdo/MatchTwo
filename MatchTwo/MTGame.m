@@ -9,8 +9,9 @@
 #import "MTGame.h"
 
 @interface MTGame ()
-- (void) prepare;
+- (void)prepare;
 - (NSArray *)randomizeType;
+- (void)showMenu;
 @end
 
 @implementation MTGame
@@ -120,7 +121,8 @@
     if (remainingTime <= 0) {
         remainingTime = 0;
         // End Game Here.
-        board.isTouchEnabled = NO;
+        [board pause];
+        [self showMenu];
     }
     
     // Selected pieces should be in the front
@@ -153,6 +155,22 @@
     
 }
 
+
+- (void)showMenu{
+    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(200, 200, 200, 20)];
+    [self addChild:overlay];
+    
+    
+    CCLabelTTF * label = [CCLabelTTF labelWithString:@"Restart"
+                                    fontName:@"Courier-Bold"
+                                    fontSize:50];
+    CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
+                                                                   block:^(id sender){[self restart];}],
+                     nil];
+    
+    [self addChild:menu];
+    
+}
 
 - (void)restart{
     // Stop all schedule & timer
