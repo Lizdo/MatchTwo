@@ -8,6 +8,10 @@
 
 #import "MTGame.h"
 
+@interface MTGame ()
+- (NSArray *)randomizeType;
+@end
+
 @implementation MTGame
 
 #define DefaultcolumnNumber 10
@@ -22,6 +26,7 @@
         // Initialization code here.
         initialTime = DefaultGameTime;
         remainingTime = initialTime;
+        numberOfTypes = DefaultTypeNumber;
         
         // TODO: Add Background Layer
         
@@ -29,14 +34,16 @@
                                   andColumnNumber:DefaultcolumnNumber];
         board.game = self;
         [self addChild:board];
-   
 
+        // Randomize
+        NSArray * randomTypes = [self randomizeType];
+        
         for (int i=1; i<=board.columnNumber; i++) {
             for (int j=1; j<=board.rowNumber; j++) {
                 // Add initial pieces
+                int type = [[randomTypes objectAtIndex:(i-1)*board.columnNumber + j - 1] intValue];
                 MTPiece * piece = [[[MTPiece alloc] 
-                                    initWithType:arc4random() % DefaultTypeNumber]
-                                   autorelease];
+                                    initWithType:type] autorelease];
                 piece.row = i;
                 piece.column = j;
                 // Add 0.5 * kMTPieceSize because the anchor is in the middle;
@@ -45,7 +52,7 @@
                 [board addChild:piece];
             }
         }
-        
+
         // Line should be on top of the Pieces
 //        lines = [[MTLine alloc] init];
 //        [self addChild:lines];
@@ -60,6 +67,28 @@
         [self scheduleUpdateWithPriority:0];
     }
     return self;
+}
+
+
+- (NSArray *)randomizeType{
+    int totalCount = board.columnNumber*board.rowNumber;
+    NSAssert(totalCount % 2 == 0, @"Total count must be an even number!");
+    
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:totalCount];
+    for (int i = 0; i < totalCount ; i += 2) {
+        int randomType = arc4random() % numberOfTypes;
+        [array addObject:[NSNumber numberWithInt:randomType]];
+        [array addObject:[NSNumber numberWithInt:randomType]];
+    }
+    
+    for (int i = 0; i < totalCount; ++i) {
+        // Select a random element between i and end of array to swap with.
+        int nElements = totalCount - i;
+        int n = (arc4random() % nElements) + i;
+        [array exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+
+    return array;
 }
 
 

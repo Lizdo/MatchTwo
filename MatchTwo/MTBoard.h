@@ -20,6 +20,7 @@
     // Initial Value
     int rowNumber;
     int columnNumber;
+    int types;
     
     BOOL checkingInProgress;
     

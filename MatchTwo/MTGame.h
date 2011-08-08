@@ -24,6 +24,8 @@
         
     MTBoard * board;
     MTTimeLine * timeLine;
+    
+    int numberOfTypes;
 }
 
 - (void)drawLinesWithPoints:(NSArray *)points;
