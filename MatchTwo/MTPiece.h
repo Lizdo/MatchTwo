@@ -18,6 +18,11 @@
     
     BOOL selected;
     BOOL enabled;
+    
+    BOOL hinted;
+    BOOL shaking;
+    
+    MTPiece * pairedPiece;
 }
 
 @property int row;
@@ -25,6 +30,8 @@
 @property int type;
 @property BOOL selected;
 @property BOOL enabled;
+@property BOOL hinted;
+@property (assign) MTPiece * pairedPiece;
 
 - (id)initWithType:(int)type;
 
@@ -32,6 +39,7 @@
 //+ (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;
 
 - (void)disappear;
+- (void)shake;
 
 
 @end

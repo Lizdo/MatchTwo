@@ -51,6 +51,8 @@
         
         self.game = [[[MTGame alloc]init]autorelease];
         [self addChild:game];
+        
+        
 	}
 	return self;
 }

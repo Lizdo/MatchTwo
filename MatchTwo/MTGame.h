@@ -28,7 +28,11 @@
     int numberOfTypes;
 }
 
+// Draw linked lines and pop SFX
 - (void)drawLinesWithPoints:(NSArray *)points;
+
+// Rester Current Game
+- (void)restart;
 
 
 @end

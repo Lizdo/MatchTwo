@@ -21,7 +21,7 @@ CGRect rectForType(int type){
 
 @implementation MTPiece
 
-@synthesize row,column,type,enabled;
+@synthesize row,column,type,enabled,hinted,pairedPiece;
 
 - (void)setSelected:(BOOL)toBeSelected{
     if (!enabled) {
@@ -56,7 +56,11 @@ CGRect rectForType(int type){
 
 - (void)draw{
     
-    glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1);  
+    if (hinted) {
+        glColor4f(0.0, 0.8, 0.8, 0.1);  
+    }else{
+        glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1); 
+    }
     glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {
@@ -77,9 +81,31 @@ CGRect rectForType(int type){
 
 
 - (void)disappear{
-    // TODO: Spawn a particle
+    if (pairedPiece) {
+        pairedPiece.hinted = NO;
+    }
     self.enabled = NO;
     [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
+}
+
+
+
+- (void)shake{
+    if (shaking) {
+        return;
+    }
+    shaking = YES;
+    id delay = [CCDelayTime actionWithDuration:kMTPieceDisappearTime/2];
+    id rotate1 = [CCRotateBy actionWithDuration:kMTPieceDisappearTime/4 angle:5.0f];
+    id rotate2 = [CCRotateBy actionWithDuration:kMTPieceDisappearTime/2 angle:-10.0f];
+    id rotate3 = [CCRotateBy actionWithDuration:kMTPieceDisappearTime/4 angle:5.0f];    
+    id resetShakingFlag = [CCCallBlock actionWithBlock:^{shaking = NO;}];
+    [self runAction:[CCSequence actions:delay,
+                     rotate1,
+                     rotate2,
+                     rotate3,
+                     resetShakingFlag,
+                     nil]];
 }
 
 

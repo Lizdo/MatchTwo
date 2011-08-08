@@ -9,6 +9,7 @@
 #import "MTGame.h"
 
 @interface MTGame ()
+- (void) prepare;
 - (NSArray *)randomizeType;
 @end
 
@@ -23,50 +24,54 @@
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
-        initialTime = DefaultGameTime;
-        remainingTime = initialTime;
-        numberOfTypes = DefaultTypeNumber;
-        
-        // TODO: Add Background Layer
-        
-        board = [[MTBoard alloc]initWithRowNumber:DefaultRowNumber 
-                                  andColumnNumber:DefaultcolumnNumber];
-        board.game = self;
-        [self addChild:board];
-
-        // Randomize
-        NSArray * randomTypes = [self randomizeType];
-        
-        for (int i=1; i<=board.columnNumber; i++) {
-            for (int j=1; j<=board.rowNumber; j++) {
-                // Add initial pieces
-                int type = [[randomTypes objectAtIndex:(i-1)*board.columnNumber + j - 1] intValue];
-                MTPiece * piece = [[[MTPiece alloc] 
-                                    initWithType:type] autorelease];
-                piece.row = i;
-                piece.column = j;
-                // Add 0.5 * kMTPieceSize because the anchor is in the middle;
-                piece.position = ccp(kMTBoardStartingX+(i-0.5)* kMTPieceSize,
-                                     kMTBoardStartingY+(j-0.5)* kMTPieceSize);
-                [board addChild:piece];
-            }
-        }
-
-        // Line should be on top of the Pieces
-//        lines = [[MTLine alloc] init];
-//        [self addChild:lines];
-        
-        timeLine = [[MTTimeLine alloc] init];
-        timeLine.position = ccp(kMTTimeLineStartingX, kMTTimeLineStartingY);        
-        [self addChild:timeLine];
-
-//        
-        // TODO: Add SFX Layer        
-        
-        [self scheduleUpdateWithPriority:0];
+        [self prepare];
     }
     return self;
+}
+
+- (void) prepare{
+    // Initialization code here.
+    initialTime = DefaultGameTime;
+    remainingTime = initialTime;
+    numberOfTypes = DefaultTypeNumber;
+    
+    // TODO: Add Background Layer
+    
+    board = [[MTBoard alloc]initWithRowNumber:DefaultRowNumber 
+                              andColumnNumber:DefaultcolumnNumber];
+    board.game = self;
+    [self addChild:board];
+    
+    // Randomize
+    NSArray * randomTypes = [self randomizeType];
+    
+    for (int i=1; i<=board.rowNumber; i++) {
+        for (int j=1; j<=board.columnNumber; j++) {
+            // Add initial pieces
+            int type = [[randomTypes objectAtIndex:(i-1)*board.columnNumber + j - 1] intValue];
+            MTPiece * piece = [[[MTPiece alloc] 
+                                initWithType:type] autorelease];
+            piece.row = i;
+            piece.column = j;
+            // Add 0.5 * kMTPieceSize because the anchor is in the middle;
+            piece.position = ccp(kMTBoardStartingX+(j-0.5)* kMTPieceSize,
+                                 kMTBoardStartingY+(i-0.5)* kMTPieceSize);
+            [board addChild:piece];
+        }
+    }
+    
+    // Line should be on top of the Pieces
+    //        lines = [[MTLine alloc] init];
+    //        [self addChild:lines];
+    
+    timeLine = [[MTTimeLine alloc] init];
+    timeLine.position = ccp(kMTTimeLineStartingX, kMTTimeLineStartingY);        
+    [self addChild:timeLine];
+    
+    //        
+    // TODO: Add SFX Layer        
+    
+    [self scheduleUpdateWithPriority:0];
 }
 
 
@@ -81,12 +86,18 @@
         [array addObject:[NSNumber numberWithInt:randomType]];
     }
     
-    for (int i = 0; i < totalCount; ++i) {
-        // Select a random element between i and end of array to swap with.
-        int nElements = totalCount - i;
-        int n = (arc4random() % nElements) + i;
-        [array exchangeObjectAtIndex:i withObjectAtIndex:n];
+    int numberOfShuffle = 6;
+    
+    while (numberOfShuffle > 0) {
+        for (int i = 0; i < totalCount; ++i) {
+            // Select a random element between i and end of array to swap with.
+            int nElements = totalCount - i;
+            int n = (arc4random() % nElements) + i;
+            [array exchangeObjectAtIndex:i withObjectAtIndex:n];
+        }
+        numberOfShuffle--;
     }
+
 
     return array;
 }
@@ -127,5 +138,12 @@
     
 }
 
+
+- (void)restart{
+    // Stop all schedule & timer
+    [self cleanup];
+    [self removeAllChildrenWithCleanup:YES];
+    [self prepare];
+}
 
 @end

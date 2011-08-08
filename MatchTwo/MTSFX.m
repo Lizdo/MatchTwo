@@ -75,7 +75,7 @@
 		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"Particle.png"];
         
 		// additive
-		self.blendAdditive = NO;
+		self.blendAdditive = YES;
 	}
 	
 	return self;

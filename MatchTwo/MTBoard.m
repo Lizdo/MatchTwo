@@ -142,6 +142,12 @@
     if (selectedPiece2) {
         selectedPiece2.selected = NO;
     }
+    
+    if (selectedPiece1 && selectedPiece2) {
+        [selectedPiece1 shake];
+        [selectedPiece2 shake];
+    }
+    
     selectedPiece1 = nil;
     selectedPiece2 = nil;
 }
@@ -176,7 +182,7 @@
     
     NSArray * result = [helper check];
     
-    if (result == nil) {
+    if (result == nil) {       
         [self deselectAllPieces];
     }else{
         [game drawLinesWithPoints:result];

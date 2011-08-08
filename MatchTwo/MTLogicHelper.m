@@ -19,6 +19,9 @@
     return [t autorelease];
 }
 
+// Source/Destination Tile are considered Empty, 
+// because we want to handle case like xxxSDxxxx
+
 - (BOOL)isEmpty{
     if (state == TileState_Empty) {
         return YES;
@@ -163,8 +166,8 @@
 }
 
 - (CGPoint)GLLocationForTile:(MTTile *)t{
-    CGPoint p = ccp(kMTBoardStartingX+(t.x-0.5)* kMTPieceSize,
-                    kMTBoardStartingY+(t.y-0.5)* kMTPieceSize);
+    CGPoint p = ccp(kMTBoardStartingX+(t.y-0.5)* kMTPieceSize,
+                    kMTBoardStartingY+(t.x-0.5)* kMTPieceSize);
     return p;
 }
 
