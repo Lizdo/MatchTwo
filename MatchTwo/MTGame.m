@@ -69,7 +69,19 @@
     [self addChild:timeLine];
     
     //        
-    // TODO: Add SFX Layer        
+    // TODO: Add SFX Layer 
+    
+    // Add Score Display
+    CGSize dimension = CGSizeMake(600, 50);
+    
+    scoreLabel = [CCLabelTTF labelWithString:@"Score:0"
+                                  dimensions:dimension
+                                   alignment:UITextAlignmentLeft
+                                    fontName:@"Courier-Bold"
+                                    fontSize:30];
+                  
+    scoreLabel.position = ccp(350, 950);
+    [self addChild:scoreLabel];
     
     [self scheduleUpdateWithPriority:0];
 }
@@ -120,6 +132,9 @@
     
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
+    
+    scoreLabel.string = [NSString stringWithFormat:@"Score: %d", 
+                         [MTSharedManager instance].totalScore];
     
 }
 

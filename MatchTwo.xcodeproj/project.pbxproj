@@ -130,6 +130,7 @@
 		6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB113EEA21E00D623A6 /* Tile.png */; };
 		6E79DFB913EEC5EB00D623A6 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB813EEC5EB00D623A6 /* Particle.png */; };
 		6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E79DFBB13EEC69500D623A6 /* MTSFX.m */; };
+		6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8586E513F030D7007217DD /* MTSharedManager.m */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 /* End PBXBuildFile section */
 
@@ -383,6 +384,8 @@
 		6E79DFB813EEC5EB00D623A6 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle.png; path = Resources/Particle.png; sourceTree = "<group>"; };
 		6E79DFBA13EEC69400D623A6 /* MTSFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSFX.h; sourceTree = "<group>"; };
 		6E79DFBB13EEC69500D623A6 /* MTSFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSFX.m; sourceTree = "<group>"; };
+		6E8586E413F030D7007217DD /* MTSharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSharedManager.h; sourceTree = "<group>"; };
+		6E8586E513F030D7007217DD /* MTSharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSharedManager.m; sourceTree = "<group>"; };
 		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -803,6 +806,8 @@
 				6E05296A13E7001B002BA347 /* MTLine.m */,
 				6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */,
 				6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */,
+				6E8586E413F030D7007217DD /* MTSharedManager.h */,
+				6E8586E513F030D7007217DD /* MTSharedManager.m */,
 			);
 			name = MT;
 			sourceTree = "<group>";
@@ -984,6 +989,7 @@
 				6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */,
 				6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */,
 				6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */,
+				6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 #import "MTBoard.h"
 #import "GameConfig.h"
 #import "MTSFX.h"
+#import "MTSharedManager.h"
 
 
 @interface MTGame : CCNode{
@@ -26,6 +27,8 @@
     MTTimeLine * timeLine;
     
     int numberOfTypes;
+    
+    CCLabelTTF * scoreLabel;
 }
 
 // Draw linked lines and pop SFX

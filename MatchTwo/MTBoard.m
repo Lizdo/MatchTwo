@@ -185,6 +185,7 @@
     if (result == nil) {       
         [self deselectAllPieces];
     }else{
+        [MTSharedManager instance].totalScore += 200;
         [game drawLinesWithPoints:result];
         [selectedPiece1 disappear];
         [selectedPiece2 disappear];        
