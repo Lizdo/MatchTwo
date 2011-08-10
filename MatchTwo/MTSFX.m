@@ -11,7 +11,7 @@
 @implementation MTParticleDisappear
 -(id) init
 {
-	return [self initWithTotalParticles:1500];
+	return [self initWithTotalParticles:150];
 }
 
 -(id) initWithTotalParticles:(NSUInteger)p
@@ -71,6 +71,84 @@
 		startSize = 34.0f;
 		startSizeVar = 38.0f;
 		endSize = 14.0f;
+        
+		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"Particle.png"];
+        
+		// additive
+		self.blendAdditive = YES;
+	}
+	
+	return self;
+}
+@end
+
+
+@implementation MTParticleLoopingStar
+-(id) init
+{
+	return [self initWithTotalParticles:50];
+}
+
+-(id) initWithTotalParticles:(NSUInteger)p
+{
+	if( (self=[super initWithTotalParticles:p]) ) {
+		// duration
+		duration = -1.0;
+        
+		// Gravity Mode
+		self.emitterMode = kCCParticleModeGravity;
+        
+		// Gravity Mode: gravity
+		self.gravity = ccp(0.7,1.43);
+		
+		// Gravity Mode:  radial
+		self.radialAccel = 0;
+		self.radialAccelVar = 0;
+        
+		//  Gravity Mode: speed of particles
+		self.speed = 10;
+		self.speedVar = 10;
+		
+		// emitter position
+		CGSize winSize = [[CCDirector sharedDirector] winSize];
+		self.position = ccp(winSize.width/2, winSize.height/2);
+        
+        self.posVar = ccp(540, 680);
+		
+		// angle
+		angle = 357;
+		angleVar = 190;
+        
+		// life of particles
+		life = 15.0f;
+		lifeVar = 3.0f;
+        
+		// emits per frame
+		emissionRate = totalParticles/life;
+		
+		// color of particles
+		startColor.r = 0.06f;
+		startColor.g = 0.68f;
+		startColor.b = 0.29f;
+		startColor.a = 0.5f;
+		startColorVar.r = 0.1f;
+		startColorVar.g = 0.1f;
+		startColorVar.b = 0.4f;
+		startColorVar.a = 0.1f;
+		endColor.r = 0.4f;
+		endColor.g = 0.6f;
+		endColor.b = 0.3f;
+		endColor.a = 0.6f;
+		endColorVar.r = 0.1f;
+		endColorVar.g = 0.1f;
+		endColorVar.b = 0.0f;
+		endColorVar.a = 0.2f;
+		
+		// size, in pixels
+		startSize = 200.0f;
+		startSizeVar = 100.0f;
+		endSize = 179.0f;
+		endSizeVar = 51.0f;        
         
 		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"Particle.png"];
         

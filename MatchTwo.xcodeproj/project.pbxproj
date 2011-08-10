@@ -131,6 +131,7 @@
 		6E79DFB913EEC5EB00D623A6 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB813EEC5EB00D623A6 /* Particle.png */; };
 		6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E79DFBB13EEC69500D623A6 /* MTSFX.m */; };
 		6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8586E513F030D7007217DD /* MTSharedManager.m */; };
+		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 /* End PBXBuildFile section */
 
@@ -386,6 +387,8 @@
 		6E79DFBB13EEC69500D623A6 /* MTSFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSFX.m; sourceTree = "<group>"; };
 		6E8586E413F030D7007217DD /* MTSharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSharedManager.h; sourceTree = "<group>"; };
 		6E8586E513F030D7007217DD /* MTSharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSharedManager.m; sourceTree = "<group>"; };
+		6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBackground.h; sourceTree = "<group>"; };
+		6E8C09B013F2CC2300DF1F84 /* MTBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBackground.m; sourceTree = "<group>"; };
 		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -794,6 +797,8 @@
 			children = (
 				6E79DFBA13EEC69400D623A6 /* MTSFX.h */,
 				6E79DFBB13EEC69500D623A6 /* MTSFX.m */,
+				6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */,
+				6E8C09B013F2CC2300DF1F84 /* MTBackground.m */,
 				6E3C558313E98A2700F4C238 /* MTBoard.h */,
 				6E3C558413E98A2700F4C238 /* MTBoard.m */,
 				6E05296213E6FFA8002BA347 /* MTGame.h */,
@@ -990,6 +995,7 @@
 				6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */,
 				6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */,
 				6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */,
+				6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

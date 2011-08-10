@@ -18,7 +18,7 @@
 
 #define DefaultcolumnNumber 10
 #define DefaultRowNumber 10
-#define DefaultGameTime 100.0f
+#define DefaultGameTime 10.0f
 #define DefaultTypeNumber 9
 
 - (id)init
@@ -31,6 +31,8 @@
 }
 
 - (void) prepare{
+    paused = NO;
+    
     // Initialization code here.
     initialTime = DefaultGameTime;
     remainingTime = initialTime;
@@ -38,8 +40,13 @@
     
     // TODO: Add Background Layer
     
+    background  = [[[MTBackground alloc] init] autorelease];
+    [self addChild:background];
+    
+    
     board = [[MTBoard alloc]initWithRowNumber:DefaultRowNumber 
                               andColumnNumber:DefaultcolumnNumber];
+    [board autorelease];
     board.game = self;
     [self addChild:board];
     
@@ -117,10 +124,15 @@
 
 
 - (void)update:(ccTime)dt{
+    if (paused) {
+        return;
+    }
+    
     remainingTime -= dt;
     if (remainingTime <= 0) {
         remainingTime = 0;
         // End Game Here.
+        paused = YES;
         [board pause];
         [self showMenu];
     }
@@ -144,7 +156,7 @@
     MTLine * line = [MTLine lineWithPoints:points];
     [self addChild:line];
     
-    MTParticleDisappear * p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
+    MTParticleDisappear * p = [[[MTParticleDisappear alloc]init]autorelease];
     [self addChild:p];
     p.position = [[points objectAtIndex:0] CGPointValue];    
     
@@ -157,7 +169,7 @@
 
 
 - (void)showMenu{
-    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(200, 200, 200, 20)];
+    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
     [self addChild:overlay];
     
     

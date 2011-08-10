@@ -14,3 +14,9 @@
 }
 
 @end
+
+@interface MTParticleLoopingStar:ARCH_OPTIMAL_PARTICLE_SYSTEM{
+    
+}
+
+@end

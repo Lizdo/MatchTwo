@@ -15,14 +15,18 @@
 #import "GameConfig.h"
 #import "MTSFX.h"
 #import "MTSharedManager.h"
+#import "MTBackground.h"
 
 
 @interface MTGame : CCNode{
     // Gameplay Related
+    BOOL paused;
+    
     int score;
     float initialTime;
     float remainingTime;
         
+    MTBackground * background;
     MTBoard * board;
     MTTimeLine * timeLine;
     
