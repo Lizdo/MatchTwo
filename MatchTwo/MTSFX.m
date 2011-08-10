@@ -145,7 +145,7 @@
 		endColorVar.a = 0.2f;
 		
 		// size, in pixels
-		startSize = 200.0f;
+		startSize = 300.0f;
 		startSizeVar = 100.0f;
 		endSize = 179.0f;
 		endSizeVar = 51.0f;        

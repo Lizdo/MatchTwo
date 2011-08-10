@@ -8,7 +8,7 @@
 
 #import "MTPiece.h"
 #import "CCTouchDispatcher.h"
-
+#import "CCDrawingPrimitives+MT.h"
 
 // Tile is a 512 x 512 texture, each grid is 64 * 64
 
@@ -57,19 +57,17 @@ CGRect rectForType(int type){
 - (void)draw{
     
     if (hinted) {
-        glColor4f(0.0, 0.8, 0.8, 0.1);  
-    }else{
         glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1); 
+        glLineWidth(1.0);
+        glEnable(GL_LINE_SMOOTH);
+        CGPoint points[4] = {
+            ccp(kMTPieceMargin, kMTPieceMargin),
+            ccp(kMTPieceMargin, kMTPieceSize - kMTPieceMargin),
+            ccp(kMTPieceSize-kMTPieceMargin, kMTPieceSize-kMTPieceMargin),
+            ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
+        };
+        ccDrawPolyFill(points, 4, YES);
     }
-    glLineWidth(1.0);
-    glEnable(GL_LINE_SMOOTH);
-    CGPoint points[4] = {
-        ccp(kMTPieceMargin, kMTPieceMargin),
-        ccp(kMTPieceMargin, kMTPieceSize - kMTPieceMargin),
-        ccp(kMTPieceSize-kMTPieceMargin, kMTPieceSize-kMTPieceMargin),
-        ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
-    };
-    ccDrawPoly(points, 4, YES);
     
     [super draw];
 

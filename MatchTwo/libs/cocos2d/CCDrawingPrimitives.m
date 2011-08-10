@@ -159,8 +159,7 @@ void ccDrawPoly( const CGPoint *poli, NSUInteger numberOfPoints, BOOL closePolyg
 	}
 		
 	if( closePolygon )
-		//glDrawArrays(GL_LINE_LOOP, 0, (GLsizei) numberOfPoints);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, (GLsizei) numberOfPoints);
+		glDrawArrays(GL_LINE_LOOP, 0, (GLsizei) numberOfPoints);
 	else
 		glDrawArrays(GL_LINE_STRIP, 0, (GLsizei) numberOfPoints);
 	

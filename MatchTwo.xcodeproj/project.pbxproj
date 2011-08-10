@@ -132,6 +132,7 @@
 		6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E79DFBB13EEC69500D623A6 /* MTSFX.m */; };
 		6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8586E513F030D7007217DD /* MTSharedManager.m */; };
 		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
+		6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 /* End PBXBuildFile section */
 
@@ -389,6 +390,8 @@
 		6E8586E513F030D7007217DD /* MTSharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSharedManager.m; sourceTree = "<group>"; };
 		6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBackground.h; sourceTree = "<group>"; };
 		6E8C09B013F2CC2300DF1F84 /* MTBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBackground.m; sourceTree = "<group>"; };
+		6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCDrawingPrimitives+MT.m"; sourceTree = "<group>"; };
+		6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCDrawingPrimitives+MT.h"; sourceTree = "<group>"; };
 		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -813,6 +816,8 @@
 				6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */,
 				6E8586E413F030D7007217DD /* MTSharedManager.h */,
 				6E8586E513F030D7007217DD /* MTSharedManager.m */,
+				6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */,
+				6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */,
 			);
 			name = MT;
 			sourceTree = "<group>";
@@ -996,6 +1001,7 @@
 				6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */,
 				6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */,
 				6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */,
+				6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

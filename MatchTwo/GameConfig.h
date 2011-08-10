@@ -53,7 +53,7 @@
 #define kMTBoardStartingY 200.0f
 
 #define kMTTimeLineWidth 768.0f
-#define kMTTimeLineHeight 20.0f
+#define kMTTimeLineHeight 30.0f
 #define kMTTimeLineStartingX 0.0f
 #define kMTTimeLineStartingY 1024.0 - kMTTimeLineHeight
 
