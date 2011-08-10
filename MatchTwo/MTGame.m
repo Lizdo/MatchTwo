@@ -18,7 +18,7 @@
 
 #define DefaultcolumnNumber 10
 #define DefaultRowNumber 10
-#define DefaultGameTime 10.0f
+#define DefaultGameTime 100.0f
 #define DefaultTypeNumber 9
 
 - (id)init
