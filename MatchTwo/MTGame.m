@@ -11,7 +11,8 @@
 @interface MTGame ()
 - (void)prepare;
 - (NSArray *)randomizeType;
-- (void)showMenu;
+- (void)gameFailMenu;
+- (void)gameSuccessMenu;
 @end
 
 @implementation MTGame
@@ -134,7 +135,7 @@
         // End Game Here.
         paused = YES;
         [board pause];
-        [self showMenu];
+        [self gameFailMenu];
     }
     
     // Selected pieces should be in the front
@@ -142,6 +143,21 @@
         if ([piece class] == [MTPiece class] && piece.selected) {
             [board reorderChild:piece z:100];
         }
+    }
+        
+    BOOL allPiecesDisabled = YES;
+    
+    for (MTPiece * piece in board.children) {
+        if (piece.enabled == YES) {
+            allPiecesDisabled = NO;
+            break;
+        }
+    }
+    
+    if (allPiecesDisabled) {
+        paused = YES;
+        [board pause];
+        [self gameSuccessMenu];
     }
     
     timeLine.percentage = remainingTime/initialTime;
@@ -168,14 +184,43 @@
 }
 
 
-- (void)showMenu{
+- (void)gameFailMenu{
     CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
     [self addChild:overlay];
     
+    CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"时间到了..."
+                                            fontName:kMTFont
+                                            fontSize:80];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];    
+    timeUpLabel.position = ccp(winSize.width/2, 700);
+    [self addChild:timeUpLabel];
     
     CCLabelTTF * label = [CCLabelTTF labelWithString:@"重新开始"
                                     fontName:kMTFont
                                     fontSize:50];
+    CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
+                                                                   block:^(id sender){[self restart];}],
+                     nil];
+    
+    [self addChild:menu];
+    
+}
+
+
+- (void)gameSuccessMenu{
+    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
+    [self addChild:overlay];
+    
+    CCLabelTTF * levelSuccessLabel = [CCLabelTTF labelWithString:@"恭喜过关..."
+                                                  fontName:kMTFont
+                                                  fontSize:80];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    levelSuccessLabel.position = ccp(winSize.width/2, 700);
+    [self addChild:levelSuccessLabel];    
+    
+    CCLabelTTF * label = [CCLabelTTF labelWithString:@"下一关"
+                                            fontName:kMTFont
+                                            fontSize:50];
     CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
                                                                    block:^(id sender){[self restart];}],
                      nil];
