@@ -22,23 +22,33 @@
 #define DefaultGameTime 10.0f
 #define DefaultTypeNumber 9
 
-- (id)init
-{
+
+- (id)initWithLevelID:(int)theLevelID{
     self = [super init];
-    if (self) {
+    if (self){
+        levelID = theLevelID;
         [self prepare];
     }
     return self;
+}
+
+- (id)init
+{
+    NSAssert(1==1, @"Cannot initialize this directly, use initWithLevelID instead");
+    return nil;
 }
 
 - (void) prepare{
     paused = NO;
     
     // Initialization code here.
-    initialTime = DefaultGameTime;
-    remainingTime = initialTime;
-    numberOfTypes = DefaultTypeNumber;
+    NSDictionary * dic = [[MTSharedManager instance] settingsForLevelID:levelID];
     
+    initialTime = [[dic objectForKey:@"initialTime"] floatValue];
+    numberOfTypes = [[dic objectForKey:@"numberOfTypes"] intValue];
+    
+    remainingTime = initialTime;
+
     // TODO: Add Background Layer
     
     background  = [[[MTBackground alloc] init] autorelease];
@@ -222,7 +232,9 @@
                                             fontName:kMTFont
                                             fontSize:50];
     CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
-                                                                   block:^(id sender){[self restart];}],
+                                                                   block:^(id sender){
+                                                                       levelID = [[MTSharedManager instance] nextLevelID:levelID];
+                                                                       [self restart];}],
                      nil];
     
     [self addChild:menu];

@@ -22,5 +22,7 @@
 + (MTSharedManager *)instance;
 - (void)save;
 
+- (NSDictionary *)settingsForLevelID:(int)LevelID;
+- (int)nextLevelID:(int)currentID;
 
 @end

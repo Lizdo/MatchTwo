@@ -31,9 +31,12 @@
     MTTimeLine * timeLine;
     
     int numberOfTypes;
+    int levelID;
     
     CCLabelTTF * scoreLabel;
 }
+
+- (id)initWithLevelID:(int)levelID;
 
 // Draw linked lines and pop SFX
 - (void)drawLinesWithPoints:(NSArray *)points;

@@ -53,4 +53,24 @@ static MTSharedManager * _instance = nil;
     [[NSUserDefaults standardUserDefaults] setInteger:totalScore forKey:@"totalScore"];
 }
 
+// Level ID: 10X, 101, 102, 103
+//      Time = 100
+//      Number of Piece = 9 + 2 * x
+
+
+- (NSDictionary *)settingsForLevelID:(int)LevelID{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithCapacity:3];
+    [dic setObject:[NSNumber numberWithFloat:200.0] forKey:@"initialTime"];
+    [dic setObject:[NSNumber numberWithInt:9 + (LevelID % 100 - 1) * 2] forKey:@"numberOfTypes"];    
+    return dic;
+}
+
+- (int)nextLevelID:(int)currentID{
+    if (currentID % 100 + 1 > 10) {
+        return currentID + 100;
+    }else{
+        return currentID/100*100 + 101;
+    }
+}
+
 @end
