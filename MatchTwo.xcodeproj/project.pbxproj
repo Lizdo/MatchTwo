@@ -130,6 +130,7 @@
 		6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB113EEA21E00D623A6 /* Tile.png */; };
 		6E79DFB913EEC5EB00D623A6 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB813EEC5EB00D623A6 /* Particle.png */; };
 		6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E79DFBB13EEC69500D623A6 /* MTSFX.m */; };
+		6E85592913F413E100FE8963 /* ChineseFont.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6E85592813F413E100FE8963 /* ChineseFont.TTF */; };
 		6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8586E513F030D7007217DD /* MTSharedManager.m */; };
 		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
 		6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */; };
@@ -386,6 +387,7 @@
 		6E79DFB813EEC5EB00D623A6 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle.png; path = Resources/Particle.png; sourceTree = "<group>"; };
 		6E79DFBA13EEC69400D623A6 /* MTSFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSFX.h; sourceTree = "<group>"; };
 		6E79DFBB13EEC69500D623A6 /* MTSFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSFX.m; sourceTree = "<group>"; };
+		6E85592813F413E100FE8963 /* ChineseFont.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ChineseFont.TTF; path = Resources/ChineseFont.TTF; sourceTree = "<group>"; };
 		6E8586E413F030D7007217DD /* MTSharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSharedManager.h; sourceTree = "<group>"; };
 		6E8586E513F030D7007217DD /* MTSharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSharedManager.m; sourceTree = "<group>"; };
 		6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBackground.h; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E85592813F413E100FE8963 /* ChineseFont.TTF */,
 				6E79DFB813EEC5EB00D623A6 /* Particle.png */,
 				6E79DFB113EEA21E00D623A6 /* Tile.png */,
 				6E0527FD13E6EE88002BA347 /* Default.png */,
@@ -884,6 +887,7 @@
 				6E05280F13E6EE88002BA347 /* iTunesArtwork in Resources */,
 				6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */,
 				6E79DFB913EEC5EB00D623A6 /* Particle.png in Resources */,
+				6E85592913F413E100FE8963 /* ChineseFont.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

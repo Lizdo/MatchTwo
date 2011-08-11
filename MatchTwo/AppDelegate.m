@@ -116,6 +116,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 	[[CCDirector sharedDirector] pause];
+    [[MTSharedManager instance] save];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -135,6 +136,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [[MTSharedManager instance] save];
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	[[director openGLView] removeFromSuperview];

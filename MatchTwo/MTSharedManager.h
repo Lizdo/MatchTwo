@@ -9,16 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface MTSharedManager : NSObject{
-    BOOL isMusicOn;
+    BOOL noMusic;
     BOOL isSoundEffectOn;
     
     int totalScore;
 }
 
-@property BOOL isMusicOn;
-@property BOOL isSoundEffectOn;
+@property BOOL noMusic;
+@property BOOL noSoundEffect;
 @property int totalScore;
 
 + (MTSharedManager *)instance;
+- (void)save;
+
 
 @end

@@ -18,7 +18,7 @@
 
 #define DefaultcolumnNumber 10
 #define DefaultRowNumber 10
-#define DefaultGameTime 100.0f
+#define DefaultGameTime 10.0f
 #define DefaultTypeNumber 9
 
 - (id)init
@@ -82,10 +82,10 @@
     // Add Score Display
     CGSize dimension = CGSizeMake(600, 50);
     
-    scoreLabel = [CCLabelTTF labelWithString:@"Score:0"
+    scoreLabel = [CCLabelTTF labelWithString:@"分数:0"
                                   dimensions:dimension
                                    alignment:UITextAlignmentLeft
-                                    fontName:@"Courier-Bold"
+                                    fontName:kMTFont
                                     fontSize:30];
                   
     scoreLabel.position = ccp(350, 950);
@@ -147,7 +147,7 @@
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
     
-    scoreLabel.string = [NSString stringWithFormat:@"Score: %d", 
+    scoreLabel.string = [NSString stringWithFormat:@"分数: %d", 
                          [MTSharedManager instance].totalScore];
     
 }
@@ -173,8 +173,8 @@
     [self addChild:overlay];
     
     
-    CCLabelTTF * label = [CCLabelTTF labelWithString:@"Restart"
-                                    fontName:@"Courier-Bold"
+    CCLabelTTF * label = [CCLabelTTF labelWithString:@"重新开始"
+                                    fontName:kMTFont
                                     fontSize:50];
     CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
                                                                    block:^(id sender){[self restart];}],

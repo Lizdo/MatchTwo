@@ -10,7 +10,7 @@
 
 @implementation MTSharedManager
 
-@synthesize isMusicOn, isSoundEffectOn, totalScore;
+@synthesize noMusic, noSoundEffect, totalScore;
 
 static MTSharedManager * _instance = nil;
 
@@ -29,11 +29,11 @@ static MTSharedManager * _instance = nil;
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
-        isMusicOn = YES;
-        isSoundEffectOn = YES;
+        // Load from user defalts
+        noMusic = [[NSUserDefaults standardUserDefaults] boolForKey:@"noMusic"];
+        noSoundEffect = [[NSUserDefaults standardUserDefaults] boolForKey:@"noSoundEffect"];
+        totalScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"totalScore"];
     }
-    
     return self;
 }
 
@@ -45,6 +45,12 @@ static MTSharedManager * _instance = nil;
         return _instance;
     }
     return nil;
+}
+
+- (void)save{
+    [[NSUserDefaults standardUserDefaults] setBool:noMusic forKey:@"noMusic"];
+    [[NSUserDefaults standardUserDefaults] setBool:noSoundEffect forKey:@"noSoundEffect"];
+    [[NSUserDefaults standardUserDefaults] setInteger:totalScore forKey:@"totalScore"];
 }
 
 @end

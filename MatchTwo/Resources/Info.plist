@@ -51,5 +51,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ChineseFont.TTF</string>
+	</array>
 </dict>
 </plist>
