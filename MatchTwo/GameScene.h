@@ -1,5 +1,5 @@
 //
-//  MainSceneLayer.h
+//  GameScene.h
 //  MatchTwo
 //
 //  Created by  on 11-8-1.
@@ -11,15 +11,16 @@
 #import "cocos2d.h"
 #import "MTGame.h"
 
-// MainSceneLayer
-@interface MainSceneLayer : CCLayer
+// GameScene
+@interface GameScene : CCLayer
 {
     MTGame * game;
 }
 
 @property (nonatomic, retain) MTGame * game;
 
-// returns a CCScene that contains the MainSceneLayer as the only child
-+(CCScene *) scene;
+// returns a CCScene that contains the GameScene as the only child
++(CCScene *) sceneWithID:(int)theID;
+-(id) initWithID:(int)theID;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  MainSceneLayer.m
+//  GameScene.m
 //  MatchTwo
 //
 //  Created by  on 11-8-1.
@@ -8,20 +8,20 @@
 
 
 // Import the interfaces
-#import "MainSceneLayer.h"
+#import "GameScene.h"
 
-// MainSceneLayer implementation
-@implementation MainSceneLayer
+// GameScene implementation
+@implementation GameScene
 
 @synthesize game;
 
-+(CCScene *) scene
++(CCScene *) sceneWithID:(int)theID
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	MainSceneLayer *layer = [MainSceneLayer node];
+	GameScene *layer = [[[GameScene alloc]initWithID:theID]autorelease];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -31,7 +31,7 @@
 }
 
 // on "init" you need to initialize your instance
--(id) init
+-(id) initWithID:(int)theID
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
@@ -49,9 +49,8 @@
 //		// add the label as a child to this Layer
 //		[self addChild: label];
         
-        self.game = [[[MTGame alloc]initWithLevelID:101]autorelease];
+        self.game = [[[MTGame alloc]initWithLevelID:theID]autorelease];
         [self addChild:game];
-        
         
 	}
 	return self;
