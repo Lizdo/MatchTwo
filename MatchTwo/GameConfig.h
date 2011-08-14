@@ -44,6 +44,13 @@
 #endif // __GAME_CONFIG_H
 
 // Match Two Specific Settings
+
+
+#define kMTDefaultColumnNumber 10
+#define kMTDefaultRowNumber 10
+#define kMTDefaultGameTime 200.0f
+#define kMTDefaultTypeNumber 9
+
 #define kMTPieceSize 64.0f
 #define kMTPieceMargin 4.0f
 #define kMTPieceScaleTime 0.2f

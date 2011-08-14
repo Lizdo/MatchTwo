@@ -19,12 +19,6 @@
 
 @implementation MTGame
 
-#define DefaultcolumnNumber 10
-#define DefaultRowNumber 10
-#define DefaultGameTime 10.0f
-#define DefaultTypeNumber 9
-
-
 - (id)initWithLevelID:(int)theLevelID{
     self = [super init];
     if (self){
@@ -57,8 +51,8 @@
     [self addChild:background];
     
     
-    board = [[MTBoard alloc]initWithRowNumber:DefaultRowNumber 
-                              andColumnNumber:DefaultcolumnNumber];
+    board = [[MTBoard alloc]initWithRowNumber:kMTDefaultRowNumber 
+                              andColumnNumber:kMTDefaultColumnNumber];
     [board autorelease];
     board.game = self;
     [self addChild:board];

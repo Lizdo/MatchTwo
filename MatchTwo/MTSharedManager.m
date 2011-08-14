@@ -63,7 +63,7 @@ static MTSharedManager * _instance = nil;
 
 - (NSDictionary *)settingsForLevelID:(int)LevelID{
     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithCapacity:3];
-    [dic setObject:[NSNumber numberWithFloat:10.0] forKey:@"initialTime"];
+    [dic setObject:[NSNumber numberWithFloat:kMTDefaultGameTime] forKey:@"initialTime"];
     [dic setObject:[NSNumber numberWithInt:9 + (LevelID % 100 - 1) * 2] forKey:@"numberOfTypes"];    
     return dic;
 }
