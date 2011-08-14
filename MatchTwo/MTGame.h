@@ -29,6 +29,11 @@
     MTBackground * background;
     MTBoard * board;
     MTTimeLine * timeLine;
+
+    CCNode * menuBackground; 
+    CCMenu * menu;
+    CCMenu * buttons;
+
     
     int numberOfTypes;
     int levelID;
@@ -41,8 +46,11 @@
 // Draw linked lines and pop SFX
 - (void)drawLinesWithPoints:(NSArray *)points;
 
-// Rester Current Game
+// Restart Current Game
 - (void)restart;
+- (void)pause;
+- (void)resume;
+
 
 
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "MTGame.h"
+#import "GameConfig.h"
 
 @interface MTGame ()
 - (void)prepare;
 - (NSArray *)randomizeType;
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
+- (void)pauseMenu;
 @end
 
 @implementation MTGame
@@ -48,7 +50,7 @@
     numberOfTypes = [[dic objectForKey:@"numberOfTypes"] intValue];
     
     remainingTime = initialTime;
-
+    
     // TODO: Add Background Layer
     
     background  = [[[MTBackground alloc] init] autorelease];
@@ -98,9 +100,19 @@
                                    alignment:UITextAlignmentLeft
                                     fontName:kMTFont
                                     fontSize:30];
-                  
+    
     scoreLabel.position = ccp(350, 950);
     [self addChild:scoreLabel];
+    
+    // Add Pause Button
+    
+    CCMenuItemFont * pauseButton = [CCMenuItemFont itemFromString:@"暂停" target:self selector:@selector(pause)];
+    pauseButton.position = ccp(700, 50);
+    
+    buttons = [CCMenu menuWithItems:pauseButton, nil];
+    buttons.position = ccp(0,0);
+    
+    [self addChild:buttons];
     
     [self scheduleUpdateWithPriority:0];
 }
@@ -128,8 +140,8 @@
         }
         numberOfShuffle--;
     }
-
-
+    
+    
     return array;
 }
 
@@ -154,7 +166,7 @@
             [board reorderChild:piece z:100];
         }
     }
-        
+    
     BOOL allPiecesDisabled = YES;
     
     for (MTPiece * piece in board.children) {
@@ -189,56 +201,103 @@
     p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
     [self addChild:p];
     p.position = [[points lastObject] CGPointValue];
-
+    
     
 }
 
 
+#pragma -
+#pragma Menus
+
 - (void)gameFailMenu{
+    menuBackground = [CCNode node];
+    [self addChild:menuBackground];
+    
     CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
-    [self addChild:overlay];
+    [menuBackground addChild:overlay];
     
     CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"时间到了..."
-                                            fontName:kMTFont
-                                            fontSize:80];
+                                                  fontName:kMTFont
+                                                  fontSize:80];
     CGSize winSize = [[CCDirector sharedDirector] winSize];    
     timeUpLabel.position = ccp(winSize.width/2, 700);
-    [self addChild:timeUpLabel];
+    [menuBackground addChild:timeUpLabel];
     
-    CCLabelTTF * label = [CCLabelTTF labelWithString:@"重新开始"
-                                    fontName:kMTFont
-                                    fontSize:50];
-    CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
+    menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"重新开始"
                                                                    block:^(id sender){[self restart];}],
+                     [CCMenuItemFont itemFromString:@"主菜单"
+                                              block:^(id sender){
+                                                  [[MTSharedManager instance] replaceSceneWithID:0];}],                         
                      nil];
-    
+    [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
     [self addChild:menu];
     
+}
+
+- (void)pauseMenu{
+    menuBackground = [CCNode node];
+    [self addChild:menuBackground];    
+    
+    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
+    [menuBackground addChild:overlay];
+    
+    CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"游戏暂停"
+                                                  fontName:kMTFont
+                                                  fontSize:80];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];    
+    timeUpLabel.position = ccp(winSize.width/2, 700);
+    [menuBackground addChild:timeUpLabel];
+    
+    menu = [CCMenu menuWithItems:
+                     [CCMenuItemFont itemFromString:@"继续"
+                                            block:^(id sender){[self resume];}],
+                     [CCMenuItemFont itemFromString:@"重新开始"
+                                              block:^(id sender){[self restart];}],                     
+                     [CCMenuItemFont itemFromString:@"主菜单"
+                                              block:^(id sender){
+                                                  [[MTSharedManager instance] replaceSceneWithID:0];}],                         
+                     nil];
+    [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
+    [self addChild:menu];
 }
 
 
 - (void)gameSuccessMenu{
+    menuBackground = [CCNode node];
+    [self addChild:menuBackground];    
+    
     CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
-    [self addChild:overlay];
+    [menuBackground addChild:overlay];
     
     CCLabelTTF * levelSuccessLabel = [CCLabelTTF labelWithString:@"恭喜过关..."
-                                                  fontName:kMTFont
-                                                  fontSize:80];
+                                                        fontName:kMTFont
+                                                        fontSize:80];
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     levelSuccessLabel.position = ccp(winSize.width/2, 700);
-    [self addChild:levelSuccessLabel];    
+    [menuBackground addChild:levelSuccessLabel];    
     
-    CCLabelTTF * label = [CCLabelTTF labelWithString:@"下一关"
-                                            fontName:kMTFont
-                                            fontSize:50];
-    CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:label
+    menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"下一关"
                                                                    block:^(id sender){
-                                                                       levelID = [[MTSharedManager instance] nextLevelID:levelID];
-                                                                       [self restart];}],
+                                                                       [[MTSharedManager instance] gotoNextLevel:levelID];}],
+                     [CCMenuItemFont itemFromString:@"主菜单"
+                                              block:^(id sender){
+                                                  [[MTSharedManager instance] replaceSceneWithID:0];}],                     
                      nil];
     
+    [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
     [self addChild:menu];
     
+}
+
+- (void)pause{
+    paused = YES;
+    [self pauseMenu];
+}
+
+- (void)resume{
+    [menuBackground removeFromParentAndCleanup:YES];
+    [menu removeFromParentAndCleanup:YES];
+    paused = NO;    
 }
 
 - (void)restart{

@@ -8,6 +8,7 @@
 
 #import "MTSharedManager.h"
 #import "MainMenuScene.h"
+#import "ChallengeMenuScene.h"
 #import "GameScene.h"
 
 @implementation MTSharedManager
@@ -62,17 +63,27 @@ static MTSharedManager * _instance = nil;
 
 - (NSDictionary *)settingsForLevelID:(int)LevelID{
     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithCapacity:3];
-    [dic setObject:[NSNumber numberWithFloat:200.0] forKey:@"initialTime"];
+    [dic setObject:[NSNumber numberWithFloat:10.0] forKey:@"initialTime"];
     [dic setObject:[NSNumber numberWithInt:9 + (LevelID % 100 - 1) * 2] forKey:@"numberOfTypes"];    
     return dic;
 }
 
 - (int)nextLevelID:(int)currentID{
-    if (currentID % 100 + 1 > 10) {
-        return currentID + 100;
+    int nextLevelID = 0;
+    if (currentID % 100 + 1 < 12) {
+        nextLevelID = currentID++;
     }else{
-        return currentID/100*100 + 101;
+        nextLevelID = currentID/100*100 + 101;
     }
+    if (nextLevelID >= 200) {
+        nextLevelID = 0;
+    }
+    return nextLevelID;
+}
+
+- (void)gotoNextLevel:(int)currentID{
+    int nextLevelID = [self nextLevelID:currentID];
+    [self replaceSceneWithID:nextLevelID];
 }
 
 - (void)replaceSceneWithID:(int)sceneID{
@@ -80,18 +91,23 @@ static MTSharedManager * _instance = nil;
     if (sceneID < 100) {
         switch (sceneID) {
             case 0:
+            case 1:                
                 // Main Menu
                 scene = [MainMenuScene scene];
                 break;
+            case 2:
+                scene = [ChallengeMenuScene scene];
+                break;                
             default:
+                scene = [MainMenuScene scene];                
                 break;
         }
     }else{
         scene = [GameScene sceneWithID:sceneID];
     }
                  
-    [[CCDirector sharedDirector] replaceScene: scene];
-
+    [[CCDirector sharedDirector] replaceScene: 
+        [CCTransitionFade transitionWithDuration:0.5f scene:scene]];
 }
 
 @end

@@ -24,7 +24,9 @@
 
 - (NSDictionary *)settingsForLevelID:(int)LevelID;
 - (int)nextLevelID:(int)currentID;
+- (void)gotoNextLevel:(int)currentID;
 
 - (void)replaceSceneWithID:(int)sceneID;
+
 
 @end

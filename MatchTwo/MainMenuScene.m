@@ -12,8 +12,8 @@
 
 @interface MainMenuScene()
 
-- (void) challengeMode;
 - (void) dailyChallenge;
+- (void) challengeMenu;
 - (void) settingMenu;
 
 @end
@@ -47,9 +47,9 @@
 	if( (self=[super init])) {
         [CCMenuItemFont setFontName:kMTFont];
         [CCMenuItemFont setFontSize:40];
-        CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" block:^(id sender){[self dailyChallenge];}],
-                         [CCMenuItemFont itemFromString:@"关卡模式" block:^(id sender){[self challengeMode];}],
-                         [CCMenuItemFont itemFromString:@"设置菜单" block:^(id sender){[self settingMenu];}],
+        CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
+                         [CCMenuItemFont itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
+                         [CCMenuItemFont itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
                          nil];
         [menu alignItemsVerticallyWithPadding: 40.0f];        
         [self addChild:menu];
@@ -57,8 +57,8 @@
 	return self;
 }
 
-- (void) challengeMode{
-
+- (void) challengeMenu{
+    [[MTSharedManager instance] replaceSceneWithID:2];    
 }
 
 - (void) dailyChallenge{
@@ -68,6 +68,8 @@
 - (void) settingMenu{
     
 }
+
+
                          
                          
                                                

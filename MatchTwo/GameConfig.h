@@ -57,6 +57,7 @@
 #define kMTTimeLineStartingX 0.0f
 #define kMTTimeLineStartingY 1024.0 - kMTTimeLineHeight
 
+#define kMTMenuPadding 10.0f
 
 #define kMTFont @"FZLanTingHei-R-GBK"
 

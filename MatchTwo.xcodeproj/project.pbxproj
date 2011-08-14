@@ -136,6 +136,7 @@
 		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
 		6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
+		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,6 +400,8 @@
 		6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCDrawingPrimitives+MT.h"; sourceTree = "<group>"; };
 		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
+		6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeMenuScene.h; sourceTree = "<group>"; };
+		6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeMenuScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +465,8 @@
 				6E05295113E6EE8C002BA347 /* RootViewController.m */,
 				6E71426013F7ED430024C36F /* MainMenuScene.h */,
 				6E71426113F7ED430024C36F /* MainMenuScene.m */,
+				6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */,
+				6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */,
 				6E05295313E6EE8C002BA347 /* GameScene.h */,
 				6E05295413E6EE8D002BA347 /* GameScene.m */,
 				6E05295613E6EE8D002BA347 /* GameConfig.h */,
@@ -1012,6 +1017,7 @@
 				6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */,
 				6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */,
 				6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */,
+				6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
