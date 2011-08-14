@@ -7,6 +7,8 @@
 //
 
 #import "MTSharedManager.h"
+#import "MainMenuScene.h"
+#import "GameScene.h"
 
 @implementation MTSharedManager
 
@@ -71,6 +73,25 @@ static MTSharedManager * _instance = nil;
     }else{
         return currentID/100*100 + 101;
     }
+}
+
+- (void)replaceSceneWithID:(int)sceneID{
+    CCScene * scene;
+    if (sceneID < 100) {
+        switch (sceneID) {
+            case 0:
+                // Main Menu
+                scene = [MainMenuScene scene];
+                break;
+            default:
+                break;
+        }
+    }else{
+        scene = [GameScene sceneWithID:sceneID];
+    }
+                 
+    [[CCDirector sharedDirector] replaceScene: scene];
+
 }
 
 @end

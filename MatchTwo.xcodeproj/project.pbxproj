@@ -121,12 +121,13 @@
 		6E05294C13E6EE8C002BA347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05294B13E6EE8C002BA347 /* main.m */; };
 		6E05294F13E6EE8C002BA347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05294E13E6EE8C002BA347 /* AppDelegate.m */; };
 		6E05295213E6EE8C002BA347 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05295113E6EE8C002BA347 /* RootViewController.m */; };
-		6E05295513E6EE8D002BA347 /* MainSceneLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05295413E6EE8D002BA347 /* MainSceneLayer.m */; };
+		6E05295513E6EE8D002BA347 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05295413E6EE8D002BA347 /* GameScene.m */; };
 		6E05296113E6FF01002BA347 /* MTLogicHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296013E6FF01002BA347 /* MTLogicHelper.m */; };
 		6E05296413E6FFA8002BA347 /* MTGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296313E6FFA8002BA347 /* MTGame.m */; };
 		6E05296713E6FFCC002BA347 /* MTPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296613E6FFCB002BA347 /* MTPiece.m */; };
 		6E05296B13E7001B002BA347 /* MTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296A13E7001B002BA347 /* MTLine.m */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
+		6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E71426113F7ED430024C36F /* MainMenuScene.m */; };
 		6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB113EEA21E00D623A6 /* Tile.png */; };
 		6E79DFB913EEC5EB00D623A6 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB813EEC5EB00D623A6 /* Particle.png */; };
 		6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E79DFBB13EEC69500D623A6 /* MTSFX.m */; };
@@ -370,8 +371,8 @@
 		6E05294E13E6EE8C002BA347 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6E05295013E6EE8C002BA347 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RootViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6E05295113E6EE8C002BA347 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6E05295313E6EE8C002BA347 /* MainSceneLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainSceneLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		6E05295413E6EE8D002BA347 /* MainSceneLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainSceneLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6E05295313E6EE8C002BA347 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GameScene.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6E05295413E6EE8D002BA347 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameScene.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6E05295613E6EE8D002BA347 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GameConfig.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6E05295F13E6FF01002BA347 /* MTLogicHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLogicHelper.h; sourceTree = "<group>"; };
 		6E05296013E6FF01002BA347 /* MTLogicHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLogicHelper.m; sourceTree = "<group>"; };
@@ -383,6 +384,8 @@
 		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLine.m; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
 		6E3C558413E98A2700F4C238 /* MTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBoard.m; sourceTree = "<group>"; };
+		6E71426013F7ED430024C36F /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
+		6E71426113F7ED430024C36F /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
 		6E79DFB113EEA21E00D623A6 /* Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tile.png; path = Resources/Tile.png; sourceTree = "<group>"; };
 		6E79DFB813EEC5EB00D623A6 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle.png; path = Resources/Particle.png; sourceTree = "<group>"; };
 		6E79DFBA13EEC69400D623A6 /* MTSFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSFX.h; sourceTree = "<group>"; };
@@ -457,8 +460,10 @@
 				6E05294E13E6EE8C002BA347 /* AppDelegate.m */,
 				6E05295013E6EE8C002BA347 /* RootViewController.h */,
 				6E05295113E6EE8C002BA347 /* RootViewController.m */,
-				6E05295313E6EE8C002BA347 /* MainSceneLayer.h */,
-				6E05295413E6EE8D002BA347 /* MainSceneLayer.m */,
+				6E71426013F7ED430024C36F /* MainMenuScene.h */,
+				6E71426113F7ED430024C36F /* MainMenuScene.m */,
+				6E05295313E6EE8C002BA347 /* GameScene.h */,
+				6E05295413E6EE8D002BA347 /* GameScene.m */,
 				6E05295613E6EE8D002BA347 /* GameConfig.h */,
 				6E0527FC13E6EE88002BA347 /* Resources */,
 				6E05281013E6EE88002BA347 /* libs */,
@@ -995,7 +1000,7 @@
 				6E05294C13E6EE8C002BA347 /* main.m in Sources */,
 				6E05294F13E6EE8C002BA347 /* AppDelegate.m in Sources */,
 				6E05295213E6EE8C002BA347 /* RootViewController.m in Sources */,
-				6E05295513E6EE8D002BA347 /* MainSceneLayer.m in Sources */,
+				6E05295513E6EE8D002BA347 /* GameScene.m in Sources */,
 				6E05296113E6FF01002BA347 /* MTLogicHelper.m in Sources */,
 				6E05296413E6FFA8002BA347 /* MTGame.m in Sources */,
 				6E05296713E6FFCC002BA347 /* MTPiece.m in Sources */,
@@ -1006,6 +1011,7 @@
 				6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */,
 				6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */,
 				6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */,
+				6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
