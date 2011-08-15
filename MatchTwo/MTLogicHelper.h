@@ -11,8 +11,6 @@
 
 typedef enum{
     TileState_Empty,
-    TileState_Source,
-    TileState_Destination,
     TileState_FirstStep,
     TileState_SecondStep,
     TileState_Occupied
@@ -23,12 +21,16 @@ typedef enum{
     int y;
     TileState state;
     MTTile * lastConnectedTile;
+    BOOL isSource;
+    BOOL isDestination;    
 }
 
 @property int x;
 @property int y;
 @property (assign) MTTile * lastConnectedTile;
 @property TileState state;
+@property BOOL isSource;
+@property BOOL isDestination;
 
 + (MTTile *)tileWithX:(int)idx andY:(int)idy;
 - (BOOL)isEmpty;

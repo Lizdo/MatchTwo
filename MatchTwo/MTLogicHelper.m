@@ -10,7 +10,7 @@
 #import "MTPiece.h"
 
 @implementation MTTile
-@synthesize x,y,state,lastConnectedTile;
+@synthesize x,y,state,lastConnectedTile,isSource,isDestination;
 
 + (MTTile *)tileWithX:(int)idx andY:(int)idy{
     MTTile * t = [[MTTile alloc]init];
@@ -26,10 +26,10 @@
     if (state == TileState_Empty) {
         return YES;
     }
-    if (state == TileState_Source) {
+    if (isSource) {
         return YES;
     }
-    if (state == TileState_Destination) {
+    if (isDestination) {
         return YES;
     }    
     return NO;
@@ -110,12 +110,12 @@
 
 - (void)setSourceRow:(int)row andColumn:(int)column{
     source = [self tileWithRow:row andColumn:column];
-    source.state = TileState_Source;
+    source.isSource = YES;
 }
 
 - (void)setDestinationRow:(int)row andColumn:(int)column{
     destination = [self tileWithRow:row andColumn:column];
-    destination.state = TileState_Destination;    
+    destination.isDestination = YES;
 }
 
 - (void)reset{
@@ -189,15 +189,10 @@
     NSString * s;
     for (int i = rowNumber - 1; i>=0; i--) {
         for (int j = 0; j<columnNumber; j++) {
-            switch ([self tileWithRow:i andColumn:j].state) {
+            MTTile * t = [self tileWithRow:i andColumn:j];
+            switch (t.state) {
                 case TileState_Empty:
                     s = @"0";
-                    break;
-                case TileState_Source:
-                    s = @"S";
-                    break;
-                case TileState_Destination:
-                    s = @"D";
                     break;                    
                 case TileState_FirstStep:
                     s = @"1";
@@ -208,6 +203,12 @@
                 default:
                     s = @"X";
                     break;
+            }
+            if (t.isSource) {
+                s = @"S";
+            }
+            else if (t.isDestination) {
+                s = @"D";
             }
             returnString = [returnString stringByAppendingString:s];
         }
