@@ -46,6 +46,7 @@
     numberOfTypes = [[dic objectForKey:@"numberOfTypes"] intValue];
     
     remainingTime = initialTime;
+    needShuffleCheck = YES;
     
     // TODO: Add Background Layer
     
@@ -147,6 +148,7 @@
         return;
     }
     
+    // Update DT
     remainingTime -= dt;
     if (remainingTime <= 0) {
         remainingTime = 0;
@@ -155,6 +157,17 @@
         [board pause];
         [self gameFailMenu];
     }
+    
+    // Check if shuffle is needed
+    if (needShuffleCheck) {
+        BOOL linkFound = [board findLink];
+        if (!linkFound) {
+            // Shuffle Board Here.
+            CCLOG(@"No Link Found, Reshuffle needed...");
+        }
+        needShuffleCheck = NO;
+    }
+    
     
     // Selected pieces should be in the front
     for (MTPiece * piece in board.children) {
@@ -187,6 +200,8 @@
 }
 
 - (void)drawLinesWithPoints:(NSArray *)points{
+    needShuffleCheck = YES;
+    
     MTLine * line = [MTLine lineWithPoints:points];
     [self addChild:line];
     

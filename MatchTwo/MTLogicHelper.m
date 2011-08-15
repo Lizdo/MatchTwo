@@ -109,11 +109,17 @@
 
 
 - (void)setSourceRow:(int)row andColumn:(int)column{
+    if (source) {
+        source.isSource = NO;
+    }
     source = [self tileWithRow:row andColumn:column];
     source.isSource = YES;
 }
 
 - (void)setDestinationRow:(int)row andColumn:(int)column{
+    if (destination) {
+        destination.isDestination = NO;
+    }
     destination = [self tileWithRow:row andColumn:column];
     destination.isDestination = YES;
 }
@@ -135,7 +141,7 @@
         t.state = TileState_FirstStep;
         t.lastConnectedTile = source;
     }
-    NSLog(@"%@", [self description]);
+    //NSLog(@"%@", [self description]);
 
     // Step.2 Start from 1, mark all adjucent 0 to 2, remember the 1
     for (MTTile * tile in tiles) {
@@ -166,6 +172,8 @@
 }
 
 - (CGPoint)GLLocationForTile:(MTTile *)t{
+    NSLog(@"%@", [self description]);
+    
     CGPoint p = ccp(kMTBoardStartingX+(t.y-0.5)* kMTPieceSize,
                     kMTBoardStartingY+(t.x-0.5)* kMTPieceSize);
     return p;

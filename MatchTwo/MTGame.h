@@ -25,6 +25,8 @@
     int score;
     float initialTime;
     float remainingTime;
+
+    BOOL needShuffleCheck;
         
     MTBackground * background;
     MTBoard * board;

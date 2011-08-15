@@ -20,6 +20,8 @@
 
 - (void)checkConnection;
 
+- (void)resetHelper;
+
 @end
 
 @implementation MTBoard
@@ -152,7 +154,7 @@
     selectedPiece2 = nil;
 }
 
-- (void)checkConnection{;
+- (void)checkConnection{
    
     if (selectedPiece1 == nil || selectedPiece2 == nil) {
         return;
@@ -193,6 +195,73 @@
     
     checkingInProgress = NO;
     
+}
+
+// Find available links on the board.
+
+- (BOOL)findLink{
+    
+    // Reset original hints
+    for (MTPiece * piece in self.children) {
+        if (piece.hinted) {
+            piece.hinted = NO;
+        }
+    }    
+    
+    // Populate the helper
+    [self resetHelper];
+    
+    // Find all types and tiles;
+    NSMutableArray * currentTypes = [NSMutableArray arrayWithCapacity:10];
+    NSMutableDictionary * tileForTypes = [NSMutableDictionary dictionaryWithCapacity:10];
+    for (MTPiece * piece in self.children) {
+        if (!piece.enabled) {
+            continue;
+        }
+        NSNumber * type = [NSNumber numberWithInt:piece.type];
+        if ([currentTypes indexOfObject:type] == NSNotFound) {
+            [currentTypes addObject:type];
+            NSMutableArray * array = [NSMutableArray arrayWithObject:piece];
+            [tileForTypes setObject:array forKey:type];
+        }else{
+            NSMutableArray * array = [tileForTypes objectForKey:type];
+            [array addObject:piece];
+        }
+    }
+    
+    // Search in each type
+    for (NSNumber * type in currentTypes) {
+        NSMutableArray * pieces = [tileForTypes objectForKey:type];
+        for (int i = 0; i < [pieces count] - 1; i++) {
+            MTPiece * piece1 = [pieces objectAtIndex:i];
+            [helper setSourceRow:piece1.row andColumn:piece1.column];
+            for (int j = i + 1; j<[pieces count]; j++) {
+                MTPiece * piece2 = [pieces objectAtIndex:j];
+                [helper setDestinationRow:piece2.row andColumn:piece2.column];
+                NSArray * result = [helper check];
+                if (result != nil) {
+                    // Connection Found!
+                    piece1.hinted = YES;
+                    piece2.hinted = YES;
+                    return YES;
+                }else{
+                    [self resetHelper];
+                }
+            }
+        }
+    }
+    
+    return NO;
+
+}
+
+- (void)resetHelper{
+    [helper reset];
+    for (MTPiece * piece in self.children) {
+        if (piece.enabled) {
+            [helper tileWithRow:piece.row andColumn:piece.column].state = TileState_Occupied;            
+        }
+    } 
 }
 
 - (void)pause{

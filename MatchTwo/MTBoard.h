@@ -36,5 +36,6 @@
 - (id)initWithRowNumber:(int)row andColumnNumber:(int)col;
 
 - (void)pause;
+- (BOOL)findLink;
 
 @end
