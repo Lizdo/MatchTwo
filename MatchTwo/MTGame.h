@@ -41,6 +41,9 @@
     CCLabelTTF * scoreLabel;
 }
 
+@property (retain) CCMenu * menu;
+@property (retain) CCNode * menuBackground;
+
 - (id)initWithLevelID:(int)levelID;
 
 // Draw linked lines and pop SFX

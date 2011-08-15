@@ -10,6 +10,7 @@
 #import "MainMenuScene.h"
 #import "ChallengeMenuScene.h"
 #import "GameScene.h"
+#import "MTGame.h"
 
 @implementation MTSharedManager
 
@@ -54,6 +55,16 @@ static MTSharedManager * _instance = nil;
     [[NSUserDefaults standardUserDefaults] setBool:noMusic forKey:@"noMusic"];
     [[NSUserDefaults standardUserDefaults] setBool:noSoundEffect forKey:@"noSoundEffect"];
     [[NSUserDefaults standardUserDefaults] setInteger:totalScore forKey:@"totalScore"];
+}
+
+- (void)pause{
+    if (currentSceneID > 100) {
+        // Game Scene
+        CCScene * scene = [CCDirector sharedDirector].runningScene;
+        GameScene * gameScene = (GameScene *)([scene.children lastObject]);
+        MTGame * game = [gameScene game];
+        [game pause];
+    }
 }
 
 // Level ID: 10X, 101, 102, 103
@@ -105,7 +116,9 @@ static MTSharedManager * _instance = nil;
     }else{
         scene = [GameScene sceneWithID:sceneID];
     }
-                 
+    
+    currentSceneID = sceneID;
+    
     [[CCDirector sharedDirector] replaceScene: 
         [CCTransitionFade transitionWithDuration:0.5f scene:scene]];
 }

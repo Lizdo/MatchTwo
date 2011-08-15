@@ -19,6 +19,8 @@
 
 @implementation MTGame
 
+@synthesize menu, menuBackground;
+
 - (id)initWithLevelID:(int)theLevelID{
     self = [super init];
     if (self){
@@ -204,7 +206,7 @@
 #pragma Menus
 
 - (void)gameFailMenu{
-    menuBackground = [CCNode node];
+    self.menuBackground = [CCNode node];
     [self addChild:menuBackground];
     
     CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
@@ -217,7 +219,7 @@
     timeUpLabel.position = ccp(winSize.width/2, 700);
     [menuBackground addChild:timeUpLabel];
     
-    menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"重新开始"
+    self.menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"重新开始"
                                                                    block:^(id sender){[self restart];}],
                      [CCMenuItemFont itemFromString:@"主菜单"
                                               block:^(id sender){
@@ -229,7 +231,7 @@
 }
 
 - (void)pauseMenu{
-    menuBackground = [CCNode node];
+    self.menuBackground = [CCNode node];
     [self addChild:menuBackground];    
     
     CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
@@ -242,11 +244,12 @@
     timeUpLabel.position = ccp(winSize.width/2, 700);
     [menuBackground addChild:timeUpLabel];
     
-    menu = [CCMenu menuWithItems:
+    self.menu = [CCMenu menuWithItems:
                      [CCMenuItemFont itemFromString:@"继续"
                                             block:^(id sender){[self resume];}],
                      [CCMenuItemFont itemFromString:@"重新开始"
-                                              block:^(id sender){[self restart];}],                     
+                                              block:^(id sender){[self restart];}],
+                    [CCMenuItemToggle itemWithBlock:^(id sender){[self restart];}],
                      [CCMenuItemFont itemFromString:@"主菜单"
                                               block:^(id sender){
                                                   [[MTSharedManager instance] replaceSceneWithID:0];}],                         
@@ -257,7 +260,7 @@
 
 
 - (void)gameSuccessMenu{
-    menuBackground = [CCNode node];
+    self.menuBackground = [CCNode node];
     [self addChild:menuBackground];    
     
     CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
@@ -270,7 +273,7 @@
     levelSuccessLabel.position = ccp(winSize.width/2, 700);
     [menuBackground addChild:levelSuccessLabel];    
     
-    menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"下一关"
+    self.menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"下一关"
                                                                    block:^(id sender){
                                                                        [[MTSharedManager instance] gotoNextLevel:levelID];}],
                      [CCMenuItemFont itemFromString:@"主菜单"
@@ -284,6 +287,9 @@
 }
 
 - (void)pause{
+    if (paused) {
+        return;
+    }
     paused = YES;
     [self pauseMenu];
 }

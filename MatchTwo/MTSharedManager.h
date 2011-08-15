@@ -10,9 +10,10 @@
 
 @interface MTSharedManager : NSObject{
     BOOL noMusic;
-    BOOL isSoundEffectOn;
+    BOOL noSoundEffect;
     
     int totalScore;
+    int currentSceneID;
 }
 
 @property BOOL noMusic;
@@ -21,6 +22,7 @@
 
 + (MTSharedManager *)instance;
 - (void)save;
+- (void)pause;
 
 - (NSDictionary *)settingsForLevelID:(int)LevelID;
 - (int)nextLevelID:(int)currentID;

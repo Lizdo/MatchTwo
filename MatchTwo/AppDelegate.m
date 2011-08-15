@@ -119,6 +119,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
 	[[CCDirector sharedDirector] pause];
     [[MTSharedManager instance] save];
+    [[MTSharedManager instance] pause];    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
