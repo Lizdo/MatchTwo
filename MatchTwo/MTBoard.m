@@ -266,9 +266,10 @@
 
 - (void)pause{
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
-
 }
 
-
+- (void)resume{
+    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
 
 @end

@@ -246,6 +246,7 @@
 }
 
 - (void)pauseMenu{
+    
     self.menuBackground = [CCNode node];
     [self addChild:menuBackground];    
     
@@ -306,12 +307,16 @@
         return;
     }
     paused = YES;
+    [board pause];
+    buttons.isTouchEnabled = NO;
     [self pauseMenu];
 }
 
 - (void)resume{
     [menuBackground removeFromParentAndCleanup:YES];
     [menu removeFromParentAndCleanup:YES];
+    buttons.isTouchEnabled = YES;    
+    [board resume];
     paused = NO;    
 }
 
