@@ -16,7 +16,7 @@
 #import "MTSFX.h"
 #import "MTSharedManager.h"
 #import "MTBackground.h"
-
+#import "MTAbility.h"
 
 @interface MTGame : CCNode{
     // Gameplay Related
@@ -41,6 +41,9 @@
     int levelID;
     
     CCLabelTTF * scoreLabel;
+    NSMutableArray * abilities;
+    
+    CCMenuItemFont * freezeButton;
 }
 
 @property (retain) CCMenu * menu;
@@ -57,5 +60,6 @@
 - (void)resume;
 
 
+- (MTAbility *)abilityOfClass:(Class)c;
 
 @end

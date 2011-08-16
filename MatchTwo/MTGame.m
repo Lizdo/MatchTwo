@@ -15,6 +15,8 @@
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
+
+- (void)freezeButtonClicked;
 @end
 
 @implementation MTGame
@@ -112,6 +114,17 @@
     [self addChild:buttons];
     
     [self scheduleUpdateWithPriority:0];
+    
+    // TEMP: Now we just add ability here, later should move to Level/SharedManager
+    abilities = [[NSMutableArray arrayWithObjects:[[[MTAbilityFreeze alloc]init]autorelease]
+                 , nil] retain];
+    
+    // TEMP: Now we just add a button here, later to be moved to a seperate class AbilityButton
+    freezeButton = [CCMenuItemFont itemFromString:@"冰冻时间" target:self selector:@selector(freezeButtonClicked)];
+    freezeButton.position = ccp(400, 50);
+    
+    [buttons addChild:freezeButton];
+    
 }
 
 
@@ -148,8 +161,26 @@
         return;
     }
     
+    // Update Abilities
+    for (MTAbility * a in abilities){
+        [a update:dt];
+    }
+    
+    // Update Ability Buttons
+    if ([self abilityOfClass:[MTAbilityFreeze class]].ready) {
+        freezeButton.visible = YES;
+    }else{
+        freezeButton.visible = NO;
+    }
+
     // Update DT
-    remainingTime -= dt;
+    if ([self abilityOfClass:[MTAbilityFreeze class]].active) {
+        timeLine.frozen = YES;
+    }else{
+        timeLine.frozen = NO;
+        remainingTime -= dt;
+    }
+    
     if (remainingTime <= 0) {
         remainingTime = 0;
         // End Game Here.
@@ -167,7 +198,6 @@
         }
         needShuffleCheck = NO;
     }
-    
     
     // Selected pieces should be in the front
     for (MTPiece * piece in board.children) {
@@ -325,6 +355,20 @@
     [self cleanup];
     [self removeAllChildrenWithCleanup:YES];
     [self prepare];
+}
+                                     
+- (MTAbility *)abilityOfClass:(Class)c{
+    for (MTAbility * a in abilities) {
+        if (a.class == c) {
+            return a;
+        }
+    }
+    return nil;
+}
+
+- (void)freezeButtonClicked{
+    MTAbilityFreeze * freeze = (MTAbilityFreeze *)[self abilityOfClass:[MTAbilityFreeze class]];
+    [freeze activate];
 }
 
 @end

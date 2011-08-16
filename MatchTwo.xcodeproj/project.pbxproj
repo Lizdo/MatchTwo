@@ -131,6 +131,7 @@
 		6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB113EEA21E00D623A6 /* Tile.png */; };
 		6E79DFB913EEC5EB00D623A6 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB813EEC5EB00D623A6 /* Particle.png */; };
 		6E79DFBC13EEC69500D623A6 /* MTSFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E79DFBB13EEC69500D623A6 /* MTSFX.m */; };
+		6E7FA7B913FABFB500FE4A0A /* MTAbility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7FA7B813FABFB500FE4A0A /* MTAbility.m */; };
 		6E85592913F413E100FE8963 /* ChineseFont.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6E85592813F413E100FE8963 /* ChineseFont.TTF */; };
 		6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8586E513F030D7007217DD /* MTSharedManager.m */; };
 		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
@@ -391,6 +392,8 @@
 		6E79DFB813EEC5EB00D623A6 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle.png; path = Resources/Particle.png; sourceTree = "<group>"; };
 		6E79DFBA13EEC69400D623A6 /* MTSFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSFX.h; sourceTree = "<group>"; };
 		6E79DFBB13EEC69500D623A6 /* MTSFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSFX.m; sourceTree = "<group>"; };
+		6E7FA7B713FABFB500FE4A0A /* MTAbility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAbility.h; sourceTree = "<group>"; };
+		6E7FA7B813FABFB500FE4A0A /* MTAbility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAbility.m; sourceTree = "<group>"; };
 		6E85592813F413E100FE8963 /* ChineseFont.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ChineseFont.TTF; path = Resources/ChineseFont.TTF; sourceTree = "<group>"; };
 		6E8586E413F030D7007217DD /* MTSharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSharedManager.h; sourceTree = "<group>"; };
 		6E8586E513F030D7007217DD /* MTSharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSharedManager.m; sourceTree = "<group>"; };
@@ -811,6 +814,8 @@
 		6E05296813E6FFD2002BA347 /* MT */ = {
 			isa = PBXGroup;
 			children = (
+				6E7FA7B713FABFB500FE4A0A /* MTAbility.h */,
+				6E7FA7B813FABFB500FE4A0A /* MTAbility.m */,
 				6E79DFBA13EEC69400D623A6 /* MTSFX.h */,
 				6E79DFBB13EEC69500D623A6 /* MTSFX.m */,
 				6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */,
@@ -1018,6 +1023,7 @@
 				6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */,
 				6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */,
 				6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */,
+				6E7FA7B913FABFB500FE4A0A /* MTAbility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

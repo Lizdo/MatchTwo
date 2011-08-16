@@ -18,6 +18,8 @@
 
 @implementation MTTimeLine
 
+@synthesize frozen;
+
 - (void)setPercentage:(float)newPercentage{
     NSAssert(newPercentage >= 0 && newPercentage <= 1.0, @"Wrong percentage set!");
     percentage = newPercentage;
@@ -37,8 +39,13 @@
 
 - (void)draw{
     // Draw Fill
-    ccColor4F c = [self fillColor];
-    glColor4f(c.r, c.g, c.b, c.a);
+    if (frozen) {
+        glColor4f(0.6,0.8,0.8,0.4);
+    }else{
+        ccColor4F c = [self fillColor];
+        glColor4f(c.r, c.g, c.b, c.a);
+    }
+
     glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint otherPoints[4] = {

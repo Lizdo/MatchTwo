@@ -15,8 +15,11 @@
 
 @interface MTTimeLine : CCSprite {
     float percentage;
+    BOOL frozen;
 }
 
 @property float percentage;
+@property BOOL frozen;
+
 
 @end
