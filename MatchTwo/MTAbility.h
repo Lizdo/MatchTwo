@@ -38,10 +38,12 @@ typedef enum {
     
     MTAbilityState state;
     MTAbilityType type;
+    NSString * name;
 }
 
 @property MTAbilityState state;
 @property (readonly) MTAbilityType type;
+@property (readonly, retain) NSString * name;
 
 - (void)update:(ccTime)dt;
 

@@ -13,7 +13,7 @@
 
 @implementation MTAbility
 
-@synthesize type;
+@synthesize type, name;
 
 - (void)setState:(MTAbilityState)newState{
     if (newState == state) {
@@ -93,6 +93,7 @@
         // Possible to query SharedManager for Player Info
         activeTime = 10.0f;
         cooldownTime = 30.0f;
+        name = @"Freeze";
     }
     return self;
 }

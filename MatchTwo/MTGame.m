@@ -16,6 +16,11 @@
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
 
+// Ability Related Internal Method
+- (MTAbility *)abilityNamed:(NSString *)name;
+- (BOOL)isAbilityActive:(NSString *)name;
+- (BOOL)isAbilityReady:(NSString *)name;
+
 - (void)freezeButtonClicked;
 @end
 
@@ -167,14 +172,14 @@
     }
     
     // Update Ability Buttons
-    if ([self abilityOfClass:[MTAbilityFreeze class]].ready) {
+    if ([self isAbilityReady:@"Freeze"]) {
         freezeButton.visible = YES;
     }else{
         freezeButton.visible = NO;
     }
 
     // Update DT
-    if ([self abilityOfClass:[MTAbilityFreeze class]].active) {
+    if ([self isAbilityActive:@"Freeze"]) {
         timeLine.frozen = YES;
     }else{
         timeLine.frozen = NO;
@@ -357,18 +362,36 @@
     [self prepare];
 }
                                      
-- (MTAbility *)abilityOfClass:(Class)c{
+
+- (MTAbility *)abilityNamed:(NSString *)name{
     for (MTAbility * a in abilities) {
-        if (a.class == c) {
+        if (a.name == name) {
             return a;
         }
     }
     return nil;
 }
 
+
+- (BOOL)isAbilityActive:(NSString *)name{
+    MTAbility * a = [self abilityNamed:name];
+    if (a != nil && a.active) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isAbilityReady:(NSString *)name{
+    MTAbility * a = [self abilityNamed:name];
+    if (a != nil && a.ready) {
+        return YES;
+    }
+    return NO;    
+}
+
 - (void)freezeButtonClicked{
-    MTAbilityFreeze * freeze = (MTAbilityFreeze *)[self abilityOfClass:[MTAbilityFreeze class]];
-    [freeze activate];
+    [[self abilityNamed:@"Freeze"] activate];
+
 }
 
 @end

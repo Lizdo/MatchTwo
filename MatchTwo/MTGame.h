@@ -60,6 +60,4 @@
 - (void)resume;
 
 
-- (MTAbility *)abilityOfClass:(Class)c;
-
 @end
