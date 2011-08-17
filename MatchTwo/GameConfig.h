@@ -56,6 +56,8 @@
 #define kMTPieceScaleTime 0.2f
 #define kMTPieceDisappearTime 0.2f
 
+#define kMTAbilityButtonSize 128.0f
+
 #define kMTBoardStartingX 64.0f
 #define kMTBoardStartingY 200.0f
 

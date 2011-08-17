@@ -41,7 +41,9 @@
     int levelID;
     
     CCLabelTTF * scoreLabel;
+    
     NSMutableArray * abilities;
+    NSMutableArray * abilityButtons;    
     
     CCMenuItemFont * freezeButton;
 }
@@ -59,5 +61,10 @@
 - (void)pause;
 - (void)resume;
 
+// Ability Related Internal Method
+- (MTAbility *)abilityNamed:(NSString *)name;
+- (BOOL)isAbilityActive:(NSString *)name;
+- (BOOL)isAbilityReady:(NSString *)name;
+- (void)abilityButtonClicked:(NSString *)name;
 
 @end

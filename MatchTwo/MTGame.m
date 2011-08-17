@@ -16,11 +16,6 @@
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
 
-// Ability Related Internal Method
-- (MTAbility *)abilityNamed:(NSString *)name;
-- (BOOL)isAbilityActive:(NSString *)name;
-- (BOOL)isAbilityReady:(NSString *)name;
-
 - (void)freezeButtonClicked;
 @end
 
@@ -125,7 +120,8 @@
                  , nil] retain];
     
     // TEMP: Now we just add a button here, later to be moved to a seperate class AbilityButton
-    freezeButton = [CCMenuItemFont itemFromString:@"冰冻时间" target:self selector:@selector(freezeButtonClicked)];
+//    freezeButton = [CCMenuItemFont itemFromString:@"冰冻时间" target:self selector:@selector(freezeButtonClicked)];
+    
     freezeButton.position = ccp(400, 50);
     
     [buttons addChild:freezeButton];
@@ -388,6 +384,11 @@
     }
     return NO;    
 }
+
+- (void)abilityButtonClicked:(NSString *)name{
+    [[self abilityNamed:name] activate];    
+}
+
 
 - (void)freezeButtonClicked{
     [[self abilityNamed:@"Freeze"] activate];
