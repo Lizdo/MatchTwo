@@ -9,6 +9,7 @@
 #import "MTPiece.h"
 #import "CCTouchDispatcher.h"
 #import "CCDrawingPrimitives+MT.h"
+#import "MTGame.h"
 
 // Tile is a 512 x 512 texture, each grid is 64 * 64
 
@@ -21,7 +22,7 @@ CGRect rectForType(int type){
 
 @implementation MTPiece
 
-@synthesize row,column,type,enabled,hinted,pairedPiece;
+@synthesize row,column,type,enabled,hinted,pairedPiece,game;
 
 - (void)setSelected:(BOOL)toBeSelected{
     if (!enabled) {
@@ -55,8 +56,7 @@ CGRect rectForType(int type){
 
 
 - (void)draw{
-    
-    if (hinted) {
+    if (hinted || [game isAbilityActive:@"Highlight"]) {
         glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1); 
         glLineWidth(1.0);
         glEnable(GL_LINE_SMOOTH);

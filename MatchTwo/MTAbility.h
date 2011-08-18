@@ -57,7 +57,12 @@ typedef enum {
 #pragma mark -
 #pragma mark MTAbilities
 
-@interface MTAbilityFreeze : MTAbility {
+@interface MTAbilityFreeze : MTAbility
+@end
 
-}
+
+@interface MTAbilityHint : MTAbility
+@end
+
+@interface MTAbilityHighlight : MTAbility
 @end

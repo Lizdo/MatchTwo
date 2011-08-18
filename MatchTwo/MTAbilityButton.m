@@ -13,18 +13,27 @@
 
 @synthesize name,game;
 
-+ (id) MTAbilityButtonWithName:(NSString *)name{
-    MTAbilityButton * button = [[MTAbilityButton alloc] initWithTarget:self selector:@selector(clicked)];
-    button.normalImage = [CCSprite spriteWithFile:@"Tile.png" 
-                                             rect:CGRectMake(0, 0, kMTAbilityButtonSize, kMTAbilityButtonSize)
-                          ];
-    button.selectedImage = [CCSprite spriteWithFile:@"Tile.png" 
-                                               rect:CGRectMake(0, 0, kMTAbilityButtonSize, kMTAbilityButtonSize)
-                            ];
++ (MTAbilityButton *) abilityButtonWithName:(NSString *)n game:(id)t selector:(SEL)s{
+    return [[[self alloc]initWithName:n game:t selector:s] autorelease];
+}
+
+- (id) initWithName:(NSString *)n game:(MTGame *)g selector:(SEL)s{
+    CCSprite * sprite = [CCSprite spriteWithFile:@"Abilities.png" 
+        rect:CGRectMake(0, 0, kMTAbilityButtonSize, kMTAbilityButtonSize)
+    ];
+    self = [super initWithTarget:g selector:s];
+    if (self) {
+        name = n;
+        game = g;    
+        self.contentSize = CGSizeMake(kMTAbilityButtonSize, kMTAbilityButtonSize);
+        [self addChild:sprite];
+        sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);        
+    }
+    return self;
 }
 
 - (void)draw{
-    glColor4f(0.6, 0.6, 0.6, 0.6); 
+    glColor4f(0.1, 0.1, 0.1, 0.6); 
     glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {
@@ -38,15 +47,12 @@
 }
 
 - (void)update:(ccTime)dt{
+    cooldownPercentage = [game abilityNamed:name].cooldownPercentage;
     if ([game isAbilityReady:name]) {
         self.isEnabled = YES;
     }else{
         self.isEnabled = NO;
     }
-}
-
-- (void)clicked{
-    [game abilityButtonClicked:name];
 }
 
 @end

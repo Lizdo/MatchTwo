@@ -241,8 +241,10 @@
                 NSArray * result = [helper check];
                 if (result != nil) {
                     // Connection Found!
-                    piece1.hinted = YES;
-                    piece2.hinted = YES;
+                    if ([game isAbilityActive:@"Hint"]) {
+                        piece1.hinted = YES;
+                        piece2.hinted = YES;
+                    }
                     return YES;
                 }else{
                     [self resetHelper];

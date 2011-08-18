@@ -15,8 +15,6 @@
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
-
-- (void)freezeButtonClicked;
 @end
 
 @implementation MTGame
@@ -76,6 +74,7 @@
             // Add 0.5 * kMTPieceSize because the anchor is in the middle;
             piece.position = ccp(kMTBoardStartingX+(j-0.5)* kMTPieceSize,
                                  kMTBoardStartingY+(i-0.5)* kMTPieceSize);
+            piece.game = self;
             [board addChild:piece];
         }
     }
@@ -111,21 +110,35 @@
     buttons = [CCMenu menuWithItems:pauseButton, nil];
     buttons.position = ccp(0,0);
     
+    // TEMP: Now we just add ability here, later should move to Level/SharedManager
+    abilities = [[NSMutableArray arrayWithObjects:
+                  [[[MTAbilityFreeze alloc]init]autorelease],
+                  [[[MTAbilityHint alloc]init]autorelease],
+                  [[[MTAbilityHighlight alloc]init]autorelease],
+                nil] retain];
+        
+    abilityButtons = [[NSMutableArray arrayWithObjects:
+                       [MTAbilityButton abilityButtonWithName:@"Hint" game:self selector:@selector(abilityButtonClicked:)], 
+                       [MTAbilityButton abilityButtonWithName:@"Freeze" game:self selector:@selector(abilityButtonClicked:)], 
+                       [MTAbilityButton abilityButtonWithName:@"Highlight" game:self selector:@selector(abilityButtonClicked:)],                        
+                       nil]
+                      retain];
+    
+    CGPoint p = ccp(kMTAbilityButtonPadding + kMTAbilityButtonSize/2,
+                    kMTAbilityButtonPadding + kMTAbilityButtonSize/2);
+    
+    for (MTAbilityButton * b in abilityButtons) {
+        b.position = p;
+        p = ccpAdd(p, ccp(kMTAbilityButtonPadding + kMTAbilityButtonSize, 0));
+        [buttons addChild:b];        
+    }
+    
     [self addChild:buttons];
     
+    
+    // Schedule the Update: function
     [self scheduleUpdateWithPriority:0];
-    
-    // TEMP: Now we just add ability here, later should move to Level/SharedManager
-    abilities = [[NSMutableArray arrayWithObjects:[[[MTAbilityFreeze alloc]init]autorelease]
-                 , nil] retain];
-    
-    // TEMP: Now we just add a button here, later to be moved to a seperate class AbilityButton
-//    freezeButton = [CCMenuItemFont itemFromString:@"冰冻时间" target:self selector:@selector(freezeButtonClicked)];
-    
-    freezeButton.position = ccp(400, 50);
-    
-    [buttons addChild:freezeButton];
-    
+        
 }
 
 
@@ -168,10 +181,8 @@
     }
     
     // Update Ability Buttons
-    if ([self isAbilityReady:@"Freeze"]) {
-        freezeButton.visible = YES;
-    }else{
-        freezeButton.visible = NO;
+    for (MTAbilityButton * b in abilityButtons) {
+        [b update:dt];
     }
 
     // Update DT
@@ -190,7 +201,6 @@
         [self gameFailMenu];
     }
     
-    // Check if shuffle is needed
     if (needShuffleCheck) {
         BOOL linkFound = [board findLink];
         if (!linkFound) {
@@ -385,14 +395,14 @@
     return NO;    
 }
 
-- (void)abilityButtonClicked:(NSString *)name{
-    [[self abilityNamed:name] activate];    
+- (void)abilityButtonClicked:(MTAbilityButton *)button{
+    [[self abilityNamed:button.name] activate];
+    
+    // On Trigger Ability Activate Here
+    if (button.name == @"Hint") {
+        needShuffleCheck = YES;
+    }
 }
 
-
-- (void)freezeButtonClicked{
-    [[self abilityNamed:@"Freeze"] activate];
-
-}
 
 @end

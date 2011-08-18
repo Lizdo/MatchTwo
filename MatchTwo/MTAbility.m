@@ -13,7 +13,7 @@
 
 @implementation MTAbility
 
-@synthesize type, name;
+@synthesize type;
 
 - (void)setState:(MTAbilityState)newState{
     if (newState == state) {
@@ -25,6 +25,10 @@
 
 - (MTAbilityState)state{
     return state;
+}
+
+- (NSString *)name{
+    return name;
 }
 
 
@@ -60,6 +64,12 @@
 }
 
 - (float)cooldownPercentage{
+    if (state == MTAbilityState_Ready) {
+        return 1.0f;
+    }
+    if (state == MTAbilityState_Active) {
+        return 0.0f;
+    }
     float percentage = tickingTime/cooldownTime;
     percentage = percentage > 1 ? 1 : percentage;
     return percentage;
@@ -100,3 +110,35 @@
 
 @end
 
+
+@implementation MTAbilityHint
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Possible to query SharedManager for Player Info
+        activeTime = 5.0f;
+        cooldownTime = 20.0f;
+        name = @"Hint";
+    }
+    return self;
+}
+
+@end
+
+@implementation MTAbilityHighlight
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Possible to query SharedManager for Player Info
+        activeTime = 10.0f;
+        cooldownTime = 60.0f;
+        name = @"Highlight";
+    }
+    return self;
+}
+
+@end

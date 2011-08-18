@@ -8,9 +8,11 @@
 
 #import "cocos2d.h"
 #import "GameConfig.h"
+#import "CCDrawingPrimitives+MT.h"
+
 @class MTGame;
 
-@interface MTAbilityButton : CCMenuItemImage{
+@interface MTAbilityButton : CCMenuItem{
     NSString * name;
     MTGame * game;
     
@@ -20,7 +22,9 @@
 @property (readonly) NSString * name;
 @property (assign) MTGame * game;
 
-+ (id) MTAbilityButtonWithName:(NSString *)name;
-- (void)clicked;
++ (MTAbilityButton *) abilityButtonWithName:(NSString *)name game:(MTGame *)g selector:(SEL)s;
+- (id) initWithName:(NSString *)n game:(MTGame *)g selector:(SEL)s;
+
+- (void)update:(ccTime)dt;
 
 @end

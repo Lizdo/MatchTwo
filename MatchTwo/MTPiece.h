@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 #import "GameConfig.h"
 
+@class MTGame;
+
 @interface MTPiece : CCSprite {
     int row;
     int column;
@@ -23,6 +25,8 @@
     BOOL shaking;
     
     MTPiece * pairedPiece;
+    
+    MTGame * game;
 }
 
 @property int row;
@@ -32,6 +36,7 @@
 @property BOOL enabled;
 @property BOOL hinted;
 @property (assign) MTPiece * pairedPiece;
+@property (assign) MTGame * game;
 
 - (id)initWithType:(int)type;
 

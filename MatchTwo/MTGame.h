@@ -17,6 +17,7 @@
 #import "MTSharedManager.h"
 #import "MTBackground.h"
 #import "MTAbility.h"
+#import "MTAbilityButton.h"
 
 @interface MTGame : CCNode{
     // Gameplay Related
@@ -45,7 +46,7 @@
     NSMutableArray * abilities;
     NSMutableArray * abilityButtons;    
     
-    CCMenuItemFont * freezeButton;
+    MTAbilityButton * freezeButton;
 }
 
 @property (retain) CCMenu * menu;
@@ -65,6 +66,7 @@
 - (MTAbility *)abilityNamed:(NSString *)name;
 - (BOOL)isAbilityActive:(NSString *)name;
 - (BOOL)isAbilityReady:(NSString *)name;
-- (void)abilityButtonClicked:(NSString *)name;
+
+- (void)abilityButtonClicked:(MTAbilityButton *)button;
 
 @end
