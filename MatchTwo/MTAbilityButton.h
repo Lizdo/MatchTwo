@@ -19,7 +19,9 @@
     float cooldownPercentage;
     
     CCSprite * sprite;
-    CCSprite * disabledSprite;    
+    CCSprite * disabledSprite;
+    
+    float originalScale_;
 }
 
 @property (readonly) NSString * name;

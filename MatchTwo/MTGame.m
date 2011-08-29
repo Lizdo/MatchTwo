@@ -172,11 +172,15 @@
 
 - (void)shuffle{
     paused = YES;
+    [board pause];
     // Add a text explaining the shuffle...
     [board shuffle];
     // Remove the text after the animation...
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime+kMTBoardShuffleTime];   
-    id callResume = [CCCallBlock actionWithBlock:^{paused = NO;}];
+    id callResume = [CCCallBlock actionWithBlock:^{
+        paused = NO;
+        [board resume];
+    }];
     [self runAction:[CCSequence actions:delay,
                      callResume,
                      nil]];
@@ -428,6 +432,16 @@
     // On Trigger Ability Activate Here
     if (button.name == @"Shuffle") {
         [self shuffle];
+    }
+    
+    // Update Abilities Once Here to update the UI
+    for (MTAbility * a in abilities){
+        [a update:0.05];
+    }
+    
+    // Update Ability Buttons
+    for (MTAbilityButton * b in abilityButtons) {
+        [b update:0.05];
     }    
 }
 

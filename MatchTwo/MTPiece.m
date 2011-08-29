@@ -107,12 +107,20 @@ CGRect rectForType(int type){
 }
 
 - (void)shuffle{
+    newRow = shufflePiece.row;
+    newColomn = shufflePiece.column;
+    
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime];   
     id move = [CCMoveTo actionWithDuration:kMTBoardShuffleTime
                                   position:[game positionForPiece:shufflePiece]
                ];
+    id assignID = [CCCallBlock actionWithBlock:^(void){
+        self.row = newRow;
+        self.column = newColomn;        
+    }];    
     [self runAction:[CCSequence actions:delay,
                      move,
+                     assignID,
                      nil]];    
     
 }

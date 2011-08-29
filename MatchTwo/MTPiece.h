@@ -29,6 +29,8 @@
     MTGame * game;
     
     MTPiece * shufflePiece;
+    int newRow;
+    int newColomn;    
 }
 
 @property int row;

@@ -150,8 +150,8 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 1.0f;
-        cooldownTime = 100000.0f;
+        activeTime = 0.01f;
+        cooldownTime = 10.0;
         name = @"Shuffle";
     }
     return self;

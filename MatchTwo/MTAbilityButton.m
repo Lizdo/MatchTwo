@@ -9,6 +9,8 @@
 #import "MTAbilityButton.h"
 #import "MTGame.h"
 
+const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
+
 // Tile is a 512 x 512 texture, each grid is 128 * 128
 
 CGRect rectForIndex(int index){
@@ -59,6 +61,36 @@ CGRect rectForIndex(int index){
 
     }
     return self;
+}
+
+-(void) selected
+{
+	// subclass to change the default action
+	if(isEnabled_) {	
+		[super selected];
+        
+		CCAction *action = [self getActionByTag:kMTAbilityButtonZoomActionTag];
+		if( action )
+			[self stopAction:action];
+		else
+			originalScale_ = self.scale;
+        
+		CCAction *zoomAction = [CCScaleTo actionWithDuration:0.1f scale:originalScale_ * 1.2f];
+		zoomAction.tag = kMTAbilityButtonZoomActionTag;
+		[self runAction:zoomAction];
+	}
+}
+
+-(void) unselected
+{
+	// subclass to change the default action
+	if(isEnabled_) {
+		[super unselected];
+		[self stopActionByTag:kMTAbilityButtonZoomActionTag];
+		CCAction *zoomAction = [CCScaleTo actionWithDuration:0.1f scale:originalScale_];
+		zoomAction.tag = kMTAbilityButtonZoomActionTag;
+		[self runAction:zoomAction];
+	}
 }
 
 - (void)draw{
