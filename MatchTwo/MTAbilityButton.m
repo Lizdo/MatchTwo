@@ -26,6 +26,7 @@ CGRect rectForIndex(int index){
 
 - (int)idForButtonName:(NSString *)buttonName;
 - (CCSprite *)spriteForButtonName:(NSString *)buttonName;
+- (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName;
 
 @end
 
@@ -44,19 +45,27 @@ CGRect rectForIndex(int index){
         game = g;
         self.contentSize = CGSizeMake(kMTAbilityButtonSize, kMTAbilityButtonSize);
         
-        CCSprite * sprite = [self spriteForButtonName:name];
+        sprite = [self spriteForButtonName:name];
         sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         sprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
         
-        [self addChild:sprite];
+        [self addChild:sprite z:-1];
+        
+        disabledSprite = [self disabledSpriteForButtonName:name];
+        disabledSprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
+        disabledSprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
+        disabledSprite.visible = NO;
+        [self addChild:disabledSprite z:-1];        
 
     }
     return self;
 }
 
 - (void)draw{
-    glColor4f(0.1, 0.1, 0.1, 0.6); 
+    [super draw]; 
+    glColor4f(0.2, 0.2, 0.2, 0.8); 
     glLineWidth(1.0);
+    //glBlendFunc(GL_ONE, GL_ONE);
     glEnable(GL_LINE_SMOOTH);
     CGPoint points[4] = {
         ccp(0, kMTAbilityButtonSize * cooldownPercentage),
@@ -65,15 +74,19 @@ CGRect rectForIndex(int index){
         ccp(0, kMTAbilityButtonSize)
     };
     ccDrawPolyFill(points, 4, YES);
-    [super draw];
+    //glBlendFunc(CC_BLEND_SRC, CC_BLEND_DST);
 }
 
 - (void)update:(ccTime)dt{
     cooldownPercentage = [game abilityNamed:name].cooldownPercentage;
     if ([game isAbilityReady:name]) {
         self.isEnabled = YES;
+        sprite.visible = YES;
+        disabledSprite.visible = NO;
     }else{
         self.isEnabled = NO;
+        sprite.visible = NO;
+        disabledSprite.visible = YES;
     }
 }
 
@@ -90,10 +103,18 @@ CGRect rectForIndex(int index){
 
 - (CCSprite *)spriteForButtonName:(NSString *)buttonName{
     int index = [self idForButtonName:buttonName];
-    CCSprite * sprite = [CCSprite spriteWithFile:@"Abilities.png" 
+    CCSprite * s = [CCSprite spriteWithFile:@"Abilities.png" 
                                             rect:rectForIndex(index)
                          ];
-    return sprite;
+    return s;
+}
+
+- (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName{
+    int index = [self idForButtonName:buttonName];
+    CCSprite * s = [CCSprite spriteWithFile:@"Abilities_Disabled.png" 
+                                            rect:rectForIndex(index)
+                         ];
+    return s;
 }
 
 @end

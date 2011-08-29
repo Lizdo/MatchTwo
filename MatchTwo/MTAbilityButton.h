@@ -17,6 +17,9 @@
     MTGame * game;
     
     float cooldownPercentage;
+    
+    CCSprite * sprite;
+    CCSprite * disabledSprite;    
 }
 
 @property (readonly) NSString * name;
