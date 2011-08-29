@@ -31,7 +31,7 @@ CGRect rectForType(int type){
     if (toBeSelected != selected) {
         selected = toBeSelected;
         if (selected) {
-            [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.2]];
+            [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.25]];
         }else{
             [self runAction:[CCScaleTo actionWithDuration:kMTPieceScaleTime scale:1.0]];            
         }
@@ -58,17 +58,16 @@ CGRect rectForType(int type){
 - (void)draw{
     if (hinted || [game isAbilityActive:@"Highlight"]) {
         glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1);
-        glLineWidth(1.0);
-        glEnable(GL_LINE_SMOOTH);
-        CGPoint points[4] = {
-            ccp(kMTPieceMargin, kMTPieceMargin),
-            ccp(kMTPieceMargin, kMTPieceSize - kMTPieceMargin),
-            ccp(kMTPieceSize-kMTPieceMargin, kMTPieceSize-kMTPieceMargin),
-            ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
-        };
-        ccDrawPolyFill(points, 4, YES);
+    }else{
+        glColor4f(0.0, 0.0, 0.0, 0.5);        
     }
-    
+    CGPoint points[4] = {
+        ccp(kMTPieceMargin, kMTPieceMargin),
+        ccp(kMTPieceMargin, kMTPieceSize - kMTPieceMargin),
+        ccp(kMTPieceSize-kMTPieceMargin, kMTPieceSize-kMTPieceMargin),
+        ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
+    };    
+    ccDrawPolyFill(points, 4, YES);
     [super draw];
 
 }
@@ -109,18 +108,17 @@ CGRect rectForType(int type){
 - (void)shuffle{
     newRow = shufflePiece.row;
     newColomn = shufflePiece.column;
-    
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime];   
     id move = [CCMoveTo actionWithDuration:kMTBoardShuffleTime
                                   position:[game positionForPiece:shufflePiece]
                ];
     id assignID = [CCCallBlock actionWithBlock:^(void){
         self.row = newRow;
-        self.column = newColomn;        
+        self.column = newColomn;           
     }];    
     [self runAction:[CCSequence actions:delay,
-                     move,
-                     assignID,
+                    
+                     assignID, move,
                      nil]];    
     
 }

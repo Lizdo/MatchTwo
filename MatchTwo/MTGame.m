@@ -254,7 +254,7 @@
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
     
-    scoreLabel.string = [NSString stringWithFormat:@"分数: %d", 
+    scoreLabel.string = [NSString stringWithFormat:@"%d", 
                          [MTSharedManager instance].totalScore];
     
 }

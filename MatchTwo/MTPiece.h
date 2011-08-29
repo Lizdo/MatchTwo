@@ -30,7 +30,7 @@
     
     MTPiece * shufflePiece;
     int newRow;
-    int newColomn;    
+    int newColomn;
 }
 
 @property int row;
