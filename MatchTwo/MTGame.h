@@ -62,6 +62,10 @@
 - (void)pause;
 - (void)resume;
 
+// Shuffle the board, when no move is available
+- (void)shuffle;
+- (CGPoint)positionForPiece:(MTPiece *)piece;
+
 // Ability Related Internal Method
 - (MTAbility *)abilityNamed:(NSString *)name;
 - (BOOL)isAbilityActive:(NSString *)name;

@@ -27,6 +27,8 @@
     MTPiece * pairedPiece;
     
     MTGame * game;
+    
+    MTPiece * shufflePiece;
 }
 
 @property int row;
@@ -36,6 +38,7 @@
 @property BOOL enabled;
 @property BOOL hinted;
 @property (assign) MTPiece * pairedPiece;
+@property (assign) MTPiece * shufflePiece;
 @property (assign) MTGame * game;
 
 - (id)initWithType:(int)type;
@@ -45,6 +48,6 @@
 
 - (void)disappear;
 - (void)shake;
-
+- (void)shuffle;
 
 @end

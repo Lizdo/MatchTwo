@@ -64,6 +64,9 @@
 #define kMTBoardStartingX 64.0f
 #define kMTBoardStartingY 200.0f
 
+#define kMTBoardShuffleWarningTime 2.0f
+#define kMTBoardShuffleTime 1.0f
+
 #define kMTTimeLineWidth 768.0f
 #define kMTTimeLineHeight 30.0f
 #define kMTTimeLineStartingX 0.0f

@@ -72,8 +72,7 @@
             piece.row = i;
             piece.column = j;
             // Add 0.5 * kMTPieceSize because the anchor is in the middle;
-            piece.position = ccp(kMTBoardStartingX+(j-0.5)* kMTPieceSize,
-                                 kMTBoardStartingY+(i-0.5)* kMTPieceSize);
+            piece.position = [self positionForPiece:piece];
             piece.game = self;
             [board addChild:piece];
         }
@@ -115,12 +114,14 @@
                   [[[MTAbilityFreeze alloc]init]autorelease],
                   [[[MTAbilityHint alloc]init]autorelease],
                   [[[MTAbilityHighlight alloc]init]autorelease],
+                  [[[MTAbilityShuffle alloc]init]autorelease],                  
                 nil] retain];
         
     abilityButtons = [[NSMutableArray arrayWithObjects:
                        [MTAbilityButton abilityButtonWithName:@"Hint" target:self selector:@selector(abilityButtonClicked:)], 
                        [MTAbilityButton abilityButtonWithName:@"Freeze" target:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:@"Highlight" target:self selector:@selector(abilityButtonClicked:)],                        
+                       [MTAbilityButton abilityButtonWithName:@"Highlight" target:self selector:@selector(abilityButtonClicked:)],
+                       [MTAbilityButton abilityButtonWithName:@"Shuffle" target:self selector:@selector(abilityButtonClicked:)],
                        nil]
                       retain];
     
@@ -169,6 +170,18 @@
     return array;
 }
 
+- (void)shuffle{
+    paused = YES;
+    // Add a text explaining the shuffle...
+    [board shuffle];
+    // Remove the text after the animation...
+    id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime+kMTBoardShuffleTime];   
+    id callResume = [CCCallBlock actionWithBlock:^{paused = NO;}];
+    [self runAction:[CCSequence actions:delay,
+                     callResume,
+                     nil]];
+}
+
 
 - (void)update:(ccTime)dt{
     if (paused) {
@@ -206,6 +219,8 @@
         if (!linkFound) {
             // Shuffle Board Here.
             CCLOG(@"No Link Found, Reshuffle needed...");
+            [self shuffle];
+            return;
         }
         needShuffleCheck = NO;
     }
@@ -367,6 +382,13 @@
     [self removeAllChildrenWithCleanup:YES];
     [self prepare];
 }
+
+- (CGPoint)positionForPiece:(MTPiece *)piece{
+    // Add 0.5 * kMTPieceSize because the anchor is in the middle;
+    CGPoint p = ccp(kMTBoardStartingX+(piece.column-0.5)* kMTPieceSize,
+                         kMTBoardStartingY+(piece.row-0.5)* kMTPieceSize);  
+    return p;
+}
                                      
 
 - (MTAbility *)abilityNamed:(NSString *)name{
@@ -402,6 +424,11 @@
     if (button.name == @"Hint") {
         needShuffleCheck = YES;
     }
+    
+    // On Trigger Ability Activate Here
+    if (button.name == @"Shuffle") {
+        [self shuffle];
+    }    
 }
 
 

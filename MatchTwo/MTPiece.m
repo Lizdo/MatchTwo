@@ -22,7 +22,7 @@ CGRect rectForType(int type){
 
 @implementation MTPiece
 
-@synthesize row,column,type,enabled,hinted,pairedPiece,game;
+@synthesize row,column,type,enabled,hinted,pairedPiece,shufflePiece,game;
 
 - (void)setSelected:(BOOL)toBeSelected{
     if (!enabled) {
@@ -57,7 +57,7 @@ CGRect rectForType(int type){
 
 - (void)draw{
     if (hinted || [game isAbilityActive:@"Highlight"]) {
-        glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1); 
+        glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1);
         glLineWidth(1.0);
         glEnable(GL_LINE_SMOOTH);
         CGPoint points[4] = {
@@ -106,7 +106,16 @@ CGRect rectForType(int type){
                      nil]];
 }
 
-
+- (void)shuffle{
+    id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime];   
+    id move = [CCMoveTo actionWithDuration:kMTBoardShuffleTime
+                                  position:[game positionForPiece:shufflePiece]
+               ];
+    [self runAction:[CCSequence actions:delay,
+                     move,
+                     nil]];    
+    
+}
 
 
 @end

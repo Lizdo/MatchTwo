@@ -60,9 +60,11 @@ typedef enum {
 @interface MTAbilityFreeze : MTAbility
 @end
 
-
 @interface MTAbilityHint : MTAbility
 @end
 
 @interface MTAbilityHighlight : MTAbility
+@end
+
+@interface MTAbilityShuffle : MTAbility
 @end

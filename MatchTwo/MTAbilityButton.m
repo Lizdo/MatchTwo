@@ -96,6 +96,7 @@ CGRect rectForIndex(int index){
     NSArray * nameArray = [NSArray arrayWithObjects:@"Freeze",
                            @"Hint",
                            @"Highlight",
+                           @"Shuffle",
                            nil];
     return [nameArray indexOfObject:buttonName];
 }

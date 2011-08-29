@@ -142,3 +142,19 @@
 }
 
 @end
+
+@implementation MTAbilityShuffle
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Possible to query SharedManager for Player Info
+        activeTime = 1.0f;
+        cooldownTime = 100000.0f;
+        name = @"Shuffle";
+    }
+    return self;
+}
+
+@end

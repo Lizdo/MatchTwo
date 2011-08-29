@@ -257,6 +257,43 @@
 
 }
 
+- (void)shuffle{
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:20];
+    for (MTPiece * p in self.children) {
+        if (p.enabled) {
+            [array addObject:p];
+        }
+    }
+    
+    // Shuffle the array
+    int numberOfShuffle = 2;
+    int totalCount = [array count];
+    
+    while (numberOfShuffle > 0) {
+        for (int i = 0; i < totalCount; ++i) {
+            // Select a random element between i and end of array to swap with.
+            int nElements = totalCount - i;
+            int n = (arc4random() % nElements) + i;
+            [array exchangeObjectAtIndex:i withObjectAtIndex:n];
+        }
+        numberOfShuffle--;
+    }
+    
+    // Assign pointer to shufflePiece
+    for (int i = 0; i < totalCount-1; ++i) {
+        MTPiece * piece1 = [array objectAtIndex:i];
+        MTPiece * piece2 = [array objectAtIndex:i+1];
+        piece1.shufflePiece = piece2;
+    }
+    
+    MTPiece * piece = [array lastObject];
+    piece.shufflePiece = [array objectAtIndex:0];
+    
+    for (MTPiece * p in array) {
+        [p shuffle];
+    }
+}
+
 - (void)resetHelper{
     [helper reset];
     for (MTPiece * piece in self.children) {

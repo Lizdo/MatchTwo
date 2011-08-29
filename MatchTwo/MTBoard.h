@@ -38,6 +38,8 @@
 - (void)pause;
 - (void)resume;
 
+- (void)shuffle;
+
 - (BOOL)findLink;
 
 @end
