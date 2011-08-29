@@ -118,9 +118,9 @@
                 nil] retain];
         
     abilityButtons = [[NSMutableArray arrayWithObjects:
-                       [MTAbilityButton abilityButtonWithName:@"Hint" game:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:@"Freeze" game:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:@"Highlight" game:self selector:@selector(abilityButtonClicked:)],                        
+                       [MTAbilityButton abilityButtonWithName:@"Hint" target:self selector:@selector(abilityButtonClicked:)], 
+                       [MTAbilityButton abilityButtonWithName:@"Freeze" target:self selector:@selector(abilityButtonClicked:)], 
+                       [MTAbilityButton abilityButtonWithName:@"Highlight" target:self selector:@selector(abilityButtonClicked:)],                        
                        nil]
                       retain];
     

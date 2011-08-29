@@ -22,8 +22,8 @@
 @property (readonly) NSString * name;
 @property (assign) MTGame * game;
 
-+ (MTAbilityButton *) abilityButtonWithName:(NSString *)name game:(MTGame *)g selector:(SEL)s;
-- (id) initWithName:(NSString *)n game:(MTGame *)g selector:(SEL)s;
++ (MTAbilityButton *) abilityButtonWithName:(NSString *)name target:(MTGame *)g selector:(SEL)s;
+- (id) initWithName:(NSString *)n target:(MTGame *)g selector:(SEL)s;
 
 - (void)update:(ccTime)dt;
 

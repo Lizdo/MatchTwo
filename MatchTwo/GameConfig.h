@@ -56,6 +56,8 @@
 #define kMTPieceScaleTime 0.2f
 #define kMTPieceDisappearTime 0.2f
 
+#define kMTAbilityButtonTextureSize 1024.0f
+#define kMTAbilityButtonSpriteSize 128.0f
 #define kMTAbilityButtonSize 96.0f
 #define kMTAbilityButtonPadding 16.0f
 

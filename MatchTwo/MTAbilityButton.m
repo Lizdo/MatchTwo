@@ -9,25 +9,47 @@
 #import "MTAbilityButton.h"
 #import "MTGame.h"
 
+// Tile is a 512 x 512 texture, each grid is 128 * 128
+
+CGRect rectForIndex(int index){
+    int rows = kMTAbilityButtonTextureSize/kMTAbilityButtonSpriteSize;
+    int idX = index % rows;
+    int idY = index / rows;
+    return CGRectMake(idX * kMTAbilityButtonSpriteSize, 
+                      idY * kMTAbilityButtonSpriteSize, 
+                      kMTAbilityButtonSpriteSize, 
+                      kMTAbilityButtonSpriteSize);
+}
+
+
+@interface MTAbilityButton()
+
+- (int)idForButtonName:(NSString *)buttonName;
+- (CCSprite *)spriteForButtonName:(NSString *)buttonName;
+
+@end
+
 @implementation MTAbilityButton
 
 @synthesize name,game;
 
-+ (MTAbilityButton *) abilityButtonWithName:(NSString *)n game:(id)t selector:(SEL)s{
-    return [[[self alloc]initWithName:n game:t selector:s] autorelease];
++ (MTAbilityButton *) abilityButtonWithName:(NSString *)n target:(id)t selector:(SEL)s{
+    return [[[self alloc]initWithName:n target:t selector:s] autorelease];
 }
 
-- (id) initWithName:(NSString *)n game:(MTGame *)g selector:(SEL)s{
-    CCSprite * sprite = [CCSprite spriteWithFile:@"Abilities.png" 
-        rect:CGRectMake(0, 0, kMTAbilityButtonSize, kMTAbilityButtonSize)
-    ];
+- (id) initWithName:(NSString *)n target:(MTGame *)g selector:(SEL)s{
     self = [super initWithTarget:g selector:s];
     if (self) {
         name = n;
-        game = g;    
+        game = g;
         self.contentSize = CGSizeMake(kMTAbilityButtonSize, kMTAbilityButtonSize);
+        
+        CCSprite * sprite = [self spriteForButtonName:name];
+        sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
+        sprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
+        
         [self addChild:sprite];
-        sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);        
+
     }
     return self;
 }
@@ -53,6 +75,25 @@
     }else{
         self.isEnabled = NO;
     }
+}
+
+
+
+- (int)idForButtonName:(NSString *)buttonName{
+    NSArray * nameArray = [NSArray arrayWithObjects:@"Freeze",
+                           @"Hint",
+                           @"Highlight",
+                           nil];
+    return [nameArray indexOfObject:buttonName];
+}
+
+
+- (CCSprite *)spriteForButtonName:(NSString *)buttonName{
+    int index = [self idForButtonName:buttonName];
+    CCSprite * sprite = [CCSprite spriteWithFile:@"Abilities.png" 
+                                            rect:rectForIndex(index)
+                         ];
+    return sprite;
 }
 
 @end
