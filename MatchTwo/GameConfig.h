@@ -70,9 +70,14 @@
 #define kMTTimeLineWidth 768.0f
 #define kMTTimeLineHeight 30.0f
 #define kMTTimeLineStartingX 0.0f
-#define kMTTimeLineStartingY 1024.0 - kMTTimeLineHeight
+#define kMTTimeLineStartingY (1024.0 - kMTTimeLineHeight)
 
 #define kMTMenuPadding 10.0f
 
 #define kMTFont @"FZLanTingHei-R-GBK"
+#define kMTFontSizeCaption 80.0f
+#define kMTFontSizeNormal 40.0f
+
+#define kMTFloatingLabelDefaultPosition (ccp(700.0f, 900.0f))
+#define kMTFloatingLabelOnScreenTime 3.0f
 

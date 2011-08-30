@@ -96,7 +96,7 @@
                                   dimensions:dimension
                                    alignment:UITextAlignmentLeft
                                     fontName:kMTFont
-                                    fontSize:30];
+                                    fontSize:kMTFontSizeNormal];
     
     scoreLabel.position = ccp(350, 950);
     [self addChild:scoreLabel];
@@ -174,6 +174,7 @@
     paused = YES;
     [board pause];
     // Add a text explaining the shuffle...
+    [self addChild:[MTFloatingLabel labelWithString:@"重新排列"]];
     [board shuffle];
     // Remove the text after the animation...
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime+kMTBoardShuffleTime];   
@@ -289,7 +290,7 @@
     
     CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"时间到了..."
                                                   fontName:kMTFont
-                                                  fontSize:80];
+                                                  fontSize:kMTFontSizeCaption];
     CGSize winSize = [[CCDirector sharedDirector] winSize];    
     timeUpLabel.position = ccp(winSize.width/2, 700);
     [menuBackground addChild:timeUpLabel];
@@ -315,7 +316,7 @@
     
     CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"游戏暂停"
                                                   fontName:kMTFont
-                                                  fontSize:80];
+                                                  fontSize:kMTFontSizeCaption];
     CGSize winSize = [[CCDirector sharedDirector] winSize];    
     timeUpLabel.position = ccp(winSize.width/2, 700);
     [menuBackground addChild:timeUpLabel];
@@ -344,7 +345,7 @@
     
     CCLabelTTF * levelSuccessLabel = [CCLabelTTF labelWithString:@"恭喜过关..."
                                                         fontName:kMTFont
-                                                        fontSize:80];
+                                                        fontSize:kMTFontSizeCaption];
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     levelSuccessLabel.position = ccp(winSize.width/2, 700);
     [menuBackground addChild:levelSuccessLabel];    

@@ -139,6 +139,7 @@
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 		6EA998EF140B2E100071A2F7 /* Particle_NoBlend.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */; };
 		6EA998F2140B62FA0071A2F7 /* Abilities_Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */; };
+		6EC38271140C928B004F1147 /* MTFloatingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC38270140C928B004F1147 /* MTFloatingLabel.m */; };
 		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 		6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3725313FC13AE0011C477 /* MTAbilityButton.m */; };
 		6EE3725713FC1F610011C477 /* Abilities.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3725613FC1F610011C477 /* Abilities.png */; };
@@ -409,6 +410,8 @@
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 		6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle_NoBlend.png; path = Resources/Particle_NoBlend.png; sourceTree = "<group>"; };
 		6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abilities_Disabled.png; path = Resources/Abilities_Disabled.png; sourceTree = "<group>"; };
+		6EC3826F140C928A004F1147 /* MTFloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFloatingLabel.h; sourceTree = "<group>"; };
+		6EC38270140C928B004F1147 /* MTFloatingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFloatingLabel.m; sourceTree = "<group>"; };
 		6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeMenuScene.h; sourceTree = "<group>"; };
 		6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeMenuScene.m; sourceTree = "<group>"; };
 		6EE3725213FC13AE0011C477 /* MTAbilityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAbilityButton.h; sourceTree = "<group>"; };
@@ -826,6 +829,8 @@
 		6E05296813E6FFD2002BA347 /* MT */ = {
 			isa = PBXGroup;
 			children = (
+				6EC3826F140C928A004F1147 /* MTFloatingLabel.h */,
+				6EC38270140C928B004F1147 /* MTFloatingLabel.m */,
 				6EE3725213FC13AE0011C477 /* MTAbilityButton.h */,
 				6EE3725313FC13AE0011C477 /* MTAbilityButton.m */,
 				6E7FA7B713FABFB500FE4A0A /* MTAbility.h */,
@@ -1042,6 +1047,7 @@
 				6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */,
 				6E7FA7B913FABFB500FE4A0A /* MTAbility.m in Sources */,
 				6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */,
+				6EC38271140C928B004F1147 /* MTFloatingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 #import "MTBackground.h"
 #import "MTAbility.h"
 #import "MTAbilityButton.h"
+#import "MTFloatingLabel.h"
 
 @interface MTGame : CCNode{
     // Gameplay Related

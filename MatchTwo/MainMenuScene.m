@@ -46,7 +46,7 @@
 {
 	if( (self=[super init])) {
         [CCMenuItemFont setFontName:kMTFont];
-        [CCMenuItemFont setFontSize:40];
+        [CCMenuItemFont setFontSize:kMTFontSizeNormal];
         CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
                          [CCMenuItemFont itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
                          [CCMenuItemFont itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
