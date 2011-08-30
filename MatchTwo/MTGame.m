@@ -221,6 +221,12 @@
         remainingTime -= dt;
     }
     
+    if ([self isAbilityActive:@"ExtraTime"]) {
+        timeLine.highlight = YES;
+    }else{
+        timeLine.highlight = NO;
+    }
+    
     if (remainingTime <= 0) {
         remainingTime = 0;
         // End Game Here.

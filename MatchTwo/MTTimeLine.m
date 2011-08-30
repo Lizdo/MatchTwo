@@ -18,10 +18,15 @@
 
 @implementation MTTimeLine
 
-@synthesize frozen;
+@synthesize frozen, highlight, game;
 
 - (void)setPercentage:(float)newPercentage{
-    NSAssert(newPercentage >= 0 && newPercentage <= 1.0, @"Wrong percentage set!");
+    if (newPercentage > 1) {
+        newPercentage = 1;
+    }
+    if (newPercentage < 0) {
+        newPercentage = 0;
+    }
     percentage = newPercentage;
 }
 
@@ -41,6 +46,8 @@
     // Draw Fill
     if (frozen) {
         glColor4f(0.6,0.8,0.8,0.4);
+    }else if(highlight){
+        glColor4f(1.0,0.5,0.0,0.4);        
     }else{
         ccColor4F c = [self fillColor];
         glColor4f(c.r, c.g, c.b, c.a);

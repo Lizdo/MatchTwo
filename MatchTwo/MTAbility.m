@@ -189,7 +189,7 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 10.0f;
+        activeTime = 2.0f;
         cooldownTime = 2.0f;
         name = @"ExtraTime";
         type = MTAbilityType_Activate;
