@@ -30,6 +30,7 @@
 
 
 - (id)init{
+    //self = [super initWithFile:@"Tile.png" capacity:100];
     self = [super init];
     if (self) {
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
@@ -258,10 +259,14 @@
 }
 
 - (void)shuffle{
+    
     NSMutableArray * array = [NSMutableArray arrayWithCapacity:20];
     for (MTPiece * p in self.children) {
         if (p.enabled) {
             [array addObject:p];
+            // Reset Hint/Selection            
+            p.selected = NO;
+            p.hinted = NO;
         }
     }
     
