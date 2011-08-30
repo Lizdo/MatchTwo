@@ -36,7 +36,8 @@
 {
     self = [super init];
     if (self) {
-        self.state = MTAbilityState_Ready;
+        state = MTAbilityState_Ready;
+        type = MTAbilityType_Button;
     }
     return self;
 }
@@ -46,6 +47,9 @@
     tickingTime += dt;
     switch (state) {
         case MTAbilityState_Ready:
+            self.state = MTAbilityState_Assigned;
+            break;
+        case MTAbilityState_Assigned:
             // Do nothing
             break;
         case MTAbilityState_Active:
@@ -64,7 +68,7 @@
 }
 
 - (float)cooldownPercentage{
-    if (state == MTAbilityState_Ready) {
+    if ([self ready]) {
         return 1.0f;
     }
     if (state == MTAbilityState_Active) {
@@ -76,13 +80,13 @@
 }
 
 - (void)activate{
-    if (state == MTAbilityState_Ready) {
+    if ([self ready]) {
         self.state = MTAbilityState_Active;
     }
 }
 
 - (BOOL)ready{
-    return state == MTAbilityState_Ready;
+    return state == MTAbilityState_Ready || state == MTAbilityState_Assigned;
 }
 - (BOOL)active{
     return state == MTAbilityState_Active;
@@ -151,8 +155,45 @@
     if (self) {
         // Possible to query SharedManager for Player Info
         activeTime = 0.01f;
-        cooldownTime = 10.0;
+        cooldownTime = 10.0f;
         name = @"Shuffle";
+    }
+    return self;
+}
+
+@end
+
+
+@implementation MTAbilityDoubleScore
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Possible to query SharedManager for Player Info
+        activeTime = 10.0f;
+        cooldownTime = 12.0f;
+        name = @"DoubleScore";
+        type = MTAbilityType_Activate;
+        state = MTAbilityState_CoolDown;
+    }
+    return self;
+}
+
+@end
+
+@implementation MTAbilityExtraTime
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Possible to query SharedManager for Player Info
+        activeTime = 10.0f;
+        cooldownTime = 2.0f;
+        name = @"ExtraTime";
+        type = MTAbilityType_Activate;
+        state = MTAbilityState_CoolDown;        
     }
     return self;
 }

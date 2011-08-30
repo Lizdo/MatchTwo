@@ -42,4 +42,6 @@
 
 - (BOOL)findLink;
 
+- (MTPiece *)randomPiece;
+
 @end

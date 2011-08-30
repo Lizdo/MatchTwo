@@ -63,6 +63,8 @@
 - (void)pause;
 - (void)resume;
 
+- (void)linkDissolved;
+
 // Shuffle the board, when no move is available
 - (void)shuffle;
 - (CGPoint)positionForPiece:(MTPiece *)piece;
@@ -73,5 +75,6 @@
 - (BOOL)isAbilityReady:(NSString *)name;
 
 - (void)abilityButtonClicked:(MTAbilityButton *)button;
+- (void)activateAbility:(NSString *)n;
 
 @end

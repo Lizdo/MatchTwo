@@ -188,10 +188,10 @@
     if (result == nil) {       
         [self deselectAllPieces];
     }else{
-        [MTSharedManager instance].totalScore += 200;
         [game drawLinesWithPoints:result];
         [selectedPiece1 disappear];
         [selectedPiece2 disappear];        
+        [game linkDissolved];
     }
     
     checkingInProgress = NO;
@@ -306,6 +306,16 @@
             [helper tileWithRow:piece.row andColumn:piece.column].state = TileState_Occupied;            
         }
     } 
+}
+
+- (MTPiece *)randomPiece{
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:10];
+    for (MTPiece * p in self.children) {
+        if (p.enabled && p.ability == @"") {
+            [array addObject:p];
+        }
+    }
+    return [array objectAtIndex:arc4random()%[array count]];
 }
 
 - (void)pause{

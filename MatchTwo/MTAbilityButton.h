@@ -32,4 +32,7 @@
 
 - (void)update:(ccTime)dt;
 
++ (CCSprite *)spriteForButtonName:(NSString *)buttonName;
++ (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName;
+
 @end

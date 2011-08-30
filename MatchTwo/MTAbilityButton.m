@@ -25,11 +25,7 @@ CGRect rectForIndex(int index){
 
 
 @interface MTAbilityButton()
-
-- (int)idForButtonName:(NSString *)buttonName;
-- (CCSprite *)spriteForButtonName:(NSString *)buttonName;
-- (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName;
-
++ (int)idForButtonName:(NSString *)buttonName;
 @end
 
 @implementation MTAbilityButton
@@ -47,13 +43,12 @@ CGRect rectForIndex(int index){
         game = g;
         self.contentSize = CGSizeMake(kMTAbilityButtonSize, kMTAbilityButtonSize);
         
-        sprite = [self spriteForButtonName:name];
+        sprite = [MTAbilityButton spriteForButtonName:name];
         sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         sprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
-        
         [self addChild:sprite z:-1];
         
-        disabledSprite = [self disabledSpriteForButtonName:name];
+        disabledSprite = [MTAbilityButton disabledSpriteForButtonName:name];
         disabledSprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         disabledSprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
         disabledSprite.visible = NO;
@@ -124,26 +119,28 @@ CGRect rectForIndex(int index){
 
 
 
-- (int)idForButtonName:(NSString *)buttonName{
++ (int)idForButtonName:(NSString *)buttonName{
     NSArray * nameArray = [NSArray arrayWithObjects:@"Freeze",
                            @"Hint",
                            @"Highlight",
                            @"Shuffle",
+                           @"ExtraTime",
+                           @"DoubleScore",                           
                            nil];
     return [nameArray indexOfObject:buttonName];
 }
 
 
-- (CCSprite *)spriteForButtonName:(NSString *)buttonName{
-    int index = [self idForButtonName:buttonName];
++ (CCSprite *)spriteForButtonName:(NSString *)buttonName{
+    int index = [MTAbilityButton idForButtonName:buttonName];
     CCSprite * s = [CCSprite spriteWithFile:@"Abilities.png" 
                                             rect:rectForIndex(index)
                          ];
     return s;
 }
 
-- (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName{
-    int index = [self idForButtonName:buttonName];
++ (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName{
+    int index = [MTAbilityButton idForButtonName:buttonName];
     CCSprite * s = [CCSprite spriteWithFile:@"Abilities_Disabled.png" 
                                             rect:rectForIndex(index)
                          ];

@@ -10,6 +10,7 @@
 #import "CCTouchDispatcher.h"
 #import "CCDrawingPrimitives+MT.h"
 #import "MTGame.h"
+#import "MTAbilityButton.h"
 
 // Tile is a 512 x 512 texture, each grid is 64 * 64
 
@@ -22,7 +23,7 @@ CGRect rectForType(int type){
 
 @implementation MTPiece
 
-@synthesize row,column,type,enabled,hinted,pairedPiece,shufflePiece,game;
+@synthesize row,column,type,enabled,hinted,pairedPiece,shufflePiece,game,ability;
 
 - (void)setSelected:(BOOL)toBeSelected{
     if (!enabled) {
@@ -50,6 +51,7 @@ CGRect rectForType(int type){
         self.anchorPoint = ccp(0.5, 0.5); 
         self.enabled = YES;
         self.type = theType;
+        self.ability = @"";
     }
     return self;
 }
@@ -83,9 +85,20 @@ CGRect rectForType(int type){
     }
     self.enabled = NO;
     [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
+    [game activateAbility:ability];
 }
 
-
+- (void)assignAbility:(NSString *)abilityName{
+    NSAssert(ability == @"", @"Already Assigned Ability!");
+    self.ability = abilityName;
+    // Add a badge according to the ability name.
+    badge = [MTAbilityButton spriteForButtonName:self.ability];
+    badge.scale = kMTAbilityBadgeSize/kMTAbilityButtonSpriteSize;
+    badge.anchorPoint = ccp(0.5,0.5);
+    badge.position = ccp(kMTPieceSize - kMTAbilityBadgePadding,
+                         kMTPieceSize - kMTAbilityBadgePadding);
+    [self addChild:badge z:2];
+}
 
 - (void)shake{
     if (shaking) {

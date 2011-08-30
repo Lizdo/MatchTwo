@@ -114,7 +114,9 @@
                   [[[MTAbilityFreeze alloc]init]autorelease],
                   [[[MTAbilityHint alloc]init]autorelease],
                   [[[MTAbilityHighlight alloc]init]autorelease],
-                  [[[MTAbilityShuffle alloc]init]autorelease],                  
+                  [[[MTAbilityShuffle alloc]init]autorelease], 
+                  [[[MTAbilityDoubleScore alloc]init]autorelease],                   
+                  [[[MTAbilityExtraTime alloc]init]autorelease],                                     
                 nil] retain];
         
     abilityButtons = [[NSMutableArray arrayWithObjects:
@@ -202,6 +204,14 @@
     for (MTAbilityButton * b in abilityButtons) {
         [b update:dt];
     }
+    
+    // Passive Abilities needs to be managed manually
+    for (MTAbility * a in abilities) {
+        if (a.type == MTAbilityType_Activate 
+            && a.state == MTAbilityState_Ready) {
+            [[board randomPiece] assignAbility:a.name];
+        }
+    }
 
     // Update DT
     if ([self isAbilityActive:@"Freeze"]) {
@@ -254,6 +264,12 @@
     
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
+    
+    if ([self isAbilityActive:@"DoubleScore"]) {
+        scoreLabel.color = ccORANGE;
+    }else{
+        scoreLabel.color = ccWHITE;
+    }
     
     scoreLabel.string = [NSString stringWithFormat:@"%d", 
                          [MTSharedManager instance].totalScore];
@@ -363,6 +379,14 @@
     
 }
 
+- (void)linkDissolved{
+    if ([self isAbilityActive:@"DoubleScore"]) {
+        [MTSharedManager instance].totalScore += 400;
+    }else{
+        [MTSharedManager instance].totalScore += 200;
+    }
+}
+
 - (void)pause{
     if (paused) {
         return;
@@ -423,16 +447,24 @@
 }
 
 - (void)abilityButtonClicked:(MTAbilityButton *)button{
-    [[self abilityNamed:button.name] activate];
+    [self activateAbility:button.name];
+}
+
+- (void)activateAbility:(NSString *)n{
+    [[self abilityNamed:n] activate];
     
     // On Trigger Ability Activate Here
-    if (button.name == @"Hint") {
+    if (n == @"Hint") {
         needShuffleCheck = YES;
     }
     
     // On Trigger Ability Activate Here
-    if (button.name == @"Shuffle") {
+    if (n == @"Shuffle") {
         [self shuffle];
+    }
+    
+    if (n == @"ExtraTime") {
+        remainingTime += 10.0f;
     }
     
     // Update Abilities Once Here to update the UI

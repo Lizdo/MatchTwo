@@ -16,6 +16,7 @@
 
 typedef enum {
     MTAbilityState_Ready,
+    MTAbilityState_Assigned,        // Used by activate style abilities.
     MTAbilityState_Active,
     MTAbilityState_CoolDown,
 }MTAbilityState;
@@ -23,8 +24,8 @@ typedef enum {
 // Active Abilities are triggered by player input by using a user button
 
 typedef enum {
-    MTAbilityType_Active,
-    MTAbilityType_Passive,    
+    MTAbilityType_Button,
+    MTAbilityType_Activate,    
 }MTAbilityType;
 
 
@@ -67,4 +68,10 @@ typedef enum {
 @end
 
 @interface MTAbilityShuffle : MTAbility
+@end
+
+@interface MTAbilityDoubleScore : MTAbility
+@end
+
+@interface MTAbilityExtraTime : MTAbility
 @end

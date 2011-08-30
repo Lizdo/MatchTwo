@@ -31,6 +31,10 @@
     MTPiece * shufflePiece;
     int newRow;
     int newColomn;
+    
+    // Used for ability activation
+    CCSprite * badge;
+    NSString * ability;
 }
 
 @property int row;
@@ -42,6 +46,7 @@
 @property (assign) MTPiece * pairedPiece;
 @property (assign) MTPiece * shufflePiece;
 @property (assign) MTGame * game;
+@property (retain) NSString * ability;
 
 - (id)initWithType:(int)type;
 
@@ -51,5 +56,7 @@
 - (void)disappear;
 - (void)shake;
 - (void)shuffle;
+
+- (void)assignAbility:(NSString *)abilityName;
 
 @end
