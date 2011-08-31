@@ -85,7 +85,8 @@ CGRect rectForType(int type){
     }
     self.enabled = NO;
     [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
-    [game activateAbility:ability];
+    // Fly the badge to the upside, then ability will be activated
+    [game flyBadge:badge forAbility:ability];
 }
 
 - (void)assignAbility:(NSString *)abilityName{

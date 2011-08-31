@@ -15,6 +15,7 @@
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
+- (void)flyBadge:(CCSprite *)b to:(CGPoint)p ability:(NSString *)abilityName;
 @end
 
 @implementation MTGame
@@ -282,26 +283,8 @@
     
 }
 
-- (void)drawLinesWithPoints:(NSArray *)points{
-    needShuffleCheck = YES;
-    
-    MTLine * line = [MTLine lineWithPoints:points];
-    [self addChild:line];
-    
-    MTParticleDisappear * p = [[[MTParticleDisappear alloc]init]autorelease];
-    [self addChild:p];
-    p.position = [[points objectAtIndex:0] CGPointValue];    
-    
-    p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
-    [self addChild:p];
-    p.position = [[points lastObject] CGPointValue];
-    
-    
-}
-
-
-#pragma -
-#pragma Menus
+#pragma mark -
+#pragma mark Menus
 
 - (void)gameFailMenu{
     self.menuBackground = [CCNode node];
@@ -385,6 +368,28 @@
     
 }
 
+#pragma mark -
+#pragma mark Game Logic
+
+
+- (void)drawLinesWithPoints:(NSArray *)points{
+    needShuffleCheck = YES;
+    
+    MTLine * line = [MTLine lineWithPoints:points];
+    [self addChild:line];
+    
+    MTParticleDisappear * p = [[[MTParticleDisappear alloc]init]autorelease];
+    [self addChild:p];
+    p.position = [[points objectAtIndex:0] CGPointValue];    
+    
+    p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
+    [self addChild:p];
+    p.position = [[points lastObject] CGPointValue];
+    
+    
+}
+
+
 - (void)linkDissolved{
     if ([self isAbilityActive:kMTAbilityDoubleScore]) {
         [MTSharedManager instance].totalScore += 400;
@@ -424,6 +429,10 @@
                          kMTBoardStartingY+(piece.row-0.5)* kMTPieceSize);  
     return p;
 }
+
+
+#pragma mark -
+#pragma mark Ability Helper Functions
                                      
 
 - (MTAbility *)abilityNamed:(NSString *)name{
@@ -451,6 +460,9 @@
     }
     return NO;    
 }
+
+
+
 
 - (void)abilityButtonClicked:(MTAbilityButton *)button{
     [self activateAbility:button.name];
@@ -484,5 +496,60 @@
     }    
 }
 
+#pragma mark -
+#pragma mark Floating Ability Badge
+
+- (void)flyBadge:(CCSprite *)badge forAbility:(NSString *)abilityName{
+    if (abilityName == kMTAbilityExtraTime){
+        float percentage = [timeLine percentage];
+        CGSize winSize = [[CCDirector sharedDirector] winSize];    
+        CGPoint p = ccp(winSize.width * percentage, timeLine.position.y);
+        [self flyBadge:badge to:p ability:abilityName];        
+        return;
+    }
+    if (abilityName == kMTAbilityDoubleScore){    
+        [self flyBadge:badge
+                    to:ccp(200,scoreLabel.position.y + 15)
+                    ability:abilityName
+         ];
+        return;
+    }
+}
+
+- (void)flyBadge:(CCSprite *)b to:(CGPoint)p ability:(NSString *)abilityName{
+    // When b is removed from parent, it will be de-allocated, thus retain here
+    [b retain];
+    
+    // Need to record the position here
+    CGPoint positionInWorld = [b convertToWorldSpace:b.position];
+    [b.parent removeChild:b cleanup:NO];
+    [self addChild:b z:100];
+    b.position = positionInWorld;
+    
+    
+    // Setup the Bezier
+    CGPoint startingPosition = b.position;
+    CGPoint midPoint = ccpMidpoint(startingPosition, p);
+    CGPoint controlPoint1 = ccpAdd(ccpMidpoint(midPoint, startingPosition),
+                                   ccp(50,0));
+    CGPoint controlPoint2 = ccpAdd(ccpMidpoint(p, midPoint),
+                                   ccp(100,0));
+    ccBezierConfig c = {
+        p,
+        controlPoint1,
+        controlPoint2,
+    };    
+    
+    [b runAction:[CCSequence actions:
+                        [CCDelayTime actionWithDuration:kMTBadgeWaitingTime],
+                        [CCBezierTo actionWithDuration:kMTBadgeFloatingTime bezier:c],
+                        [CCDelayTime actionWithDuration:kMTBadgeWaitingTime],
+                        [CCCallBlock actionWithBlock:^{
+        [b removeFromParentAndCleanup:YES];
+        [self activateAbility:abilityName];
+    }],
+     nil]];
+    [b autorelease];
+}
 
 @end

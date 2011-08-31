@@ -77,4 +77,6 @@
 - (void)abilityButtonClicked:(MTAbilityButton *)button;
 - (void)activateAbility:(NSString *)n;
 
+- (void)flyBadge:(CCSprite *)badge forAbility:(NSString *)abilityName;
+
 @end

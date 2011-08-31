@@ -18,6 +18,8 @@
 
 static MTSharedManager * _instance = nil;
 
+#pragma mark -
+#pragma mark Init/Save/Load
 
 + (id)alloc {
     @synchronized ([MTSharedManager class])
@@ -67,6 +69,9 @@ static MTSharedManager * _instance = nil;
     }
 }
 
+#pragma mark -
+#pragma mark Level Management
+
 // Level ID: 10X, 101, 102, 103
 //      Time = 100
 //      Number of Piece = 9 + 2 * x
@@ -96,6 +101,10 @@ static MTSharedManager * _instance = nil;
     int nextLevelID = [self nextLevelID:currentID];
     [self replaceSceneWithID:nextLevelID];
 }
+
+
+#pragma mark -
+#pragma mark Scene Management
 
 - (void)replaceSceneWithID:(int)sceneID{
     CCScene * scene;

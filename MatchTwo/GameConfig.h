@@ -83,3 +83,6 @@
 #define kMTFloatingLabelDefaultPosition (ccp(700.0f, 900.0f))
 #define kMTFloatingLabelOnScreenTime 3.0f
 
+#define kMTBadgeWaitingTime 0.3f
+#define kMTBadgeFloatingTime 1.0f
+
