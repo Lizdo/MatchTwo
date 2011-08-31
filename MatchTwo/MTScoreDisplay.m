@@ -97,10 +97,10 @@
     glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint border[4] = {
-        ccp(kMTScoreBarPositionX + 1.5, kMTScoreBarPositionY + 1),
-        ccp(kMTScoreBarPositionX + kMTScoreBarWidth-1, kMTScoreBarPositionY + 1),
-        ccp(kMTScoreBarPositionX + kMTScoreBarWidth-1, kMTScoreBarPositionY + kMTScoreBarHeight-1.5),
-        ccp(kMTScoreBarPositionX + 1.5, kMTScoreBarPositionY + kMTScoreBarHeight-1.5)
+        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY),
+        ccp(kMTScoreBarPositionX + kMTScoreBarWidth, kMTScoreBarPositionY),
+        ccp(kMTScoreBarPositionX + kMTScoreBarWidth, kMTScoreBarPositionY + kMTScoreBarHeight),
+        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY + kMTScoreBarHeight)
     };
     ccDrawPoly(border, 4, YES);    
 }

@@ -93,6 +93,7 @@
     // Add Score Display
     scoreDisplay = [[MTScoreDisplay alloc]init];
     scoreDisplay.position = ccp(kMTScoreDisplayStartingX, kMTScoreDisplayStartingY);
+    scoreDisplay.game = self;
     [self addChild:scoreDisplay];
     
     // Add Pause Button
@@ -489,7 +490,7 @@
     if (abilityName == kMTAbilityExtraTime){
         float percentage = [timeLine percentage];
         CGSize winSize = [[CCDirector sharedDirector] winSize];    
-        CGPoint p = ccp(winSize.width * percentage, timeLine.position.y);
+        CGPoint p = ccp(winSize.width * percentage, timeLine.position.y+kMTTimeLineHeight/2);
         [self flyBadge:badge to:p ability:abilityName];        
         return;
     }
