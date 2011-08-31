@@ -12,9 +12,13 @@
 #import "GameScene.h"
 #import "MTGame.h"
 
+@interface MTSharedManager ()
+- (void)calculateLevel;
+@end
+
 @implementation MTSharedManager
 
-@synthesize noMusic, noSoundEffect, totalScore;
+@synthesize noMusic, noSoundEffect, level;
 
 static MTSharedManager * _instance = nil;
 
@@ -39,6 +43,7 @@ static MTSharedManager * _instance = nil;
         noMusic = [[NSUserDefaults standardUserDefaults] boolForKey:@"noMusic"];
         noSoundEffect = [[NSUserDefaults standardUserDefaults] boolForKey:@"noSoundEffect"];
         totalScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"totalScore"];
+        [self calculateLevel];
     }
     return self;
 }
@@ -72,15 +77,44 @@ static MTSharedManager * _instance = nil;
 #pragma mark -
 #pragma mark Score Management
 
-- (int)level{
-    return 1;
+- (void)setTotalScore:(int)s{
+    if (s == totalScore) {
+        return;
+    }
+    totalScore = s;
+    [self calculateLevel];
+    return;
 }
+
+- (int)totalScore{
+    return totalScore;
+}
+
+- (void)calculateLevel{
+    for (int i = 1; i <= 100; i++) {
+        if (totalScore < [self scoreForLevel:i+1]) {
+            level = i;
+            return;
+        }
+    }
+    level = 100;
+}
+                           
 - (int)scoreForNextLevel{
     return [self scoreForLevel:[self level]+1];
 }
-- (int)scoreForLevel:(int)newLevel{
-    return (newLevel - 1) * 20000;
+
+
+
+- (int)scoreForLevel:(int)l{
+    float k2 = 0.001477744;
+    float k1 = 0.572678;
+    float k0 = 0.493872;
+    float s = kMTScorePerGame*(k2*l*l+k1*l+k0);
+    return round(s/100)*100;
+    //return (newLevel - 1) * 20000;
 }
+
 
 
 

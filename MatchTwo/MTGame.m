@@ -379,9 +379,9 @@
 
 - (void)linkDissolved{
     if ([self isAbilityActive:kMTAbilityDoubleScore]) {
-        [MTSharedManager instance].totalScore += 400;
+        [MTSharedManager instance].totalScore += kMTScorePerPiece*2;
     }else{
-        [MTSharedManager instance].totalScore += 200;
+        [MTSharedManager instance].totalScore += kMTScorePerPiece;
     }
 }
 

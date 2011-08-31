@@ -22,7 +22,7 @@
 #define kMTScoreDisplayScoreLabelWidth 200
 #define kMTScoreDisplayScoreLabelHeight 20
 
-#define kMTScoreDisplayScoreLabelPositionX (kMTLevelDisplayWidth+kMTScoreDisplayPadding)
+#define kMTScoreDisplayScoreLabelPositionX (kMTLevelDisplayWidth+kMTScoreDisplayPadding*5)
 #define kMTScoreDisplayScoreLabelPositionY kMTScoreDisplayPadding
 
 #define kMTScoreBarWidth 200
@@ -81,7 +81,7 @@
     [super draw];
     
     // Draw the Timeline here
-    glColor4f(1.0, 0.5, 0.5, 0.8);
+    glColor4f(1.0, 0.8, 0.2, 0.4);
     glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     CGPoint fill[4] = {

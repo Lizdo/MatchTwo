@@ -93,3 +93,10 @@
 #define kMTBadgeWaitingTime 0.3f
 #define kMTBadgeFloatingTime 1.0f
 
+
+#pragma mark -
+#pragma mark Game Balancing
+
+#define kMTScorePerGame 4000.0f
+#define kMTScorePerPiece 12.0f
+

@@ -13,19 +13,20 @@
     BOOL noSoundEffect;
     
     int totalScore;
+    int level;
     int currentSceneID;
 }
 
 @property BOOL noMusic;
 @property BOOL noSoundEffect;
 @property int totalScore;
+@property (readonly) int level;
 
 + (MTSharedManager *)instance;
 - (void)save;
 - (void)pause;
 
 // Score Management
-- (int)level;
 - (int)scoreForNextLevel;
 - (int)scoreForLevel:(int)newLevel;
 
