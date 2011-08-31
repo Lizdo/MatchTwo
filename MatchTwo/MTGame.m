@@ -91,16 +91,9 @@
     // TODO: Add SFX Layer 
     
     // Add Score Display
-    CGSize dimension = CGSizeMake(600, 50);
-    
-    scoreLabel = [CCLabelTTF labelWithString:@"分数:0"
-                                  dimensions:dimension
-                                   alignment:UITextAlignmentLeft
-                                    fontName:kMTFont
-                                    fontSize:kMTFontSizeNormal];
-    
-    scoreLabel.position = ccp(350, 950);
-    [self addChild:scoreLabel];
+    scoreDisplay = [[MTScoreDisplay alloc]init];
+    scoreDisplay.position = ccp(kMTScoreDisplayStartingX, kMTScoreDisplayStartingY);
+    [self addChild:scoreDisplay];
     
     // Add Pause Button
     
@@ -272,14 +265,7 @@
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
     
-    if ([self isAbilityActive:kMTAbilityDoubleScore]) {
-        scoreLabel.color = ccORANGE;
-    }else{
-        scoreLabel.color = ccWHITE;
-    }
-    
-    scoreLabel.string = [NSString stringWithFormat:@"%d", 
-                         [MTSharedManager instance].totalScore];
+    [scoreDisplay update:dt];
     
 }
 
@@ -509,7 +495,7 @@
     }
     if (abilityName == kMTAbilityDoubleScore){    
         [self flyBadge:badge
-                    to:ccp(200,scoreLabel.position.y + 15)
+                    to:ccp(kMTScoreDisplayWidth, scoreDisplay.position.y + 15)
                     ability:abilityName
          ];
         return;

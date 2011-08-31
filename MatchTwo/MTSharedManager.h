@@ -24,6 +24,12 @@
 - (void)save;
 - (void)pause;
 
+// Score Management
+- (int)level;
+- (int)scoreForNextLevel;
+- (int)scoreForLevel:(int)newLevel;
+
+// Scene Management
 - (NSDictionary *)settingsForLevelID:(int)LevelID;
 - (int)nextLevelID:(int)currentID;
 - (void)gotoNextLevel:(int)currentID;

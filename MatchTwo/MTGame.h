@@ -19,6 +19,7 @@
 #import "MTAbility.h"
 #import "MTAbilityButton.h"
 #import "MTFloatingLabel.h"
+#import "MTScoreDisplay.h"
 
 @interface MTGame : CCNode{
     // Gameplay Related
@@ -42,12 +43,10 @@
     int numberOfTypes;
     int levelID;
     
-    CCLabelTTF * scoreLabel;
-    
     NSMutableArray * abilities;
     NSMutableArray * abilityButtons;    
     
-    MTAbilityButton * freezeButton;
+    MTScoreDisplay * scoreDisplay;
 }
 
 @property (retain) CCMenu * menu;

@@ -134,6 +134,7 @@
 		6E7FA7B913FABFB500FE4A0A /* MTAbility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7FA7B813FABFB500FE4A0A /* MTAbility.m */; };
 		6E85592913F413E100FE8963 /* ChineseFont.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6E85592813F413E100FE8963 /* ChineseFont.TTF */; };
 		6E8586E613F030D7007217DD /* MTSharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8586E513F030D7007217DD /* MTSharedManager.m */; };
+		6E8A50D0140E285600C4352C /* MTScoreDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A50CF140E285500C4352C /* MTScoreDisplay.m */; };
 		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
 		6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
@@ -402,6 +403,8 @@
 		6E85592813F413E100FE8963 /* ChineseFont.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ChineseFont.TTF; path = Resources/ChineseFont.TTF; sourceTree = "<group>"; };
 		6E8586E413F030D7007217DD /* MTSharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSharedManager.h; sourceTree = "<group>"; };
 		6E8586E513F030D7007217DD /* MTSharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSharedManager.m; sourceTree = "<group>"; };
+		6E8A50CE140E285500C4352C /* MTScoreDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTScoreDisplay.h; sourceTree = "<group>"; };
+		6E8A50CF140E285500C4352C /* MTScoreDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTScoreDisplay.m; sourceTree = "<group>"; };
 		6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBackground.h; sourceTree = "<group>"; };
 		6E8C09B013F2CC2300DF1F84 /* MTBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBackground.m; sourceTree = "<group>"; };
 		6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCDrawingPrimitives+MT.m"; sourceTree = "<group>"; };
@@ -829,6 +832,8 @@
 		6E05296813E6FFD2002BA347 /* MT */ = {
 			isa = PBXGroup;
 			children = (
+				6E8A50CE140E285500C4352C /* MTScoreDisplay.h */,
+				6E8A50CF140E285500C4352C /* MTScoreDisplay.m */,
 				6EC3826F140C928A004F1147 /* MTFloatingLabel.h */,
 				6EC38270140C928B004F1147 /* MTFloatingLabel.m */,
 				6EE3725213FC13AE0011C477 /* MTAbilityButton.h */,
@@ -1048,6 +1053,7 @@
 				6E7FA7B913FABFB500FE4A0A /* MTAbility.m in Sources */,
 				6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */,
 				6EC38271140C928B004F1147 /* MTFloatingLabel.m in Sources */,
+				6E8A50D0140E285600C4352C /* MTScoreDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

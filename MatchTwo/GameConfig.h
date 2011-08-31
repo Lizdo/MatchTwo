@@ -45,6 +45,7 @@
 
 // Match Two Specific Settings
 
+#define kMTDefaultUIPadding 16.0f
 
 #define kMTDefaultColumnNumber 10
 #define kMTDefaultRowNumber 10
@@ -59,7 +60,7 @@
 #define kMTAbilityButtonTextureSize 512.0f
 #define kMTAbilityButtonSpriteSize 128.0f
 #define kMTAbilityButtonSize 96.0f
-#define kMTAbilityButtonPadding 16.0f
+#define kMTAbilityButtonPadding kMTDefaultUIPadding
 #define kMTAbilityBadgeSize 32.0f
 #define kMTAbilityBadgePadding 12.0f
 
@@ -74,11 +75,17 @@
 #define kMTTimeLineStartingX 0.0f
 #define kMTTimeLineStartingY (1024.0 - kMTTimeLineHeight)
 
+#define kMTScoreDisplayWidth 300.0f
+#define kMTScoreDisplayHeight 50.0f
+#define kMTScoreDisplayStartingX 0.0f
+#define kMTScoreDisplayStartingY (kMTTimeLineStartingY - kMTScoreDisplayHeight - kMTDefaultUIPadding)
+
 #define kMTMenuPadding 10.0f
 
 #define kMTFont @"FZLanTingHei-R-GBK"
 #define kMTFontSizeCaption 80.0f
 #define kMTFontSizeNormal 40.0f
+#define kMTFontSizeSmall 20.0f
 
 #define kMTFloatingLabelDefaultPosition (ccp(700.0f, 900.0f))
 #define kMTFloatingLabelOnScreenTime 3.0f

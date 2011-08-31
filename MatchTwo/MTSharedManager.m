@@ -70,6 +70,21 @@ static MTSharedManager * _instance = nil;
 }
 
 #pragma mark -
+#pragma mark Score Management
+
+- (int)level{
+    return 1;
+}
+- (int)scoreForNextLevel{
+    return [self scoreForLevel:[self level]+1];
+}
+- (int)scoreForLevel:(int)newLevel{
+    return (newLevel - 1) * 20000;
+}
+
+
+
+#pragma mark -
 #pragma mark Level Management
 
 // Level ID: 10X, 101, 102, 103
