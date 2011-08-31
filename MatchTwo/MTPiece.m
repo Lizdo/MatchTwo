@@ -58,7 +58,7 @@ CGRect rectForType(int type){
 
 
 - (void)draw{
-    if (hinted || [game isAbilityActive:@"Highlight"]) {
+    if (hinted || [game isAbilityActive:kMTAbilityHighlight]) {
         glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1);
     }else{
         glColor4f(0.0, 0.0, 0.0, 0.5);        

@@ -107,7 +107,7 @@
         // Possible to query SharedManager for Player Info
         activeTime = 10.0f;
         cooldownTime = 30.0f;
-        name = @"Freeze";
+        name = kMTAbilityFreeze;
     }
     return self;
 }
@@ -124,7 +124,7 @@
         // Possible to query SharedManager for Player Info
         activeTime = 5.0f;
         cooldownTime = 20.0f;
-        name = @"Hint";
+        name = kMTAbilityHint;
     }
     return self;
 }
@@ -140,7 +140,7 @@
         // Possible to query SharedManager for Player Info
         activeTime = 10.0f;
         cooldownTime = 60.0f;
-        name = @"Highlight";
+        name = kMTAbilityHighlight;
     }
     return self;
 }
@@ -156,7 +156,7 @@
         // Possible to query SharedManager for Player Info
         activeTime = 0.01f;
         cooldownTime = 10.0f;
-        name = @"Shuffle";
+        name = kMTAbilityShuffle;
     }
     return self;
 }
@@ -172,8 +172,8 @@
     if (self) {
         // Possible to query SharedManager for Player Info
         activeTime = 10.0f;
-        cooldownTime = 12.0f;
-        name = @"DoubleScore";
+        cooldownTime = 20.0f;
+        name = kMTAbilityDoubleScore;
         type = MTAbilityType_Activate;
         state = MTAbilityState_CoolDown;
     }
@@ -189,9 +189,9 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 2.0f;
-        cooldownTime = 2.0f;
-        name = @"ExtraTime";
+        activeTime = 1.0f;
+        cooldownTime = 10.0f;
+        name = kMTAbilityExtraTime;
         type = MTAbilityType_Activate;
         state = MTAbilityState_CoolDown;        
     }

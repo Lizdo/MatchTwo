@@ -242,7 +242,7 @@
                 NSArray * result = [helper check];
                 if (result != nil) {
                     // Connection Found!
-                    if ([game isAbilityActive:@"Hint"]) {
+                    if ([game isAbilityActive:kMTAbilityHint]) {
                         piece1.hinted = YES;
                         piece2.hinted = YES;
                     }

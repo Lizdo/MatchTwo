@@ -12,6 +12,14 @@
 
 #pragma mark Type Defines
 
+#define kMTAbilityFreeze        @"Freeze"
+#define kMTAbilityHint          @"Hint"
+#define kMTAbilityHighlight     @"Highlight"
+#define kMTAbilityShuffle       @"Shuffle"
+#define kMTAbilityDoubleScore   @"DoubleScore"
+#define kMTAbilityExtraTime     @"ExtraTime"
+
+
 // Ready -> Active -> Cooldown
 
 typedef enum {
@@ -27,7 +35,6 @@ typedef enum {
     MTAbilityType_Button,
     MTAbilityType_Activate,    
 }MTAbilityType;
-
 
 #pragma mark -
 #pragma mark MTAbility Base Class

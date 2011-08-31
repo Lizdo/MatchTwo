@@ -120,10 +120,10 @@
                 nil] retain];
         
     abilityButtons = [[NSMutableArray arrayWithObjects:
-                       [MTAbilityButton abilityButtonWithName:@"Hint" target:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:@"Freeze" target:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:@"Highlight" target:self selector:@selector(abilityButtonClicked:)],
-                       [MTAbilityButton abilityButtonWithName:@"Shuffle" target:self selector:@selector(abilityButtonClicked:)],
+                       [MTAbilityButton abilityButtonWithName:kMTAbilityHint target:self selector:@selector(abilityButtonClicked:)], 
+                       [MTAbilityButton abilityButtonWithName:kMTAbilityFreeze target:self selector:@selector(abilityButtonClicked:)], 
+                       [MTAbilityButton abilityButtonWithName:kMTAbilityHighlight target:self selector:@selector(abilityButtonClicked:)],
+                       [MTAbilityButton abilityButtonWithName:kMTAbilityShuffle target:self selector:@selector(abilityButtonClicked:)],
                        nil]
                       retain];
     
@@ -214,14 +214,14 @@
     }
 
     // Update DT
-    if ([self isAbilityActive:@"Freeze"]) {
+    if ([self isAbilityActive:kMTAbilityFreeze]) {
         timeLine.frozen = YES;
     }else{
         timeLine.frozen = NO;
         remainingTime -= dt;
     }
     
-    if ([self isAbilityActive:@"ExtraTime"]) {
+    if ([self isAbilityActive:kMTAbilityExtraTime]) {
         timeLine.highlight = YES;
     }else{
         timeLine.highlight = NO;
@@ -271,7 +271,7 @@
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
     
-    if ([self isAbilityActive:@"DoubleScore"]) {
+    if ([self isAbilityActive:kMTAbilityDoubleScore]) {
         scoreLabel.color = ccORANGE;
     }else{
         scoreLabel.color = ccWHITE;
@@ -386,7 +386,7 @@
 }
 
 - (void)linkDissolved{
-    if ([self isAbilityActive:@"DoubleScore"]) {
+    if ([self isAbilityActive:kMTAbilityDoubleScore]) {
         [MTSharedManager instance].totalScore += 400;
     }else{
         [MTSharedManager instance].totalScore += 200;
@@ -460,16 +460,16 @@
     [[self abilityNamed:n] activate];
     
     // On Trigger Ability Activate Here
-    if (n == @"Hint") {
+    if (n == kMTAbilityHint) {
         needShuffleCheck = YES;
     }
     
     // On Trigger Ability Activate Here
-    if (n == @"Shuffle") {
+    if (n == kMTAbilityShuffle) {
         [self shuffle];
     }
     
-    if (n == @"ExtraTime") {
+    if (n == kMTAbilityExtraTime) {
         remainingTime += 10.0f;
     }
     

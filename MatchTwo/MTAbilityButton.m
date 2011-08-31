@@ -120,12 +120,12 @@ CGRect rectForIndex(int index){
 
 
 + (int)idForButtonName:(NSString *)buttonName{
-    NSArray * nameArray = [NSArray arrayWithObjects:@"Freeze",
-                           @"Hint",
-                           @"Highlight",
-                           @"Shuffle",
-                           @"ExtraTime",
-                           @"DoubleScore",                           
+    NSArray * nameArray = [NSArray arrayWithObjects:kMTAbilityFreeze,
+                           kMTAbilityHint,
+                           kMTAbilityHighlight,
+                           kMTAbilityShuffle,
+                           kMTAbilityExtraTime,
+                           kMTAbilityDoubleScore,                           
                            nil];
     return [nameArray indexOfObject:buttonName];
 }
