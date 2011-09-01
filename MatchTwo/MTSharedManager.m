@@ -45,6 +45,18 @@ static MTSharedManager * _instance = nil;
         noSoundEffect = [[NSUserDefaults standardUserDefaults] boolForKey:@"noSoundEffect"];
         totalScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"totalScore"];
         [self calculateLevel];
+        
+        // Load Level Settings from plist
+        NSString *plistPath;
+        NSString *rootPath =
+        [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,        
+                                             NSUserDomainMask, YES) objectAtIndex:0];
+        plistPath = [rootPath stringByAppendingPathComponent:@"levels.plist"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+            plistPath = [[NSBundle mainBundle]
+                         pathForResource:@"levels" ofType:@"plist"];
+        }
+        levels = [[NSMutableDictionary dictionaryWithContentsOfFile:plistPath]retain];
     }
     return self;
 }
@@ -136,13 +148,17 @@ static MTSharedManager * _instance = nil;
 // Level ID: 10X, 101, 102, 103
 //      Time = 100
 //      Number of Piece = 9 + 2 * x
-
+//
+//      initialTime
+//      numberOfTypes
+//      powerUpPercentage
 
 - (NSDictionary *)settingsForLevelID:(int)LevelID{
-    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithCapacity:3];
-    [dic setObject:[NSNumber numberWithFloat:kMTDefaultGameTime] forKey:@"initialTime"];
-    [dic setObject:[NSNumber numberWithInt:9 + (LevelID % 100 - 1) * 2] forKey:@"numberOfTypes"];    
-    return dic;
+//    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithCapacity:3];
+//    [dic setObject:[NSNumber numberWithFloat:kMTDefaultGameTime] forKey:@"initialTime"];
+//    [dic setObject:[NSNumber numberWithInt:9 + (LevelID % 100 - 1) * 2] forKey:@"numberOfTypes"];    
+//    return dic;
+    return [levels objectForKey:[NSString stringWithFormat:@"%d",LevelID]];
 }
 
 - (int)nextLevelID:(int)currentID{

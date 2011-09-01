@@ -15,6 +15,8 @@
     int totalScore;
     int level;
     int currentSceneID;
+    
+    NSMutableDictionary * levels;
 }
 
 @property BOOL noMusic;
