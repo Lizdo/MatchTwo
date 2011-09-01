@@ -12,6 +12,7 @@
 @interface MTGame ()
 - (void)prepare;
 - (NSArray *)randomizeType;
+- (void)stopRunning;
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
@@ -235,8 +236,6 @@
     if (remainingTime <= 0) {
         remainingTime = 0;
         // End Game Here.
-        paused = YES;
-        [board pause];
         [self gameFailMenu];
     }
     
@@ -268,8 +267,6 @@
     }
     
     if (allPiecesDisabled) {
-        paused = YES;
-        [board pause];
         [self gameSuccessMenu];
     }
     
@@ -284,6 +281,8 @@
 #pragma mark Menus
 
 - (void)gameFailMenu{
+    [self stopRunning];
+    
     self.menuBackground = [CCNode node];
     [self addChild:menuBackground];
     
@@ -309,6 +308,7 @@
 }
 
 - (void)pauseMenu{
+    [self stopRunning];
     
     self.menuBackground = [CCNode node];
     [self addChild:menuBackground];    
@@ -339,6 +339,8 @@
 
 
 - (void)gameSuccessMenu{
+    [self stopRunning];
+    
     self.menuBackground = [CCNode node];
     [self addChild:menuBackground];    
     
@@ -401,16 +403,21 @@
 
 
 - (void)pause{
+    board.visible = NO;
+    [self pauseMenu];
+}
+
+- (void)stopRunning{
     if (paused) {
         return;
     }
     paused = YES;
     [board pause];
-    buttons.isTouchEnabled = NO;
-    [self pauseMenu];
+    buttons.isTouchEnabled = NO;    
 }
 
 - (void)resume{
+    board.visible = YES;    
     [menuBackground removeFromParentAndCleanup:YES];
     [menu removeFromParentAndCleanup:YES];
     buttons.isTouchEnabled = YES;    
@@ -544,7 +551,7 @@
     
     [b runAction:[CCSequence actions:
                         [CCDelayTime actionWithDuration:kMTBadgeWaitingTime],
-                        [CCBezierTo actionWithDuration:kMTBadgeFloatingTime bezier:c],
+                  [CCEaseIn actionWithAction:[CCBezierTo actionWithDuration:kMTBadgeFloatingTime bezier:c] rate:2],
                         [CCDelayTime actionWithDuration:kMTBadgeWaitingTime],
                         [CCCallBlock actionWithBlock:^{
         [b removeFromParentAndCleanup:YES];

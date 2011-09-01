@@ -26,7 +26,7 @@
 #define kMTScoreDisplayScoreLabelPositionY kMTScoreDisplayPadding
 
 #define kMTScoreBarWidth 200
-#define kMTScoreBarHeight 20
+#define kMTScoreBarHeight 16
 
 #define kMTScoreBarPositionX kMTScoreDisplayScoreLabelPositionX
 #define kMTScoreBarPositionY (kMTScoreDisplayScoreLabelHeight + kMTScoreDisplayPadding * 3)
