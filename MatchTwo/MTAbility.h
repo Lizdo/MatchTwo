@@ -59,7 +59,7 @@ typedef enum {
 - (void)activate;
 - (BOOL)ready;
 - (BOOL)active;
-
+- (BOOL)available;
 @end
 
 #pragma mark -

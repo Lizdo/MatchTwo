@@ -114,14 +114,18 @@
                   [[[MTAbilityDoubleScore alloc]init]autorelease],                   
                   [[[MTAbilityExtraTime alloc]init]autorelease],                                     
                 nil] retain];
-        
-    abilityButtons = [[NSMutableArray arrayWithObjects:
-                       [MTAbilityButton abilityButtonWithName:kMTAbilityHint target:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:kMTAbilityFreeze target:self selector:@selector(abilityButtonClicked:)], 
-                       [MTAbilityButton abilityButtonWithName:kMTAbilityHighlight target:self selector:@selector(abilityButtonClicked:)],
-                       [MTAbilityButton abilityButtonWithName:kMTAbilityShuffle target:self selector:@selector(abilityButtonClicked:)],
-                       nil]
-                      retain];
+    
+    abilityButtons = [[NSMutableArray arrayWithCapacity:6]retain];
+    
+    for (MTAbility * ability in abilities) {
+        if (ability.type == MTAbilityType_Button && [ability available]) {
+            MTAbilityButton * button = [MTAbilityButton abilityButtonWithName:ability.name
+                                                                       target:self
+                                                                     selector:@selector(abilityButtonClicked:)
+                                        ];
+            [abilityButtons addObject:button];
+        }
+    }
     
     CGPoint p = ccp(kMTAbilityButtonPadding + kMTAbilityButtonSize/2,
                     kMTAbilityButtonPadding + kMTAbilityButtonSize/2);

@@ -7,6 +7,7 @@
 //
 
 #import "MTAbility.h"
+#import "MTSharedManager.h"
 
 #pragma mark -
 #pragma mark MTAbility Base Class
@@ -92,6 +93,11 @@
     return state == MTAbilityState_Active;
 }
 
+- (BOOL)available{
+    //Override Me!!!
+    return YES;
+}
+
 @end
 
 
@@ -108,8 +114,16 @@
         activeTime = 10.0f;
         cooldownTime = 30.0f;
         name = kMTAbilityFreeze;
+        
     }
     return self;
+}
+
+- (BOOL)available{
+    if ([[MTSharedManager instance] level] > 10) {
+        return YES;
+    }
+    return NO;
 }
 
 @end
