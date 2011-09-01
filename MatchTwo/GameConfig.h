@@ -98,5 +98,5 @@
 #pragma mark Game Balancing
 
 #define kMTScorePerGame 4000.0f
-#define kMTScorePerPiece 12.0f
+#define kMTScorePerPiece 200.0f//12.0f
 

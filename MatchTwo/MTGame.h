@@ -47,6 +47,8 @@
     NSMutableArray * abilityButtons;    
     
     MTScoreDisplay * scoreDisplay;
+    MTFloatingLabelManager * floatingLabels;
+    
 }
 
 @property (retain) CCMenu * menu;
@@ -61,6 +63,8 @@
 - (void)restart;
 - (void)pause;
 - (void)resume;
+
+- (void)levelUp;
 
 - (void)linkDissolved;
 

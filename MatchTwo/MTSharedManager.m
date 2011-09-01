@@ -14,6 +14,7 @@
 
 @interface MTSharedManager ()
 - (void)calculateLevel;
+- (MTGame *)game;
 @end
 
 @implementation MTSharedManager
@@ -58,6 +59,15 @@ static MTSharedManager * _instance = nil;
     return nil;
 }
 
+
+- (MTGame *)game{
+    // Game Scene
+    CCScene * scene = [CCDirector sharedDirector].runningScene;
+    GameScene * gameScene = (GameScene *)([scene.children lastObject]);
+    MTGame * game = [gameScene game];
+    return game;
+}
+
 - (void)save{
     [[NSUserDefaults standardUserDefaults] setBool:noMusic forKey:@"noMusic"];
     [[NSUserDefaults standardUserDefaults] setBool:noSoundEffect forKey:@"noSoundEffect"];
@@ -66,11 +76,7 @@ static MTSharedManager * _instance = nil;
 
 - (void)pause{
     if (currentSceneID > 100) {
-        // Game Scene
-        CCScene * scene = [CCDirector sharedDirector].runningScene;
-        GameScene * gameScene = (GameScene *)([scene.children lastObject]);
-        MTGame * game = [gameScene game];
-        [game pause];
+        [[self game] pause];
     }
 }
 
@@ -81,8 +87,14 @@ static MTSharedManager * _instance = nil;
     if (s == totalScore) {
         return;
     }
+    int currentLevel = level;
     totalScore = s;
     [self calculateLevel];
+    
+    // Trigger Level Up feedback
+    if (level > currentLevel) {
+        [[self game] levelUp];
+    }
     return;
 }
 

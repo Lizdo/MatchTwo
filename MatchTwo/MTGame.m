@@ -133,10 +133,20 @@
     
     [self addChild:buttons];
     
+    // Add floating label manager
+    floatingLabels = [[MTFloatingLabelManager alloc] init];
     
     // Schedule the Update: function
     [self scheduleUpdateWithPriority:0];
         
+}
+
+- (void)dealloc{
+    // Need to release all containers, CCNodes will be released automatically.
+    [floatingLabels release];
+    [abilities release];
+    [abilityButtons release];
+    [super dealloc];
 }
 
 
@@ -171,7 +181,7 @@
     paused = YES;
     [board pause];
     // Add a text explaining the shuffle...
-    [self addChild:[MTFloatingLabel labelWithString:@"重新排列"]];
+    [self addChild:[floatingLabels addLabelWithString:@"重新排列"]];
     [board shuffle];
     // Remove the text after the animation...
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime+kMTBoardShuffleTime];   
@@ -384,6 +394,11 @@
         [MTSharedManager instance].totalScore += kMTScorePerPiece;
     }
 }
+
+- (void)levelUp{
+    [self addChild:[floatingLabels addLabelWithString:@"升级了！"]];    
+}
+
 
 - (void)pause{
     if (paused) {

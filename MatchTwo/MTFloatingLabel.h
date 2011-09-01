@@ -12,6 +12,8 @@
 
 // Simple Text Label Subclass that will remove itself from parent once animation finishes.
 
+
+
 @interface MTFloatingLabel : CCLabelTTF {
     
 }
@@ -23,6 +25,17 @@
 - (void)fadeOut;
 
 @end
+
+
+@interface MTFloatingLabelManager:NSObject{
+    NSMutableArray * labels;
+}
+
+- (MTFloatingLabel *)addLabelWithString:(NSString *)t;
+
+@end
+
+
 
 
 
