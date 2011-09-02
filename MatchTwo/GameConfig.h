@@ -43,6 +43,10 @@
 
 #endif // __GAME_CONFIG_H
 
+
+// Debug Flags
+#define kMTAIPlay NO
+
 // Match Two Specific Settings
 
 #define kMTDefaultUIPadding 16.0f

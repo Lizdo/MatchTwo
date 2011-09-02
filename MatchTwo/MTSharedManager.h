@@ -16,7 +16,11 @@
     int level;
     int currentSceneID;
     
+    // Level Design File
     NSMutableDictionary * levels;
+    
+    // Record the Level Progress
+    NSMutableDictionary * progress;
 }
 
 @property BOOL noMusic;
@@ -32,12 +36,24 @@
 - (int)scoreForNextLevel;
 - (int)scoreForLevel:(int)newLevel;
 
-// Scene Management
+// Level Management
 - (NSDictionary *)settingsForLevelID:(int)LevelID;
 - (int)nextLevelID:(int)currentID;
+
 - (void)gotoNextLevel:(int)currentID;
 
+- (NSMutableDictionary *)progressForLevel:(int)levelID;
+- (void)completeLevel:(int)levelID andObjective:(BOOL)completeObj;
+
+// Check Level Status
+- (BOOL)locked:(int)levelID;
+- (BOOL)completed:(int)levelID;
+- (BOOL)objCompleted:(int)levelID;
+
+// Scene Management
 - (void)replaceSceneWithID:(int)sceneID;
+
+
 
 
 @end

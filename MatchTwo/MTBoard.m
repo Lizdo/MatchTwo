@@ -245,6 +245,11 @@
                     if ([game isAbilityActive:kMTAbilityHint]) {
                         piece1.hinted = YES;
                         piece2.hinted = YES;
+                        // AI will just select these pieces...
+                        if (kMTAIPlay) {
+                            [self selectPiece:piece1];
+                            [self selectPiece:piece2];
+                        }
                     }
                     return YES;
                 }else{

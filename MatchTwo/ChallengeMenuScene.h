@@ -9,6 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@interface ChallengeMenuItem : CCMenuItemFont {
+    BOOL completed;
+    BOOL objCompleted;
+    BOOL locked;
+}
+
+@property BOOL completed;
+@property BOOL objCompleted;
+@property BOOL locked;
+
+@end
+
 @interface ChallengeMenuScene : CCScene {
     
 }

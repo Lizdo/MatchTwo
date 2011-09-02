@@ -46,7 +46,7 @@ static MTSharedManager * _instance = nil;
         totalScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"totalScore"];
         [self calculateLevel];
         
-        // Load Level Settings from plist
+        // Load Level Design from plist
         NSString *plistPath;
         NSString *rootPath =
         [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,        
@@ -57,6 +57,22 @@ static MTSharedManager * _instance = nil;
                          pathForResource:@"levels" ofType:@"plist"];
         }
         levels = [[NSMutableDictionary dictionaryWithContentsOfFile:plistPath]retain];
+        
+        // Load Progress from plist
+        plistPath = [rootPath stringByAppendingPathComponent:@"progress.plist"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+            plistPath = [[NSBundle mainBundle]
+                         pathForResource:@"progress" ofType:@"plist"];
+        }
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+            // Need to create an empty dictionary
+            progress = [[NSMutableDictionary dictionaryWithCapacity:10]retain];
+        }else{
+            // Read the file directly
+            progress = [[NSMutableDictionary dictionaryWithContentsOfFile:plistPath]retain];
+        }
+        
     }
     return self;
 }
@@ -84,6 +100,15 @@ static MTSharedManager * _instance = nil;
     [[NSUserDefaults standardUserDefaults] setBool:noMusic forKey:@"noMusic"];
     [[NSUserDefaults standardUserDefaults] setBool:noSoundEffect forKey:@"noSoundEffect"];
     [[NSUserDefaults standardUserDefaults] setInteger:totalScore forKey:@"totalScore"];
+    
+    
+    // Save the level progress
+    NSString *plistPath;
+    NSString *rootPath =
+    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,        
+                                         NSUserDomainMask, YES) objectAtIndex:0];
+    plistPath = [rootPath stringByAppendingPathComponent:@"progress.plist"];
+    [progress writeToFile:plistPath atomically:YES];
 }
 
 - (void)pause{
@@ -162,21 +187,71 @@ static MTSharedManager * _instance = nil;
 }
 
 - (int)nextLevelID:(int)currentID{
-    int nextLevelID = 0;
-    if (currentID % 100 + 1 < 12) {
-        nextLevelID = currentID++;
-    }else{
-        nextLevelID = currentID/100*100 + 101;
+    int nextID = 0;
+    if (currentID < 112) {
+        nextID = currentID + 1;
     }
-    if (nextLevelID >= 200) {
-        nextLevelID = 0;
-    }
-    return nextLevelID;
+    return nextID;
 }
 
 - (void)gotoNextLevel:(int)currentID{
-    int nextLevelID = [self nextLevelID:currentID];
+    int nextLevelID;
+    nextLevelID = [self nextLevelID:currentID];
     [self replaceSceneWithID:nextLevelID];
+}
+
+
+# define kMTProgressComplete @"complete"
+# define kMTProgressObjComplete @"objectiveComplete"
+
+- (void)completeLevel:(int)levelID andObjective:(BOOL)completeObj{
+    NSMutableDictionary * levelProgress = [self progressForLevel:levelID];
+    if (levelProgress == nil) {
+        // Need to create a new progress
+        levelProgress = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], 
+                         kMTProgressComplete,                         
+                         [NSNumber numberWithBool:completeObj],
+                         kMTProgressObjComplete,
+                         nil];
+        [progress setObject:levelProgress forKey:[NSNumber numberWithInt:levelID]];
+    }else{
+        // Need to update the info
+        if ([[levelProgress objectForKey:kMTProgressComplete] boolValue] == NO) {
+            // Level has not been completed before
+            [levelProgress setObject:[NSNumber numberWithBool:YES] forKey:kMTProgressComplete] ;
+            [levelProgress setObject:[NSNumber numberWithBool:completeObj] forKey:kMTProgressObjComplete];
+        }else{
+            // Level has been completed, just update the objective status
+            if ([[levelProgress objectForKey:kMTProgressObjComplete] boolValue] == NO) {
+                [levelProgress setObject:[NSNumber numberWithBool:completeObj] forKey:kMTProgressObjComplete];
+            }
+        }
+    }
+    [self save];
+}
+
+- (NSMutableDictionary *)progressForLevel:(int)levelID{
+    return [progress objectForKey:[NSNumber numberWithInt:levelID]];
+}
+
+- (BOOL)locked:(int)levelID{
+    if (levelID == 101)
+        return NO;
+    
+    NSDictionary * previousLevelProgress = [self progressForLevel:levelID - 1];
+    if ([[previousLevelProgress objectForKey:kMTProgressComplete] boolValue]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)completed:(int)levelID{
+    return [[[self progressForLevel:levelID] objectForKey:kMTProgressComplete] boolValue];
+}
+
+- (BOOL)objCompleted:(int)levelID{
+    return [[[self progressForLevel:levelID] objectForKey:kMTProgressObjComplete] boolValue];    
 }
 
 

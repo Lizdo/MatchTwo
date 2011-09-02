@@ -205,6 +205,21 @@
         return;
     }
     
+    // Check victiory condition First
+    
+    BOOL allPiecesDisabled = YES;
+    
+    for (MTPiece * piece in board.children) {
+        if (piece.enabled == YES) {
+            allPiecesDisabled = NO;
+            break;
+        }
+    }
+    
+    if (allPiecesDisabled) {
+        [self gameSuccessMenu];
+    }    
+    
     // Update Abilities
     for (MTAbility * a in abilities){
         [a update:dt];
@@ -261,23 +276,15 @@
         }
     }
     
-    BOOL allPiecesDisabled = YES;
-    
-    for (MTPiece * piece in board.children) {
-        if (piece.enabled == YES) {
-            allPiecesDisabled = NO;
-            break;
-        }
-    }
-    
-    if (allPiecesDisabled) {
-        [self gameSuccessMenu];
-    }
-    
     timeLine.percentage = remainingTime/initialTime;
     [timeLine visit];
     
     [scoreDisplay update:dt];
+    
+    // Update AI
+    if (kMTAIPlay) {
+        [board findLink];
+    }
     
 }
 
@@ -369,6 +376,8 @@
     [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
     [self addChild:menu];
     
+    // Record the current level status
+    [[MTSharedManager instance] completeLevel:levelID andObjective:NO];
 }
 
 #pragma mark -
