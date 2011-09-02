@@ -126,6 +126,7 @@
 		6E05296413E6FFA8002BA347 /* MTGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296313E6FFA8002BA347 /* MTGame.m */; };
 		6E05296713E6FFCC002BA347 /* MTPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296613E6FFCB002BA347 /* MTPiece.m */; };
 		6E05296B13E7001B002BA347 /* MTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05296A13E7001B002BA347 /* MTLine.m */; };
+		6E133A2A1410EA820048F75E /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E133A291410EA820048F75E /* Menu.png */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
 		6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E71426113F7ED430024C36F /* MainMenuScene.m */; };
 		6E761408140F77E2003829A0 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E761407140F77E2003829A0 /* levels.plist */; };
@@ -391,6 +392,7 @@
 		6E05296613E6FFCB002BA347 /* MTPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPiece.m; sourceTree = "<group>"; };
 		6E05296913E7001B002BA347 /* MTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLine.h; sourceTree = "<group>"; };
 		6E05296A13E7001B002BA347 /* MTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLine.m; sourceTree = "<group>"; };
+		6E133A291410EA820048F75E /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Menu.png; path = Resources/Menu.png; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
 		6E3C558413E98A2700F4C238 /* MTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBoard.m; sourceTree = "<group>"; };
 		6E71426013F7ED430024C36F /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				6E761407140F77E2003829A0 /* levels.plist */,
+				6E133A291410EA820048F75E /* Menu.png */,
 				6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */,
 				6EE3725613FC1F610011C477 /* Abilities.png */,
 				6E85592813F413E100FE8963 /* ChineseFont.TTF */,
@@ -934,6 +937,7 @@
 				6EA998EF140B2E100071A2F7 /* Particle_NoBlend.png in Resources */,
 				6EA998F2140B62FA0071A2F7 /* Abilities_Disabled.png in Resources */,
 				6E761408140F77E2003829A0 /* levels.plist in Resources */,
+				6E133A2A1410EA820048F75E /* Menu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

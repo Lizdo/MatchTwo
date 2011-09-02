@@ -13,6 +13,12 @@
     BOOL completed;
     BOOL objCompleted;
     BOOL locked;
+    
+    CCSprite * levelIconLocked;
+    CCSprite * levelIcon;
+    CCSprite * lockIcon;
+    CCSprite * completeIcon;
+    CCSprite * objCompleteIcon;
 }
 
 @property BOOL completed;
