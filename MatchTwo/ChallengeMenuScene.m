@@ -62,6 +62,8 @@
     }
 }
 
+
+
 - (BOOL)locked{
     return locked;
 }
@@ -99,6 +101,16 @@
         [self addChild:objCompleteIcon];
     }
     return self;
+}
+
+
+// Sprite: Label
+//    Sprite
+//
+
+- (CGSize) contentSize{
+    return CGSizeMake(self.label.contentSize.width + kMTChallengeMenuIconSize/2,
+                      self.label.contentSize.height + 100);
 }
 
 @end
@@ -148,14 +160,16 @@
             [[MTSharedManager instance] replaceSceneWithID:i];
         }];
         item.label.position = ccp(30.0,0);
-        item.contentSize = CGSizeMake(90, 160);
-        item.anchorPoint = ccp(0.5,0.5);           
+        item.label.anchorPoint = ccp(0,0.5);
+//        item.contentSize = CGSizeMake(100, 100);
+//        item.anchorPoint = ccp(0.5,0.5);           
         [menu addChild:item];
         
         item.locked = [[MTSharedManager instance] locked:i];
         item.completed = [[MTSharedManager instance] completed:i];
         item.objCompleted = [[MTSharedManager instance] objCompleted:i];        
     }
+    
     
     [menu alignItemsInColumns:[NSNumber numberWithInt:3],
      [NSNumber numberWithInt:3],

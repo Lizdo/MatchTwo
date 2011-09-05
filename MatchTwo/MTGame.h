@@ -49,6 +49,8 @@
     MTScoreDisplay * scoreDisplay;
     MTFloatingLabelManager * floatingLabels;
     
+    int scoreAtLevelStart;
+    
 }
 
 @property (retain) CCMenu * menu;
