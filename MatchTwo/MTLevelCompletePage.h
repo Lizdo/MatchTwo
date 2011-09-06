@@ -27,7 +27,13 @@
 @class MTGame;
 
 @interface MTLevelCompletePage : CCNode {
-    
+    MTGame * game;
+    CCMenu * menu;
 }
+
+@property (assign) MTGame * game;
+
+// After assigning pointer to 'game', allow animation to tick...
+- (void)show;
 
 @end

@@ -45,7 +45,7 @@
 
 
 // Debug Flags
-#define kMTAIPlay NO
+#define kMTAIPlay YES
 
 // Match Two Specific Settings
 
@@ -97,6 +97,7 @@
 #define kMTBadgeWaitingTime 0.3f
 #define kMTBadgeFloatingTime 1.0f
 
+#define kMTMenuPageLoadingTime 1.0f
 
 #pragma mark -
 #pragma mark Game Balancing

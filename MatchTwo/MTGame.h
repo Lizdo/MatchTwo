@@ -20,6 +20,8 @@
 #import "MTAbilityButton.h"
 #import "MTFloatingLabel.h"
 #import "MTScoreDisplay.h"
+#import "MTLevelCompletePage.h"
+#import "MTLevelFailPage.h"
 
 @interface MTGame : CCNode{
     // Gameplay Related
@@ -55,6 +57,8 @@
 
 @property (retain) CCMenu * menu;
 @property (retain) CCNode * menuBackground;
+@property int levelID;
+@property (readonly) float remainingTime;
 
 - (id)initWithLevelID:(int)levelID;
 

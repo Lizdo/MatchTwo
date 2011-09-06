@@ -21,7 +21,7 @@
 
 @implementation MTGame
 
-@synthesize menu, menuBackground;
+@synthesize menu, menuBackground, levelID;
 
 - (id)initWithLevelID:(int)theLevelID{
     self = [super init];
@@ -36,6 +36,10 @@
 {
     NSAssert(1==1, @"Cannot initialize this directly, use initWithLevelID instead");
     return nil;
+}
+
+- (float)remainingTime{
+    return remainingTime;
 }
 
 - (void) prepare{
@@ -293,28 +297,13 @@
 
 - (void)gameFailMenu{
     [self stopRunning];
+
+    MTLevelFailPage * page = [MTLevelFailPage node];
+    page.game = self;
     
-    self.menuBackground = [CCNode node];
-    [self addChild:menuBackground];
-    
-    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
-    [menuBackground addChild:overlay];
-    
-    CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"时间到了..."
-                                                  fontName:kMTFont
-                                                  fontSize:kMTFontSizeCaption];
-    CGSize winSize = [[CCDirector sharedDirector] winSize];    
-    timeUpLabel.position = ccp(winSize.width/2, 700);
-    [menuBackground addChild:timeUpLabel];
-    
-    self.menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"重新开始"
-                                                                   block:^(id sender){[self restart];}],
-                     [CCMenuItemFont itemFromString:@"主菜单"
-                                              block:^(id sender){
-                                                  [[MTSharedManager instance] replaceSceneWithID:0];}],                         
-                     nil];
-    [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
-    [self addChild:menu];
+    // Animations...etc
+    [page show];
+    [self addChild:page];
     
 }
 
@@ -352,30 +341,13 @@
 - (void)gameSuccessMenu{
     [self stopRunning];
     
-    self.menuBackground = [CCNode node];
-    [self addChild:menuBackground];    
+    MTLevelCompletePage * page = [MTLevelCompletePage node];
+    page.game = self;
     
-    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
-    [menuBackground addChild:overlay];
-    
-    CCLabelTTF * levelSuccessLabel = [CCLabelTTF labelWithString:@"恭喜过关..."
-                                                        fontName:kMTFont
-                                                        fontSize:kMTFontSizeCaption];
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    levelSuccessLabel.position = ccp(winSize.width/2, 700);
-    [menuBackground addChild:levelSuccessLabel];    
-    
-    self.menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"下一关"
-                                                                   block:^(id sender){
-                                                                       [[MTSharedManager instance] gotoNextLevel:levelID];}],
-                     [CCMenuItemFont itemFromString:@"主菜单"
-                                              block:^(id sender){
-                                                  [[MTSharedManager instance] replaceSceneWithID:0];}],                     
-                     nil];
-    
-    [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
-    [self addChild:menu];
-    
+    // Animations...etc
+    [page show];
+    [self addChild:page];
+     
     // Record the current level status
     [[MTSharedManager instance] completeLevel:levelID andObjective:NO];
 }
