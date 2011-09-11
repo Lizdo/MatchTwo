@@ -29,6 +29,7 @@
 @interface MTLevelCompletePage : CCNode {
     MTGame * game;
     CCMenu * menu;
+    CCLabelTTF * scoreDetails;
 }
 
 @property (assign) MTGame * game;

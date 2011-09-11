@@ -23,6 +23,7 @@
 #import "MTLevelCompletePage.h"
 #import "MTLevelFailPage.h"
 
+
 @interface MTGame : CCNode{
     // Gameplay Related
     BOOL paused;
@@ -30,9 +31,16 @@
     int score;
     float initialTime;
     float remainingTime;
+    int scoreAtLevelStart;
 
     BOOL needShuffleCheck;
-        
+    
+    // Score Related
+    int timeBonus;
+    int objBonus; 
+    int completeBonus;
+    
+    // CCNodes
     MTBackground * background;
     MTBoard * board;
     MTTimeLine * timeLine;
@@ -40,18 +48,18 @@
     CCNode * menuBackground; 
     CCMenu * menu;
     CCMenu * buttons;
-
-    
-    int numberOfTypes;
-    int levelID;
-    
-    NSMutableArray * abilities;
-    NSMutableArray * abilityButtons;    
-    
     MTScoreDisplay * scoreDisplay;
     MTFloatingLabelManager * floatingLabels;
     
-    int scoreAtLevelStart;
+    // Level Configs
+    int numberOfTypes;
+    int levelID;
+    MTOptionalObjective obj;
+    BOOL objFailed;
+    
+    // Helper Array
+    NSMutableArray * abilities;
+    NSMutableArray * abilityButtons;    
     
 }
 
@@ -59,6 +67,12 @@
 @property (retain) CCNode * menuBackground;
 @property int levelID;
 @property (readonly) float remainingTime;
+@property MTOptionalObjective obj;
+@property BOOL objFailed;
+
+@property int timeBonus;
+@property int objBonus;
+@property int completeBonus;
 
 - (id)initWithLevelID:(int)levelID;
 

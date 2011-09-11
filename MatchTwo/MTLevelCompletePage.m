@@ -41,15 +41,15 @@
         
         
         // Update Score
-        CCLabelTTF * timeLabel = [CCLabelTTF labelWithString:[self scoreDescription]
+        scoreDetails = [CCLabelTTF labelWithString:@""
                                                   dimensions:CGSizeMake(winSize.width, 200)
                                                    alignment:UITextAlignmentCenter 
                                                lineBreakMode:UILineBreakModeWordWrap 
                                                     fontName:kMTFont
                                                     fontSize:kMTFontSizeNormal];
-        timeLabel.position = ccp(winSize.width/2, 600);
-        timeLabel.color = ccGRAY;
-        [self addChild:timeLabel];
+        scoreDetails.position = ccp(winSize.width/2, 600);
+        scoreDetails.color = ccGRAY;
+        [self addChild:scoreDetails];
         
         
         // Buttons
@@ -72,15 +72,16 @@
 
 // TODO: Show it in several steps...
 - (void)show{
-    
-    
+    scoreDetails.string = [self scoreDescription];
 }
 
 - (NSString *)scoreDescription{
-    NSString * s = [NSString stringWithFormat:@"剩余时间: %3.0f\n", game.remainingTime];
-    s = [s stringByAppendingFormat:@"时间奖励: 100\n"];
-    s = [s stringByAppendingFormat:@"任务奖励: 300\n"];
-    s = [s stringByAppendingFormat:@"总得分: 5300\n"];    
+    NSString * s = [NSString stringWithFormat:@"剩余时间: %8.0f\n", game.remainingTime];
+    s = [s stringByAppendingFormat:@"时间奖励: %8d\n", game.timeBonus];
+    if (game.obj != kMTOptionalObjectiveNone) {
+        s = [s stringByAppendingFormat:@"任务奖励: %8d\n", game.objBonus];
+    }
+    s = [s stringByAppendingFormat:@"总得分: %8d\n", game.timeBonus + game.objBonus + game.completeBonus];
     // Add level unlock description here, next level unlock description
     return s;
 }

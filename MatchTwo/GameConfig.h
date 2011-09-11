@@ -45,7 +45,7 @@
 
 
 // Debug Flags
-#define kMTAIPlay YES
+#define kMTAIPlay NO
 
 // Match Two Specific Settings
 
@@ -102,6 +102,18 @@
 #pragma mark -
 #pragma mark Game Balancing
 
-#define kMTScorePerGame 4000.0f
-#define kMTScorePerPiece 200.0f//12.0f
+#define kMTTotalScorePerGame 4000
+#define kMTScorePerGame 2000
+#define kMTScorePerPiece 12
+#define kMTScorePerSecond 2
+#define kMTScorePerObj 1000
+
+typedef enum {
+    kMTOptionalObjectiveNone = 0,
+    kMTOptionalObjectiveFinishFast = 1,
+    kMTOptionalObjectiveNoAbility = 2,
+    kMTOptionalObjectiveThreeInARow = 3,
+}MTOptionalObjective;
+
+
 

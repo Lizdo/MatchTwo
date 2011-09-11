@@ -159,7 +159,7 @@ static MTSharedManager * _instance = nil;
     float k2 = 0.001477744;
     float k1 = 0.572678;
     float k0 = 0.493872;
-    float s = kMTScorePerGame*(k2*l*l+k1*l+k0);
+    float s = kMTTotalScorePerGame*(k2*l*l+k1*l+k0);
     return round(s/100)*100;
     //return (newLevel - 1) * 20000;
 }

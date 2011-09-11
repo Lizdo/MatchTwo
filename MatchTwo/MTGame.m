@@ -17,11 +17,30 @@
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
 - (void)flyBadge:(CCSprite *)b to:(CGPoint)p ability:(NSString *)abilityName;
+- (void)calculateScore;
 @end
+
+#define kMTSInitialTime @"initialTime"
+#define kMTSNumberOfTypes @"numberOfTypes"
+#define kMTSObjective @"objective"
 
 @implementation MTGame
 
-@synthesize menu, menuBackground, levelID;
+@synthesize menu, menuBackground, levelID, obj, timeBonus, completeBonus, objBonus;
+
+- (BOOL)objFailed{
+    return objFailed;
+}
+
+- (void)setObjFailed:(BOOL)newBool{
+    if (newBool == objFailed) {
+        return;
+    }
+    if (newBool == NO) {
+        //Announce the fail
+    }
+    objFailed = newBool;
+}
 
 - (id)initWithLevelID:(int)theLevelID{
     self = [super init];
@@ -48,8 +67,9 @@
     // Initialization code here.
     NSDictionary * dic = [[MTSharedManager instance] settingsForLevelID:levelID];
     
-    initialTime = [[dic objectForKey:@"initialTime"] floatValue];
-    numberOfTypes = [[dic objectForKey:@"numberOfTypes"] intValue];
+    initialTime = [[dic objectForKey:kMTSInitialTime] floatValue];
+    numberOfTypes = [[dic objectForKey:kMTSNumberOfTypes] intValue];
+    obj = [[dic objectForKey:kMTSObjective] intValue];
     
     remainingTime = initialTime;
     needShuffleCheck = YES;
@@ -248,6 +268,14 @@
     }else{
         timeLine.frozen = NO;
         remainingTime -= dt;
+        // Check objective
+        if (obj == kMTOptionalObjectiveFinishFast){
+            if (remainingTime*3 < initialTime) {
+                objFailed = YES;
+            }else{
+                objFailed = NO;
+            }
+        }
     }
     
     if ([self isAbilityActive:kMTAbilityExtraTime]) {
@@ -290,6 +318,16 @@
         [board findLink];
     }
     
+}
+
+- (void)calculateScore{
+    timeBonus = round(remainingTime) * kMTScorePerSecond;
+    completeBonus = kMTScorePerGame;
+    if (obj != kMTOptionalObjectiveNone
+        && objFailed == NO) {
+        objBonus = kMTScorePerObj;
+    }
+    [MTSharedManager instance].totalScore += (timeBonus + completeBonus + objBonus);
 }
 
 #pragma mark -
@@ -339,6 +377,7 @@
 
 
 - (void)gameSuccessMenu{
+    [self calculateScore];
     [self stopRunning];
     
     MTLevelCompletePage * page = [MTLevelCompletePage node];
@@ -464,6 +503,13 @@
 
 - (void)activateAbility:(NSString *)n{
     [[self abilityNamed:n] activate];
+    
+    // Check Objective
+    if (obj == kMTOptionalObjectiveNoAbility) {
+        if ([self abilityNamed:n].type == MTAbilityType_Button) {
+            self.objFailed = YES;
+        }
+    }
     
     // On Trigger Ability Activate Here
     if (n == kMTAbilityHint) {
