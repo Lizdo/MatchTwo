@@ -148,6 +148,7 @@
 		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 		6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3725313FC13AE0011C477 /* MTAbilityButton.m */; };
 		6EE3725713FC1F610011C477 /* Abilities.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3725613FC1F610011C477 /* Abilities.png */; };
+		6EEDB17D1420FE7A0097369B /* MTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EEDB17C1420FE7A0097369B /* MTProgressBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -430,6 +431,8 @@
 		6EE3725213FC13AE0011C477 /* MTAbilityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAbilityButton.h; sourceTree = "<group>"; };
 		6EE3725313FC13AE0011C477 /* MTAbilityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAbilityButton.m; sourceTree = "<group>"; };
 		6EE3725613FC1F610011C477 /* Abilities.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abilities.png; path = Resources/Abilities.png; sourceTree = "<group>"; };
+		6EEDB17B1420FE7A0097369B /* MTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTProgressBar.h; sourceTree = "<group>"; };
+		6EEDB17C1420FE7A0097369B /* MTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTProgressBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -844,6 +847,8 @@
 		6E05296813E6FFD2002BA347 /* MT */ = {
 			isa = PBXGroup;
 			children = (
+				6EEDB17B1420FE7A0097369B /* MTProgressBar.h */,
+				6EEDB17C1420FE7A0097369B /* MTProgressBar.m */,
 				6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */,
 				6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */,
 				6E2489D4141679360008C7E3 /* MTLevelFailPage.h */,
@@ -1074,6 +1079,7 @@
 				6E8A50D0140E285600C4352C /* MTScoreDisplay.m in Sources */,
 				6E372A83141530F200FABCB4 /* MTLevelCompletePage.m in Sources */,
 				6E2489D6141679360008C7E3 /* MTLevelFailPage.m in Sources */,
+				6EEDB17D1420FE7A0097369B /* MTProgressBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
