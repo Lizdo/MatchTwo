@@ -47,29 +47,34 @@ CGRect rectForType(int type){
 - (id)initWithType:(int)theType{
     self = [super initWithFile:@"Tile.png" rect:rectForType(theType)];
     if (self) {
-        self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);
-        self.anchorPoint = ccp(0.5, 0.5); 
+//        self.scale = kMTPieceSize/64;
         self.enabled = YES;
         self.type = theType;
         self.ability = @"";
+        self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);        
+        self.anchorPoint = ccp(0.5, 0.5);         
     }
     return self;
 }
 
 
 - (void)draw{
-    if (hinted || [game isAbilityActive:kMTAbilityHighlight]) {
-        glColor4f((type+1.0)/9.0, 1.0, 0.0, 0.1);
-    }else{
-        glColor4f(0.0, 0.0, 0.0, 0.5);        
-    }
+
     CGPoint points[4] = {
         ccp(kMTPieceMargin, kMTPieceMargin),
         ccp(kMTPieceMargin, kMTPieceSize - kMTPieceMargin),
         ccp(kMTPieceSize-kMTPieceMargin, kMTPieceSize-kMTPieceMargin),
         ccp(kMTPieceSize-kMTPieceMargin, kMTPieceMargin)
     };    
-    ccDrawPolyFill(points, 4, YES);
+    
+    if (hinted || [game isAbilityActive:kMTAbilityHighlight]) {
+        glColor4f(1.0, (100 + type*20)/255.0, 0.32, 0.5);
+        ccDrawPolyFill(points, 4, YES);
+    }else{
+        glColor4f(0.9, 0.9, 0.9, 1.0);
+        glLineWidth(1.0);
+        ccDrawPoly(points, 4, YES);        
+    }    
     [super draw];
 
 }

@@ -117,6 +117,10 @@ static MTSharedManager * _instance = nil;
     }
 }
 
+- (void)reset{
+    totalScore = 0;
+}
+
 #pragma mark -
 #pragma mark Score Management
 
@@ -156,6 +160,9 @@ static MTSharedManager * _instance = nil;
 
 
 - (int)scoreForLevel:(int)l{
+    if (l == 1) {
+        return 0;
+    }
     float k2 = 0.001477744;
     float k1 = 0.572678;
     float k0 = 0.493872;

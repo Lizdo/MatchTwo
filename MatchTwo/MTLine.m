@@ -32,7 +32,7 @@
         return;
     }
     glColor4f(0.8, 0.8, 0.8, 1.0);  
-    glLineWidth(4.0);
+    glLineWidth(1.0);
     glEnable(GL_LINE_SMOOTH);
     
     for (int i = 0; i < [points count]-1; i++) {

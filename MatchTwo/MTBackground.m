@@ -14,7 +14,12 @@
 - (id)init{
     self = [super init];
     if (self) {
-        [self addChild:[[[MTParticleLoopingStar alloc]init]autorelease]];
+        //[self addChild:[[[MTParticleLoopingStar alloc]init]autorelease]];
+        CGSize winSize = [[CCDirector sharedDirector] winSize];        
+        CCSprite * image = [CCSprite spriteWithFile:@"Background_Right.png"];
+        image.position = ccp(winSize.width/2, winSize.height/2);
+        [self addChild:image];
+
     }
     return self;
 }

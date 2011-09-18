@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "MTPiece.h"
 #import "MTLine.h"
-#import "MTTimeLine.h"
+#import "MTTimeDisplay.h"
 #import "MTBoard.h"
 #import "GameConfig.h"
 #import "MTSFX.h"
@@ -43,7 +43,8 @@
     // CCNodes
     MTBackground * background;
     MTBoard * board;
-    MTTimeLine * timeLine;
+    MTTimeDisplay * timeDisplay;
+    //MTTimeLine * timeLine;
 
     CCNode * menuBackground; 
     CCMenu * menu;

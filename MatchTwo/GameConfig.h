@@ -6,6 +6,8 @@
 //  Copyright StupidTent co. 2011年. All rights reserved.
 //
 
+#import "ccTypes.h"
+
 #ifndef __GAME_CONFIG_H
 #define __GAME_CONFIG_H
 
@@ -56,19 +58,19 @@
 #define kMTDefaultGameTime 200.0f
 #define kMTDefaultTypeNumber 9
 
-#define kMTPieceSize 64.0f
+#define kMTPieceSize 60.0f
 #define kMTPieceMargin 4.0f
 #define kMTPieceScaleTime 0.2f
 #define kMTPieceDisappearTime 0.2f
 
 #define kMTAbilityButtonTextureSize 512.0f
-#define kMTAbilityButtonSpriteSize 128.0f
-#define kMTAbilityButtonSize 96.0f
+#define kMTAbilityButtonSpriteSize 64.0f
+#define kMTAbilityButtonSize 64.0f
 #define kMTAbilityButtonPadding kMTDefaultUIPadding
 #define kMTAbilityBadgeSize 32.0f
 #define kMTAbilityBadgePadding 12.0f
 
-#define kMTBoardStartingX 64.0f
+#define kMTBoardStartingX 95.0f
 #define kMTBoardStartingY 200.0f
 
 #define kMTBoardShuffleWarningTime 2.0f
@@ -80,14 +82,16 @@
 #define kMTTimeLineStartingY (1024.0 - kMTTimeLineHeight)
 
 #define kMTScoreDisplayWidth 300.0f
-#define kMTScoreDisplayHeight 50.0f
-#define kMTScoreDisplayStartingX 0.0f
-#define kMTScoreDisplayStartingY (kMTTimeLineStartingY - kMTScoreDisplayHeight - kMTDefaultUIPadding)
+#define kMTScoreDisplayHeight 120.0f
+#define kMTScoreDisplayStartingX 35.0f
+#define kMTScoreDisplayStartingY (1024.0f - 160.0f)
 
 #define kMTMenuPadding 10.0f
 
 #define kMTFont @"FZLanTingHei-R-GBK"
-#define kMTFontSizeCaption 80.0f
+#define kMTFontNumbers @"HelveticaNeue LT 25 UltLight"
+#define kMTFontSizeCaption 100.0f
+#define kMTFontSizeLarge 60.0f
 #define kMTFontSizeNormal 40.0f
 #define kMTFontSizeSmall 20.0f
 
@@ -104,7 +108,7 @@
 
 #define kMTTotalScorePerGame 4000
 #define kMTScorePerGame 2000
-#define kMTScorePerPiece 12
+#define kMTScorePerPiece 200//12
 #define kMTScorePerSecond 2
 #define kMTScorePerObj 1000
 
@@ -114,6 +118,16 @@ typedef enum {
     kMTOptionalObjectiveNoAbility = 2,
     kMTOptionalObjectiveThreeInARow = 3,
 }MTOptionalObjective;
+
+
+// Color Definitions
+
+static const ccColor3B kMTColorPrimary = {253, 207, 84};
+static const ccColor3B kMTColorActive = {102, 102, 102};
+static const ccColor3B kMTColorInactive = {204, 204, 204};
+static const ccColor3B kMTColorBuff = {156, 199, 46};
+static const ccColor3B kMTColorDebuff = {247, 147, 30};
+static const ccColor3B kMTColorFrozen = {41, 171, 226};
 
 
 

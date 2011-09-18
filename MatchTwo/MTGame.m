@@ -108,10 +108,16 @@
     //        lines = [[MTLine alloc] init];
     //        [self addChild:lines];
     
-    timeLine = [[MTTimeLine alloc] init];
-    timeLine.position = ccp(kMTTimeLineStartingX, kMTTimeLineStartingY);        
-    [self addChild:timeLine];
-    
+//    timeLine = [[MTTimeLine alloc] init];
+//    timeLine.position = ccp(kMTTimeLineStartingX, kMTTimeLineStartingY);        
+//    [self addChild:timeLine];
+    timeDisplay = [MTTimeDisplay labelWithString:@""
+                                     fontName:kMTFontNumbers
+                                     fontSize:kMTFontSizeLarge];
+    timeDisplay.anchorPoint = ccp(1.0, 0.0);
+    timeDisplay.position = ccp(768-30,1024-131);
+    timeDisplay.game = self;
+    [self addChild:timeDisplay];
     //        
     // TODO: Add SFX Layer 
     
@@ -151,8 +157,8 @@
         }
     }
     
-    CGPoint p = ccp(kMTAbilityButtonPadding + kMTAbilityButtonSize/2,
-                    kMTAbilityButtonPadding + kMTAbilityButtonSize/2);
+    CGPoint p = ccp(kMTBoardStartingX + kMTAbilityButtonSize/2,
+                    kMTAbilityButtonPadding* 2 + kMTAbilityButtonSize/2);
     
     for (MTAbilityButton * b in abilityButtons) {
         b.position = p;
@@ -263,10 +269,7 @@
     }
 
     // Update DT
-    if ([self isAbilityActive:kMTAbilityFreeze]) {
-        timeLine.frozen = YES;
-    }else{
-        timeLine.frozen = NO;
+    if (![self isAbilityActive:kMTAbilityFreeze]) {
         remainingTime -= dt;
         // Check objective
         if (obj == kMTOptionalObjectiveFinishFast){
@@ -277,12 +280,7 @@
             }
         }
     }
-    
-    if ([self isAbilityActive:kMTAbilityExtraTime]) {
-        timeLine.highlight = YES;
-    }else{
-        timeLine.highlight = NO;
-    }
+    [timeDisplay update];
     
     if (remainingTime <= 0) {
         remainingTime = 0;
@@ -307,9 +305,6 @@
             [board reorderChild:piece z:100];
         }
     }
-    
-    timeLine.percentage = remainingTime/initialTime;
-    [timeLine visit];
     
     [scoreDisplay update:dt];
     
@@ -541,9 +536,7 @@
 
 - (void)flyBadge:(CCSprite *)badge forAbility:(NSString *)abilityName{
     if (abilityName == kMTAbilityExtraTime){
-        float percentage = [timeLine percentage];
-        CGSize winSize = [[CCDirector sharedDirector] winSize];    
-        CGPoint p = ccp(winSize.width * percentage, timeLine.position.y+kMTTimeLineHeight/2);
+        CGPoint p = timeDisplay.position;
         [self flyBadge:badge to:p ability:abilityName];        
         return;
     }

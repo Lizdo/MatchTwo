@@ -31,6 +31,7 @@
 + (MTSharedManager *)instance;
 - (void)save;
 - (void)pause;
+- (void)reset;
 
 // Score Management
 - (int)scoreForNextLevel;

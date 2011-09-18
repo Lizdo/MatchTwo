@@ -25,11 +25,13 @@
 #define kMTScoreDisplayScoreLabelPositionX (kMTLevelDisplayWidth+kMTScoreDisplayPadding*5)
 #define kMTScoreDisplayScoreLabelPositionY kMTScoreDisplayPadding
 
-#define kMTScoreBarWidth 200
+#define kMTScoreBarWidth 300
 #define kMTScoreBarHeight 16
 
 #define kMTScoreBarPositionX kMTScoreDisplayScoreLabelPositionX
 #define kMTScoreBarPositionY (kMTScoreDisplayScoreLabelHeight + kMTScoreDisplayPadding * 3)
+
+
 
 - (MTScoreDisplay *)init{
     self = [super init];
@@ -38,23 +40,23 @@
         level = [CCLabelTTF labelWithString:@""
                                  dimensions:CGSizeZero
                                   alignment:CCTextAlignmentRight
-                                   fontName:kMTFont
-                                   fontSize:kMTFontSizeNormal];
-        level.position = ccp(kMTLevelDisplayWidth, 
-                             kMTScoreDisplayPadding + kMTLevelDisplayheight/2);
+                                   fontName:kMTFontNumbers
+                                   fontSize:kMTFontSizeCaption];
+        level.position = ccp(0, -20.0f);
+        level.color = kMTColorPrimary;
         [self addChild:level z:1];
-        level.anchorPoint = ccp(1.0, 0.5);
+        level.anchorPoint = ccp(0.0, 0.0);
         
         // Add Score Display
         score = [CCLabelTTF labelWithString:@""
                                  dimensions:CGSizeZero
                                   alignment:CCTextAlignmentRight
-                                   fontName:kMTFont
+                                   fontName:kMTFontNumbers
                                    fontSize:kMTFontSizeSmall];
-        score.position = ccp(kMTScoreDisplayScoreLabelPositionX + kMTScoreDisplayScoreLabelWidth
-                             , kMTScoreDisplayScoreLabelPositionY + kMTScoreDisplayScoreLabelHeight/2);
-        score.anchorPoint = ccp(1.0, 0.5);
-        [self addChild:score z:1];  
+        score.position = ccp(kMTScoreBarWidth, 0.0f);
+        score.color = kMTColorActive;
+        score.anchorPoint = ccp(1.0, 0.0);
+        [self addChild:score z:1];
         
         manager = [MTSharedManager instance];
     }
@@ -71,38 +73,66 @@
     score.string = [NSString stringWithFormat:@"%d/%d",manager.totalScore,nextLevelScore];
     
     if ([game isAbilityActive:kMTAbilityDoubleScore]) {
-        score.color = ccORANGE;
+        score.color = kMTColorBuff;
     }else{
-        score.color = ccWHITE;
+        score.color = kMTColorActive;
     }
 }
 
 - (void)draw{
     [super draw];
     
-    // Draw the Timeline here
-    glColor4f(1.0, 0.8, 0.2, 0.4);
-    glLineWidth(1.0);
-    glEnable(GL_LINE_SMOOTH);
-    CGPoint fill[4] = {
-        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY),
-        ccp(kMTScoreBarPositionX + kMTScoreBarWidth * percentage, kMTScoreBarPositionY),
-        ccp(kMTScoreBarPositionX + kMTScoreBarWidth * percentage, kMTScoreBarPositionY + kMTScoreBarHeight),
-        ccp(kMTScoreBarPositionX, kMTScoreBarHeight + kMTScoreBarPositionY)
+    // Draw Baseline
+    glColor4f(kMTColorInactive.r/255.0,
+              kMTColorInactive.g/255.0,
+              kMTColorInactive.b/255.0,
+              1.0);
+    glLineWidth(1.0); 
+    CGPoint baseLine[2] = {
+        ccp(0,0),
+        ccp(kMTScoreBarWidth, 0)
     };
-    ccDrawPolyFill(fill, 4, YES);
+    ccDrawLine(baseLine[0], baseLine[1]);
     
-    // Draw Border
-    glColor4f(0.6, 0.6, 0.6, 1);  
-    glLineWidth(1.0);
-    glEnable(GL_LINE_SMOOTH);
-    CGPoint border[4] = {
-        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY),
-        ccp(kMTScoreBarPositionX + kMTScoreBarWidth, kMTScoreBarPositionY),
-        ccp(kMTScoreBarPositionX + kMTScoreBarWidth, kMTScoreBarPositionY + kMTScoreBarHeight),
-        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY + kMTScoreBarHeight)
+    // Draw Overlay
+    glColor4f(kMTColorPrimary.r/255.0,
+              kMTColorPrimary.g/255.0,
+              kMTColorPrimary.b/255.0,
+              1.0);
+    glLineWidth(3.0);
+    CGPoint overLay[2] = {
+        ccp(0,1),
+        ccp(kMTScoreBarWidth*percentage, 1)
     };
-    ccDrawPoly(border, 4, YES);    
+    ccDrawLine(overLay[0], overLay[1]);
+    
+    
+    
+//    // Draw the Timeline here
+//    glColor4f(1.0, 0.8, 0.2, 0.4);
+//    glLineWidth(1.0);
+//    glEnable(GL_LINE_SMOOTH);
+//    CGPoint fill[4] = {
+//        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY),
+//        ccp(kMTScoreBarPositionX + kMTScoreBarWidth * percentage, kMTScoreBarPositionY),
+//        ccp(kMTScoreBarPositionX + kMTScoreBarWidth * percentage, kMTScoreBarPositionY + kMTScoreBarHeight),
+//        ccp(kMTScoreBarPositionX, kMTScoreBarHeight + kMTScoreBarPositionY)
+//    };
+//    ccDrawPolyFill(fill, 4, YES);
+//    
+//    // Draw Border
+//    glColor4f(0.6, 0.6, 0.6, 1);  
+//    glLineWidth(1.0);
+//    glEnable(GL_LINE_SMOOTH);
+//    CGPoint border[4] = {
+//        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY),
+//        ccp(kMTScoreBarPositionX + kMTScoreBarWidth, kMTScoreBarPositionY),
+//        ccp(kMTScoreBarPositionX + kMTScoreBarWidth, kMTScoreBarPositionY + kMTScoreBarHeight),
+//        ccp(kMTScoreBarPositionX, kMTScoreBarPositionY + kMTScoreBarHeight)
+//    };
+//    ccDrawPoly(border, 4, YES);    
 }
+
+
 
 @end
