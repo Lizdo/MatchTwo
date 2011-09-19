@@ -63,10 +63,20 @@
 	//	2. depth format of 0 bit. Use 16 or 24 bit for 3d effects, like CCPageTurnTransition
 	//
 	//
-	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
-								   pixelFormat:kEAGLColorFormatRGB565	// kEAGLColorFormatRGBA8
-								   depthFormat:0						// GL_DEPTH_COMPONENT16_OES
-						];
+//	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
+//								   pixelFormat:kEAGLColorFormatRGB565	// kEAGLColorFormatRGBA8
+//								   depthFormat:0						// GL_DEPTH_COMPONENT16_OES
+//						];
+    
+    EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
+                                   pixelFormat:kEAGLColorFormatRGB565
+                                   depthFormat:0
+                            preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                        
+                        
+                               numberOfSamples:1];
 	
 	// attach the openglView to the director
 	[director setOpenGLView:glView];

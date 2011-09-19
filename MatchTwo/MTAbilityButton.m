@@ -89,18 +89,32 @@ CGRect rectForIndex(int index){
 }
 
 - (void)draw{
-    [super draw]; 
-    glColor4f(0.2, 0.2, 0.2, 0.8); 
+    [super draw];
+    if (cooldownPercentage <= 0 || cooldownPercentage >= 1) {
+        return;
+    }
     glLineWidth(1.0);
-    //glBlendFunc(GL_ONE, GL_ONE);
-    glEnable(GL_LINE_SMOOTH);
-    CGPoint points[4] = {
-        ccp(0, kMTAbilityButtonSize * cooldownPercentage),
-        ccp(kMTAbilityButtonSize, kMTAbilityButtonSize * cooldownPercentage),
-        ccp(kMTAbilityButtonSize, kMTAbilityButtonSize),
-        ccp(0, kMTAbilityButtonSize)
-    };
-    ccDrawPolyFill(points, 4, YES);
+    glColor4f(kMTColorActive.r/255.0,
+              kMTColorActive.g/255.0,
+              kMTColorActive.b/255.0,
+              0.6);
+    ccDrawCircleSegment(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
+                 26,
+                 CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
+                 round(cooldownPercentage*20),
+                 NO);
+    
+//    glColor4f(0.2, 0.2, 0.2, 0.8); 
+//    glLineWidth(1.0);
+//    //glBlendFunc(GL_ONE, GL_ONE);
+//    glEnable(GL_LINE_SMOOTH);
+//    CGPoint points[4] = {
+//        ccp(0, kMTAbilityButtonSize * cooldownPercentage),
+//        ccp(kMTAbilityButtonSize, kMTAbilityButtonSize * cooldownPercentage),
+//        ccp(kMTAbilityButtonSize, kMTAbilityButtonSize),
+//        ccp(0, kMTAbilityButtonSize)
+//    };
+//    ccDrawPolyFill(points, 4, YES);
     //glBlendFunc(CC_BLEND_SRC, CC_BLEND_DST);
 }
 

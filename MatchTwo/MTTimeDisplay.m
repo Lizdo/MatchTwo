@@ -18,15 +18,19 @@
 @synthesize frozen, highlight, game;
 
 - (void)update{
+    int seconds = round(game.remainingTime);
+    self.string = [self stringFromSeconds:seconds];
+    
     if ([game isAbilityActive:kMTAbilityFreeze]) {
         self.color = kMTColorFrozen;
     }else if ([game isAbilityActive:kMTAbilityExtraTime]) {
         self.color = kMTColorBuff;
+    }else if (seconds <= 30){
+        self.color = kMTColorDebuff;
     }else{
         self.color = kMTColorPrimary;
     }    
-    int seconds = round(game.remainingTime);
-    self.string = [self stringFromSeconds:seconds];
+
 }
                    
 - (NSString *)stringFromSeconds:(int)seconds{

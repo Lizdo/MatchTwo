@@ -58,7 +58,7 @@
 #define kMTDefaultGameTime 200.0f
 #define kMTDefaultTypeNumber 9
 
-#define kMTPieceSize 60.0f
+#define kMTPieceSize 64.0f
 #define kMTPieceMargin 4.0f
 #define kMTPieceScaleTime 0.2f
 #define kMTPieceDisappearTime 0.2f
@@ -71,7 +71,7 @@
 #define kMTAbilityBadgePadding 12.0f
 
 #define kMTBoardStartingX 95.0f
-#define kMTBoardStartingY 200.0f
+#define kMTBoardStartingY 160.0f
 
 #define kMTBoardShuffleWarningTime 2.0f
 #define kMTBoardShuffleTime 1.0f
@@ -126,7 +126,7 @@ static const ccColor3B kMTColorPrimary = {253, 207, 84};
 static const ccColor3B kMTColorActive = {102, 102, 102};
 static const ccColor3B kMTColorInactive = {204, 204, 204};
 static const ccColor3B kMTColorBuff = {156, 199, 46};
-static const ccColor3B kMTColorDebuff = {247, 147, 30};
+static const ccColor3B kMTColorDebuff = {255, 29, 37};
 static const ccColor3B kMTColorFrozen = {41, 171, 226};
 
 
