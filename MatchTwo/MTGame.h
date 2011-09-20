@@ -22,6 +22,7 @@
 #import "MTScoreDisplay.h"
 #import "MTLevelCompletePage.h"
 #import "MTLevelFailPage.h"
+#import "MTPausePage.h"
 
 
 @interface MTGame : CCNode{
@@ -44,6 +45,8 @@
     MTBackground * background;
     MTBoard * board;
     MTTimeDisplay * timeDisplay;
+    MTPausePage * pauseMenu;    
+    
     //MTTimeLine * timeLine;
 
     CCNode * menuBackground; 
@@ -61,6 +64,8 @@
     // Helper Array
     NSMutableArray * abilities;
     NSMutableArray * abilityButtons;    
+    
+    
     
 }
 
@@ -84,6 +89,8 @@
 - (void)restart;
 - (void)pause;
 - (void)resume;
+- (void)restartFromPauseMenu;
+- (void)resumeFromPauseMenu;
 
 - (void)levelUp;
 

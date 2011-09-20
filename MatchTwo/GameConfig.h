@@ -101,7 +101,7 @@
 #define kMTBadgeWaitingTime 0.3f
 #define kMTBadgeFloatingTime 1.0f
 
-#define kMTMenuPageLoadingTime 1.0f
+#define kMTMenuPageLoadingTime 0.2f
 
 #pragma mark -
 #pragma mark Game Balancing

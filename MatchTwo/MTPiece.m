@@ -68,7 +68,7 @@ CGRect rectForType(int type){
     };    
     
     if (hinted || [game isAbilityActive:kMTAbilityHighlight]) {
-        glColor4f(1.0, (100 + type*20)/255.0, 0.32, 0.5);
+        glColor4f(1.0, (50 + type*20)/255.0, 0.32, 0.5);
         ccDrawPolyFill(points, 4, YES);
     }else{
         glColor4f(0.9, 0.9, 0.9, 1.0);

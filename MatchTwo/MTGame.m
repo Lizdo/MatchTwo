@@ -342,32 +342,16 @@
 
 - (void)pauseMenu{
     [self stopRunning];
+    pauseMenu = [MTPausePage node];
+    pauseMenu.game = self;
+    [pauseMenu show];    
+    [self addChild:pauseMenu];
     
-    self.menuBackground = [CCNode node];
-    [self addChild:menuBackground];    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];            
+    pauseMenu.position = ccp(-winSize.width,0);
     
-    CCLayerColor * overlay = [CCLayerColor layerWithColor:ccc4(20, 20, 20, 120)];
-    [menuBackground addChild:overlay];
-    
-    CCLabelTTF * timeUpLabel = [CCLabelTTF labelWithString:@"游戏暂停"
-                                                  fontName:kMTFont
-                                                  fontSize:kMTFontSizeCaption];
-    CGSize winSize = [[CCDirector sharedDirector] winSize];    
-    timeUpLabel.position = ccp(winSize.width/2, 700);
-    [menuBackground addChild:timeUpLabel];
-    
-    self.menu = [CCMenu menuWithItems:
-                     [CCMenuItemFont itemFromString:@"继续"
-                                            block:^(id sender){[self resume];}],
-                     [CCMenuItemFont itemFromString:@"重新开始"
-                                              block:^(id sender){[self restart];}],
-                    [CCMenuItemToggle itemWithBlock:^(id sender){[self restart];}],
-                     [CCMenuItemFont itemFromString:@"主菜单"
-                                              block:^(id sender){
-                                                  [[MTSharedManager instance] replaceSceneWithID:0];}],                         
-                     nil];
-    [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
-    [self addChild:menu];
+    // Animate In
+    [self runAction:[CCMoveBy actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];
 }
 
 
@@ -435,6 +419,15 @@
     buttons.isTouchEnabled = NO;    
 }
 
+- (void)resumeFromPauseMenu{
+    [self runAction:[CCSequence actions:
+     [CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)],
+                     [CCCallBlock actionWithBlock:^{
+        [pauseMenu removeFromParentAndCleanup:YES];
+        [self resume];
+    }],nil]];
+}
+
 - (void)resume{
     board.visible = YES;    
     [menuBackground removeFromParentAndCleanup:YES];
@@ -442,6 +435,15 @@
     buttons.isTouchEnabled = YES;    
     [board resume];
     paused = NO;    
+}
+
+- (void)restartFromPauseMenu{
+    [self runAction:[CCSequence actions:
+                     [CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)],
+                     [CCCallBlock actionWithBlock:^{
+        [pauseMenu removeFromParentAndCleanup:YES];
+        [self restart];
+    }],nil]];
 }
 
 - (void)restart{

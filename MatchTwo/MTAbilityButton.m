@@ -102,8 +102,7 @@ CGRect rectForIndex(int index){
                  26,
                  CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
                  round(cooldownPercentage*20),
-                 NO);
-    
+                        NO);
 //    glColor4f(0.2, 0.2, 0.2, 0.8); 
 //    glLineWidth(1.0);
 //    //glBlendFunc(GL_ONE, GL_ONE);
