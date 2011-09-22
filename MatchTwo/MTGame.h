@@ -23,6 +23,7 @@
 #import "MTLevelCompletePage.h"
 #import "MTLevelFailPage.h"
 #import "MTPausePage.h"
+#import "MTObjectiveHelper.h"
 
 
 @interface MTGame : CCNode{
@@ -58,7 +59,7 @@
     // Level Configs
     int numberOfTypes;
     int levelID;
-    MTOptionalObjective obj;
+    MTObjective obj;
     BOOL objFailed;
     
     // Helper Array
@@ -73,7 +74,7 @@
 @property (retain) CCNode * menuBackground;
 @property int levelID;
 @property (readonly) float remainingTime;
-@property MTOptionalObjective obj;
+@property MTObjective obj;
 @property BOOL objFailed;
 
 @property int timeBonus;
@@ -95,6 +96,10 @@
 - (void)levelUp;
 
 - (void)linkDissolved;
+
+// Display Related
+- (NSString *)remainingTimeString;
+- (NSString *)objectiveString;
 
 // Shuffle the board, when no move is available
 - (void)shuffle;

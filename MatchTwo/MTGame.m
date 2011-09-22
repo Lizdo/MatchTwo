@@ -13,11 +13,15 @@
 - (void)prepare;
 - (NSArray *)randomizeType;
 - (void)stopRunning;
+
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
 - (void)pauseMenu;
+- (void)pushPauseMenu;
+
 - (void)flyBadge:(CCSprite *)b to:(CGPoint)p ability:(NSString *)abilityName;
 - (void)calculateScore;
+
 @end
 
 #define kMTSInitialTime @"initialTime"
@@ -272,7 +276,7 @@
     if (![self isAbilityActive:kMTAbilityFreeze]) {
         remainingTime -= dt;
         // Check objective
-        if (obj == kMTOptionalObjectiveFinishFast){
+        if (obj == kMTObjectiveFinishFast){
             if (remainingTime*3 < initialTime) {
                 objFailed = YES;
             }else{
@@ -318,7 +322,7 @@
 - (void)calculateScore{
     timeBonus = round(remainingTime) * kMTScorePerSecond;
     completeBonus = kMTScorePerGame;
-    if (obj != kMTOptionalObjectiveNone
+    if (obj != kMTObjectiveNone
         && objFailed == NO) {
         objBonus = kMTScorePerObj;
     }
@@ -331,18 +335,30 @@
 - (void)gameFailMenu{
     [self stopRunning];
 
-    MTLevelFailPage * page = [MTLevelFailPage node];
-    page.game = self;
-    
-    // Animations...etc
-    [page show];
-    [self addChild:page];
-    
+    pauseMenu = [MTLevelFailPage node];
+    [self pushPauseMenu];
 }
 
 - (void)pauseMenu{
     [self stopRunning];
     pauseMenu = [MTPausePage node];
+
+    [self pushPauseMenu];
+}
+
+
+- (void)gameSuccessMenu{
+    [self calculateScore];
+    [self stopRunning];
+    
+    // Record the current level status
+    [[MTSharedManager instance] completeLevel:levelID andObjective:NO];
+    
+    pauseMenu = [MTLevelCompletePage node];
+    [self pushPauseMenu];
+}
+
+- (void)pushPauseMenu{
     pauseMenu.game = self;
     [pauseMenu show];    
     [self addChild:pauseMenu];
@@ -351,24 +367,20 @@
     pauseMenu.position = ccp(-winSize.width,0);
     
     // Animate In
-    [self runAction:[CCMoveBy actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];
+    [self runAction:[CCMoveBy actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];    
 }
 
+#pragma mark -
+#pragma mark Display Related
 
-- (void)gameSuccessMenu{
-    [self calculateScore];
-    [self stopRunning];
-    
-    MTLevelCompletePage * page = [MTLevelCompletePage node];
-    page.game = self;
-    
-    // Animations...etc
-    [page show];
-    [self addChild:page];
-     
-    // Record the current level status
-    [[MTSharedManager instance] completeLevel:levelID andObjective:NO];
+- (NSString *)remainingTimeString{
+    return [MTTimeDisplay stringWithSeconds:round(remainingTime)];
 }
+
+- (NSString *)objectiveString{
+    return [MTObjectiveHelper descriptionForObjective:obj];
+}
+
 
 #pragma mark -
 #pragma mark Game Logic
@@ -502,7 +514,7 @@
     [[self abilityNamed:n] activate];
     
     // Check Objective
-    if (obj == kMTOptionalObjectiveNoAbility) {
+    if (obj == kMTObjectiveNoAbility) {
         if ([self abilityNamed:n].type == MTAbilityType_Button) {
             self.objFailed = YES;
         }

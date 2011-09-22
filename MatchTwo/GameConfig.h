@@ -47,7 +47,7 @@
 
 
 // Debug Flags
-#define kMTAIPlay NO
+#define kMTAIPlay YES
 
 // Match Two Specific Settings
 
@@ -88,7 +88,7 @@
 
 #define kMTMenuPadding 10.0f
 
-#define kMTFont @"FZLanTingHei-R-GBK"
+#define kMTFont @"STHeitiSC-Light" //@"FZLanTingHei-R-GBK"
 #define kMTFontNumbers @"HelveticaNeue LT 25 UltLight"
 #define kMTFontSizeCaption 100.0f
 #define kMTFontSizeLarge 60.0f
@@ -101,7 +101,7 @@
 #define kMTBadgeWaitingTime 0.3f
 #define kMTBadgeFloatingTime 1.0f
 
-#define kMTMenuPageLoadingTime 0.2f
+#define kMTMenuPageLoadingTime 0.4f
 
 #pragma mark -
 #pragma mark Game Balancing
@@ -113,11 +113,11 @@
 #define kMTScorePerObj 1000
 
 typedef enum {
-    kMTOptionalObjectiveNone = 0,
-    kMTOptionalObjectiveFinishFast = 1,
-    kMTOptionalObjectiveNoAbility = 2,
-    kMTOptionalObjectiveThreeInARow = 3,
-}MTOptionalObjective;
+    kMTObjectiveNone = 0,
+    kMTObjectiveFinishFast = 1,
+    kMTObjectiveNoAbility = 2,
+    kMTObjectiveThreeInARow = 3,
+}MTObjective;
 
 
 // Color Definitions

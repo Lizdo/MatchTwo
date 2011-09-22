@@ -24,6 +24,7 @@
 
 @interface MTPausePage : CCNode {
     MTGame * game;
+    CCMenu * menu;
 }
 
 @property (assign) MTGame * game;

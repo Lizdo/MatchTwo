@@ -7,19 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
-#import "GameConfig.h"
+#import "MTPausePage.h"
 
-@class MTGame;
 
-@interface MTLevelFailPage : CCNode {
-    MTGame * game;
-    CCMenu * menu;    
+@interface MTLevelFailPage : MTPausePage{
+ 
 }
 
-@property (assign) MTGame * game;
-
-// After assigning pointer to 'game', allow animation to tick...
-- (void)show;
 
 @end

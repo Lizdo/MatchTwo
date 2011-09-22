@@ -16,6 +16,8 @@
 - (void) challengeMenu;
 - (void) settingMenu;
 
+- (void)addBackground;
+
 @end
 
 @implementation MainMenuScene
@@ -45,6 +47,9 @@
 -(id) init
 {
 	if( (self=[super init])) {
+        
+        [self addBackground];
+        
         [CCMenuItemFont setFontName:kMTFont];
         [CCMenuItemFont setFontSize:kMTFontSizeNormal];
         CCMenu * menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
@@ -53,8 +58,20 @@
                          nil];
         [menu alignItemsVerticallyWithPadding: 40.0f];        
         [self addChild:menu];
+        
+        for (CCMenuItemFont * child in menu.children) {
+            child.color = kMTColorActive;
+        }        
+        
 	}
 	return self;
+}
+
+- (void)addBackground{
+    CGSize winSize = [[CCDirector sharedDirector] winSize];        
+    CCSprite * image = [CCSprite spriteWithFile:@"Background_Left.png"];
+    image.position = ccp(winSize.width/2, winSize.height/2);
+    [self addChild:image];
 }
 
 - (void) challengeMenu{

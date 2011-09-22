@@ -60,7 +60,7 @@ const uint32_t	kMTFloatingLabelFadeActionTag = 0xe0c06001;
     
     if (self) {
         
-        self.position = ccp(600,900);
+        self.position = ccp(600,800);
         self.color = [self colorByParsingText];
         self.opacity = 0;
         

@@ -20,5 +20,7 @@
 @property BOOL highlight;
 
 - (void)update;
++ (NSString *)stringWithSeconds:(int)seconds;
+
 
 @end

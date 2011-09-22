@@ -10,7 +10,6 @@
 #import "MTGame.h"
 
 @interface MTTimeDisplay ()
-- (NSString *)stringFromSeconds:(int)seconds;
 @end
 
 @implementation MTTimeDisplay
@@ -19,7 +18,7 @@
 
 - (void)update{
     int seconds = round(game.remainingTime);
-    self.string = [self stringFromSeconds:seconds];
+    self.string = [MTTimeDisplay stringWithSeconds:seconds];
     
     if ([game isAbilityActive:kMTAbilityFreeze]) {
         self.color = kMTColorFrozen;
@@ -33,7 +32,7 @@
 
 }
                    
-- (NSString *)stringFromSeconds:(int)seconds{
++ (NSString *)stringWithSeconds:(int)seconds{
     int h = seconds/3600;
     int m = (seconds - 3600*h)/60;
     int s = seconds - 3600*h - 60*m;
