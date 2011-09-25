@@ -47,7 +47,7 @@
 
 
 // Debug Flags
-#define kMTAIPlay YES
+#define kMTAIPlay NO
 
 // Match Two Specific Settings
 
