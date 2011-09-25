@@ -188,10 +188,10 @@
     if (result == nil) {       
         [self deselectAllPieces];
     }else{
-        [game drawLinesWithPoints:result];
+        // Dissolve Link before remove the tile, allow the score to popup
+        [game linkDissolved:result];
         [selectedPiece1 disappear];
         [selectedPiece2 disappear];        
-        [game linkDissolved];
     }
     
     checkingInProgress = NO;

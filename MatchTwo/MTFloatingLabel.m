@@ -60,7 +60,7 @@ const uint32_t	kMTFloatingLabelFadeActionTag = 0xe0c06001;
     
     if (self) {
         
-        self.position = ccp(600,800);
+        self.position = ccp(600,850);
         self.color = [self colorByParsingText];
         self.opacity = 0;
         
@@ -96,3 +96,35 @@ const uint32_t	kMTFloatingLabelFadeActionTag = 0xe0c06001;
 }
 
 @end
+
+
+@implementation MTFloatingScore
+
+- (MTFloatingScore *)initWithScore:(int)score{
+    NSString * s = [NSString stringWithFormat:@"+%d",score];
+    self = [super initWithString:s fntFile:@"Numbers.fnt"];
+    if (self) {
+        [self fadeIn];
+    }
+    return self;
+}
+
++ (id)labelWithScore:(int)score{
+    return [[[self alloc]initWithScore:score] autorelease];
+}
+
+- (void)fadeIn{
+    id moveUp = [CCMoveBy actionWithDuration:1 position:ccp(0, 40)];
+    id fadeOut = [CCFadeOut actionWithDuration:0.5];
+    id callFadeOut = [CCCallBlock actionWithBlock:^{[self fadeOut];}];    
+    CCSequence * sequence = [CCSequence actions:moveUp,fadeOut,callFadeOut, nil];
+    [self runAction:sequence];
+}
+
+- (void)fadeOut{
+    id remove = [CCCallBlock actionWithBlock:^{[self removeFromParentAndCleanup:YES];}];
+    CCSequence * sequence = [CCSequence actions:remove, nil];
+    [self runAction:sequence];
+}
+@end
+

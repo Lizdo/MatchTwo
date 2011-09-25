@@ -149,6 +149,8 @@
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 		6EA998EF140B2E100071A2F7 /* Particle_NoBlend.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */; };
 		6EA998F2140B62FA0071A2F7 /* Abilities_Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */; };
+		6EB0174D142EEFEA00D08D4F /* Numbers.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174B142EEFEA00D08D4F /* Numbers.fnt */; };
+		6EB0174E142EEFEA00D08D4F /* Numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174C142EEFEA00D08D4F /* Numbers.png */; };
 		6EC38271140C928B004F1147 /* MTFloatingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC38270140C928B004F1147 /* MTFloatingLabel.m */; };
 		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 		6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3725313FC13AE0011C477 /* MTAbilityButton.m */; };
@@ -403,7 +405,7 @@
 		6E133A291410EA820048F75E /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Menu.png; path = Resources/Menu.png; sourceTree = "<group>"; };
 		6E2489D4141679360008C7E3 /* MTLevelFailPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLevelFailPage.h; sourceTree = "<group>"; };
 		6E2489D5141679360008C7E3 /* MTLevelFailPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelFailPage.m; sourceTree = "<group>"; };
-		6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MTObjectiveHelper.h; sourceTree = "<group>"; };
+		6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTObjectiveHelper.h; sourceTree = "<group>"; };
 		6E301D30142B8632007825C3 /* MTObjectiveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTObjectiveHelper.m; sourceTree = "<group>"; };
 		6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLevelCompletePage.h; sourceTree = "<group>"; };
 		6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelCompletePage.m; sourceTree = "<group>"; };
@@ -436,6 +438,8 @@
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 		6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle_NoBlend.png; path = Resources/Particle_NoBlend.png; sourceTree = "<group>"; };
 		6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abilities_Disabled.png; path = Resources/Abilities_Disabled.png; sourceTree = "<group>"; };
+		6EB0174B142EEFEA00D08D4F /* Numbers.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Numbers.fnt; sourceTree = "<group>"; };
+		6EB0174C142EEFEA00D08D4F /* Numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Numbers.png; sourceTree = "<group>"; };
 		6EC3826F140C928A004F1147 /* MTFloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFloatingLabel.h; sourceTree = "<group>"; };
 		6EC38270140C928B004F1147 /* MTFloatingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFloatingLabel.m; sourceTree = "<group>"; };
 		6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeMenuScene.h; sourceTree = "<group>"; };
@@ -523,6 +527,8 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6EB0174B142EEFEA00D08D4F /* Numbers.fnt */,
+				6EB0174C142EEFEA00D08D4F /* Numbers.png */,
 				6E84E83E1426545A004E8124 /* Numbers.ttf */,
 				6E84E83414261D8E004E8124 /* Background_Left.png */,
 				6E84E83514261D8E004E8124 /* Background_Right.png */,
@@ -975,6 +981,8 @@
 				6E84E83614261D8E004E8124 /* Background_Left.png in Resources */,
 				6E84E83714261D8E004E8124 /* Background_Right.png in Resources */,
 				6E84E83F1426545A004E8124 /* Numbers.ttf in Resources */,
+				6EB0174D142EEFEA00D08D4F /* Numbers.fnt in Resources */,
+				6EB0174E142EEFEA00D08D4F /* Numbers.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

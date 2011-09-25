@@ -22,6 +22,8 @@
 - (void)flyBadge:(CCSprite *)b to:(CGPoint)p ability:(NSString *)abilityName;
 - (void)calculateScore;
 
+- (void)drawLinesWithPoints:(NSArray *)points;
+
 @end
 
 #define kMTSInitialTime @"initialTime"
@@ -404,12 +406,22 @@
 }
 
 
-- (void)linkDissolved{
+- (void)linkDissolved:(NSArray *)points{
+    [self drawLinesWithPoints:points];
+    
+    int scoreForTile;
     if ([self isAbilityActive:kMTAbilityDoubleScore]) {
-        [MTSharedManager instance].totalScore += kMTScorePerPiece*2;
+        scoreForTile = kMTScorePerPiece*2;
     }else{
-        [MTSharedManager instance].totalScore += kMTScorePerPiece;
+        scoreForTile = kMTScorePerPiece;
     }
+    
+    // Add popup
+    MTFloatingScore * scorePopup = [MTFloatingScore labelWithScore:scoreForTile];
+    scorePopup.position = [[points lastObject] CGPointValue];
+    [self addChild:scorePopup];
+    
+    [MTSharedManager instance].totalScore += scoreForTile;
 }
 
 - (void)levelUp{

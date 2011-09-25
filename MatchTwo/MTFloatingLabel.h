@@ -36,6 +36,17 @@
 @end
 
 
+@interface MTFloatingScore : CCLabelBMFont {
+}
+
+- (MTFloatingScore *)initWithScore:(int)score;
++ (id)labelWithScore:(int)score;
+
+- (void)fadeIn;
+- (void)fadeOut;
+
+@end
+
 
 
 

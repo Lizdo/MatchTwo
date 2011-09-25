@@ -83,8 +83,6 @@
 
 - (id)initWithLevelID:(int)levelID;
 
-// Draw linked lines and pop SFX
-- (void)drawLinesWithPoints:(NSArray *)points;
 
 // Restart Current Game
 - (void)restart;
@@ -95,7 +93,8 @@
 
 - (void)levelUp;
 
-- (void)linkDissolved;
+// Draw linked lines and pop SFX
+- (void)linkDissolved:(NSArray *)points;
 
 // Display Related
 - (NSString *)remainingTimeString;
