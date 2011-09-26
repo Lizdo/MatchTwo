@@ -29,6 +29,8 @@
                                      block:^(id sender){
                                          [[MTSharedManager instance] replaceSceneWithID:0];}],                     
             nil];
+    
+    stamp = [CCSprite spriteWithFile:@"Stamp_Success.png"];
 
 }
 

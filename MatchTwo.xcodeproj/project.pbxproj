@@ -152,6 +152,9 @@
 		6EB0174D142EEFEA00D08D4F /* Numbers.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174B142EEFEA00D08D4F /* Numbers.fnt */; };
 		6EB0174E142EEFEA00D08D4F /* Numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174C142EEFEA00D08D4F /* Numbers.png */; };
 		6EB0175214307B7300D08D4F /* CCLabelBMFont+KerningHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */; };
+		6EB017561430890900D08D4F /* Stamp_Fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB017531430890900D08D4F /* Stamp_Fail.png */; };
+		6EB017571430890900D08D4F /* Stamp_Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB017541430890900D08D4F /* Stamp_Pause.png */; };
+		6EB017581430890900D08D4F /* Stamp_Success.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB017551430890900D08D4F /* Stamp_Success.png */; };
 		6EC38271140C928B004F1147 /* MTFloatingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC38270140C928B004F1147 /* MTFloatingLabel.m */; };
 		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 		6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3725313FC13AE0011C477 /* MTAbilityButton.m */; };
@@ -442,6 +445,9 @@
 		6EB0174B142EEFEA00D08D4F /* Numbers.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Numbers.fnt; sourceTree = "<group>"; };
 		6EB0174C142EEFEA00D08D4F /* Numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Numbers.png; sourceTree = "<group>"; };
 		6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLabelBMFont+KerningHack.m"; sourceTree = "<group>"; };
+		6EB017531430890900D08D4F /* Stamp_Fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stamp_Fail.png; path = Resources/Stamp_Fail.png; sourceTree = "<group>"; };
+		6EB017541430890900D08D4F /* Stamp_Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stamp_Pause.png; path = Resources/Stamp_Pause.png; sourceTree = "<group>"; };
+		6EB017551430890900D08D4F /* Stamp_Success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stamp_Success.png; path = Resources/Stamp_Success.png; sourceTree = "<group>"; };
 		6EC3826F140C928A004F1147 /* MTFloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFloatingLabel.h; sourceTree = "<group>"; };
 		6EC38270140C928B004F1147 /* MTFloatingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFloatingLabel.m; sourceTree = "<group>"; };
 		6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeMenuScene.h; sourceTree = "<group>"; };
@@ -529,6 +535,9 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6EB017531430890900D08D4F /* Stamp_Fail.png */,
+				6EB017541430890900D08D4F /* Stamp_Pause.png */,
+				6EB017551430890900D08D4F /* Stamp_Success.png */,
 				6EB0174B142EEFEA00D08D4F /* Numbers.fnt */,
 				6EB0174C142EEFEA00D08D4F /* Numbers.png */,
 				6E84E83E1426545A004E8124 /* Numbers.ttf */,
@@ -986,6 +995,9 @@
 				6E84E83F1426545A004E8124 /* Numbers.ttf in Resources */,
 				6EB0174D142EEFEA00D08D4F /* Numbers.fnt in Resources */,
 				6EB0174E142EEFEA00D08D4F /* Numbers.png in Resources */,
+				6EB017561430890900D08D4F /* Stamp_Fail.png in Resources */,
+				6EB017571430890900D08D4F /* Stamp_Pause.png in Resources */,
+				6EB017581430890900D08D4F /* Stamp_Success.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

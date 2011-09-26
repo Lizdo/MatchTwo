@@ -108,6 +108,7 @@
                                           block:^(id sender){
                                               [[MTSharedManager instance] replaceSceneWithID:0];}],                         
                  nil];
+    stamp = [CCSprite spriteWithFile:@"Stamp_Pause.png"];    
 }
 
 - (void)setupMenus{    
@@ -117,6 +118,9 @@
     [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
     menu.position = ccp(560, 1024-775);
     [self addChild:menu];
+    
+    stamp.position = ccp(214, 1024-785);
+    [self addChild:stamp];
 }
 
 
@@ -124,7 +128,7 @@
 - (void)show{
     [self addBackground];
     [self addStats];
-    [self addMenus];    
+    [self addMenus];
     [self setupMenus];
 }
 
