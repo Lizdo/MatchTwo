@@ -93,7 +93,7 @@
 #define kMTFontSizeCaption 100.0f
 #define kMTFontSizeLarge 60.0f
 #define kMTFontSizeNormal 40.0f
-#define kMTFontSizeSmall 20.0f
+#define kMTFontSizeSmall 24.0f
 
 #define kMTFloatingLabelDefaultPosition (ccp(700.0f, 900.0f))
 #define kMTFloatingLabelOnScreenTime 3.0f

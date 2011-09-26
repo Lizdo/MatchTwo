@@ -98,38 +98,21 @@ CGRect rectForIndex(int index){
               kMTColorActive.g/255.0,
               kMTColorActive.b/255.0,
               0.6);
-    // Stroke Once Outside
+    
+    // Stroke Once with AA Outside
     ccDrawCircleSegmentAA(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
                         26,
                         CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
                         1.0f,
                         round(cooldownPercentage*20));    
     
-    // Stroke once inside
+    // Stroke once with AA inside
     ccDrawCircleSegmentAA(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
                           26,
                           CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
                           -1.0f,
                           round(cooldownPercentage*20));    
 
-    
-//    ccDrawCircleSegment(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
-//                 26,
-//                 CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
-//                 round(cooldownPercentage*20),
-//                        NO);
-//    glColor4f(0.2, 0.2, 0.2, 0.8); 
-//    glLineWidth(1.0);
-//    //glBlendFunc(GL_ONE, GL_ONE);
-//    glEnable(GL_LINE_SMOOTH);
-//    CGPoint points[4] = {
-//        ccp(0, kMTAbilityButtonSize * cooldownPercentage),
-//        ccp(kMTAbilityButtonSize, kMTAbilityButtonSize * cooldownPercentage),
-//        ccp(kMTAbilityButtonSize, kMTAbilityButtonSize),
-//        ccp(0, kMTAbilityButtonSize)
-//    };
-//    ccDrawPolyFill(points, 4, YES);
-    //glBlendFunc(CC_BLEND_SRC, CC_BLEND_DST);
 }
 
 - (void)update:(ccTime)dt{
