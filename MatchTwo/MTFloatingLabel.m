@@ -114,10 +114,14 @@ const uint32_t	kMTFloatingLabelFadeActionTag = 0xe0c06001;
 }
 
 - (void)fadeIn{
+    id fadeOut = [CCSequence actions:
+                  [CCDelayTime actionWithDuration:0.5],
+                  [CCFadeOut actionWithDuration:0.5],
+                  nil];
+    [self runAction:fadeOut];
     id moveUp = [CCMoveBy actionWithDuration:1 position:ccp(0, 40)];
-    id fadeOut = [CCFadeOut actionWithDuration:0.5];
     id callFadeOut = [CCCallBlock actionWithBlock:^{[self fadeOut];}];    
-    CCSequence * sequence = [CCSequence actions:moveUp,fadeOut,callFadeOut, nil];
+    CCSequence * sequence = [CCSequence actions:moveUp,callFadeOut, nil];
     [self runAction:sequence];
 }
 
