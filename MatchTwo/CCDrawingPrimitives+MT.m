@@ -109,7 +109,64 @@ void ccDrawCircleSegment( CGPoint center, float r, float a, NSUInteger segs, BOO
 	
 	free( vertices );
 }
-
+void ccDrawCircleSegmentAA( CGPoint center, float r, float a, NSUInteger segs)
+{
+    GLubyte color[4] = {0,0,0,153};
+    float lineWidth = 2.0f;
+	int additionalSegment = 1;
+    
+	const float coef = a/segs;
+	
+	GLfloat *vertices = calloc( sizeof(GLfloat)*4*(segs+2), 1);
+    GLubyte *colors = calloc(sizeof(GLubyte)*8*(segs+2), 1);
+	if( ! vertices )
+		return;
+    
+	for(NSUInteger i=0;i<=segs;i++)
+	{
+		float rads = i*coef;
+        // Start from top and clockwise
+		GLfloat j = r * cosf(rads-M_PI_2) + center.x;
+		GLfloat k = - r * sinf(rads-M_PI_2) + center.y;
+		
+		vertices[i*4] = j * CC_CONTENT_SCALE_FACTOR();
+		vertices[i*4+1] =k * CC_CONTENT_SCALE_FACTOR();
+        
+        colors[i*8] = color[0];
+        colors[i*8+1] = color[1];
+        colors[i*8+2] = color[2];
+        colors[i*8+3] = color[3];
+        
+        j = (r+lineWidth) * cosf(rads-M_PI_2) + center.x;
+        k = - (r+lineWidth) * sinf(rads-M_PI_2) + center.y;
+		
+		vertices[i*4+2] = j * CC_CONTENT_SCALE_FACTOR();
+		vertices[i*4+3] =k * CC_CONTENT_SCALE_FACTOR();
+        
+        colors[i*8+4] = 0;
+        colors[i*8+5] = 0;
+        colors[i*8+6] = 0;
+        colors[i*8+7] = 0;        // Alpha set to 0 for outside lines
+	}
+	
+	// Default GL states: GL_TEXTURE_2D, GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
+	// Needed states: GL_VERTEX_ARRAY, 
+	// Unneeded states: GL_TEXTURE_2D, GL_TEXTURE_COORD_ARRAY, GL_COLOR_ARRAY	
+	glDisable(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	//glDisableClientState(GL_COLOR_ARRAY);
+	
+    glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
+	glVertexPointer(2, GL_FLOAT, 0, vertices);	
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, ((GLsizei) segs)*2);
+	
+	// restore default state
+	//glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnable(GL_TEXTURE_2D);	
+	
+	free( vertices );
+}
 
 void ccDrawCircleSegmentFill( CGPoint center, float r, float a, NSUInteger segs)
 {

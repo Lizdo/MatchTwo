@@ -98,11 +98,15 @@ CGRect rectForIndex(int index){
               kMTColorActive.g/255.0,
               kMTColorActive.b/255.0,
               0.6);
-    ccDrawCircleSegment(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
-                 26,
-                 CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
-                 round(cooldownPercentage*20),
-                        NO);
+    ccDrawCircleSegmentAA(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
+                        26,
+                        CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
+                        round(cooldownPercentage*20));    
+//    ccDrawCircleSegment(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
+//                 26,
+//                 CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
+//                 round(cooldownPercentage*20),
+//                        NO);
 //    glColor4f(0.2, 0.2, 0.2, 0.8); 
 //    glLineWidth(1.0);
 //    //glBlendFunc(GL_ONE, GL_ONE);
