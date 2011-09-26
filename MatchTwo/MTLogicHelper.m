@@ -172,7 +172,7 @@
 }
 
 - (CGPoint)GLLocationForTile:(MTTile *)t{
-    NSLog(@"%@", [self description]);
+    CCLOGINFO(@"%@", [self description]);
     
     CGPoint p = ccp(kMTBoardStartingX+(t.y-0.5)* kMTPieceSize,
                     kMTBoardStartingY+(t.x-0.5)* kMTPieceSize);

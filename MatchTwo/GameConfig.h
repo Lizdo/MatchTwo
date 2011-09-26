@@ -45,7 +45,7 @@
 
 #endif // __GAME_CONFIG_H
 
-
+#define COCOS2D_DEBUG 1
 // Debug Flags
 #define kMTAIPlay NO
 
