@@ -56,7 +56,11 @@
                          [CCMenuItemFont itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
                          [CCMenuItemFont itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
                          nil];
-        [menu alignItemsVerticallyWithPadding: 40.0f];        
+        [menu alignItemsVerticallyWithPadding: 20.0f];        
+        
+        CGSize winSize = [[CCDirector sharedDirector] winSize];        
+        menu.position = ccp(winSize.width/2, 300);
+        
         [self addChild:menu];
         
         for (CCMenuItemFont * child in menu.children) {
@@ -72,6 +76,10 @@
     CCSprite * image = [CCSprite spriteWithFile:@"Background_Left.png"];
     image.position = ccp(winSize.width/2, winSize.height/2);
     [self addChild:image];
+    
+    CCSprite * logo = [CCSprite spriteWithFile:@"Game_Logo.png"];
+    logo.position = ccp(winSize.width/2, 1024-361);
+    [self addChild:logo];
 }
 
 - (void) challengeMenu{
