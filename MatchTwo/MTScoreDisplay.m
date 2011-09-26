@@ -51,7 +51,7 @@
         score = [CCLabelTTF labelWithString:@""
                                  dimensions:CGSizeZero
                                   alignment:CCTextAlignmentRight
-                                   fontName:kMTFontNumbers
+                                   fontName:kMTFont
                                    fontSize:kMTFontSizeSmall];
         score.position = ccp(kMTScoreBarWidth, 0.0f);
         score.color = kMTColorActive;

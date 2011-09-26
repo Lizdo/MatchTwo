@@ -122,10 +122,10 @@ typedef enum {
 
 // Color Definitions
 
-static const ccColor3B kMTColorPrimary = {253, 207, 84};
+static const ccColor3B kMTColorPrimary = {247, 147, 30};
 static const ccColor3B kMTColorActive = {102, 102, 102};
-static const ccColor3B kMTColorInactive = {204, 204, 204};
-static const ccColor3B kMTColorBuff = {156, 199, 46};
+static const ccColor3B kMTColorInactive = {153, 153, 153};
+static const ccColor3B kMTColorBuff = {112, 158, 39};
 static const ccColor3B kMTColorDebuff = {255, 29, 37};
 static const ccColor3B kMTColorFrozen = {41, 171, 226};
 
