@@ -275,6 +275,11 @@
         }
     }
     
+    if ([array count] == 0) {
+        // Stop shuffle if no tile remains.
+        return;
+    }
+    
     // Shuffle the array
     int numberOfShuffle = 2;
     int totalCount = [array count];

@@ -151,6 +151,7 @@
 		6EA998F2140B62FA0071A2F7 /* Abilities_Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */; };
 		6EB0174D142EEFEA00D08D4F /* Numbers.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174B142EEFEA00D08D4F /* Numbers.fnt */; };
 		6EB0174E142EEFEA00D08D4F /* Numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174C142EEFEA00D08D4F /* Numbers.png */; };
+		6EB0175214307B7300D08D4F /* CCLabelBMFont+KerningHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */; };
 		6EC38271140C928B004F1147 /* MTFloatingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC38270140C928B004F1147 /* MTFloatingLabel.m */; };
 		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 		6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3725313FC13AE0011C477 /* MTAbilityButton.m */; };
@@ -440,6 +441,7 @@
 		6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abilities_Disabled.png; path = Resources/Abilities_Disabled.png; sourceTree = "<group>"; };
 		6EB0174B142EEFEA00D08D4F /* Numbers.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Numbers.fnt; sourceTree = "<group>"; };
 		6EB0174C142EEFEA00D08D4F /* Numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Numbers.png; sourceTree = "<group>"; };
+		6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLabelBMFont+KerningHack.m"; sourceTree = "<group>"; };
 		6EC3826F140C928A004F1147 /* MTFloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFloatingLabel.h; sourceTree = "<group>"; };
 		6EC38270140C928B004F1147 /* MTFloatingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFloatingLabel.m; sourceTree = "<group>"; };
 		6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeMenuScene.h; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 				6E8586E513F030D7007217DD /* MTSharedManager.m */,
 				6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */,
 				6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */,
+				6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */,
 			);
 			name = MT;
 			sourceTree = "<group>";
@@ -1112,6 +1115,7 @@
 				6E84E83D14264451004E8124 /* MTTimeDisplay.m in Sources */,
 				6EFB35051428E8DC0079964C /* MTPausePage.m in Sources */,
 				6E301D31142B8632007825C3 /* MTObjectiveHelper.m in Sources */,
+				6EB0175214307B7300D08D4F /* CCLabelBMFont+KerningHack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
