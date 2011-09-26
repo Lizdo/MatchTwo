@@ -109,11 +109,11 @@ void ccDrawCircleSegment( CGPoint center, float r, float a, NSUInteger segs, BOO
 	
 	free( vertices );
 }
-void ccDrawCircleSegmentAA( CGPoint center, float r, float a, NSUInteger segs)
+
+// Stroke with Anti-Alias, Add an extra transparent vertex on the other side of the stroke.
+void ccDrawCircleSegmentAA( CGPoint center, float r, float a, float lineWidth, NSUInteger segs)
 {
-    GLubyte color[4] = {0,0,0,153};
-    float lineWidth = 2.0f;
-	int additionalSegment = 1;
+    GLubyte color[4] = {102,102,102,255};
     
 	const float coef = a/segs;
 	
@@ -165,6 +165,7 @@ void ccDrawCircleSegmentAA( CGPoint center, float r, float a, NSUInteger segs)
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnable(GL_TEXTURE_2D);	
 	
+    free(colors);
 	free( vertices );
 }
 

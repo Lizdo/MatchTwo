@@ -98,10 +98,21 @@ CGRect rectForIndex(int index){
               kMTColorActive.g/255.0,
               kMTColorActive.b/255.0,
               0.6);
+    // Stroke Once Outside
     ccDrawCircleSegmentAA(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
                         26,
                         CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
+                        1.0f,
                         round(cooldownPercentage*20));    
+    
+    // Stroke once inside
+    ccDrawCircleSegmentAA(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
+                          26,
+                          CC_DEGREES_TO_RADIANS(360*cooldownPercentage),
+                          -1.0f,
+                          round(cooldownPercentage*20));    
+
+    
 //    ccDrawCircleSegment(ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2),
 //                 26,
 //                 CC_DEGREES_TO_RADIANS(360*cooldownPercentage),

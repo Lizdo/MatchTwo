@@ -12,6 +12,6 @@
 
 void ccDrawPolyFill( const CGPoint *poli, NSUInteger numberOfPoints, BOOL closePolygon );
 void ccDrawCircleSegment( CGPoint center, float r, float a, NSUInteger segs, BOOL drawLineToCenter);
-void ccDrawCircleSegmentAA( CGPoint center, float r, float a, NSUInteger segs);
+void ccDrawCircleSegmentAA( CGPoint center, float r, float a, float lineWidth, NSUInteger segs);
 void ccDrawCircleSegmentFill( CGPoint center, float r, float a, NSUInteger segs);
 #endif
