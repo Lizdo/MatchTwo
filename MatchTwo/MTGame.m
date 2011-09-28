@@ -34,18 +34,18 @@
 
 @synthesize menu, menuBackground, levelID, obj, timeBonus, completeBonus, objBonus;
 
-- (BOOL)objFailed{
-    return objFailed;
+- (MTObjectiveState)objState{
+    return objState;
 }
 
-- (void)setObjFailed:(BOOL)newBool{
-    if (newBool == objFailed) {
+- (void)setObjState:(MTObjectiveState)newState{
+    if (objState == newState) {
         return;
     }
-    if (newBool == NO) {
+    if (newState == kMTObjectiveStateFailed) {
         //Announce the fail
     }
-    objFailed = newBool;
+    objState = newState;
 }
 
 - (id)initWithLevelID:(int)theLevelID{
@@ -80,8 +80,6 @@
     remainingTime = initialTime;
     needShuffleCheck = YES;
     
-    // TODO: Add Background Layer
-    
     background  = [[[MTBackground alloc] init] autorelease];
     [self addChild:background];
     
@@ -110,13 +108,6 @@
         }
     }
     
-    // Line should be on top of the Pieces
-    //        lines = [[MTLine alloc] init];
-    //        [self addChild:lines];
-    
-//    timeLine = [[MTTimeLine alloc] init];
-//    timeLine.position = ccp(kMTTimeLineStartingX, kMTTimeLineStartingY);        
-//    [self addChild:timeLine];
     timeDisplay = [MTTimeDisplay labelWithString:@""
                                      fontName:kMTFontNumbers
                                      fontSize:kMTFontSizeLarge];
@@ -280,9 +271,7 @@
         // Check objective
         if (obj == kMTObjectiveFinishFast){
             if (remainingTime*3 < initialTime) {
-                objFailed = YES;
-            }else{
-                objFailed = NO;
+                self.objState = kMTObjectiveStateFailed;
             }
         }
     }
@@ -325,7 +314,7 @@
     timeBonus = round(remainingTime) * kMTScorePerSecond;
     completeBonus = kMTScorePerGame;
     if (obj != kMTObjectiveNone
-        && objFailed == NO) {
+        && objState == kMTObjectiveStateComplete) {
         objBonus = kMTScorePerObj;
     }
     [MTSharedManager instance].totalScore += (timeBonus + completeBonus + objBonus);
@@ -350,6 +339,12 @@
 
 
 - (void)gameSuccessMenu{
+    // Check objective
+    if (obj != kMTObjectiveNone
+        && objState != kMTObjectiveStateFailed) {
+        self.objState = kMTObjectiveStateComplete;
+    }
+    
     [self calculateScore];
     [self stopRunning];
     
@@ -528,7 +523,7 @@
     // Check Objective
     if (obj == kMTObjectiveNoAbility) {
         if ([self abilityNamed:n].type == MTAbilityType_Button) {
-            self.objFailed = YES;
+            self.objState = kMTObjectiveStateFailed;
         }
     }
     

@@ -87,11 +87,14 @@
         [self addChild:objStatus];        
     }
     
-    if ([game objFailed]) {
+    if (game.objState == kMTObjectiveStateFailed) {
         objStatus.string = @"失败";
         objStatus.color = kMTColorDebuff;
-    }else{
+    }else if (game.objState == kMTObjectiveStateComplete){
         objStatus.string = @"成功";
+        objStatus.color = kMTColorBuff;
+    }else{
+        objStatus.string = @"进行中";
         objStatus.color = kMTColorBuff;
     }
 

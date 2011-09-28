@@ -119,6 +119,12 @@ typedef enum {
     kMTObjectiveThreeInARow = 3,
 }MTObjective;
 
+typedef enum {
+    kMTObjectiveStateInProgress = 0,
+    kMTObjectiveStateComplete = 1,
+    kMTObjectiveStateFailed = 2,
+}MTObjectiveState;
+
 
 // Color Definitions
 
@@ -128,6 +134,7 @@ static const ccColor3B kMTColorInactive = {153, 153, 153};
 static const ccColor3B kMTColorBuff = {112, 158, 39};
 static const ccColor3B kMTColorDebuff = {255, 29, 37};
 static const ccColor3B kMTColorFrozen = {41, 171, 226};
+static const ccColor3B kMTColorBackground = {252, 246, 234};
 
 
 

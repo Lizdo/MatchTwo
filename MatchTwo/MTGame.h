@@ -60,7 +60,8 @@
     int numberOfTypes;
     int levelID;
     MTObjective obj;
-    BOOL objFailed;
+    MTObjectiveState objState;
+    //BOOL objFailed;
     
     // Helper Array
     NSMutableArray * abilities;
@@ -75,7 +76,7 @@
 @property int levelID;
 @property (readonly) float remainingTime;
 @property MTObjective obj;
-@property BOOL objFailed;
+@property MTObjectiveState objState;
 
 @property int timeBonus;
 @property int objBonus;

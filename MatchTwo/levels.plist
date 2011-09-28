@@ -4,6 +4,8 @@
 <dict>
 	<key>101</key>
 	<dict>
+		<key>objective</key>
+		<integer>1</integer>
 		<key>initialTime</key>
 		<integer>100</integer>
 		<key>numberOfTypes</key>

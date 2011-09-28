@@ -288,7 +288,7 @@ static MTSharedManager * _instance = nil;
     currentSceneID = sceneID;
     
     [[CCDirector sharedDirector] replaceScene: 
-        [CCTransitionFade transitionWithDuration:0.5f scene:scene]];
+        [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:kMTColorBackground]];
 }
 
 @end
