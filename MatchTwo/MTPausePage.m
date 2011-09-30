@@ -49,6 +49,22 @@
                                       fontSize:kMTFontSizeNormal]
                 at:ccp(373,1024-230)];
     
+//    CCLabelTTF * unlock = [CCLabelTTF labelWithString:[[MTSharedManager instance] nextLevelUnlockDescription]
+//                                          fontName:kMTFont
+//                                          fontSize:kMTFontSizeSmall];
+    
+    CCLabelTTF * unlock = [CCLabelTTF labelWithString:[[MTSharedManager instance] nextLevelUnlockDescription]
+                                           dimensions:CGSizeMake(300, 100)
+                                            alignment:CCTextAlignmentLeft
+                                        lineBreakMode:CCLineBreakModeTailTruncation
+                                             fontName:kMTFont
+                                             fontSize:kMTFontSizeSmall];
+    unlock.position = ccp(477, 1024 - 255);
+    unlock.anchorPoint = ccp(0,1);
+    unlock.color = kMTColorInactive;
+    [self addChild:unlock];    
+    
+    
     // Remaining Time
     [self addLabel:[CCLabelTTF labelWithString:@"剩余时间"
                                       fontName:kMTFont

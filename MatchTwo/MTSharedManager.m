@@ -11,6 +11,7 @@
 #import "ChallengeMenuScene.h"
 #import "GameScene.h"
 #import "MTGame.h"
+#import "MTUnlockManager.h"
 
 @interface MTSharedManager ()
 - (void)calculateLevel;
@@ -19,7 +20,7 @@
 
 @implementation MTSharedManager
 
-@synthesize noMusic, noSoundEffect, level;
+@synthesize noMusic, noSoundEffect, level, unlockManager;
 
 static MTSharedManager * _instance = nil;
 
@@ -72,6 +73,9 @@ static MTSharedManager * _instance = nil;
             // Read the file directly
             progress = [[NSMutableDictionary dictionaryWithContentsOfFile:plistPath]retain];
         }
+        
+        // Init the unlock manager...
+        self.unlockManager = [[MTUnlockManager alloc]init];
         
     }
     return self;
@@ -172,7 +176,12 @@ static MTSharedManager * _instance = nil;
 }
 
 
-
+- (NSString *)nextLevelUnlockDescription{
+    return [unlockManager descriptionForLevel:level+1];
+}
+- (CCSprite *)nextLevelUnlockBadge{
+    return [unlockManager badgeForLevel:level+1];
+}
 
 #pragma mark -
 #pragma mark Level Management

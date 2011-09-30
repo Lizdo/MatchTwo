@@ -60,6 +60,8 @@ typedef enum {
 - (BOOL)ready;
 - (BOOL)active;
 - (BOOL)available;
+
++ (NSString *)descriptionForAbility:(NSString *)ability;
 @end
 
 #pragma mark -

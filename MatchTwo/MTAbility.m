@@ -98,6 +98,16 @@
     return YES;
 }
 
++ (NSString *)descriptionForAbility:(NSString *)ability{
+    NSMutableDictionary * descriptions = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                          @"自动提示", kMTAbilityHint,
+                                          @"冰冻时间", kMTAbilityFreeze,
+                                          @"魔术高亮", kMTAbilityHighlight,
+                                          @"重新排列", kMTAbilityShuffle,
+                                          nil];
+    return [descriptions objectForKey:ability];
+}
+
 @end
 
 
@@ -114,7 +124,6 @@
         activeTime = 10.0f;
         cooldownTime = 30.0f;
         name = kMTAbilityFreeze;
-        
     }
     return self;
 }

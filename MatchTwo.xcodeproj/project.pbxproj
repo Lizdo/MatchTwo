@@ -129,6 +129,7 @@
 		6E133A2A1410EA820048F75E /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E133A291410EA820048F75E /* Menu.png */; };
 		6E2489D6141679360008C7E3 /* MTLevelFailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2489D5141679360008C7E3 /* MTLevelFailPage.m */; };
 		6E301D31142B8632007825C3 /* MTObjectiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E301D30142B8632007825C3 /* MTObjectiveHelper.m */; };
+		6E333A7D1435F7D400B7C2D4 /* MTUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */; };
 		6E372A83141530F200FABCB4 /* MTLevelCompletePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
 		6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E71426113F7ED430024C36F /* MainMenuScene.m */; };
@@ -412,6 +413,8 @@
 		6E2489D5141679360008C7E3 /* MTLevelFailPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelFailPage.m; sourceTree = "<group>"; };
 		6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTObjectiveHelper.h; sourceTree = "<group>"; };
 		6E301D30142B8632007825C3 /* MTObjectiveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTObjectiveHelper.m; sourceTree = "<group>"; };
+		6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUnlockManager.h; sourceTree = "<group>"; };
+		6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUnlockManager.m; sourceTree = "<group>"; };
 		6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLevelCompletePage.h; sourceTree = "<group>"; };
 		6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelCompletePage.m; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
@@ -882,6 +885,8 @@
 		6E05296813E6FFD2002BA347 /* MT */ = {
 			isa = PBXGroup;
 			children = (
+				6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */,
+				6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */,
 				6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */,
 				6E301D30142B8632007825C3 /* MTObjectiveHelper.m */,
 				6EFB35031428E8DB0079964C /* MTPausePage.h */,
@@ -1132,6 +1137,7 @@
 				6EFB35051428E8DC0079964C /* MTPausePage.m in Sources */,
 				6E301D31142B8632007825C3 /* MTObjectiveHelper.m in Sources */,
 				6EB0175214307B7300D08D4F /* CCLabelBMFont+KerningHack.m in Sources */,
+				6E333A7D1435F7D400B7C2D4 /* MTUnlockManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

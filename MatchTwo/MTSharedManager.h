@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class MTUnlockManager;
+@class CCSprite;
+
 @interface MTSharedManager : NSObject{
     BOOL noMusic;
     BOOL noSoundEffect;
@@ -21,17 +24,23 @@
     
     // Record the Level Progress
     NSMutableDictionary * progress;
+    
+    MTUnlockManager * unlockManager;
 }
 
 @property BOOL noMusic;
 @property BOOL noSoundEffect;
 @property int totalScore;
 @property (readonly) int level;
+@property (retain) MTUnlockManager * unlockManager;
 
 + (MTSharedManager *)instance;
 - (void)save;
 - (void)pause;
 - (void)reset;
+
+- (NSString *)nextLevelUnlockDescription;
+- (CCSprite *)nextLevelUnlockBadge;
 
 // Score Management
 - (int)scoreForNextLevel;
