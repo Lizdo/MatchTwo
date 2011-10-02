@@ -49,10 +49,6 @@
                                       fontSize:kMTFontSizeNormal]
                 at:ccp(373,1024-230)];
     
-//    CCLabelTTF * unlock = [CCLabelTTF labelWithString:[[MTSharedManager instance] nextLevelUnlockDescription]
-//                                          fontName:kMTFont
-//                                          fontSize:kMTFontSizeSmall];
-    
     CCLabelTTF * unlock = [CCLabelTTF labelWithString:[[MTSharedManager instance] nextLevelUnlockDescription]
                                            dimensions:CGSizeMake(300, 100)
                                             alignment:CCTextAlignmentLeft
@@ -64,6 +60,11 @@
     unlock.color = kMTColorInactive;
     [self addChild:unlock];    
     
+    
+    CCSprite * unlockBadge = [[MTSharedManager instance] nextLevelUnlockBadge];
+    unlockBadge.position = ccp(410, 1024 - 300);
+    unlockBadge.anchorPoint = ccp(0,0);
+    [self addChild:unlockBadge];
     
     // Remaining Time
     [self addLabel:[CCLabelTTF labelWithString:@"剩余时间"

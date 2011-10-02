@@ -11,21 +11,8 @@
 
 const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
 
-// Tile is a 512 x 512 texture, each grid is 128 * 128
-
-CGRect rectForIndex(int index){
-    int rows = kMTAbilityButtonTextureSize/kMTAbilityButtonSpriteSize;
-    int idX = index % rows;
-    int idY = index / rows;
-    return CGRectMake(idX * kMTAbilityButtonSpriteSize, 
-                      idY * kMTAbilityButtonSpriteSize, 
-                      kMTAbilityButtonSpriteSize, 
-                      kMTAbilityButtonSpriteSize);
-}
-
-
 @interface MTAbilityButton()
-+ (int)idForButtonName:(NSString *)buttonName;
+//+ (int)idForButtonName:(NSString *)buttonName;
 @end
 
 @implementation MTAbilityButton
@@ -141,11 +128,21 @@ CGRect rectForIndex(int index){
     return [nameArray indexOfObject:buttonName];
 }
 
+// Tile is a 512 x 512 texture, each grid is 128 * 128
++ (CGRect)rectForIndex:(int)index{
+    int rows = kMTAbilityButtonTextureSize/kMTAbilityButtonSpriteSize;
+    int idX = index % rows;
+    int idY = index / rows;
+    return CGRectMake(idX * kMTAbilityButtonSpriteSize, 
+                      idY * kMTAbilityButtonSpriteSize, 
+                      kMTAbilityButtonSpriteSize, 
+                      kMTAbilityButtonSpriteSize);    
+}
 
 + (CCSprite *)spriteForButtonName:(NSString *)buttonName{
     int index = [MTAbilityButton idForButtonName:buttonName];
     CCSprite * s = [CCSprite spriteWithFile:@"Abilities.png" 
-                                            rect:rectForIndex(index)
+                                            rect:[MTAbilityButton rectForIndex:index]
                          ];
     return s;
 }
@@ -153,7 +150,7 @@ CGRect rectForIndex(int index){
 + (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName{
     int index = [MTAbilityButton idForButtonName:buttonName];
     CCSprite * s = [CCSprite spriteWithFile:@"Abilities_Disabled.png" 
-                                            rect:rectForIndex(index)
+                                            rect:[MTAbilityButton rectForIndex:index]
                          ];
     return s;
 }

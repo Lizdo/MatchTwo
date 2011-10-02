@@ -132,6 +132,7 @@
 		6E333A7D1435F7D400B7C2D4 /* MTUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */; };
 		6E372A83141530F200FABCB4 /* MTLevelCompletePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
+		6E4DA9F41438374700E98289 /* Unlocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E4DA9F31438374700E98289 /* Unlocks.png */; };
 		6E71426213F7ED430024C36F /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E71426113F7ED430024C36F /* MainMenuScene.m */; };
 		6E761408140F77E2003829A0 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E761407140F77E2003829A0 /* levels.plist */; };
 		6E79DFB213EEA21E00D623A6 /* Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E79DFB113EEA21E00D623A6 /* Tile.png */; };
@@ -419,6 +420,7 @@
 		6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelCompletePage.m; sourceTree = "<group>"; };
 		6E3C558313E98A2700F4C238 /* MTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBoard.h; sourceTree = "<group>"; };
 		6E3C558413E98A2700F4C238 /* MTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBoard.m; sourceTree = "<group>"; };
+		6E4DA9F31438374700E98289 /* Unlocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Unlocks.png; path = Resources/Unlocks.png; sourceTree = "<group>"; };
 		6E71426013F7ED430024C36F /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
 		6E71426113F7ED430024C36F /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
 		6E761407140F77E2003829A0 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E4DA9F31438374700E98289 /* Unlocks.png */,
 				6E80C73C1430C8000097C718 /* Game_Logo.png */,
 				6EB017531430890900D08D4F /* Stamp_Fail.png */,
 				6EB017541430890900D08D4F /* Stamp_Pause.png */,
@@ -1007,6 +1010,7 @@
 				6EB017571430890900D08D4F /* Stamp_Pause.png in Resources */,
 				6EB017581430890900D08D4F /* Stamp_Success.png in Resources */,
 				6E80C73D1430C8000097C718 /* Game_Logo.png in Resources */,
+				6E4DA9F41438374700E98289 /* Unlocks.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

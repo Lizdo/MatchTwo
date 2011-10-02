@@ -30,6 +30,9 @@
 + (MTAbilityButton *) abilityButtonWithName:(NSString *)name target:(MTGame *)g selector:(SEL)s;
 - (id) initWithName:(NSString *)n target:(MTGame *)g selector:(SEL)s;
 
++ (int)idForButtonName:(NSString *)buttonName;
++ (CGRect)rectForIndex:(int)index;
+
 - (void)update:(ccTime)dt;
 
 + (CCSprite *)spriteForButtonName:(NSString *)buttonName;

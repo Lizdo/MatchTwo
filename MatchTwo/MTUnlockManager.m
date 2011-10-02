@@ -8,6 +8,7 @@
 
 #import "MTUnlockManager.h"
 #import "MTAbility.h"
+#import "MTAbilityButton.h"
 
 @implementation MTUnlockManager
 
@@ -238,13 +239,24 @@
     }
 }
 
+- (CCSprite *)badge{
+    int index = [MTAbilityButton idForButtonName:ability];
+    return [CCSprite spriteWithFile:@"Unlocks.png" rect:[MTAbilityButton rectForIndex:index]];
+}
+
 @end
 
 
 @implementation MTUnlockExtraTime
 
 - (NSString *)description{
-    return @"『额外时间』\n 每个关卡获得5秒的额外时间";
+    return @"『额外时间』\n\t每个关卡获得5秒\n\t额外时间";
+}
+
+- (CCSprite *)badge{
+    return [CCSprite spriteWithFile:@"Unlocks.png" 
+                               rect:[MTAbilityButton rectForIndex:8]
+            ];
 }
 
 @end
@@ -252,7 +264,13 @@
 @implementation MTUnlockExtraScore
 
 - (NSString *)description{
-    return @"『额外分数』\n 你消除方块会获得额外的分数";
+    return @"『额外分数』\n\t你消除方块会获得\n\t额外的分数";
+}
+
+- (CCSprite *)badge{
+    return [CCSprite spriteWithFile:@"Unlocks.png" 
+                               rect:[MTAbilityButton rectForIndex:9]
+            ];
 }
 
 @end
@@ -260,7 +278,13 @@
 @implementation MTUnlockExtraBonus
 
 - (NSString *)description{
-    return @"『额外奖励』\n 你会获得更多的奖励方块";
+    return @"『额外奖励』\n\t你会获得更多\n\t奖励方块";
+}
+
+- (CCSprite *)badge{
+    return [CCSprite spriteWithFile:@"Unlocks.png" 
+                               rect:[MTAbilityButton rectForIndex:10]
+            ];
 }
 
 @end
