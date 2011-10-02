@@ -141,7 +141,6 @@
         t.state = TileState_FirstStep;
         t.lastConnectedTile = source;
     }
-    //NSLog(@"%@", [self description]);
 
     // Step.2 Start from 1, mark all adjucent 0 to 2, remember the 1
     for (MTTile * tile in tiles) {
@@ -168,11 +167,12 @@
         }
     }
     // Still not found, bye bye
+    CCLOG(@"%@", [self description]);
     return nil;
 }
 
 - (CGPoint)GLLocationForTile:(MTTile *)t{
-    CCLOGINFO(@"%@", [self description]);
+    //CCLOGINFO(@"%@", [self description]);
     
     CGPoint p = ccp(kMTBoardStartingX+(t.y-0.5)* kMTPieceSize,
                     kMTBoardStartingY+(t.x-0.5)* kMTPieceSize);

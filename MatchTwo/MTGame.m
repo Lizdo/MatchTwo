@@ -372,7 +372,7 @@
     pauseMenu.position = ccp(-winSize.width,0);
     
     // Animate In
-    [self runAction:[CCMoveBy actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];    
+    [self runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];    
 }
 
 #pragma mark -
