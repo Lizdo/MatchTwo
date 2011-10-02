@@ -9,10 +9,6 @@
 #import "MTUnlockManager.h"
 #import "MTAbility.h"
 
-#define kMTUnlockExtraTimeCount @"UnlockExtraTimeCount"
-#define kMTUnlockExtraScoreCount @"UnlockExtraScoreCount"
-#define kMTUnlockExtraBonusCount @"UnlockExtraBonusCount"
-
 @implementation MTUnlockManager
 
 - (id)init
@@ -162,7 +158,7 @@
     return [unlock badge];
 }
 
-- (int)leveForAbility:(NSString *)abilityName{
+- (int)levelForAbility:(NSString *)abilityName{
     int currentLevel = [MTSharedManager instance].level;
     for (int i = currentLevel; i>0; i--) {
         id unlock = [unlocks objectAtIndex:i];
@@ -192,6 +188,7 @@
             extraBonusCount++;
         }
     }
+    
     return [NSDictionary dictionaryWithObjectsAndKeys:
             [NSNumber numberWithInt:extraTimeCount], kMTUnlockExtraTimeCount,
             [NSNumber numberWithInt:extraScoreCount], kMTUnlockExtraScoreCount,
@@ -247,7 +244,7 @@
 @implementation MTUnlockExtraTime
 
 - (NSString *)description{
-    return @"『额外时间』\n每个关卡获得5秒的额外时间";
+    return @"『额外时间』\n 每个关卡获得5秒的额外时间";
 }
 
 @end
@@ -255,7 +252,7 @@
 @implementation MTUnlockExtraScore
 
 - (NSString *)description{
-    return @"『额外分数』\n你消除方块会获得额外的分数";
+    return @"『额外分数』\n 你消除方块会获得额外的分数";
 }
 
 @end
@@ -263,7 +260,7 @@
 @implementation MTUnlockExtraBonus
 
 - (NSString *)description{
-    return @"『额外奖励』\n你会获得更多的奖励方块";
+    return @"『额外奖励』\n 你会获得更多的奖励方块";
 }
 
 @end

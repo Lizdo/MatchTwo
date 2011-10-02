@@ -11,6 +11,10 @@
 #import "GameConfig.h"
 #import "MTSharedManager.h"
 
+#define kMTUnlockExtraTimeCount @"UnlockExtraTimeCount"
+#define kMTUnlockExtraScoreCount @"UnlockExtraScoreCount"
+#define kMTUnlockExtraBonusCount @"UnlockExtraBonusCount"
+
 @interface MTUnlockManager : NSObject{
     NSMutableArray * unlocks;   // Array for unlocks
 }
@@ -19,7 +23,7 @@
 - (NSString *)descriptionForLevel:(int)level;
 - (CCSprite *)badgeForLevel:(int)level;
 
-- (int)leveForAbility:(NSString *)abilityName;
+- (int)levelForAbility:(NSString *)abilityName;
 - (NSDictionary *)bonusUnlocks;
 
 @end

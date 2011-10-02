@@ -61,6 +61,10 @@
     int levelID;
     MTObjective obj;
     MTObjectiveState objState;
+    
+    float scoreMultiplier;
+    float bonusMultiplier;    
+    
     //BOOL objFailed;
     
     // Helper Array

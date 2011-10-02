@@ -94,7 +94,14 @@
 }
 
 - (BOOL)available{
-    //Override Me!!!
+    if (type == MTAbilityType_Activate) {
+        return YES;
+    }
+
+    if (level == 0) {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -121,18 +128,12 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 10.0f;
-        cooldownTime = 30.0f;
         name = kMTAbilityFreeze;
+        level = [[MTSharedManager instance] levelForAbility:name];        
+        activeTime = 10.0f * level;
+        cooldownTime = 30.0f;
     }
     return self;
-}
-
-- (BOOL)available{
-    if ([[MTSharedManager instance] level] > 10) {
-        return YES;
-    }
-    return NO;
 }
 
 @end
@@ -145,9 +146,11 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 5.0f;
+        name = kMTAbilityHint;        
+        level = [[MTSharedManager instance] levelForAbility:name];        
+        activeTime = 5.0f * level;
         cooldownTime = 20.0f;
-        name = kMTAbilityHint;
+
     }
     return self;
 }
@@ -161,9 +164,11 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 10.0f;
+        name = kMTAbilityHighlight;        
+        level = [[MTSharedManager instance] levelForAbility:name];                
+        activeTime = 10.0f * level;
         cooldownTime = 60.0f;
-        name = kMTAbilityHighlight;
+
     }
     return self;
 }
@@ -177,9 +182,10 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
-        activeTime = 0.01f;
-        cooldownTime = 10.0f;
         name = kMTAbilityShuffle;
+        level = [[MTSharedManager instance] levelForAbility:name];            
+        activeTime = 0.01f;
+        cooldownTime = 60.0f - 5.0f*(level-1);
     }
     return self;
 }

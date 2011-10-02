@@ -43,6 +43,7 @@ typedef enum {
     float tickingTime;
     float activeTime;
     float cooldownTime;
+    int level;
     
     MTAbilityState state;
     MTAbilityType type;

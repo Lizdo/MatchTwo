@@ -48,7 +48,9 @@
 
 // Level Management
 - (NSDictionary *)settingsForLevelID:(int)LevelID;
+- (NSDictionary *)bonusSettings;
 - (int)nextLevelID:(int)currentID;
+- (int)levelForAbility:(NSString *)abilityName;
 
 - (void)gotoNextLevel:(int)currentID;
 

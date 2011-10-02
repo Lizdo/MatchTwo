@@ -246,10 +246,10 @@
                         piece1.hinted = YES;
                         piece2.hinted = YES;
                         // AI will just select these pieces...
-                        if (kMTAIPlay) {
+#ifdef kMTAIPlay
                             [self selectPiece:piece1];
                             [self selectPiece:piece2];
-                        }
+#endif
                     }
                     return YES;
                 }else{

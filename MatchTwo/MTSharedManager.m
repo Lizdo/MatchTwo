@@ -75,7 +75,12 @@ static MTSharedManager * _instance = nil;
         }
         
         // Init the unlock manager...
-        self.unlockManager = [[MTUnlockManager alloc]init];
+        self.unlockManager = [[[MTUnlockManager alloc]init]autorelease];
+        
+#ifdef kMTResetScore
+        self.totalScore = 0;
+#endif
+
         
     }
     return self;
@@ -183,6 +188,10 @@ static MTSharedManager * _instance = nil;
     return [unlockManager badgeForLevel:level+1];
 }
 
+- (int)levelForAbility:(NSString *)abilityName{
+    return [unlockManager levelForAbility:abilityName];
+}
+
 #pragma mark -
 #pragma mark Level Management
 
@@ -200,6 +209,10 @@ static MTSharedManager * _instance = nil;
 //    [dic setObject:[NSNumber numberWithInt:9 + (LevelID % 100 - 1) * 2] forKey:@"numberOfTypes"];    
 //    return dic;
     return [levels objectForKey:[NSString stringWithFormat:@"%d",LevelID]];
+}
+
+- (NSDictionary *)bonusSettings{
+    return [unlockManager bonusUnlocks];
 }
 
 - (int)nextLevelID:(int)currentID{

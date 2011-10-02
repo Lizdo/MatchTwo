@@ -8,6 +8,7 @@
 
 #import "MTGame.h"
 #import "GameConfig.h"
+#import "MTUnlockManager.h"
 
 @interface MTGame ()
 - (void)prepare;
@@ -76,6 +77,13 @@
     initialTime = [[dic objectForKey:kMTSInitialTime] floatValue];
     numberOfTypes = [[dic objectForKey:kMTSNumberOfTypes] intValue];
     obj = [[dic objectForKey:kMTSObjective] intValue];
+    
+    // Add Bonus from player level
+    NSDictionary * bonusUnlock = [[MTSharedManager instance] bonusSettings];
+    
+    initialTime += [[bonusUnlock objectForKey:kMTUnlockExtraTimeCount] intValue] * 5.0f;
+    scoreMultiplier = 1 + [[bonusUnlock objectForKey:kMTUnlockExtraScoreCount] intValue] * 0.02f;
+    bonusMultiplier = 1 + [[bonusUnlock objectForKey:kMTUnlockExtraBonusCount] intValue] * 0.02f;
     
     remainingTime = initialTime;
     needShuffleCheck = YES;
@@ -304,9 +312,9 @@
     [scoreDisplay update:dt];
     
     // Update AI
-    if (kMTAIPlay) {
+#ifdef kMTAIPlay
         [board findLink];
-    }
+#endif
     
 }
 
@@ -406,9 +414,9 @@
     
     int scoreForTile;
     if ([self isAbilityActive:kMTAbilityDoubleScore]) {
-        scoreForTile = kMTScorePerPiece*2;
+        scoreForTile = round(kMTScorePerPiece*2*scoreMultiplier);
     }else{
-        scoreForTile = kMTScorePerPiece;
+        scoreForTile = round(kMTScorePerPiece*scoreMultiplier);
     }
     
     // Add popup
