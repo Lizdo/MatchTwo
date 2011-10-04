@@ -75,11 +75,14 @@
     CGSize winSize = [[CCDirector sharedDirector] winSize];        
     CCSprite * image = [CCSprite spriteWithFile:@"Background_Left.png"];
     image.position = ccp(winSize.width/2, winSize.height/2);
-    [self addChild:image];
+    [self addChild:image z:-2];
     
     CCSprite * logo = [CCSprite spriteWithFile:@"Game_Logo.png"];
     logo.position = ccp(winSize.width/2, 1024-361);
     [self addChild:logo];
+    
+    CCParticleSystemQuad * bkgParticle = [CCParticleSystemQuad particleWithFile:@"Particle_Star.plist"];
+    [self addChild:bkgParticle z:-1];
 }
 
 - (void) challengeMenu{

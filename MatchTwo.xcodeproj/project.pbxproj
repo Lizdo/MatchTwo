@@ -152,6 +152,10 @@
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 		6EA998EF140B2E100071A2F7 /* Particle_NoBlend.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */; };
 		6EA998F2140B62FA0071A2F7 /* Abilities_Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */; };
+		6EABFD2C143B640A00802983 /* Particle_Star.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EABFD2A143B640A00802983 /* Particle_Star.plist */; };
+		6EABFD2D143B640A00802983 /* Particle_Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EABFD2B143B640A00802983 /* Particle_Star.png */; };
+		6EABFD31143B6C5C00802983 /* Particle_Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EABFD2F143B6C5C00802983 /* Particle_Circle.png */; };
+		6EABFD32143B6C5C00802983 /* Particle_Dissolve.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EABFD30143B6C5C00802983 /* Particle_Dissolve.plist */; };
 		6EB0174D142EEFEA00D08D4F /* Numbers.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174B142EEFEA00D08D4F /* Numbers.fnt */; };
 		6EB0174E142EEFEA00D08D4F /* Numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB0174C142EEFEA00D08D4F /* Numbers.png */; };
 		6EB0175214307B7300D08D4F /* CCLabelBMFont+KerningHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */; };
@@ -449,6 +453,10 @@
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 		6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle_NoBlend.png; path = Resources/Particle_NoBlend.png; sourceTree = "<group>"; };
 		6EA998F1140B62FA0071A2F7 /* Abilities_Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abilities_Disabled.png; path = Resources/Abilities_Disabled.png; sourceTree = "<group>"; };
+		6EABFD2A143B640A00802983 /* Particle_Star.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Particle_Star.plist; path = Resources/Particle_Star.plist; sourceTree = "<group>"; };
+		6EABFD2B143B640A00802983 /* Particle_Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle_Star.png; path = Resources/Particle_Star.png; sourceTree = "<group>"; };
+		6EABFD2F143B6C5C00802983 /* Particle_Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle_Circle.png; path = Resources/Particle_Circle.png; sourceTree = "<group>"; };
+		6EABFD30143B6C5C00802983 /* Particle_Dissolve.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Particle_Dissolve.plist; path = Resources/Particle_Dissolve.plist; sourceTree = "<group>"; };
 		6EB0174B142EEFEA00D08D4F /* Numbers.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Numbers.fnt; sourceTree = "<group>"; };
 		6EB0174C142EEFEA00D08D4F /* Numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Numbers.png; sourceTree = "<group>"; };
 		6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLabelBMFont+KerningHack.m"; sourceTree = "<group>"; };
@@ -542,6 +550,10 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6EABFD2F143B6C5C00802983 /* Particle_Circle.png */,
+				6EABFD30143B6C5C00802983 /* Particle_Dissolve.plist */,
+				6EABFD2A143B640A00802983 /* Particle_Star.plist */,
+				6EABFD2B143B640A00802983 /* Particle_Star.png */,
 				6E4DA9F31438374700E98289 /* Unlocks.png */,
 				6E80C73C1430C8000097C718 /* Game_Logo.png */,
 				6EB017531430890900D08D4F /* Stamp_Fail.png */,
@@ -1011,6 +1023,10 @@
 				6EB017581430890900D08D4F /* Stamp_Success.png in Resources */,
 				6E80C73D1430C8000097C718 /* Game_Logo.png in Resources */,
 				6E4DA9F41438374700E98289 /* Unlocks.png in Resources */,
+				6EABFD2C143B640A00802983 /* Particle_Star.plist in Resources */,
+				6EABFD2D143B640A00802983 /* Particle_Star.png in Resources */,
+				6EABFD31143B6C5C00802983 /* Particle_Circle.png in Resources */,
+				6EABFD32143B6C5C00802983 /* Particle_Dissolve.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,6 +1215,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1216,6 +1233,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

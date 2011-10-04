@@ -309,8 +309,15 @@ static MTSharedManager * _instance = nil;
     
     currentSceneID = sceneID;
     
-    [[CCDirector sharedDirector] replaceScene: 
-        [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:kMTColorBackground]];
+    if (sceneID == 0 || sceneID == 1) {
+        // Main Menu always on the left most side
+        [[CCDirector sharedDirector] replaceScene: 
+         [CCTransitionSlideInL transitionWithDuration:0.5f scene:scene]];        
+    }else{
+        [[CCDirector sharedDirector] replaceScene: 
+         [CCTransitionSlideInR transitionWithDuration:0.5f scene:scene]];        
+    }
+
 }
 
 @end

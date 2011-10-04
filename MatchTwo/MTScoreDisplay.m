@@ -51,7 +51,7 @@
         score = [CCLabelTTF labelWithString:@""
                                  dimensions:CGSizeZero
                                   alignment:CCTextAlignmentRight
-                                   fontName:kMTFont
+                                   fontName:kMTFontSmallNumbers
                                    fontSize:kMTFontSizeSmall];
         score.position = ccp(kMTScoreBarWidth, 0.0f);
         score.color = kMTColorActive;
@@ -70,7 +70,7 @@
     percentage = (manager.totalScore - currentLevelScore + 0.01f)/(nextLevelScore - currentLevelScore + 0.01f);
     
     level.string = [NSString stringWithFormat:@"%d",lv];
-    score.string = [NSString stringWithFormat:@"%d/%d",manager.totalScore,nextLevelScore];
+    score.string = [NSString stringWithFormat:@"%d/%d€",manager.totalScore,nextLevelScore];
     
     if ([game isAbilityActive:kMTAbilityDoubleScore]) {
         score.color = kMTColorBuff;

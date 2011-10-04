@@ -91,7 +91,9 @@
 #define kMTMenuPadding 10.0f
 
 #define kMTFont @"STHeitiSC-Light" //@"FZLanTingHei-R-GBK"
+#define kMTFontCaption @"STHeitiSC-Light" //@"FZLanTingHei-R-GBK"
 #define kMTFontNumbers @"HelveticaNeue LT 25 UltLight"
+#define kMTFontSmallNumbers @"HelveticaNeue"
 #define kMTFontSizeCaption 100.0f
 #define kMTFontSizeLarge 60.0f
 #define kMTFontSizeNormal 40.0f

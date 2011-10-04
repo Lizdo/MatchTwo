@@ -397,11 +397,13 @@
     MTLine * line = [MTLine lineWithPoints:points];
     [self addChild:line];
     
-    MTParticleDisappear * p = [[[MTParticleDisappear alloc]init]autorelease];
+    //MTParticleDisappear * p = [[[MTParticleDisappear alloc]init]autorelease];
+    CCParticleSystemQuad * p = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
     [self addChild:p];
     p.position = [[points objectAtIndex:0] CGPointValue];    
     
-    p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
+    //p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
+    p = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];    
     [self addChild:p];
     p.position = [[points lastObject] CGPointValue];
     

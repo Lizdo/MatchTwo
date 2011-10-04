@@ -31,7 +31,7 @@
 - (void)addStats{
     // Your Level String
     [self addLabel:[CCLabelTTF labelWithString:@"你的等级"
-                                      fontName:kMTFont
+                                      fontName:kMTFontCaption
                                       fontSize:kMTFontSizeNormal]
                 at:ccp(90,1024-230)];
 
@@ -45,7 +45,7 @@
     
     // Next Level Unlock
     [self addLabel:[CCLabelTTF labelWithString:@"下一级解锁"
-                                      fontName:kMTFont
+                                      fontName:kMTFontCaption
                                       fontSize:kMTFontSizeNormal]
                 at:ccp(373,1024-230)];
     
@@ -68,7 +68,7 @@
     
     // Remaining Time
     [self addLabel:[CCLabelTTF labelWithString:@"剩余时间"
-                                      fontName:kMTFont
+                                      fontName:kMTFontCaption
                                       fontSize:kMTFontSizeNormal]
                 at:ccp(90,1024-410)];
     
@@ -82,7 +82,7 @@
     
     // Level Objective
     [self addLabel:[CCLabelTTF labelWithString:@"关卡任务"
-                                      fontName:kMTFont
+                                      fontName:kMTFontCaption
                                       fontSize:kMTFontSizeNormal]
                 at:ccp(373,1024-410)];
     
