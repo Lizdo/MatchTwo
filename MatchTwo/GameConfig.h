@@ -7,6 +7,8 @@
 //
 
 #import "ccTypes.h"
+#import "CCSprite+RectForIndex.h"
+
 
 #ifndef __GAME_CONFIG_H
 #define __GAME_CONFIG_H
@@ -71,6 +73,9 @@
 #define kMTAbilityButtonPadding kMTDefaultUIPadding
 #define kMTAbilityBadgeSize 32.0f
 #define kMTAbilityBadgePadding 12.0f
+
+#define kMTMenuItemSpriteSize 128.0f
+#define kMTMenuItemCanvasSize 1024.0f
 
 #define kMTBoardStartingX 95.0f
 #define kMTBoardStartingY 160.0f

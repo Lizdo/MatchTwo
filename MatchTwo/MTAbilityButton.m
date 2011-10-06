@@ -130,13 +130,9 @@ const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
 
 // Tile is a 512 x 512 texture, each grid is 128 * 128
 + (CGRect)rectForIndex:(int)index{
-    int rows = kMTAbilityButtonTextureSize/kMTAbilityButtonSpriteSize;
-    int idX = index % rows;
-    int idY = index / rows;
-    return CGRectMake(idX * kMTAbilityButtonSpriteSize, 
-                      idY * kMTAbilityButtonSpriteSize, 
-                      kMTAbilityButtonSpriteSize, 
-                      kMTAbilityButtonSpriteSize);    
+    return [CCSprite rectForIndex:index
+                      textureSize:kMTAbilityButtonSpriteSize
+                       canvasSize:kMTAbilityButtonTextureSize];
 }
 
 + (CCSprite *)spriteForButtonName:(NSString *)buttonName{

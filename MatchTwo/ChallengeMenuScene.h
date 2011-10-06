@@ -9,21 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface ChallengeMenuItem : CCMenuItemFont {
+@interface ChallengeMenuItem : CCMenuItemImage {
     BOOL completed;
     BOOL objCompleted;
-    BOOL locked;
+    int index;
     
-    CCSprite * levelIconLocked;
-    CCSprite * levelIcon;
-    CCSprite * lockIcon;
     CCSprite * completeIcon;
     CCSprite * objCompleteIcon;
 }
 
++ (ChallengeMenuItem *)itemWithIndex:(int)index block:(void(^)(id sender))block;
+- (id)initWithIndex:(int)theIndex block:(void(^)(id sender))block;
+
 @property BOOL completed;
 @property BOOL objCompleted;
-@property BOOL locked;
 
 @end
 

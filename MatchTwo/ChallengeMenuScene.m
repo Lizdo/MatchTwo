@@ -13,13 +13,23 @@
 
 @implementation ChallengeMenuItem
 
+- (void)setIsEnabled:(BOOL)enabled{
+    if (enabled) {
+        completeIcon.visible = NO;
+        objCompleteIcon.visible = NO;
+    }else{
+        completeIcon.visible = NO;
+        objCompleteIcon.visible = NO;   
+    }
+    [super setIsEnabled:enabled];
+}
+
 - (void)setCompleted:(BOOL)newBool{
     // Add Complete Icon
     completed = newBool;
     if (completed) {
         objCompleteIcon.visible = NO;
         completeIcon.visible = YES;
-        lockIcon.visible = NO;
     }
 }
 
@@ -33,7 +43,6 @@
     if (objCompleted) {
         objCompleteIcon.visible = YES;
         completeIcon.visible = NO;
-        lockIcon.visible = NO;
     }
 
 }
@@ -42,75 +51,62 @@
     return objCompleted;
 }
 
-- (void)setLocked:(BOOL)newBool{
-    // Add Lock icon
-    locked = newBool; 
-    if (locked) {
-        self.isEnabled = NO;
-        lockIcon.visible = YES;
-        completeIcon.visible = NO;
-        objCompleteIcon.visible = NO;
-        levelIconLocked.visible = YES;
-        levelIcon.visible = NO;
-    }else{
-        self.isEnabled = YES;
-        lockIcon.visible = NO;
-        completeIcon.visible = NO;
-        objCompleteIcon.visible = NO;        
-        levelIconLocked.visible = NO;
-        levelIcon.visible = YES;        
-    }
+
+#define kMTChallengeMenuIconOffset 100.0f
+#define kMTChallengeMenuImage @"Menu.png"
+
++ (ChallengeMenuItem *)itemWithIndex:(int)index block:(void(^)(id sender))block{
+    return [[[self alloc]initWithIndex:index block:block]autorelease];
 }
 
-
-
-- (BOOL)locked{
-    return locked;
-}
-
-#define kMTChallengeMenuIconSize 64.0f
-#define kMTChallengeMenuIconOffset 32.0f
-
-- (id)initFromString:(NSString *)value target:(id)r selector:(SEL)s{
-    self = [super initFromString:value target:r selector:s];
+- (id)initWithIndex:(int)theIndex block:(void(^)(id sender))block{
+    int realIndex = theIndex % 100 - 1;
+    NSAssert(realIndex<=16, @"Index must < 16");
+    CCSprite * levelIconNormal = [CCSprite spriteWithFile:kMTChallengeMenuImage
+                                              index:realIndex
+                                        textureSize:kMTMenuItemSpriteSize
+                                         canvasSize:kMTMenuItemCanvasSize];
+    CCSprite * levelIconSelected = [CCSprite spriteWithFile:kMTChallengeMenuImage
+                                                     index:realIndex + 32
+                                               textureSize:kMTMenuItemSpriteSize
+                                                canvasSize:kMTMenuItemCanvasSize];    
+    CCSprite * levelIconDisabled = [CCSprite spriteWithFile:kMTChallengeMenuImage
+                                                      index:realIndex + 16
+                                                textureSize:kMTMenuItemSpriteSize
+                                                 canvasSize:kMTMenuItemCanvasSize];
+    self = [super initFromNormalSprite:levelIconNormal
+                        selectedSprite:levelIconSelected
+                        disabledSprite:levelIconDisabled
+                                 block:block];
     if (self) {
-        // Add the icons
-        levelIconLocked = [CCSprite spriteWithFile:@"Menu.png" rect:CGRectMake(0, 0, kMTChallengeMenuIconSize, kMTChallengeMenuIconSize)];
-        [self addChild:levelIconLocked];
+        index = realIndex;
         
-        levelIcon = [CCSprite spriteWithFile:@"Menu.png" rect:CGRectMake(0, kMTChallengeMenuIconSize, kMTChallengeMenuIconSize, kMTChallengeMenuIconSize)];
-        [self addChild:levelIcon];        
-        
-        lockIcon = [CCSprite spriteWithFile:@"Menu.png" rect:CGRectMake(kMTChallengeMenuIconSize, 0, kMTChallengeMenuIconSize, kMTChallengeMenuIconSize)];
-        lockIcon.position = ccp(kMTChallengeMenuIconOffset, -kMTChallengeMenuIconOffset);        
-        [self addChild:lockIcon];
-
-        completeIcon = [CCSprite spriteWithFile:@"Menu.png" rect:CGRectMake(kMTChallengeMenuIconSize*2,
-                                                                            0,
-                                                                            kMTChallengeMenuIconSize,
-                                                                            kMTChallengeMenuIconSize)];
-        completeIcon.position = ccp(kMTChallengeMenuIconOffset, -kMTChallengeMenuIconOffset);
+        completeIcon = [CCSprite spriteWithFile:kMTChallengeMenuImage 
+                                          index:57 
+                                    textureSize:kMTMenuItemSpriteSize
+                                     canvasSize:kMTMenuItemCanvasSize];
+        completeIcon.position = ccp(kMTChallengeMenuIconOffset,0);
+        completeIcon.anchorPoint = ccp(0,0);
         [self addChild:completeIcon];
-
         
-        objCompleteIcon = [CCSprite spriteWithFile:@"Menu.png" rect:CGRectMake(kMTChallengeMenuIconSize*3,
-                                                                        0, 
-                                                                        kMTChallengeMenuIconSize,
-                                                                        kMTChallengeMenuIconSize)];
-        objCompleteIcon.position = ccp(kMTChallengeMenuIconOffset, -kMTChallengeMenuIconOffset);        
-        [self addChild:objCompleteIcon];
+        objCompleteIcon = [CCSprite spriteWithFile:kMTChallengeMenuImage 
+                                          index:56 
+                                    textureSize:kMTMenuItemSpriteSize
+                                     canvasSize:kMTMenuItemCanvasSize];
+        objCompleteIcon.anchorPoint = ccp(0,0);        
+        objCompleteIcon.position = ccp(kMTChallengeMenuIconOffset,0);        
+        [self addChild:objCompleteIcon]; 
     }
     return self;
 }
-
 
 // Sprite: Label
 //    Sprite
 //
 
 - (CGSize) contentSize{
-    return CGSizeMake(self.label.contentSize.width + kMTChallengeMenuIconSize/2,
-                      self.label.contentSize.height + 100);
+    return CGSizeMake(kMTMenuItemSpriteSize * 1.5,
+                      kMTMenuItemSpriteSize);
 }
 
 @end
@@ -152,20 +148,21 @@
 // 
 
 - (void)prepare{
+    CGSize winSize = [[CCDirector sharedDirector] winSize];        
+    CCSprite * image = [CCSprite spriteWithFile:@"Background_Right.png"];
+    image.position = ccp(winSize.width/2, winSize.height/2);
+    [self addChild:image z:-2];
+    
     CCMenu * menu = [CCMenu menuWithItems:nil];
     [CCMenuItemFont setFontSize:kMTFontSizeNormal];
     for (int i = 101; i <= 112; i++) {
-        NSString * s = [NSString stringWithFormat:@"%d", i];
-        ChallengeMenuItem * item = [ChallengeMenuItem itemFromString:s block:^(id sender){
+        ChallengeMenuItem * item = [ChallengeMenuItem itemWithIndex:i block:^(id sender){
             [[MTSharedManager instance] replaceSceneWithID:i];
         }];
-        item.label.position = ccp(30.0,0);
-        item.label.anchorPoint = ccp(0,0.5);
-//        item.contentSize = CGSizeMake(100, 100);
-//        item.anchorPoint = ccp(0.5,0.5);           
+        item.anchorPoint = ccp(0.5,0.5);           
         [menu addChild:item];
         
-        item.locked = [[MTSharedManager instance] locked:i];
+        item.isEnabled = ![[MTSharedManager instance] locked:i];
         item.completed = [[MTSharedManager instance] completed:i];
         item.objCompleted = [[MTSharedManager instance] objCompleted:i];        
     }
