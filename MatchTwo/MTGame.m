@@ -136,6 +136,7 @@
     
     CCMenuItemFont * pauseButton = [CCMenuItemFont itemFromString:@"暂停" target:self selector:@selector(pause)];
     pauseButton.position = ccp(700, 50);
+    pauseButton.color = kMTColorActive;
     
     buttons = [CCMenu menuWithItems:pauseButton, nil];
     buttons.position = ccp(0,0);

@@ -176,6 +176,16 @@
     
     [self addChild:menu];
     
+    // Add back to main menu item
+    CCMenuItemFont * pauseButton = [CCMenuItemFont itemFromString:@"返回" 
+                                                            block:^(id sender){
+                                                                [[MTSharedManager instance] replaceSceneWithID:0];
+                                                            }];
+    pauseButton.position = ccp(700 - winSize.width/2,
+                               50 - winSize.height/2);
+    pauseButton.color = kMTColorActive;
+    [menu addChild:pauseButton];
+    
 }
 
 
