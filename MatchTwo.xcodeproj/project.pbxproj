@@ -464,7 +464,7 @@
 		6EB017531430890900D08D4F /* Stamp_Fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stamp_Fail.png; path = Resources/Stamp_Fail.png; sourceTree = "<group>"; };
 		6EB017541430890900D08D4F /* Stamp_Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stamp_Pause.png; path = Resources/Stamp_Pause.png; sourceTree = "<group>"; };
 		6EB017551430890900D08D4F /* Stamp_Success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stamp_Success.png; path = Resources/Stamp_Success.png; sourceTree = "<group>"; };
-		6EC2B133143D973D0002A9E1 /* CCSprite+RectForIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "CCSprite+RectForIndex.h"; sourceTree = "<group>"; };
+		6EC2B133143D973D0002A9E1 /* CCSprite+RectForIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCSprite+RectForIndex.h"; sourceTree = "<group>"; };
 		6EC2B134143D973D0002A9E1 /* CCSprite+RectForIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCSprite+RectForIndex.m"; sourceTree = "<group>"; };
 		6EC3826F140C928A004F1147 /* MTFloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFloatingLabel.h; sourceTree = "<group>"; };
 		6EC38270140C928B004F1147 /* MTFloatingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFloatingLabel.m; sourceTree = "<group>"; };
@@ -1218,7 +1218,7 @@
 				GCC_PREFIX_HEADER = MatchTwo/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = MatchTwo/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1236,7 +1236,7 @@
 				GCC_PREFIX_HEADER = MatchTwo/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = MatchTwo/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
