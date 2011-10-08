@@ -71,7 +71,9 @@
     NSMutableArray * abilities;
     NSMutableArray * abilityButtons;    
     
-    
+    // Particles
+    CCParticleSystemQuad * dissolveParticle1;
+    CCParticleSystemQuad * dissolveParticle2;    
     
 }
 

@@ -179,6 +179,12 @@
     
     // Schedule the Update: function
     [self scheduleUpdateWithPriority:0];
+    
+    // Add Particles
+    dissolveParticle1 = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
+    [self addChild:dissolveParticle1];
+    dissolveParticle2 = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
+    [self addChild:dissolveParticle2];
         
 }
 
@@ -397,16 +403,12 @@
     
     MTLine * line = [MTLine lineWithPoints:points];
     [self addChild:line];
-    
-    //MTParticleDisappear * p = [[[MTParticleDisappear alloc]init]autorelease];
-    CCParticleSystemQuad * p = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
-    [self addChild:p];
-    p.position = [[points objectAtIndex:0] CGPointValue];    
-    
-    //p = [[[MTParticleDisappear alloc]initWithTotalParticles:150]autorelease];
-    p = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];    
-    [self addChild:p];
-    p.position = [[points lastObject] CGPointValue];
+
+    dissolveParticle1.position = [[points objectAtIndex:0] CGPointValue];
+    [dissolveParticle1 resetSystem];
+
+    dissolveParticle2.position = [[points lastObject] CGPointValue];
+    [dissolveParticle2 resetSystem];	
     
     
 }
