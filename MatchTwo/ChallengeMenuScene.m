@@ -114,6 +114,7 @@
 @interface ChallengeMenuScene()
 
 - (void)prepare;
+- (CCLayer *)page:(int)pageID;
 
 @end
 
@@ -147,16 +148,57 @@
 // From 101 to 112, 3 x 4 items
 // 
 
+#define kMTPageCount 6
+
 - (void)prepare{
+    
+    // Add Background
+    
     CGSize winSize = [[CCDirector sharedDirector] winSize];        
     CCSprite * image = [CCSprite spriteWithFile:@"Background_Right.png"];
     image.position = ccp(winSize.width/2, winSize.height/2);
     [self addChild:image z:-2];
+
+    // Add back to main menu item
+
+    CCMenu * menu = [CCMenu menuWithItems:nil];
+    CCMenuItemFont * pauseButton = [CCMenuItemFont itemFromString:@"返回" 
+                                                            block:^(id sender){
+                                                                [[MTSharedManager instance] replaceSceneWithID:0];
+                                                            }];
+    pauseButton.position = ccp(700 - winSize.width/2,
+                               50 - winSize.height/2);
+    pauseButton.color = kMTColorActive;
+    [menu addChild:pauseButton];
+    [self addChild:menu];
     
+    // Add the menu pages 
+    
+    NSMutableArray * pages = [NSMutableArray arrayWithCapacity:kMTPageCount];
+    
+    for (int i = 0; i < kMTPageCount; i++) {
+        [pages addObject:[self page:i]];
+    }
+    
+    scrollLayer = [CCScrollLayer nodeWithLayers:pages
+                                    widthOffset:0];
+	scrollLayer.pagesIndicatorPosition = ccp(winSize.width * 0.5f, 
+                                             30.0f);
+    
+    [self addChild:scrollLayer];
+    
+}
+
+- (CCLayer *)page:(int)pageID{
+    CCLayer *page = [CCLayer node];
     CCMenu * menu = [CCMenu menuWithItems:nil];
     [CCMenuItemFont setFontSize:kMTFontSizeNormal];
-    for (int i = 101; i <= 112; i++) {
-        ChallengeMenuItem * item = [ChallengeMenuItem itemWithIndex:i block:^(id sender){
+    
+    int startID = (pageID+1) * 100 + 1;
+    int endID = (pageID+1) * 100 +12;
+    for (int i = startID; i <= endID; i++) {
+        ChallengeMenuItem * item = [ChallengeMenuItem itemWithIndex:i 
+                                                              block:^(id sender){
             [[MTSharedManager instance] replaceSceneWithID:i];
         }];
         item.anchorPoint = ccp(0.5,0.5);           
@@ -167,25 +209,24 @@
         item.objCompleted = [[MTSharedManager instance] objCompleted:i];        
     }
     
-    
     [menu alignItemsInColumns:[NSNumber numberWithInt:3],
      [NSNumber numberWithInt:3],
      [NSNumber numberWithInt:3],
      [NSNumber numberWithInt:3],
      nil];
     
-    [self addChild:menu];
+    // Add Lebel
+    NSString * worldLabel = [NSString stringWithFormat:@"世界 %d", pageID+1];
+    CCLabelTTF * label = [CCLabelTTF labelWithString:worldLabel
+                                            fontName:kMTFontCaption 
+                                            fontSize:kMTFontSizeLarge];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];     
+    label.color = kMTColorActive;
+    label.position = ccp(winSize.width/2, winSize.height - 150);
+    [page addChild:label];
     
-    // Add back to main menu item
-    CCMenuItemFont * pauseButton = [CCMenuItemFont itemFromString:@"返回" 
-                                                            block:^(id sender){
-                                                                [[MTSharedManager instance] replaceSceneWithID:0];
-                                                            }];
-    pauseButton.position = ccp(700 - winSize.width/2,
-                               50 - winSize.height/2);
-    pauseButton.color = kMTColorActive;
-    [menu addChild:pauseButton];
-    
+    [page addChild:menu];
+    return page;
 }
 
 

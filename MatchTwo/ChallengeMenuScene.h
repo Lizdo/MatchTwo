@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "CCScrollLayer.h"
 
 @interface ChallengeMenuItem : CCMenuItemImage {
     BOOL completed;
@@ -16,6 +17,7 @@
     
     CCSprite * completeIcon;
     CCSprite * objCompleteIcon;
+
 }
 
 + (ChallengeMenuItem *)itemWithIndex:(int)index block:(void(^)(id sender))block;
@@ -27,7 +29,7 @@
 @end
 
 @interface ChallengeMenuScene : CCScene {
-    
+    CCScrollLayer * scrollLayer;
 }
 
 + (CCScene *) scene;
