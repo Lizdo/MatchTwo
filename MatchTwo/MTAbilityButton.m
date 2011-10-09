@@ -33,12 +33,14 @@ const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
         sprite = [MTAbilityButton spriteForButtonName:name];
         sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         sprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
+        sprite.color = [MTTheme foregroundColor];
         [self addChild:sprite z:-1];
         
         disabledSprite = [MTAbilityButton disabledSpriteForButtonName:name];
         disabledSprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         disabledSprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
         disabledSprite.visible = NO;
+        disabledSprite.color = [MTTheme backgroundColor];        
         [self addChild:disabledSprite z:-1];        
 
     }
@@ -81,9 +83,9 @@ const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
         return;
     }
     glLineWidth(1.0);
-    glColor4f(kMTColorActive.r/255.0,
-              kMTColorActive.g/255.0,
-              kMTColorActive.b/255.0,
+    glColor4f([MTTheme foregroundColor].r/255.0,
+              [MTTheme foregroundColor].g/255.0,
+              [MTTheme foregroundColor].b/255.0,
               0.6);
     
     // Stroke Once with AA Outside

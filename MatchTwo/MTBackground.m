@@ -8,6 +8,7 @@
 
 #import "MTBackground.h"
 #import "MTSFX.h"
+#import "MTTheme.h"
 
 @implementation MTBackground
 
@@ -16,7 +17,7 @@
     if (self) {
         //[self addChild:[[[MTParticleLoopingStar alloc]init]autorelease]];
         CGSize winSize = [[CCDirector sharedDirector] winSize];        
-        CCSprite * image = [CCSprite spriteWithFile:@"Background_Right.png"];
+        CCSprite * image = [CCSprite spriteWithFile:[MTTheme backgroundRight]];
         image.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:image];
 

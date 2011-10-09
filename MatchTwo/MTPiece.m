@@ -53,6 +53,7 @@ CGRect rectForType(int type){
         self.ability = @"";
         self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);        
         self.anchorPoint = ccp(0.5, 0.5);         
+        self.color = [MTTheme foregroundColor];
     }
     return self;
 }
@@ -71,7 +72,10 @@ CGRect rectForType(int type){
         glColor4f(1.0, (50 + type*20)/255.0, 0.32, 0.5);
         ccDrawPolyFill(points, 4, YES);
     }else{
-        glColor4f(0.6, 0.6, 0.6, 1.0);
+        glColor4f([MTTheme backgroundColor].r/255.0,
+                  [MTTheme backgroundColor].g/255.0,
+                  [MTTheme backgroundColor].b/255.0,
+                  1.0);
         glLineWidth(1.0);
         ccDrawPoly(points, 4, YES);        
     }    

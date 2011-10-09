@@ -71,6 +71,9 @@
 - (void) prepare{
     paused = NO;
     
+    // Set Theme
+    [MTTheme setTheme:[MTTheme randomConfig]];
+    
     // Initialization code here.
     NSDictionary * dic = [[MTSharedManager instance] settingsForLevelID:levelID];
     
@@ -136,7 +139,7 @@
     
     CCMenuItemFont * pauseButton = [CCMenuItemFont itemFromString:@"暂停" target:self selector:@selector(pause)];
     pauseButton.position = ccp(700, 50);
-    pauseButton.color = kMTColorActive;
+    pauseButton.color = [MTTheme foregroundColor];
     
     buttons = [CCMenu menuWithItems:pauseButton, nil];
     buttons.position = ccp(0,0);

@@ -27,7 +27,7 @@
     }else if (seconds <= 30){
         self.color = kMTColorDebuff;
     }else{
-        self.color = kMTColorPrimary;
+        self.color = [MTTheme primaryColor];
     }    
 
 }

@@ -8,6 +8,7 @@
 
 #import "MTPausePage.h"
 #import "MTGame.h"
+#import "MTTheme.h"
 
 @interface MTPausePage ()
 - (void)addBackground;
@@ -23,7 +24,7 @@
 
 - (void)addBackground{
     CGSize winSize = [[CCDirector sharedDirector] winSize];        
-    CCSprite * image = [CCSprite spriteWithFile:@"Background_Left.png"];
+    CCSprite * image = [CCSprite spriteWithFile:[MTTheme backgroundLeft]];
     image.position = ccp(winSize.width/2, winSize.height/2);
     [self addChild:image];
 }
@@ -40,7 +41,7 @@
                                             fontSize:kMTFontSizeCaption];
     level.position = ccp(260, 1024-340);
     level.anchorPoint = ccp(1,0);
-    level.color = kMTColorPrimary;
+    level.color = [MTTheme primaryColor];
     [self addChild:level];
     
     // Next Level Unlock
@@ -57,13 +58,14 @@
                                              fontSize:kMTFontSizeSmall];
     unlock.position = ccp(477, 1024 - 255);
     unlock.anchorPoint = ccp(0,1);
-    unlock.color = kMTColorInactive;
+    unlock.color = [MTTheme backgroundColor];
     [self addChild:unlock];    
     
     
     CCSprite * unlockBadge = [[MTSharedManager instance] nextLevelUnlockBadge];
     unlockBadge.position = ccp(410, 1024 - 300);
     unlockBadge.anchorPoint = ccp(0,0);
+    unlockBadge.color = [MTTheme primaryColor];
     [self addChild:unlockBadge];
     
     // Remaining Time
@@ -77,7 +79,7 @@
                                            fontSize:kMTFontSizeLarge];
     time.position = ccp(250, 1024-480);
     time.anchorPoint = ccp(1,0);
-    time.color = kMTColorPrimary;
+    time.color = [MTTheme primaryColor];
     [self addChild:time];
     
     // Level Objective
@@ -91,7 +93,7 @@
                                           fontSize:kMTFontSizeSmall];
     obj.position = ccp(477, 1024 - 455);
     obj.anchorPoint = ccp(0,0);
-    obj.color = kMTColorInactive;
+    obj.color = [MTTheme backgroundColor];
     [self addChild:obj];
     
     CCLabelTTF * objStatus = [CCLabelTTF labelWithString:@""
@@ -128,12 +130,13 @@
                                           block:^(id sender){
                                               [[MTSharedManager instance] replaceSceneWithID:0];}],                         
                  nil];
-    stamp = [CCSprite spriteWithFile:@"Stamp_Pause.png"];    
+    stamp = [CCSprite spriteWithFile:@"Stamp_Pause.png"];
+    [stamp setColor:[MTTheme primaryColor]];
 }
 
 - (void)setupMenus{    
     for (CCMenuItemFont * child in menu.children) {
-        child.color = kMTColorActive;
+        child.color = [MTTheme foregroundColor];
     }
     [menu alignItemsVerticallyWithPadding:kMTMenuPadding];
     menu.position = ccp(560, 1024-775);
@@ -156,7 +159,7 @@
 - (void)addLabel:(CCLabelTTF *)child at:(CGPoint)p{
     child.position = p;
     child.anchorPoint = ccp(0,0);
-    child.color = kMTColorInactive;
+    child.color = [MTTheme backgroundColor];
     [self addChild:child];
 }
 

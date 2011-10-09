@@ -43,7 +43,7 @@
                                    fontName:kMTFontNumbers
                                    fontSize:kMTFontSizeCaption];
         level.position = ccp(0, -20.0f);
-        level.color = kMTColorPrimary;
+        level.color = [MTTheme primaryColor];
         [self addChild:level z:1];
         level.anchorPoint = ccp(0.0, 0.0);
         
@@ -54,7 +54,7 @@
                                    fontName:kMTFontSmallNumbers
                                    fontSize:kMTFontSizeSmall];
         score.position = ccp(kMTScoreBarWidth, 0.0f);
-        score.color = kMTColorActive;
+        score.color = [MTTheme foregroundColor];
         score.anchorPoint = ccp(1.0, 0.0);
         [self addChild:score z:1];
         
@@ -75,7 +75,7 @@
     if ([game isAbilityActive:kMTAbilityDoubleScore]) {
         score.color = kMTColorBuff;
     }else{
-        score.color = kMTColorActive;
+        score.color = [MTTheme foregroundColor];
     }
 }
 
@@ -83,9 +83,9 @@
     [super draw];
     
     // Draw Baseline
-    glColor4f(kMTColorInactive.r/255.0,
-              kMTColorInactive.g/255.0,
-              kMTColorInactive.b/255.0,
+    glColor4f([MTTheme backgroundColor].r/255.0,
+              [MTTheme backgroundColor].g/255.0,
+              [MTTheme backgroundColor].b/255.0,
               1.0);
     glLineWidth(1.0); 
     CGPoint baseLine[2] = {
@@ -95,9 +95,9 @@
     ccDrawLine(baseLine[0], baseLine[1]);
     
     // Draw Overlay
-    glColor4f(kMTColorPrimary.r/255.0,
-              kMTColorPrimary.g/255.0,
-              kMTColorPrimary.b/255.0,
+    glColor4f([MTTheme primaryColor].r/255.0,
+              [MTTheme primaryColor].g/255.0,
+              [MTTheme primaryColor].b/255.0,
               1.0);
     glLineWidth(3.0);
     CGPoint overLay[2] = {
