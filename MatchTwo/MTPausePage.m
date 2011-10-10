@@ -23,10 +23,10 @@
 @synthesize game;
 
 - (void)addBackground{
-    CGSize winSize = [[CCDirector sharedDirector] winSize];        
-    CCSprite * image = [CCSprite spriteWithFile:[MTTheme backgroundLeft]];
-    image.position = ccp(winSize.width/2, winSize.height/2);
-    [self addChild:image];
+//    CGSize winSize = [[CCDirector sharedDirector] winSize];        
+//    CCSprite * image = [CCSprite spriteWithFile:[MTTheme backgroundLeft]];
+//    image.position = ccp(winSize.width/2, winSize.height/2);
+//    [self addChild:image];
 }
 
 - (void)addStats{

@@ -42,6 +42,10 @@
     int objBonus; 
     int completeBonus;
     
+    CCLayer * gameLayer;
+    CCLayer * menuLayer;
+    CCLayer * backgroundLayer;
+    
     // CCNodes
     MTBackground * background;
     MTBoard * board;

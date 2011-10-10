@@ -69,6 +69,16 @@
 }
 
 - (void) prepare{
+    // Initialize the nodes.
+    CGSize winSize = [[CCDirector sharedDirector] winSize];       
+    gameLayer = [CCLayer node];
+    menuLayer = [CCLayer node];
+    menuLayer.position = ccp(-winSize.width,0);
+    backgroundLayer = [CCLayer node];
+    [self addChild:backgroundLayer];
+    [self addChild:gameLayer];
+    [self addChild:menuLayer];
+    
     paused = NO;
     
     // Set Theme
@@ -92,14 +102,14 @@
     needShuffleCheck = YES;
     
     background  = [[[MTBackground alloc] init] autorelease];
-    [self addChild:background];
+    [backgroundLayer addChild:background];
     
     
     board = [[MTBoard alloc]initWithRowNumber:kMTDefaultRowNumber 
                               andColumnNumber:kMTDefaultColumnNumber];
     [board autorelease];
     board.game = self;
-    [self addChild:board];
+    [gameLayer addChild:board];
     
     // Randomize
     NSArray * randomTypes = [self randomizeType];
@@ -125,7 +135,7 @@
     timeDisplay.anchorPoint = ccp(1.0, 0.0);
     timeDisplay.position = ccp(768-30,1024-131);
     timeDisplay.game = self;
-    [self addChild:timeDisplay];
+    [gameLayer addChild:timeDisplay];
     //        
     // TODO: Add SFX Layer 
     
@@ -133,7 +143,7 @@
     scoreDisplay = [[MTScoreDisplay alloc]init];
     scoreDisplay.position = ccp(kMTScoreDisplayStartingX, kMTScoreDisplayStartingY);
     scoreDisplay.game = self;
-    [self addChild:scoreDisplay];
+    [gameLayer addChild:scoreDisplay];
     
     // Add Pause Button
     
@@ -175,7 +185,7 @@
         [buttons addChild:b];        
     }
     
-    [self addChild:buttons];
+    [gameLayer addChild:buttons];
     
     // Add floating label manager
     floatingLabels = [[MTFloatingLabelManager alloc] init];
@@ -185,9 +195,11 @@
     
     // Add Particles
     dissolveParticle1 = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
-    [self addChild:dissolveParticle1];
+    [dissolveParticle1 stopSystem];
+    [gameLayer addChild:dissolveParticle1];
     dissolveParticle2 = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
-    [self addChild:dissolveParticle2];
+    [dissolveParticle2 stopSystem];    
+    [gameLayer addChild:dissolveParticle2];
         
 }
 
@@ -231,7 +243,7 @@
     paused = YES;
     [board pause];
     // Add a text explaining the shuffle...
-    [self addChild:[floatingLabels addLabelWithString:@"重新排列"]];
+    [gameLayer addChild:[floatingLabels addLabelWithString:@"重新排列"]];
     [board shuffle];
     // Remove the text after the animation...
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime+kMTBoardShuffleTime];   
@@ -373,16 +385,20 @@
     [self pushPauseMenu];
 }
 
+#define kMTParallexOffset 40.0f
+
 - (void)pushPauseMenu{
     pauseMenu.game = self;
     [pauseMenu show];    
-    [self addChild:pauseMenu];
+    [menuLayer addChild:pauseMenu];
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];            
-    pauseMenu.position = ccp(-winSize.width,0);
+    //pauseMenu.position = ccp(0,0);
     
     // Animate In
-    [self runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];    
+    [menuLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)]];
+    [gameLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(winSize.width,0)]];
+    [backgroundLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(kMTParallexOffset,0)]];
 }
 
 #pragma mark -
@@ -405,7 +421,7 @@
     needShuffleCheck = YES;
     
     MTLine * line = [MTLine lineWithPoints:points];
-    [self addChild:line];
+    [gameLayer addChild:line];
 
     dissolveParticle1.position = [[points objectAtIndex:0] CGPointValue];
     [dissolveParticle1 resetSystem];
@@ -430,13 +446,13 @@
     // Add popup
     MTFloatingScore * scorePopup = [MTFloatingScore labelWithScore:scoreForTile];
     scorePopup.position = [[points lastObject] CGPointValue];
-    [self addChild:scorePopup];
+    [gameLayer addChild:scorePopup];
     
     [MTSharedManager instance].totalScore += scoreForTile;
 }
 
 - (void)levelUp{
-    [self addChild:[floatingLabels addLabelWithString:@"升级了！"]];    
+    [gameLayer addChild:[floatingLabels addLabelWithString:@"升级了！"]];    
 }
 
 
@@ -455,9 +471,16 @@
 }
 
 - (void)resumeFromPauseMenu{
+    CGSize winSize = [[CCDirector sharedDirector] winSize];           
+    // Animate In
+    [menuLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(-winSize.width,0)]];
+    [gameLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)]];
+    [backgroundLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)]];
+    
     [self runAction:[CCSequence actions:
-     [CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)],
-                     [CCCallBlock actionWithBlock:^{
+                     [CCDelayTime actionWithDuration:kMTMenuPageLoadingTime],
+                     [CCCallBlock actionWithBlock:^
+    {
         [pauseMenu removeFromParentAndCleanup:YES];
         [self resume];
     }],nil]];
@@ -473,12 +496,19 @@
 }
 
 - (void)restartFromPauseMenu{
+    CGSize winSize = [[CCDirector sharedDirector] winSize];    
+    // Animate In
+    [menuLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(-winSize.width,0)]];
+    [gameLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)]];
+    [backgroundLayer runAction:[CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)]];
+    
     [self runAction:[CCSequence actions:
-                     [CCMoveTo actionWithDuration:kMTMenuPageLoadingTime position:ccp(0,0)],
-                     [CCCallBlock actionWithBlock:^{
-        [pauseMenu removeFromParentAndCleanup:YES];
-        [self restart];
-    }],nil]];
+                     [CCDelayTime actionWithDuration:kMTMenuPageLoadingTime],
+                     [CCCallBlock actionWithBlock:^
+                      {
+                          [pauseMenu removeFromParentAndCleanup:YES];
+                          [self restart];
+                      }],nil]];    
 }
 
 - (void)restart{
@@ -593,7 +623,7 @@
     // Need to record the position here
     CGPoint positionInWorld = [b convertToWorldSpace:b.position];
     [b.parent removeChild:b cleanup:NO];
-    [self addChild:b z:100];
+    [gameLayer addChild:b z:100];
     b.position = positionInWorld;
     
     
