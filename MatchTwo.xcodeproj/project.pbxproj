@@ -124,6 +124,7 @@
 		6E2489D6141679360008C7E3 /* MTLevelFailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2489D5141679360008C7E3 /* MTLevelFailPage.m */; };
 		6E301D31142B8632007825C3 /* MTObjectiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E301D30142B8632007825C3 /* MTObjectiveHelper.m */; };
 		6E333A7D1435F7D400B7C2D4 /* MTUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */; };
+		6E335B41144F1AB600FDC996 /* MTTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E335B40144F1AB600FDC996 /* MTTransition.m */; };
 		6E372A83141530F200FABCB4 /* MTLevelCompletePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */; };
 		6E3A3594144C8DF80053287B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3A3593144C8DF80053287B /* Icon.png */; };
 		6E3C558513E98A2700F4C238 /* MTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C558413E98A2700F4C238 /* MTBoard.m */; };
@@ -420,6 +421,8 @@
 		6E301D30142B8632007825C3 /* MTObjectiveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTObjectiveHelper.m; sourceTree = "<group>"; };
 		6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUnlockManager.h; sourceTree = "<group>"; };
 		6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUnlockManager.m; sourceTree = "<group>"; };
+		6E335B3F144F1AB600FDC996 /* MTTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTransition.h; sourceTree = "<group>"; };
+		6E335B40144F1AB600FDC996 /* MTTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTransition.m; sourceTree = "<group>"; };
 		6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLevelCompletePage.h; sourceTree = "<group>"; };
 		6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelCompletePage.m; sourceTree = "<group>"; };
 		6E3A3593144C8DF80053287B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
@@ -927,6 +930,8 @@
 				6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */,
 				6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */,
 				6E301D30142B8632007825C3 /* MTObjectiveHelper.m */,
+				6E335B3F144F1AB600FDC996 /* MTTransition.h */,
+				6E335B40144F1AB600FDC996 /* MTTransition.m */,
 				6EFB35031428E8DB0079964C /* MTPausePage.h */,
 				6EFB35041428E8DC0079964C /* MTPausePage.m */,
 				6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */,
@@ -1200,6 +1205,7 @@
 				6EC2B135143D973D0002A9E1 /* CCSprite+RectForIndex.m in Sources */,
 				6EA269651440A92900033D2A /* CCScrollLayer.m in Sources */,
 				6EFCA56514415FA000FDF8B5 /* MTTheme.m in Sources */,
+				6E335B41144F1AB600FDC996 /* MTTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,6 +1290,45 @@
 			};
 			name = Release;
 		};
+		6E335B43144F2EBD00FDC996 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = AdHoc;
+		};
+		6E335B44144F2EBD00FDC996 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MatchTwo/Prefix.pch;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = MatchTwo/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = AdHoc;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1292,6 +1337,7 @@
 			buildConfigurations = (
 				6E05295713E6EE8D002BA347 /* Debug */,
 				6E05295813E6EE8D002BA347 /* Release */,
+				6E335B43144F2EBD00FDC996 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1301,6 +1347,7 @@
 			buildConfigurations = (
 				6E05295A13E6EE8D002BA347 /* Debug */,
 				6E05295B13E6EE8D002BA347 /* Release */,
+				6E335B44144F2EBD00FDC996 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

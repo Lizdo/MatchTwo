@@ -80,9 +80,12 @@
     CCSprite * logo = [CCSprite spriteWithFile:@"Game_Logo.png"];
     logo.position = ccp(winSize.width/2, 1024-361);
     [self addChild:logo];
-    
+
+}
+
+- (void)onEnterTransitionDidFinish{
     CCParticleSystemQuad * bkgParticle = [CCParticleSystemQuad particleWithFile:@"Particle_Star.plist"];
-    [self addChild:bkgParticle z:-1];
+    [self addChild:bkgParticle z:-1];    
 }
 
 - (void) challengeMenu{

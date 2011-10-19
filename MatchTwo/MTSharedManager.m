@@ -12,6 +12,7 @@
 #import "GameScene.h"
 #import "MTGame.h"
 #import "MTUnlockManager.h"
+#import "MTTransition.h"
 
 @interface MTSharedManager ()
 - (void)calculateLevel;
@@ -312,10 +313,10 @@ static MTSharedManager * _instance = nil;
     if (sceneID == 0 || sceneID == 1) {
         // Main Menu always on the left most side
         [[CCDirector sharedDirector] replaceScene: 
-         [CCTransitionSlideInL transitionWithDuration:0.5f scene:scene]];        
+         [MTTransitionCurtain transitionWithDuration:3.0f scene:scene]];        
     }else{
         [[CCDirector sharedDirector] replaceScene: 
-         [CCTransitionSlideInR transitionWithDuration:0.5f scene:scene]];        
+         [MTTransitionCurtain transitionWithDuration:3.0f scene:scene]];        
     }
 
 }
