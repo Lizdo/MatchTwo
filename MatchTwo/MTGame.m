@@ -240,6 +240,10 @@
 }
 
 - (void)shuffle{
+    if (paused) {
+        // Shuffle should not be triggering in Menu...etc
+        return;
+    }
     paused = YES;
     [board pause];
     // Add a text explaining the shuffle...
