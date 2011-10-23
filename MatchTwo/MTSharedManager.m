@@ -310,14 +310,15 @@ static MTSharedManager * _instance = nil;
     
     currentSceneID = sceneID;
     
-    if (sceneID == 0 || sceneID == 1) {
-        // Main Menu always on the left most side
+    if (sceneID < 100) {
+        // Menu pages should turn up quickly
         [[CCDirector sharedDirector] replaceScene: 
-         [MTTransitionCurtain transitionWithDuration:3.0f scene:scene]];        
+         [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:kMTColorBackground]];             
     }else{
         [[CCDirector sharedDirector] replaceScene: 
-         [MTTransitionCurtain transitionWithDuration:3.0f scene:scene]];        
+         [MTTransitionCurtain transitionWithDuration:2.0f scene:scene]];        
     }
+
 
 }
 

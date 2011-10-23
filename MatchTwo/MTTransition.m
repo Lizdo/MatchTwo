@@ -22,7 +22,7 @@ const uint32_t kSceneCurtain = 0xC697A141;
     
     // Create Curtain
     //curtain = [CCLayerColor layerWithColor:ccc4(ccORANGE.r, ccORANGE.g, ccORANGE.b, 255)];
-    curtain = [CCSprite spriteWithFile:@"Background_Left.png"];
+    curtain = [CCSprite spriteWithFile:@"Curtain.png"];
     
 	[self addChild:curtain z:2 tag:kSceneCurtain];
     

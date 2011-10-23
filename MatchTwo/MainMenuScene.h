@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 
 @interface MainMenuScene : CCLayer {
+    CCSprite * logo;
+    CCMenu * menu;
     
 }
 

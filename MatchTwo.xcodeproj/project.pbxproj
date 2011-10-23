@@ -145,6 +145,7 @@
 		6E8A50D0140E285600C4352C /* MTScoreDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A50CF140E285500C4352C /* MTScoreDisplay.m */; };
 		6E8C09B113F2CC2300DF1F84 /* MTBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B013F2CC2300DF1F84 /* MTBackground.m */; };
 		6E8C09B513F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */; };
+		6E92FD7A145451C700AE7A23 /* Curtain.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E92FD79145451C700AE7A23 /* Curtain.png */; };
 		6EA0EE0013EE8A7D00F3A05B /* MTTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */; };
 		6EA269651440A92900033D2A /* CCScrollLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA269641440A92900033D2A /* CCScrollLayer.m */; };
 		6EA998EF140B2E100071A2F7 /* Particle_NoBlend.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EA998EE140B2E100071A2F7 /* Particle_NoBlend.png */; };
@@ -453,6 +454,7 @@
 		6E8C09B013F2CC2300DF1F84 /* MTBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBackground.m; sourceTree = "<group>"; };
 		6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCDrawingPrimitives+MT.m"; sourceTree = "<group>"; };
 		6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCDrawingPrimitives+MT.h"; sourceTree = "<group>"; };
+		6E92FD79145451C700AE7A23 /* Curtain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Curtain.png; path = Resources/Curtain.png; sourceTree = "<group>"; };
 		6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTimeLine.h; sourceTree = "<group>"; };
 		6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTimeLine.m; sourceTree = "<group>"; };
 		6EA269631440A92900033D2A /* CCScrollLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCScrollLayer.h; path = libs/Extensions/CCScrollLayer/CCScrollLayer.h; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E92FD79145451C700AE7A23 /* Curtain.png */,
 				6EFCA567144196A800FDF8B5 /* Background_Winter_Right.png */,
 				6EFCA568144196A800FDF8B5 /* Background_Winter_Left.png */,
 				6EFCA569144196A800FDF8B5 /* Background_Summer_Right.png */,
@@ -1071,6 +1074,7 @@
 				6EFCA579144196A800FDF8B5 /* Background_Autumn_Right.png in Resources */,
 				6EFCA57A144196A800FDF8B5 /* Background_Autumn_Left.png in Resources */,
 				6E3A3594144C8DF80053287B /* Icon.png in Resources */,
+				6E92FD7A145451C700AE7A23 /* Curtain.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1295,7 +1299,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
