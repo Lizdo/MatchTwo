@@ -24,9 +24,10 @@
 #import "MTLevelFailPage.h"
 #import "MTPausePage.h"
 #import "MTObjectiveHelper.h"
+#import "MTTouchToStartLayer.h"
 
 
-@interface MTGame : CCNode{
+@interface MTGame : CCNode <MTTouchToStartProtocol>{
     // Gameplay Related
     BOOL paused;
     
@@ -45,6 +46,8 @@
     CCLayer * gameLayer;
     CCLayer * menuLayer;
     CCLayer * backgroundLayer;
+    
+    MTTouchToStartLayer * tapToStart;
     
     // CCNodes
     MTBackground * background;

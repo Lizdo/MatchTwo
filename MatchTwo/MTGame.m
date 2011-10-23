@@ -189,9 +189,7 @@
     
     // Add floating label manager
     floatingLabels = [[MTFloatingLabelManager alloc] init];
-    
-    // Schedule the Update: function
-    [self scheduleUpdateWithPriority:0];
+
     
     // Add Particles
     dissolveParticle1 = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
@@ -200,7 +198,11 @@
     dissolveParticle2 = [CCParticleSystemQuad particleWithFile:@"Particle_Dissolve.plist"];
     [dissolveParticle2 stopSystem];    
     [gameLayer addChild:dissolveParticle2];
-        
+    
+    // Add Tap To Start Layer
+    tapToStart = [MTTouchToStartLayer layerWithColor:ccc4(0, 0, 0, 120)];
+    [self addChild:tapToStart];
+    tapToStart.delegate = self;
 }
 
 - (void)dealloc{
@@ -211,6 +213,20 @@
     [super dealloc];
 }
 
+
+- (void)addTapToStart{
+    
+
+
+    
+    
+}
+
+- (void)start{
+    [tapToStart removeFromParentAndCleanup:YES];
+    // Schedule the Update: function
+    [self scheduleUpdateWithPriority:0];    
+}
 
 - (NSArray *)randomizeType{
     int totalCount = board.columnNumber*board.rowNumber;
