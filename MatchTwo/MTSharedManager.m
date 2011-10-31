@@ -79,7 +79,10 @@ static MTSharedManager * _instance = nil;
         self.unlockManager = [[[MTUnlockManager alloc]init]autorelease];
         
 #ifdef kMTResetScore
-        self.totalScore = 0;
+        self.totalScore = 50500;
+        for (int i = 101; i < 108; i++){
+            [self completeLevel:i andObjective:YES];
+        }
 #endif
 
         
@@ -100,8 +103,7 @@ static MTSharedManager * _instance = nil;
 
 - (MTGame *)game{
     // Game Scene
-    CCScene * scene = [CCDirector sharedDirector].runningScene;
-    GameScene * gameScene = (GameScene *)([scene.children lastObject]);
+    GameScene * gameScene = (GameScene *)[CCDirector sharedDirector].runningScene;
     MTGame * game = [gameScene game];
     return game;
 }

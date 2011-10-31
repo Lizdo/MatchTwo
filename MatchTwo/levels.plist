@@ -16,7 +16,7 @@
 	<key>102</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>80</integer>
 		<key>numberOfTypes</key>
 		<integer>8</integer>
 		<key>powerUpPercentage</key>
@@ -25,88 +25,88 @@
 	<key>103</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>80</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>9</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>104</key>
 	<dict>
 		<key>initialTime</key>
 		<integer>100</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>10</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>105</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>90</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>10</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>106</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>80</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>10</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>107</key>
 	<dict>
 		<key>initialTime</key>
 		<integer>100</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>11</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>108</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>90</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>11</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>109</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>80</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>11</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>110</key>
 	<dict>
 		<key>initialTime</key>
 		<integer>100</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>12</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>111</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>90</integer>
 		<key>numberOfTypes</key>
-		<integer>8</integer>
+		<integer>12</integer>
 		<key>powerUpPercentage</key>
-		<real>0</real>
+		<integer>0</integer>
 	</dict>
 	<key>112</key>
 	<dict>
 		<key>initialTime</key>
-		<integer>100</integer>
+		<integer>140</integer>
 		<key>numberOfTypes</key>
 		<integer>16</integer>
 		<key>powerUpPercentage</key>

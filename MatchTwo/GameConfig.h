@@ -47,7 +47,7 @@
 
 #endif // __GAME_CONFIG_H
 
-#define COCOS2D_DEBUG 1
+//#define COCOS2D_DEBUG
 
 // Debug Flags
 //#define kMTAIPlay
@@ -117,7 +117,7 @@
 
 #define kMTTotalScorePerGame 4000
 #define kMTScorePerGame 2000
-#define kMTScorePerPiece 200//12
+#define kMTScorePerPiece 12
 #define kMTScorePerSecond 2
 #define kMTScorePerObj 1000
 
