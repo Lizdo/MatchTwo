@@ -16,6 +16,7 @@ typedef enum{
     kMTThemeSummer = 2,
     kMTThemeAutumn = 3,
     kMTThemeWinter = 4,
+    kMTThemeMainMenu = 5,    
 }MTThemeConfig;
 
 @interface MTTheme : NSObject

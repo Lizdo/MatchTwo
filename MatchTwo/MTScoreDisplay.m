@@ -59,6 +59,8 @@
         [self addChild:score z:1];
         
         manager = [MTSharedManager instance];
+        
+        [self update:0.01];
     }
     return self;
 }
@@ -72,7 +74,7 @@
     level.string = [NSString stringWithFormat:@"%d",lv];
     score.string = [NSString stringWithFormat:@"%d/%d€",manager.totalScore,nextLevelScore];
     
-    if ([game isAbilityActive:kMTAbilityDoubleScore]) {
+    if (game && [game isAbilityActive:kMTAbilityDoubleScore]) {
         score.color = kMTColorBuff;
     }else{
         score.color = [MTTheme foregroundColor];

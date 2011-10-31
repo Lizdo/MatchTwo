@@ -10,6 +10,7 @@
 #import "MTSharedManager.h"
 #import "GameConfig.h"
 
+
 @interface MainMenuScene()
 
 - (void) dailyChallenge;
@@ -17,6 +18,8 @@
 - (void) settingMenu;
 
 - (void)addBackground;
+- (void)addMenu;
+- (void)addScoreDisplay;
 
 @end
 
@@ -47,28 +50,11 @@
 -(id) init
 {
 	if( (self=[super init])) {
-        
+        // Set the theme color for the main menu
+        [MTTheme setTheme:kMTThemeMainMenu];
         [self addBackground];
-        
-        [CCMenuItemFont setFontName:kMTFont];
-        [CCMenuItemFont setFontSize:kMTFontSizeNormal];
-        menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
-                         [CCMenuItemFont itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
-                         [CCMenuItemFont itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
-                         nil];
-        [menu alignItemsVerticallyWithPadding: 20.0f];        
-        
-        CGSize winSize = [[CCDirector sharedDirector] winSize];        
-        menu.position = ccp(winSize.width/2, 300);
-        
-        [self addChild:menu];
-        
-        for (CCMenuItemFont * child in menu.children) {
-            child.color = kMTColorActive;
-        }
-        
-        [menu setOpacity:0.0f];
-        
+        [self addMenu];
+        [self addScoreDisplay];
 	}
 	return self;
 }
@@ -86,6 +72,37 @@
 
 }
 
+- (void)addMenu{
+    [CCMenuItemFont setFontName:kMTFont];
+    [CCMenuItemFont setFontSize:kMTFontSizeNormal];
+    menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
+            [CCMenuItemFont itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
+            [CCMenuItemFont itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
+            nil];
+    [menu alignItemsVerticallyWithPadding: 20.0f];        
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];        
+    menu.position = ccp(winSize.width/2, 300);
+    
+    [self addChild:menu];
+    
+    for (CCMenuItemFont * child in menu.children) {
+        child.color = kMTColorActive;
+    }
+    
+    [menu setOpacity:0.0f];    
+}
+
+
+#define ScoreDisplayInitialPosition ccp(kMTScoreDisplayStartingX, -100)
+#define ScoreDisplayFinalPosition ccp(kMTScoreDisplayStartingX, 10)
+
+- (void)addScoreDisplay{
+    scoreDisplay = [MTScoreDisplay node];
+    [self addChild:scoreDisplay];
+    scoreDisplay.position = ScoreDisplayInitialPosition;
+}
+
 #define kMTMainMenuFadeInTime 1.0f
 
 - (void)onEnterTransitionDidFinish{
@@ -93,6 +110,7 @@
     CCActionInterval * logoFadeIn = [CCFadeIn actionWithDuration:kMTMainMenuFadeInTime];
     CCActionInterval * showMenu = [CCCallBlock actionWithBlock:^{
         [menu runAction:[CCFadeIn actionWithDuration:kMTMainMenuFadeInTime]];
+        [scoreDisplay runAction:[CCMoveTo actionWithDuration:kMTMainMenuFadeInTime position:ScoreDisplayFinalPosition]];
     }];
     
     [logo runAction:[CCSequence actions:logoFadeIn, showMenu, nil]];

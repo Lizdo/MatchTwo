@@ -12,6 +12,7 @@
 
 @class MTGame;
 @class MTSharedManager;
+
 // Will have the following components:
 // EXP Bar 
 // Current Level in Big Font

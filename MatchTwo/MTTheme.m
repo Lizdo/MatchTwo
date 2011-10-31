@@ -83,6 +83,12 @@ static NSString * backgroundRight;
             primaryColor = kMTColorWinter;
             backgroundLeft = kMTBackgroundWinterLeft;
             backgroundRight = kMTBackgroundWinterRight;
+            break;
+        case kMTThemeMainMenu:
+            primaryColor = kMTColorDefault;
+            foregroundColor = kMTColorInactive;
+            backgroundColor = kMTColorInactive;
+            break;
         case kMTThemeDefault:
         default:
             primaryColor = kMTColorDefault;
