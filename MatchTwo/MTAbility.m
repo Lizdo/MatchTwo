@@ -148,8 +148,8 @@
         // Possible to query SharedManager for Player Info
         name = kMTAbilityHint;        
         level = [[MTSharedManager instance] levelForAbility:name];        
-        activeTime = 5.0f * level;
-        cooldownTime = 20.0f;
+        activeTime = 0.1f;
+        cooldownTime = 200.0f - (level * 20);
 
     }
     return self;

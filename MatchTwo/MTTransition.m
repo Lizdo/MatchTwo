@@ -7,13 +7,29 @@
 //
 
 #import "MTTransition.h"
+#import "MTSharedManager.h"
+#import "MTGame.h"
+
 
 @implementation MTTransitionCurtain
 
 
 const uint32_t kSceneCurtain = 0xC697A141;
 
--(void) onEnter
+- (MTTransitionCurtain *)initWithDuration:(float)duration scene:(GameScene *)theScene{
+    self = [super initWithDuration:duration scene:theScene];
+    if (self) {
+        gameScene = theScene;
+    }
+    return self;
+}
+
++ (id)transitionWithDuration:(float)duration scene:(GameScene *)theScene{
+   return [[[MTTransitionCurtain alloc]initWithDuration:duration scene:theScene] autorelease];
+}
+
+
+- (void) onEnter
 {
 	[super onEnter];
 	CGSize s = [[CCDirector sharedDirector] winSize];
@@ -30,6 +46,24 @@ const uint32_t kSceneCurtain = 0xC697A141;
     CGPoint bottom = ccp(s.width/2, s.height/2);
     
     curtain.position = top;
+    
+    // Add Level Stats
+    MTGame * game = [gameScene game];
+    NSDictionary * settings = [[MTSharedManager instance] settingsForLevelID:[game levelID]];
+    
+    NSString * time = [NSString stringWithFormat:@"时间限制: %3.0f秒", [[settings objectForKey:kMTSInitialTime] floatValue]];
+    CCLabelTTF * timeLabel = [CCLabelTTF labelWithString:time
+                                                fontName:kMTFont
+                                                fontSize:kMTFontSizeLarge];
+    [curtain addChild:timeLabel];
+    timeLabel.position = ccp(s.width/2, s.height/2 + 100);
+    
+    NSString * difficulty = [NSString stringWithFormat:@"难度: %d", [game levelID]/100];
+    CCLabelTTF * difficultyLabel = [CCLabelTTF labelWithString:difficulty
+                                                fontName:kMTFont
+                                                fontSize:kMTFontSizeLarge];
+    [curtain addChild:difficultyLabel];
+    difficultyLabel.position = ccp(s.width/2, s.height/2);    
     
     // Curtain Down
     CCActionInterval *curtainDown = [CCMoveTo actionWithDuration:duration_/4 

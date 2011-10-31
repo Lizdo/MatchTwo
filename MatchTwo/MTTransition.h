@@ -7,9 +7,14 @@
 //
 
 #import "cocos2d.h"
+#import "GameScene.h"
 
 @interface MTTransitionCurtain : CCTransitionScene{
     CCNode * curtain;
+    GameScene * gameScene;
 }
+
++ (id)transitionWithDuration:(float)duration scene:(GameScene *)theScene;          
+- (MTTransitionCurtain *)initWithDuration:(float)duration scene:(GameScene *)theScene;
 
 @end

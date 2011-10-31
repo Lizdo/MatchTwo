@@ -27,6 +27,10 @@
 #import "MTTouchToStartLayer.h"
 
 
+#define kMTSInitialTime @"initialTime"
+#define kMTSNumberOfTypes @"numberOfTypes"
+#define kMTSObjective @"objective"
+
 @interface MTGame : CCNode <MTTouchToStartProtocol>{
     // Gameplay Related
     BOOL paused;

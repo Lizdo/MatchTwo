@@ -289,8 +289,10 @@ static MTSharedManager * _instance = nil;
 #pragma mark Scene Management
 
 - (void)replaceSceneWithID:(int)sceneID{
-    CCScene * scene;
+    currentSceneID = sceneID;
+    
     if (sceneID < 100) {
+        CCScene * scene;        
         switch (sceneID) {
             case 0:
             case 1:                
@@ -304,21 +306,15 @@ static MTSharedManager * _instance = nil;
                 scene = [MainMenuScene scene];                
                 break;
         }
-    }else{
-        scene = [GameScene sceneWithID:sceneID];
-    }
-    
-    currentSceneID = sceneID;
-    
-    if (sceneID < 100) {
         // Menu pages should turn up quickly
         [[CCDirector sharedDirector] replaceScene: 
-         [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:kMTColorBackground]];             
+         [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:kMTColorBackground]];           
     }else{
+        GameScene * gameScene = [GameScene sceneWithID:sceneID];
         [[CCDirector sharedDirector] replaceScene: 
-         [MTTransitionCurtain transitionWithDuration:2.0f scene:scene]];        
+         [MTTransitionCurtain transitionWithDuration:2.0f scene:gameScene]];        
+        
     }
-
 
 }
 

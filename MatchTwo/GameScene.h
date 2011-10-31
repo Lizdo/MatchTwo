@@ -11,8 +11,9 @@
 #import "cocos2d.h"
 #import "MTGame.h"
 
-// GameScene
-@interface GameScene : CCLayer
+
+// CCScene -> GameScene -> MTGame
+@interface GameScene : CCScene
 {
     MTGame * game;
 }
@@ -20,7 +21,7 @@
 @property (nonatomic, retain) MTGame * game;
 
 // returns a CCScene that contains the GameScene as the only child
-+(CCScene *) sceneWithID:(int)theID;
--(id) initWithID:(int)theID;
++(id) sceneWithID:(int)theID;
+-(GameScene *) initWithID:(int)theID;
 
 @end

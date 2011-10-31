@@ -27,9 +27,7 @@
 
 @end
 
-#define kMTSInitialTime @"initialTime"
-#define kMTSNumberOfTypes @"numberOfTypes"
-#define kMTSObjective @"objective"
+
 
 @implementation MTGame
 
