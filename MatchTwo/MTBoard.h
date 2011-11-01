@@ -14,6 +14,13 @@
 @class MTLogicHelper;
 @class MTGame;
 
+typedef enum{
+    kMTCollapseDirectionDown,
+    kMTCollapseDirectionUp,
+    kMTCollapseDirectionLeft,
+    kMTCollapseDirectionRight,
+}MTCollapseDirection;
+
 @interface MTBoard : CCLayer <CCTargetedTouchDelegate>{
     MTPiece * selectedPiece1;
     MTPiece * selectedPiece2;
@@ -39,9 +46,10 @@
 - (void)resume;
 
 - (void)shuffle;
-
 - (BOOL)findLink;
 
 - (MTPiece *)randomPiece;
+- (MTPiece *)pieceAtRow:(int)row andColumn:(int)column;
+- (void)collapse:(MTCollapseDirection)direction;
 
 @end

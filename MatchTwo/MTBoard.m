@@ -19,9 +19,8 @@
 - (void)deselectAllPieces;
 
 - (void)checkConnection;
-
 - (void)resetHelper;
-
+- (void)collapsePiece:(MTPiece *)p to:(MTCollapseDirection)direction;
 @end
 
 @implementation MTBoard
@@ -314,6 +313,107 @@
     }
 }
 
+
+- (void)collapse:(MTCollapseDirection)direction{
+    if (direction == kMTCollapseDirectionDown) {
+        for (int i=1; i<=rowNumber; i++) {      
+            for (int j=1; j<=columnNumber; j++) {
+                MTPiece * p = [self pieceAtRow:i andColumn:j];
+                if (p) {
+                    [self collapsePiece:p to:direction];
+                }
+            }
+        }
+        return;
+    }
+
+    if (direction == kMTCollapseDirectionUp) {
+        for (int i=rowNumber; i>0; i--) {      
+            for (int j=1; j<=columnNumber; j++) {
+                MTPiece * p = [self pieceAtRow:i andColumn:j];
+                if (p) {
+                    [self collapsePiece:p to:direction];
+                }
+            }
+        }
+        return;        
+    }
+    
+    if (direction == kMTCollapseDirectionLeft) {
+        for (int j=1; j<=columnNumber; j++) {        
+            for (int i=rowNumber; i>0; i--) {
+                MTPiece * p = [self pieceAtRow:i andColumn:j];
+                if (p) {
+                    [self collapsePiece:p to:direction];
+                }
+            }
+        }
+        return;        
+    }
+    
+    if (direction == kMTCollapseDirectionRight) {
+        for (int j=columnNumber; j>0; j--) {        
+            for (int i=rowNumber; i>0; i--) {
+                MTPiece * p = [self pieceAtRow:i andColumn:j];
+                if (p) {
+                    [self collapsePiece:p to:direction];
+                }
+            }
+        }
+        return;        
+    }        
+}
+
+
+- (void)collapsePiece:(MTPiece *)p to:(MTCollapseDirection)direction{
+    // Find empty spot for Each Piece      
+    int row = p.row;
+    int column = p.column;
+    
+    if (direction == kMTCollapseDirectionDown) {
+        for (int i = 1; i<=row; i++) {
+            MTPiece * targetPiece = [self pieceAtRow:i andColumn:column];
+            if (targetPiece == nil || !targetPiece.enabled) {
+                [p moveToRow:i andColumn:column];
+                return;
+            }
+        }
+    }
+
+    if (direction == kMTCollapseDirectionUp) {
+        for (int i = rowNumber; i>row; i--) {
+            MTPiece * targetPiece = [self pieceAtRow:i andColumn:column];
+            if (targetPiece == nil || !targetPiece.enabled) {
+                [p moveToRow:i andColumn:column];
+                return;
+            }
+        }
+    }
+
+    if (direction == kMTCollapseDirectionLeft) {
+        for (int j = 1; j<=column; j++) {
+            MTPiece * targetPiece = [self pieceAtRow:row andColumn:j];
+            if (targetPiece == nil || !targetPiece.enabled) {
+                [p moveToRow:row andColumn:j];
+                return;
+            }
+        }
+    }
+    
+    if (direction == kMTCollapseDirectionRight) {
+        for (int j = columnNumber; j>column; j--) {
+            MTPiece * targetPiece = [self pieceAtRow:row andColumn:j];
+            if (targetPiece == nil || !targetPiece.enabled) {
+                [p moveToRow:row andColumn:j];
+                return;
+            }
+        }
+    }    
+    
+}
+
+
+
 - (void)resetHelper{
     [helper reset];
     for (MTPiece * piece in self.children) {
@@ -333,6 +433,15 @@
     return [array objectAtIndex:arc4random()%[array count]];
 }
 
+- (MTPiece *)pieceAtRow:(int)row andColumn:(int)column{
+    for (MTPiece * p in self.children) {
+        if (p.enabled && p.row == row && p.column == column) {
+            return p;
+        }
+    } 
+    return nil;
+}
+             
 - (void)pause{
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
 }

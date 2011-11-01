@@ -32,6 +32,7 @@
 #define kMTSObjective @"objective"
 #define kMTNumberOfRows @"rows"
 #define kMTNumberOfColumns @"columns"
+#define kMTGameMode @"mode"
 
 @interface MTGame : CCNode <MTTouchToStartProtocol>{
     // Gameplay Related
@@ -43,6 +44,8 @@
     int scoreAtLevelStart;
 
     BOOL needShuffleCheck;
+    
+    MTGameMode mode;
     
     // Score Related
     int timeBonus;

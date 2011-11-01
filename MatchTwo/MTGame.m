@@ -25,6 +25,9 @@
 
 - (void)drawLinesWithPoints:(NSArray *)points;
 
+// Updates for GameModes
+- (void)updateGameModes;
+
 @end
 
 
@@ -104,6 +107,8 @@ static float boardOffsetY;
     
     background  = [[[MTBackground alloc] init] autorelease];
     [backgroundLayer addChild:background];
+    
+    mode = [[dic objectForKey:kMTGameMode] intValue];
     
     
 //    board = [[MTBoard alloc]initWithRowNumber:kMTDefaultRowNumber 
@@ -353,6 +358,9 @@ static float boardOffsetY;
         }
     }
     
+    // Update GameMode
+    [self updateGameModes];
+    
     [scoreDisplay update:dt];
     
     // Update AI
@@ -360,6 +368,25 @@ static float boardOffsetY;
         [board findLink];
 #endif
     
+}
+
+- (void)updateGameModes{
+    switch (mode) {
+        case kMTGameModeDown:
+            [board collapse:kMTCollapseDirectionDown];
+            break;
+        case kMTGameModeUp:
+            [board collapse:kMTCollapseDirectionUp];
+            break;
+        case kMTGameModeLeft:
+            [board collapse:kMTCollapseDirectionLeft];
+            break;
+        case kMTGameModeRight:
+            [board collapse:kMTCollapseDirectionRight];
+            break;            
+        default:
+            break;
+    }
 }
 
 - (void)calculateScore{

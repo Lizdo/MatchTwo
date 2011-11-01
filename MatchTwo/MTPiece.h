@@ -58,5 +58,6 @@
 - (void)shuffle;
 
 - (void)assignAbility:(NSString *)abilityName;
+- (void)moveToRow:(int)nextRow andColumn:(int)nextColumn;
 
 @end

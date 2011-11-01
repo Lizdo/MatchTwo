@@ -134,6 +134,17 @@ typedef enum {
     kMTObjectiveStateFailed = 2,
 }MTObjectiveState;
 
+typedef enum{
+    kMTGameModeNormal = 0,
+    kMTGameModeDown = 1,
+    kMTGameModeUp = 2,
+    kMTGameModeLeft = 3,    
+    kMTGameModeRight = 4,        
+}MTGameMode;
+
+
+#define kMTCollapseTime 0.4
+#define kMTCollapseDelay 0.1
 
 // Color Definitions
 

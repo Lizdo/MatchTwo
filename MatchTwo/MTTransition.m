@@ -66,8 +66,10 @@ const uint32_t kSceneCurtain = 0xC697A141;
     difficultyLabel.position = ccp(s.width/2, s.height/2);    
     
     // Curtain Down
-    CCActionInterval *curtainDown = [CCMoveTo actionWithDuration:duration_/4 
-                                                         position:bottom];
+    CCActionInterval *curtainDown = [CCEaseOut actionWithAction:
+                                     [CCMoveTo actionWithDuration:duration_/4 
+                                                         position:bottom]
+                                     rate:0.5];
     CCActionInterval *delay = [CCDelayTime actionWithDuration:duration_/2];
     CCActionInterval *curtainUp = [CCMoveTo actionWithDuration:duration_/4
                                                         position:top];

@@ -140,10 +140,19 @@ CGRect rectForType(int type){
         self.column = newColomn;           
     }];    
     [self runAction:[CCSequence actions:delay,
-                    
                      assignID, move,
                      nil]];    
     
+}
+
+- (void)moveToRow:(int)nextRow andColumn:(int)nextColumn{
+    self.row = nextRow;
+    self.column = nextColumn;
+    
+    id move = [CCEaseOut actionWithAction:[CCMoveTo actionWithDuration:kMTCollapseTime
+                                  position:[MTGame positionForRow:nextRow andColumn:nextColumn]
+               ] rate:0.5];
+    [self runAction:move];
 }
 
 

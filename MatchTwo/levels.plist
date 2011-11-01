@@ -29,6 +29,8 @@
 		<integer>8</integer>
 		<key>columns</key>
 		<integer>8</integer>
+		<key>mode</key>
+		<integer>1</integer>
 	</dict>
 	<key>103</key>
 	<dict>
@@ -42,6 +44,8 @@
 		<integer>8</integer>
 		<key>columns</key>
 		<integer>8</integer>
+		<key>mode</key>
+		<integer>2</integer>
 	</dict>
 	<key>104</key>
 	<dict>
@@ -55,6 +59,8 @@
 		<integer>8</integer>
 		<key>columns</key>
 		<integer>8</integer>
+		<key>mode</key>
+		<integer>4</integer>
 	</dict>
 	<key>105</key>
 	<dict>
@@ -68,6 +74,8 @@
 		<integer>8</integer>
 		<key>columns</key>
 		<integer>8</integer>
+		<key>mode</key>
+		<integer>1</integer>
 	</dict>
 	<key>106</key>
 	<dict>
@@ -81,6 +89,8 @@
 		<integer>8</integer>
 		<key>columns</key>
 		<integer>8</integer>
+		<key>mode</key>
+		<integer>2</integer>
 	</dict>
 	<key>107</key>
 	<dict>
@@ -94,6 +104,8 @@
 		<integer>8</integer>
 		<key>columns</key>
 		<integer>10</integer>
+		<key>mode</key>
+		<integer>3</integer>
 	</dict>
 	<key>108</key>
 	<dict>
