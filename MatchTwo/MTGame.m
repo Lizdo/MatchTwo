@@ -66,6 +66,9 @@
     return remainingTime;
 }
 
+// Y-Offset to compensate the missing rows.
+static float boardOffsetY;
+
 - (void) prepare{
     // Initialize the nodes.
     CGSize winSize = [[CCDirector sharedDirector] winSize];       
@@ -103,8 +106,18 @@
     [backgroundLayer addChild:background];
     
     
-    board = [[MTBoard alloc]initWithRowNumber:kMTDefaultRowNumber 
-                              andColumnNumber:kMTDefaultColumnNumber];
+//    board = [[MTBoard alloc]initWithRowNumber:kMTDefaultRowNumber 
+//                              andColumnNumber:kMTDefaultColumnNumber];
+    int rows = [[dic objectForKey:kMTNumberOfRows] intValue];
+    int columns = [[dic objectForKey:kMTNumberOfColumns] intValue];
+    
+    NSAssert(rows<=kMTDefaultRowNumber, @"Too Many Rows.");
+    NSAssert(columns<=kMTDefaultColumnNumber, @"Too Many Columns.");
+    
+    // Compensate the missing rows.
+    boardOffsetY = (kMTDefaultRowNumber - rows)/2*kMTPieceSize;
+    
+    board = [[MTBoard alloc]initWithRowNumber:rows andColumnNumber:columns];
     [board autorelease];
     board.game = self;
     [gameLayer addChild:board];
@@ -121,7 +134,7 @@
             piece.row = i;
             piece.column = j;
             // Add 0.5 * kMTPieceSize because the anchor is in the middle;
-            piece.position = [self positionForPiece:piece];
+            piece.position = [MTGame positionForPiece:piece];
             piece.game = self;
             [board addChild:piece];
         }
@@ -209,15 +222,6 @@
     [abilities release];
     [abilityButtons release];
     [super dealloc];
-}
-
-
-- (void)addTapToStart{
-    
-
-
-    
-    
 }
 
 - (void)start{
@@ -536,13 +540,16 @@
     [self prepare];
 }
 
-- (CGPoint)positionForPiece:(MTPiece *)piece{
-    // Add 0.5 * kMTPieceSize because the anchor is in the middle;
-    CGPoint p = ccp(kMTBoardStartingX+(piece.column-0.5)* kMTPieceSize,
-                         kMTBoardStartingY+(piece.row-0.5)* kMTPieceSize);  
-    return p;
++ (CGPoint)positionForPiece:(MTPiece *)piece{
+    return [MTGame positionForRow:piece.row andColumn:piece.column];
 }
 
++ (CGPoint)positionForRow:(int)row andColumn:(int)column{
+    // Add 0.5 * kMTPieceSize because the anchor is in the middle;
+    CGPoint p = ccp(kMTBoardStartingX+(column-0.5)* kMTPieceSize,
+                    kMTBoardStartingY+(row-0.5)* kMTPieceSize + boardOffsetY);
+    return p;    
+}
 
 #pragma mark -
 #pragma mark Ability Helper Functions

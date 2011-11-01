@@ -8,6 +8,7 @@
 
 #import "MTLogicHelper.h"
 #import "MTPiece.h"
+#import "MTGame.h"
 
 @implementation MTTile
 @synthesize x,y,state,lastConnectedTile,isSource,isDestination;
@@ -178,9 +179,10 @@
 - (CGPoint)GLLocationForTile:(MTTile *)t{
     //CCLOGINFO(@"%@", [self description]);
     
-    CGPoint p = ccp(kMTBoardStartingX+(t.y-0.5)* kMTPieceSize,
-                    kMTBoardStartingY+(t.x-0.5)* kMTPieceSize);
-    return p;
+//    CGPoint p = ccp(kMTBoardStartingX+(t.y-0.5)* kMTPieceSize,
+//                    kMTBoardStartingY+(t.x-0.5)* kMTPieceSize);
+
+    return [MTGame positionForRow:t.x andColumn:t.y];
 }
 
 - (NSArray *)GLLocationForTiles:(NSArray *)array{

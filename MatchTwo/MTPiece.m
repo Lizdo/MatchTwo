@@ -133,7 +133,7 @@ CGRect rectForType(int type){
     newColomn = shufflePiece.column;
     id delay = [CCDelayTime actionWithDuration:kMTBoardShuffleWarningTime];   
     id move = [CCMoveTo actionWithDuration:kMTBoardShuffleTime
-                                  position:[game positionForPiece:shufflePiece]
+                                  position:[MTGame positionForPiece:shufflePiece]
                ];
     id assignID = [CCCallBlock actionWithBlock:^(void){
         self.row = newRow;

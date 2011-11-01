@@ -45,7 +45,7 @@ typedef enum{
     MTTile * destination;    
     
     int rowNumber;
-    int columnNumber;    
+    int columnNumber;
 }
 
 - (id)initWithRows:(int)rowNumber andColumns:(int)colNumber;

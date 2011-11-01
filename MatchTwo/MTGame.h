@@ -30,6 +30,8 @@
 #define kMTSInitialTime @"initialTime"
 #define kMTSNumberOfTypes @"numberOfTypes"
 #define kMTSObjective @"objective"
+#define kMTNumberOfRows @"rows"
+#define kMTNumberOfColumns @"columns"
 
 @interface MTGame : CCNode <MTTouchToStartProtocol>{
     // Gameplay Related
@@ -120,7 +122,8 @@
 
 // Shuffle the board, when no move is available
 - (void)shuffle;
-- (CGPoint)positionForPiece:(MTPiece *)piece;
++ (CGPoint)positionForPiece:(MTPiece *)piece;
++ (CGPoint)positionForRow:(int)row andColumn:(int)column;
 
 // Ability Related Internal Method
 - (MTAbility *)abilityNamed:(NSString *)name;
