@@ -23,6 +23,10 @@
 // because we want to handle case like xxxSDxxxx
 
 - (BOOL)isEmpty{
+    // Sometimes Second Steps overlap.
+    if (state == TileState_SecondStep) {
+        return YES;
+    }
     if (state == TileState_Empty) {
         return YES;
     }
@@ -142,7 +146,7 @@
         t.lastConnectedTile = source;
     }
 
-    // Step.2 Start from 1, mark all adjucent 0 to 2, remember the 1
+    // Step.2 Start from 1, mark all adjucent 0 to 2, remember the 1muta
     for (MTTile * tile in tiles) {
         if (tile.state == TileState_FirstStep) {
             adjucentTiles = [self adjucentEmptyTilesFrom:tile];

@@ -101,8 +101,9 @@
 #endif
 	
 	[director setAnimationInterval:1.0/60];
+#ifdef COCOS2D_DEBUG
 	[director setDisplayFPS:YES];
-	
+#endif
 	
 	// make the OpenGLView a child of the view controller
 	[viewController setView:glView];

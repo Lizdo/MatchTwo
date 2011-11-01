@@ -48,6 +48,11 @@
     return self;
 }
 
+- (void)dealloc{
+    [helper release];
+    [super dealloc];
+}
+
 // To select a piece, we can
 //  1.  Start a Touch
 //  2.  Move a Touch to an unselected piece
