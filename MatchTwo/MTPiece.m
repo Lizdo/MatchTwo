@@ -20,6 +20,55 @@ CGRect rectForType(int type){
     return CGRectMake(idX * 64, idY * 64, 64, 64);
 }
 
+void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
+{
+	int i;
+	float f, p, q, t;
+	if( s == 0 ) {
+		// achromatic (grey)
+		*r = *g = *b = v;
+		return;
+	}
+	h /= 60;			// sector 0 to 5
+	i = floor( h );
+	f = h - i;			// factorial part of h
+	p = v * ( 1 - s );
+	q = v * ( 1 - s * f );
+	t = v * ( 1 - s * ( 1 - f ) );
+	switch( i ) {
+		case 0:
+			*r = v;
+			*g = t;
+			*b = p;
+			break;
+		case 1:
+			*r = q;
+			*g = v;
+			*b = p;
+			break;
+		case 2:
+			*r = p;
+			*g = v;
+			*b = t;
+			break;
+		case 3:
+			*r = p;
+			*g = q;
+			*b = v;
+			break;
+		case 4:
+			*r = t;
+			*g = p;
+			*b = v;
+			break;
+		default:		// case 5:
+			*r = v;
+			*g = p;
+			*b = q;
+			break;
+	}
+}
+
 
 @implementation MTPiece
 
@@ -69,7 +118,9 @@ CGRect rectForType(int type){
     };    
     
     if (hinted || [game isAbilityActive:kMTAbilityHighlight]) {
-        glColor4f(1.0, (50 + type*20)/255.0, 0.32, 0.5);
+        float r,g,b;
+        HSVtoRGB(&r, &g, &b, type*30, 0.2, 0.5);
+        glColor4f(r,g,b,0.5);
         ccDrawPolyFill(points, 4, YES);
     }else{
         glColor4f([MTTheme backgroundColor].r/255.0,
@@ -154,6 +205,8 @@ CGRect rectForType(int type){
                ] rate:0.5];
     [self runAction:move];
 }
+
+
 
 
 @end
