@@ -11,7 +11,7 @@
 #import "CCDrawingPrimitives+MT.h"
 #import "MTGame.h"
 #import "MTAbilityButton.h"
-
+#import "SimpleAudioEngine.h"
 // Tile is a 512 x 512 texture, each grid is 64 * 64
 
 CGRect rectForType(int type){
@@ -68,6 +68,10 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
 			break;
 	}
 }
+
+@interface MTPiece()
+- (void)playSound;
+@end
 
 
 @implementation MTPiece
@@ -147,6 +151,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
     [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
     // Fly the badge to the upside, then ability will be activated
     [game flyBadge:badge forAbility:ability];
+    [self playSound];
 }
 
 - (void)assignAbility:(NSString *)abilityName{
@@ -206,6 +211,20 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
     [self runAction:move];
 }
 
+- (void)playSound{
+    int rand = arc4random()%3;
+    switch (rand) {
+        case 0:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"papershort.caf"];
+            break;
+        case 1:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"papershort2.caf"];
+        case 2:
+        default:
+            [[SimpleAudioEngine sharedEngine] playEffect:@"papershort3.caf"];            
+            break;
+    }
+}
 
 
 

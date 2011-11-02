@@ -13,7 +13,7 @@
 #import "MainMenuScene.h"
 #import "RootViewController.h"
 #import "MTSharedManager.h"
-
+#import "SimpleAudioEngine.h"
 
 @implementation AppDelegate
 
@@ -122,8 +122,19 @@
 	// Removes the startup flicker
 	[self removeStartupFlicker];
 	
+    // Load Audio Resource
+    [self loadAudioResource];
+    
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [MainMenuScene scene]];
+}
+
+- (void)loadAudioResource{
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"Loop.m4a"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"button.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"papershort.caf"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"papershort2.caf"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"papershort3.caf"];        
 }
 
 

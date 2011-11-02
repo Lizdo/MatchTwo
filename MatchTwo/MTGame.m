@@ -9,6 +9,7 @@
 #import "MTGame.h"
 #import "GameConfig.h"
 #import "MTUnlockManager.h"
+#import "SimpleAudioEngine.h"
 
 @interface MTGame ()
 - (void)prepare;
@@ -219,6 +220,7 @@ static float boardOffsetY;
     tapToStart = [MTTouchToStartLayer layerWithColor:ccc4(0, 0, 0, 120)];
     [self addChild:tapToStart];
     tapToStart.delegate = self;
+
 }
 
 - (void)dealloc{

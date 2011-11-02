@@ -166,6 +166,12 @@
 		6EDAB94D13F7F9A800117565 /* ChallengeMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */; };
 		6EE3725413FC13AE0011C477 /* MTAbilityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3725313FC13AE0011C477 /* MTAbilityButton.m */; };
 		6EE3725713FC1F610011C477 /* Abilities.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3725613FC1F610011C477 /* Abilities.png */; };
+		6EF14FA7146189B000B201D6 /* Loop.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FA6146189B000B201D6 /* Loop.m4a */; };
+		6EF14FAB14618BE900B201D6 /* papershort.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FA814618BE900B201D6 /* papershort.caf */; };
+		6EF14FAC14618BE900B201D6 /* papershort2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FA914618BE900B201D6 /* papershort2.caf */; };
+		6EF14FAD14618BE900B201D6 /* papershort3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FAA14618BE900B201D6 /* papershort3.caf */; };
+		6EF14FAF14618BFB00B201D6 /* button.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FAE14618BFB00B201D6 /* button.caf */; };
+		6EF14FB214618CAD00B201D6 /* CCMenuItem+Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */; };
 		6EFB35051428E8DC0079964C /* MTPausePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB35041428E8DC0079964C /* MTPausePage.m */; };
 		6EFCA56514415FA000FDF8B5 /* MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA56414415FA000FDF8B5 /* MTTheme.m */; };
 		6EFCA571144196A800FDF8B5 /* Background_Winter_Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFCA567144196A800FDF8B5 /* Background_Winter_Right.png */; };
@@ -483,6 +489,12 @@
 		6EE3725213FC13AE0011C477 /* MTAbilityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAbilityButton.h; sourceTree = "<group>"; };
 		6EE3725313FC13AE0011C477 /* MTAbilityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAbilityButton.m; sourceTree = "<group>"; };
 		6EE3725613FC1F610011C477 /* Abilities.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abilities.png; path = Resources/Abilities.png; sourceTree = "<group>"; };
+		6EF14FA6146189B000B201D6 /* Loop.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Loop.m4a; path = Resources/Audio/Loop.m4a; sourceTree = "<group>"; };
+		6EF14FA814618BE900B201D6 /* papershort.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = papershort.caf; path = Resources/Audio/papershort.caf; sourceTree = "<group>"; };
+		6EF14FA914618BE900B201D6 /* papershort2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = papershort2.caf; path = Resources/Audio/papershort2.caf; sourceTree = "<group>"; };
+		6EF14FAA14618BE900B201D6 /* papershort3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = papershort3.caf; path = Resources/Audio/papershort3.caf; sourceTree = "<group>"; };
+		6EF14FAE14618BFB00B201D6 /* button.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = button.caf; path = Resources/Audio/button.caf; sourceTree = "<group>"; };
+		6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCMenuItem+Sound.m"; sourceTree = "<group>"; };
 		6EFB35031428E8DB0079964C /* MTPausePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPausePage.h; sourceTree = "<group>"; };
 		6EFB35041428E8DC0079964C /* MTPausePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPausePage.m; sourceTree = "<group>"; };
 		6EFCA56314415FA000FDF8B5 /* MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTheme.h; sourceTree = "<group>"; };
@@ -575,6 +587,7 @@
 		6E0527FC13E6EE88002BA347 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6EF14FA41461899300B201D6 /* Audio */,
 				6E92FD79145451C700AE7A23 /* Curtain.png */,
 				6EFCA567144196A800FDF8B5 /* Background_Winter_Right.png */,
 				6EFCA568144196A800FDF8B5 /* Background_Winter_Left.png */,
@@ -979,6 +992,7 @@
 				6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */,
 				6EC2B133143D973D0002A9E1 /* CCSprite+RectForIndex.h */,
 				6EC2B134143D973D0002A9E1 /* CCSprite+RectForIndex.m */,
+				6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */,
 				6EFCA56314415FA000FDF8B5 /* MTTheme.h */,
 				6EFCA56414415FA000FDF8B5 /* MTTheme.m */,
 			);
@@ -992,6 +1006,18 @@
 				6EA269641440A92900033D2A /* CCScrollLayer.m */,
 			);
 			name = CCScrollLayer;
+			sourceTree = "<group>";
+		};
+		6EF14FA41461899300B201D6 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				6EF14FAE14618BFB00B201D6 /* button.caf */,
+				6EF14FA814618BE900B201D6 /* papershort.caf */,
+				6EF14FA914618BE900B201D6 /* papershort2.caf */,
+				6EF14FAA14618BE900B201D6 /* papershort3.caf */,
+				6EF14FA6146189B000B201D6 /* Loop.m4a */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1080,6 +1106,11 @@
 				6EFCA57A144196A800FDF8B5 /* Background_Autumn_Left.png in Resources */,
 				6E3A3594144C8DF80053287B /* Icon.png in Resources */,
 				6E92FD7A145451C700AE7A23 /* Curtain.png in Resources */,
+				6EF14FA7146189B000B201D6 /* Loop.m4a in Resources */,
+				6EF14FAB14618BE900B201D6 /* papershort.caf in Resources */,
+				6EF14FAC14618BE900B201D6 /* papershort2.caf in Resources */,
+				6EF14FAD14618BE900B201D6 /* papershort3.caf in Resources */,
+				6EF14FAF14618BFB00B201D6 /* button.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,6 +1247,7 @@
 				6EFCA56514415FA000FDF8B5 /* MTTheme.m in Sources */,
 				6E335B41144F1AB600FDC996 /* MTTransition.m in Sources */,
 				6E92FD7E145467BA00AE7A23 /* MTTouchToStartLayer.m in Sources */,
+				6EF14FB214618CAD00B201D6 /* CCMenuItem+Sound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

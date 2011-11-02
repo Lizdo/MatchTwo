@@ -13,6 +13,7 @@
 #import "MTGame.h"
 #import "MTUnlockManager.h"
 #import "MTTransition.h"
+#import "SimpleAudioEngine.h"
 
 @interface MTSharedManager ()
 - (void)calculateLevel;
@@ -311,10 +312,16 @@ static MTSharedManager * _instance = nil;
         // Menu pages should turn up quickly
         [[CCDirector sharedDirector] replaceScene: 
          [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:kMTColorBackground]];           
+        
+        // Music Playback
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     }else{
         GameScene * gameScene = [GameScene sceneWithID:sceneID];
         [[CCDirector sharedDirector] replaceScene: 
-         [MTTransitionCurtain transitionWithDuration:2.0f scene:gameScene]];        
+         [MTTransitionCurtain transitionWithDuration:2.0f scene:gameScene]];
+        
+        // Music Playback
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Loop.m4a" loop:YES];        
         
     }
 
