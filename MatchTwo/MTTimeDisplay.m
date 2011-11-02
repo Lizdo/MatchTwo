@@ -18,18 +18,32 @@
 
 - (void)update{
     int seconds = round(game.remainingTime);
-    self.string = [MTTimeDisplay stringWithSeconds:seconds];
+    NSString * secondsString = [MTTimeDisplay stringWithSeconds:seconds];
+    if ([self.string isEqualToString:secondsString]) {
+        return;
+    }
     
+    //Only Update when there's a time change
+    self.string = secondsString;
+       
     if ([game isAbilityActive:kMTAbilityFreeze]) {
         self.color = kMTColorFrozen;
     }else if ([game isAbilityActive:kMTAbilityExtraTime]) {
         self.color = kMTColorBuff;
-    }else if (seconds <= 30){
+        [self runAction:[CCBlink actionWithDuration:0.2 blinks:1]];        
+    }else if (seconds < 30){
         self.color = kMTColorDebuff;
+        [self runAction:[CCBlink actionWithDuration:0.1 blinks:1]];        
+    }else if (seconds % 30 == 0){
+        // Magnify at 30/60/90 seconds
+        self.color = [MTTheme primaryColor];
+        [self runAction:[CCSequence actions:
+                         [CCScaleTo actionWithDuration:0.1 scale:1.5],
+                         [CCScaleTo actionWithDuration:0.1 scale:1],                         
+                         nil]];
     }else{
         self.color = [MTTheme primaryColor];
-    }    
-
+    }
 }
                    
 + (NSString *)stringWithSeconds:(int)seconds{
