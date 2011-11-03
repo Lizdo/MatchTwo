@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "MTScoreDisplay.h"
+#import "MTScoreDetailDisplay.h"
 
 @interface MainMenuScene : CCLayer {
     CCSprite * logo;
     CCMenu * menu;
     MTScoreDisplay * scoreDisplay;
+    MTScoreDetailDisplay * scoreDetailDisplay;
 }
 
 +(CCScene *) scene;

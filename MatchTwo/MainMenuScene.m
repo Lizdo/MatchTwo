@@ -20,6 +20,7 @@
 - (void)addBackground;
 - (void)addMenu;
 - (void)addScoreDisplay;
+- (void)addScoreDetailDisplay;
 
 @end
 
@@ -55,6 +56,8 @@
         [self addBackground];
         [self addMenu];
         [self addScoreDisplay];
+        [self addScoreDetailDisplay];
+        self.isTouchEnabled = YES;
 	}
 	return self;
 }
@@ -101,6 +104,15 @@
     scoreDisplay = [MTScoreDisplay node];
     [self addChild:scoreDisplay];
     scoreDisplay.position = ScoreDisplayInitialPosition;
+    
+    scoreDisplay.isTouchEnabled = YES;
+    
+}
+
+- (void)addScoreDetailDisplay{
+    scoreDetailDisplay = [MTScoreDetailDisplay node];
+    [self addChild:scoreDetailDisplay];
+    scoreDetailDisplay.visible = NO;
 }
 
 #define kMTMainMenuFadeInTime 1.0f
@@ -128,11 +140,26 @@
 }
 
 - (void) settingMenu{
-    
 }
 
 
-                         
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch * touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    if (scoreDetailDisplay.visible == NO) {
+        if (CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {
+            scoreDetailDisplay.visible = YES;
+            scoreDisplay.visible = NO;
+            [scoreDetailDisplay runAction:[CCFadeIn actionWithDuration:0.5]];
+        }
+    }else{
+        if (CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {        
+            scoreDetailDisplay.visible = NO;
+            scoreDisplay.visible = YES;
+        }
+    }
+
+}
                          
                                                
 

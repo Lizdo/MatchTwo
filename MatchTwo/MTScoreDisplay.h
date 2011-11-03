@@ -20,7 +20,7 @@
 // 13   -----======
 //      12222/23444
 
-@interface MTScoreDisplay : CCNode {
+@interface MTScoreDisplay : CCLayer {
     CCLabelTTF * level;
     CCLabelTTF * score;
     MTGame * game;

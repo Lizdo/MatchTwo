@@ -172,6 +172,8 @@
 		6EF14FAD14618BE900B201D6 /* papershort3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FAA14618BE900B201D6 /* papershort3.caf */; };
 		6EF14FAF14618BFB00B201D6 /* button.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FAE14618BFB00B201D6 /* button.caf */; };
 		6EF14FB214618CAD00B201D6 /* CCMenuItem+Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */; };
+		6EF14FC11462E84800B201D6 /* MTScoreDetailDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF14FC01462E84800B201D6 /* MTScoreDetailDisplay.m */; };
+		6EF14FC31462EDA700B201D6 /* ScoreDetailBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EF14FC21462EDA700B201D6 /* ScoreDetailBackground.png */; };
 		6EFB35051428E8DC0079964C /* MTPausePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB35041428E8DC0079964C /* MTPausePage.m */; };
 		6EFCA56514415FA000FDF8B5 /* MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCA56414415FA000FDF8B5 /* MTTheme.m */; };
 		6EFCA571144196A800FDF8B5 /* Background_Winter_Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFCA567144196A800FDF8B5 /* Background_Winter_Right.png */; };
@@ -495,6 +497,9 @@
 		6EF14FAA14618BE900B201D6 /* papershort3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = papershort3.caf; path = Resources/Audio/papershort3.caf; sourceTree = "<group>"; };
 		6EF14FAE14618BFB00B201D6 /* button.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = button.caf; path = Resources/Audio/button.caf; sourceTree = "<group>"; };
 		6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCMenuItem+Sound.m"; sourceTree = "<group>"; };
+		6EF14FBF1462E84800B201D6 /* MTScoreDetailDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTScoreDetailDisplay.h; sourceTree = "<group>"; };
+		6EF14FC01462E84800B201D6 /* MTScoreDetailDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTScoreDetailDisplay.m; sourceTree = "<group>"; };
+		6EF14FC21462EDA700B201D6 /* ScoreDetailBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScoreDetailBackground.png; path = Resources/ScoreDetailBackground.png; sourceTree = "<group>"; };
 		6EFB35031428E8DB0079964C /* MTPausePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPausePage.h; sourceTree = "<group>"; };
 		6EFB35041428E8DC0079964C /* MTPausePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPausePage.m; sourceTree = "<group>"; };
 		6EFCA56314415FA000FDF8B5 /* MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTheme.h; sourceTree = "<group>"; };
@@ -570,12 +575,6 @@
 				6E05294E13E6EE8C002BA347 /* AppDelegate.m */,
 				6E05295013E6EE8C002BA347 /* RootViewController.h */,
 				6E05295113E6EE8C002BA347 /* RootViewController.m */,
-				6E71426013F7ED430024C36F /* MainMenuScene.h */,
-				6E71426113F7ED430024C36F /* MainMenuScene.m */,
-				6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */,
-				6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */,
-				6E05295313E6EE8C002BA347 /* GameScene.h */,
-				6E05295413E6EE8D002BA347 /* GameScene.m */,
 				6E05295613E6EE8D002BA347 /* GameConfig.h */,
 				6E0527FC13E6EE88002BA347 /* Resources */,
 				6E05281013E6EE88002BA347 /* libs */,
@@ -589,6 +588,7 @@
 			children = (
 				6EF14FA41461899300B201D6 /* Audio */,
 				6E92FD79145451C700AE7A23 /* Curtain.png */,
+				6EF14FC21462EDA700B201D6 /* ScoreDetailBackground.png */,
 				6EFCA567144196A800FDF8B5 /* Background_Winter_Right.png */,
 				6EFCA568144196A800FDF8B5 /* Background_Winter_Left.png */,
 				6EFCA569144196A800FDF8B5 /* Background_Summer_Right.png */,
@@ -945,56 +945,11 @@
 		6E05296813E6FFD2002BA347 /* MT */ = {
 			isa = PBXGroup;
 			children = (
-				6E92FD7C145467BA00AE7A23 /* MTTouchToStartLayer.h */,
-				6E92FD7D145467BA00AE7A23 /* MTTouchToStartLayer.m */,
-				6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */,
-				6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */,
-				6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */,
-				6E301D30142B8632007825C3 /* MTObjectiveHelper.m */,
-				6E335B3F144F1AB600FDC996 /* MTTransition.h */,
-				6E335B40144F1AB600FDC996 /* MTTransition.m */,
-				6EFB35031428E8DB0079964C /* MTPausePage.h */,
-				6EFB35041428E8DC0079964C /* MTPausePage.m */,
-				6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */,
-				6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */,
-				6E2489D4141679360008C7E3 /* MTLevelFailPage.h */,
-				6E2489D5141679360008C7E3 /* MTLevelFailPage.m */,
-				6E8A50CE140E285500C4352C /* MTScoreDisplay.h */,
-				6E8A50CF140E285500C4352C /* MTScoreDisplay.m */,
-				6EC3826F140C928A004F1147 /* MTFloatingLabel.h */,
-				6EC38270140C928B004F1147 /* MTFloatingLabel.m */,
-				6EE3725213FC13AE0011C477 /* MTAbilityButton.h */,
-				6EE3725313FC13AE0011C477 /* MTAbilityButton.m */,
-				6E7FA7B713FABFB500FE4A0A /* MTAbility.h */,
-				6E7FA7B813FABFB500FE4A0A /* MTAbility.m */,
-				6E79DFBA13EEC69400D623A6 /* MTSFX.h */,
-				6E79DFBB13EEC69500D623A6 /* MTSFX.m */,
-				6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */,
-				6E8C09B013F2CC2300DF1F84 /* MTBackground.m */,
-				6E3C558313E98A2700F4C238 /* MTBoard.h */,
-				6E3C558413E98A2700F4C238 /* MTBoard.m */,
-				6E05296213E6FFA8002BA347 /* MTGame.h */,
-				6E05296313E6FFA8002BA347 /* MTGame.m */,
-				6E05296513E6FFCB002BA347 /* MTPiece.h */,
-				6E05296613E6FFCB002BA347 /* MTPiece.m */,
-				6E05295F13E6FF01002BA347 /* MTLogicHelper.h */,
-				6E05296013E6FF01002BA347 /* MTLogicHelper.m */,
-				6E05296913E7001B002BA347 /* MTLine.h */,
-				6E05296A13E7001B002BA347 /* MTLine.m */,
-				6E84E83B14264450004E8124 /* MTTimeDisplay.h */,
-				6E84E83C14264451004E8124 /* MTTimeDisplay.m */,
-				6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */,
-				6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */,
-				6E8586E413F030D7007217DD /* MTSharedManager.h */,
-				6E8586E513F030D7007217DD /* MTSharedManager.m */,
-				6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */,
-				6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */,
-				6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */,
-				6EC2B133143D973D0002A9E1 /* CCSprite+RectForIndex.h */,
-				6EC2B134143D973D0002A9E1 /* CCSprite+RectForIndex.m */,
-				6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */,
-				6EFCA56314415FA000FDF8B5 /* MTTheme.h */,
-				6EFCA56414415FA000FDF8B5 /* MTTheme.m */,
+				6EF14FBC1462E67A00B201D6 /* Class Extensions */,
+				6EF14FBB1462E62400B201D6 /* Pages */,
+				6EF14FB91462E61400B201D6 /* Logic */,
+				6EF14FBD1462E6E100B201D6 /* UI Elements */,
+				6EF14FBE1462E70C00B201D6 /* Core */,
 			);
 			name = MT;
 			sourceTree = "<group>";
@@ -1018,6 +973,99 @@
 				6EF14FA6146189B000B201D6 /* Loop.m4a */,
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		6EF14FB91462E61400B201D6 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */,
+				6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */,
+				6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */,
+				6E301D30142B8632007825C3 /* MTObjectiveHelper.m */,
+				6E05295F13E6FF01002BA347 /* MTLogicHelper.h */,
+				6E05296013E6FF01002BA347 /* MTLogicHelper.m */,
+				6E335B3F144F1AB600FDC996 /* MTTransition.h */,
+				6E335B40144F1AB600FDC996 /* MTTransition.m */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		6EF14FBB1462E62400B201D6 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				6E92FD7C145467BA00AE7A23 /* MTTouchToStartLayer.h */,
+				6E92FD7D145467BA00AE7A23 /* MTTouchToStartLayer.m */,
+				6EFB35031428E8DB0079964C /* MTPausePage.h */,
+				6EFB35041428E8DC0079964C /* MTPausePage.m */,
+				6E372A81141530F200FABCB4 /* MTLevelCompletePage.h */,
+				6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */,
+				6E2489D4141679360008C7E3 /* MTLevelFailPage.h */,
+				6E2489D5141679360008C7E3 /* MTLevelFailPage.m */,
+				6E71426013F7ED430024C36F /* MainMenuScene.h */,
+				6E71426113F7ED430024C36F /* MainMenuScene.m */,
+				6EDAB94B13F7F9A800117565 /* ChallengeMenuScene.h */,
+				6EDAB94C13F7F9A800117565 /* ChallengeMenuScene.m */,
+				6E05295313E6EE8C002BA347 /* GameScene.h */,
+				6E05295413E6EE8D002BA347 /* GameScene.m */,
+			);
+			name = Pages;
+			sourceTree = "<group>";
+		};
+		6EF14FBC1462E67A00B201D6 /* Class Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E8C09B613F2D73200DF1F84 /* CCDrawingPrimitives+MT.h */,
+				6E8C09B413F2D58C00DF1F84 /* CCDrawingPrimitives+MT.m */,
+				6EB0175114307B7300D08D4F /* CCLabelBMFont+KerningHack.m */,
+				6EC2B133143D973D0002A9E1 /* CCSprite+RectForIndex.h */,
+				6EC2B134143D973D0002A9E1 /* CCSprite+RectForIndex.m */,
+				6EF14FB114618CA900B201D6 /* CCMenuItem+Sound.m */,
+			);
+			name = "Class Extensions";
+			sourceTree = "<group>";
+		};
+		6EF14FBD1462E6E100B201D6 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				6E8A50CE140E285500C4352C /* MTScoreDisplay.h */,
+				6E8A50CF140E285500C4352C /* MTScoreDisplay.m */,
+				6EC3826F140C928A004F1147 /* MTFloatingLabel.h */,
+				6EC38270140C928B004F1147 /* MTFloatingLabel.m */,
+				6E79DFBA13EEC69400D623A6 /* MTSFX.h */,
+				6E79DFBB13EEC69500D623A6 /* MTSFX.m */,
+				6E8C09AF13F2CC2300DF1F84 /* MTBackground.h */,
+				6E8C09B013F2CC2300DF1F84 /* MTBackground.m */,
+				6E05296913E7001B002BA347 /* MTLine.h */,
+				6E05296A13E7001B002BA347 /* MTLine.m */,
+				6E84E83B14264450004E8124 /* MTTimeDisplay.h */,
+				6E84E83C14264451004E8124 /* MTTimeDisplay.m */,
+				6EA0EDFE13EE8A7C00F3A05B /* MTTimeLine.h */,
+				6EA0EDFF13EE8A7D00F3A05B /* MTTimeLine.m */,
+				6EF14FBF1462E84800B201D6 /* MTScoreDetailDisplay.h */,
+				6EF14FC01462E84800B201D6 /* MTScoreDetailDisplay.m */,
+			);
+			name = "UI Elements";
+			sourceTree = "<group>";
+		};
+		6EF14FBE1462E70C00B201D6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6EE3725213FC13AE0011C477 /* MTAbilityButton.h */,
+				6EE3725313FC13AE0011C477 /* MTAbilityButton.m */,
+				6E7FA7B713FABFB500FE4A0A /* MTAbility.h */,
+				6E7FA7B813FABFB500FE4A0A /* MTAbility.m */,
+				6E3C558313E98A2700F4C238 /* MTBoard.h */,
+				6E3C558413E98A2700F4C238 /* MTBoard.m */,
+				6E05296213E6FFA8002BA347 /* MTGame.h */,
+				6E05296313E6FFA8002BA347 /* MTGame.m */,
+				6E05296513E6FFCB002BA347 /* MTPiece.h */,
+				6E05296613E6FFCB002BA347 /* MTPiece.m */,
+				6E8586E413F030D7007217DD /* MTSharedManager.h */,
+				6E8586E513F030D7007217DD /* MTSharedManager.m */,
+				6EFCA56314415FA000FDF8B5 /* MTTheme.h */,
+				6EFCA56414415FA000FDF8B5 /* MTTheme.m */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1111,6 +1159,7 @@
 				6EF14FAC14618BE900B201D6 /* papershort2.caf in Resources */,
 				6EF14FAD14618BE900B201D6 /* papershort3.caf in Resources */,
 				6EF14FAF14618BFB00B201D6 /* button.caf in Resources */,
+				6EF14FC31462EDA700B201D6 /* ScoreDetailBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1248,6 +1297,7 @@
 				6E335B41144F1AB600FDC996 /* MTTransition.m in Sources */,
 				6E92FD7E145467BA00AE7A23 /* MTTouchToStartLayer.m in Sources */,
 				6EF14FB214618CAD00B201D6 /* CCMenuItem+Sound.m in Sources */,
+				6EF14FC11462E84800B201D6 /* MTScoreDetailDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
