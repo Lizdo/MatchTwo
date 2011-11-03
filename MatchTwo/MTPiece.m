@@ -219,6 +219,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
             break;
         case 1:
             [[SimpleAudioEngine sharedEngine] playEffect:@"papershort2.caf"];
+            break;
         case 2:
         default:
             [[SimpleAudioEngine sharedEngine] playEffect:@"papershort3.caf"];            
