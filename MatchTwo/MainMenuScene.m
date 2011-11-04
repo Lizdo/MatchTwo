@@ -104,9 +104,6 @@
     scoreDisplay = [MTScoreDisplay node];
     [self addChild:scoreDisplay];
     scoreDisplay.position = ScoreDisplayInitialPosition;
-    
-    scoreDisplay.isTouchEnabled = YES;
-    
 }
 
 - (void)addScoreDetailDisplay{
@@ -146,14 +143,17 @@
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch * touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
+	location = [[CCDirector sharedDirector] convertToGL:location];    
     if (scoreDetailDisplay.visible == NO) {
-        if (CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {
+        // Show the details when touched on the score display
+        if (CGRectContainsPoint([scoreDisplay boundingBox], location)) {
             scoreDetailDisplay.visible = YES;
             scoreDisplay.visible = NO;
             [scoreDetailDisplay runAction:[CCFadeIn actionWithDuration:0.5]];
         }
     }else{
-        if (CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {        
+        // Dismiss the detail display when touched outside
+        if (!CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {        
             scoreDetailDisplay.visible = NO;
             scoreDisplay.visible = YES;
         }

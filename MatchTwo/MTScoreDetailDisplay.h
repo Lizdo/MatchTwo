@@ -9,7 +9,7 @@
 #import "CCLayer.h"
 #import "MTScoreDisplay.h"
 
-@interface MTScoreDetailDisplay : CCLayer<CCRGBAProtocol>{
+@interface MTScoreDetailDisplay : CCNode<CCRGBAProtocol>{
     MTScoreDisplay * scoreDisplay;
 }
 

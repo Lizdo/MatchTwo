@@ -60,6 +60,9 @@
         
         manager = [MTSharedManager instance];
         
+        self.contentSize = CGSizeMake(kMTScoreBarWidth, 120);
+        
+        //Make it refresh once
         [self update:0.01];
     }
     return self;
@@ -134,7 +137,5 @@
 //    };
 //    ccDrawPoly(border, 4, YES);    
 }
-
-
 
 @end

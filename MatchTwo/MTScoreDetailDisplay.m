@@ -35,6 +35,7 @@
     background.anchorPoint = ccp(0,0);    
     background.position = ccp(0,0);
     [self addChild:background];
+    self.contentSize = background.contentSize;
 }
 
 - (void)addScoreDisplay{
@@ -80,6 +81,8 @@
     }
     return 1.0;
 }
+
+
 
 
 @end
