@@ -62,7 +62,12 @@ typedef enum {
 - (BOOL)active;
 - (BOOL)available;
 
+// A list for all available abiliteis, pass to MTGame during init
++ (NSMutableArray *)abilities;
+
 + (NSString *)descriptionForAbility:(NSString *)ability;
++ (NSString *)longDescriptionForAbility:(NSString *)ability;
++ (CCSprite *)spriteForAbility:(NSString *)ability;
 @end
 
 #pragma mark -

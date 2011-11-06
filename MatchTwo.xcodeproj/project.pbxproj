@@ -123,6 +123,8 @@
 		6E133A2A1410EA820048F75E /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E133A291410EA820048F75E /* Menu.png */; };
 		6E2489D6141679360008C7E3 /* MTLevelFailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2489D5141679360008C7E3 /* MTLevelFailPage.m */; };
 		6E301D31142B8632007825C3 /* MTObjectiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E301D30142B8632007825C3 /* MTObjectiveHelper.m */; };
+		6E307C3314663C8F00C4296D /* MTAbilityDetailDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E307C3214663C8F00C4296D /* MTAbilityDetailDisplay.m */; };
+		6E307C361466616F00C4296D /* AbilityDetailDisplayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E307C351466616F00C4296D /* AbilityDetailDisplayBackground.png */; };
 		6E333A7D1435F7D400B7C2D4 /* MTUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */; };
 		6E335B41144F1AB600FDC996 /* MTTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E335B40144F1AB600FDC996 /* MTTransition.m */; };
 		6E372A83141530F200FABCB4 /* MTLevelCompletePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E372A82141530F200FABCB4 /* MTLevelCompletePage.m */; };
@@ -429,6 +431,9 @@
 		6E2489D5141679360008C7E3 /* MTLevelFailPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLevelFailPage.m; sourceTree = "<group>"; };
 		6E301D2F142B8632007825C3 /* MTObjectiveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTObjectiveHelper.h; sourceTree = "<group>"; };
 		6E301D30142B8632007825C3 /* MTObjectiveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTObjectiveHelper.m; sourceTree = "<group>"; };
+		6E307C3114663C8F00C4296D /* MTAbilityDetailDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAbilityDetailDisplay.h; sourceTree = "<group>"; };
+		6E307C3214663C8F00C4296D /* MTAbilityDetailDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAbilityDetailDisplay.m; sourceTree = "<group>"; };
+		6E307C351466616F00C4296D /* AbilityDetailDisplayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AbilityDetailDisplayBackground.png; path = Resources/AbilityDetailDisplayBackground.png; sourceTree = "<group>"; };
 		6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUnlockManager.h; sourceTree = "<group>"; };
 		6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUnlockManager.m; sourceTree = "<group>"; };
 		6E335B3F144F1AB600FDC996 /* MTTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTransition.h; sourceTree = "<group>"; };
@@ -589,6 +594,7 @@
 				6EF14FA41461899300B201D6 /* Audio */,
 				6E92FD79145451C700AE7A23 /* Curtain.png */,
 				6EF14FC21462EDA700B201D6 /* ScoreDetailBackground.png */,
+				6E307C351466616F00C4296D /* AbilityDetailDisplayBackground.png */,
 				6EFCA567144196A800FDF8B5 /* Background_Winter_Right.png */,
 				6EFCA568144196A800FDF8B5 /* Background_Winter_Left.png */,
 				6EFCA569144196A800FDF8B5 /* Background_Summer_Right.png */,
@@ -1050,6 +1056,8 @@
 		6EF14FBE1462E70C00B201D6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6E307C3114663C8F00C4296D /* MTAbilityDetailDisplay.h */,
+				6E307C3214663C8F00C4296D /* MTAbilityDetailDisplay.m */,
 				6EE3725213FC13AE0011C477 /* MTAbilityButton.h */,
 				6EE3725313FC13AE0011C477 /* MTAbilityButton.m */,
 				6E7FA7B713FABFB500FE4A0A /* MTAbility.h */,
@@ -1160,6 +1168,7 @@
 				6EF14FAD14618BE900B201D6 /* papershort3.caf in Resources */,
 				6EF14FAF14618BFB00B201D6 /* button.caf in Resources */,
 				6EF14FC31462EDA700B201D6 /* ScoreDetailBackground.png in Resources */,
+				6E307C361466616F00C4296D /* AbilityDetailDisplayBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,6 +1307,7 @@
 				6E92FD7E145467BA00AE7A23 /* MTTouchToStartLayer.m in Sources */,
 				6EF14FB214618CAD00B201D6 /* CCMenuItem+Sound.m in Sources */,
 				6EF14FC11462E84800B201D6 /* MTScoreDetailDisplay.m in Sources */,
+				6E307C3314663C8F00C4296D /* MTAbilityDetailDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

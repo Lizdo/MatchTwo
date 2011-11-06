@@ -185,6 +185,9 @@ static MTSharedManager * _instance = nil;
 }
 
 
+#pragma mark -
+#pragma mark Unlock Management
+
 - (NSString *)nextLevelUnlockDescription{
     return [unlockManager descriptionForLevel:level+1];
 }
@@ -194,6 +197,19 @@ static MTSharedManager * _instance = nil;
 
 - (int)levelForAbility:(NSString *)abilityName{
     return [unlockManager levelForAbility:abilityName];
+}
+
+- (NSMutableArray *)unlockedAbilities{
+    NSMutableArray * abilities = [[MTAbility abilities] copy];
+    NSMutableArray * unlocked = [NSMutableArray arrayWithCapacity:0]; 
+    int currentLevel = [self level];
+    for (MTAbility * ability in abilities) {
+        if (ability.type == MTAbilityType_Button
+            && [self levelForAbility:ability.name] <= currentLevel) {
+            [unlocked addObject:ability];
+        }
+    }
+    return unlocked;
 }
 
 #pragma mark -

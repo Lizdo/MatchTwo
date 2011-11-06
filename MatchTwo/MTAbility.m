@@ -7,7 +7,9 @@
 //
 
 #import "MTAbility.h"
+#import "MTAbilityButton.h"
 #import "MTSharedManager.h"
+#import "MTTheme.h"
 
 #pragma mark -
 #pragma mark MTAbility Base Class
@@ -114,6 +116,29 @@
                                           nil];
     return [descriptions objectForKey:ability];
 }
+
++ (NSString *)longDescriptionForAbility:(NSString *)ability{
+    // To Be Filled
+    return @"很长很长很长的能力简介";
+}
+
++ (NSMutableArray *)abilities{
+    return [NSMutableArray arrayWithObjects:
+            [[[MTAbilityFreeze alloc]init]autorelease],
+            [[[MTAbilityHint alloc]init]autorelease],
+            [[[MTAbilityHighlight alloc]init]autorelease],
+            [[[MTAbilityShuffle alloc]init]autorelease], 
+            [[[MTAbilityDoubleScore alloc]init]autorelease],                   
+            [[[MTAbilityExtraTime alloc]init]autorelease],                                     
+            nil];
+}
+
++ (CCSprite *)spriteForAbility:(NSString *)ability{
+    CCSprite * s = [MTAbilityButton spriteForAbilityName:ability];
+    [s setColor:[MTTheme primaryColor]]; 
+    return s;
+}
+
 
 @end
 

@@ -18,6 +18,6 @@
     MTScoreDetailDisplay * scoreDetailDisplay;
 }
 
-+(CCScene *) scene;
++ (CCScene *) scene;
 
 @end

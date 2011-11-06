@@ -39,8 +39,10 @@
 - (void)pause;
 - (void)reset;
 
+// Unlock Management
 - (NSString *)nextLevelUnlockDescription;
 - (CCSprite *)nextLevelUnlockBadge;
+- (NSMutableArray *)unlockedAbilities;
 
 // Score Management
 - (int)scoreForNextLevel;

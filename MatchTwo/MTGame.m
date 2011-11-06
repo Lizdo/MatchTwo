@@ -172,14 +172,7 @@ static float boardOffsetY;
     buttons.position = ccp(0,0);
     
     // TEMP: Now we just add ability here, later should move to Level/SharedManager
-    abilities = [[NSMutableArray arrayWithObjects:
-                  [[[MTAbilityFreeze alloc]init]autorelease],
-                  [[[MTAbilityHint alloc]init]autorelease],
-                  [[[MTAbilityHighlight alloc]init]autorelease],
-                  [[[MTAbilityShuffle alloc]init]autorelease], 
-                  [[[MTAbilityDoubleScore alloc]init]autorelease],                   
-                  [[[MTAbilityExtraTime alloc]init]autorelease],                                     
-                nil] retain];
+    abilities = [[MTAbility abilities] copy];
     
     abilityButtons = [[NSMutableArray arrayWithCapacity:6]retain];
     

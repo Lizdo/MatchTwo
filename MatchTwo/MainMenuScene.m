@@ -99,6 +99,7 @@
 
 #define ScoreDisplayInitialPosition ccp(kMTScoreDisplayStartingX, -100)
 #define ScoreDisplayFinalPosition ccp(kMTScoreDisplayStartingX, 10)
+#define ScoreDisplayFloatPosition ccp(kMTScoreDisplayStartingX, 360)
 
 - (void)addScoreDisplay{
     scoreDisplay = [MTScoreDisplay node];
@@ -147,15 +148,22 @@
     if (scoreDetailDisplay.visible == NO) {
         // Show the details when touched on the score display
         if (CGRectContainsPoint([scoreDisplay boundingBox], location)) {
-            scoreDetailDisplay.visible = YES;
-            scoreDisplay.visible = NO;
-            [scoreDetailDisplay runAction:[CCFadeIn actionWithDuration:0.5]];
+            CCActionInterval * moveUp = [CCMoveTo actionWithDuration:0.3
+                                                            position:ScoreDisplayFloatPosition];
+            CCActionInterval * showHide = [CCCallBlock actionWithBlock:^{
+                scoreDetailDisplay.visible = YES;
+                scoreDisplay.visible = NO;
+                [scoreDetailDisplay hideAbilityDetail];
+                [scoreDetailDisplay runAction:[CCFadeIn actionWithDuration:0.2]];
+            }];
+            [scoreDisplay runAction:[CCSequence actions:moveUp,showHide,nil]];
         }
     }else{
         // Dismiss the detail display when touched outside
-        if (!CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {        
+        if (!CGRectContainsPoint([scoreDetailDisplay boundingBox], location)) {
             scoreDetailDisplay.visible = NO;
             scoreDisplay.visible = YES;
+            scoreDisplay.position = ScoreDisplayFinalPosition;
         }
     }
 

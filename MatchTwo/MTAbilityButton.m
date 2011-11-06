@@ -30,13 +30,13 @@ const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
         game = g;
         self.contentSize = CGSizeMake(kMTAbilityButtonSize, kMTAbilityButtonSize);
         
-        sprite = [MTAbilityButton spriteForButtonName:name];
+        sprite = [MTAbilityButton spriteForAbilityName:name];
         sprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         sprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
         sprite.color = [MTTheme foregroundColor];
         [self addChild:sprite z:-1];
         
-        disabledSprite = [MTAbilityButton disabledSpriteForButtonName:name];
+        disabledSprite = [MTAbilityButton disabledSpriteForAbilityName:name];
         disabledSprite.position = ccp(kMTAbilityButtonSize/2, kMTAbilityButtonSize/2);    
         disabledSprite.scale = kMTAbilityButtonSize/kMTAbilityButtonSpriteSize;
         disabledSprite.visible = NO;
@@ -137,7 +137,7 @@ const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
                        canvasSize:kMTAbilityButtonTextureSize];
 }
 
-+ (CCSprite *)spriteForButtonName:(NSString *)buttonName{
++ (CCSprite *)spriteForAbilityName:(NSString *)buttonName{
     int index = [MTAbilityButton idForButtonName:buttonName];
     CCSprite * s = [CCSprite spriteWithFile:@"Abilities.png" 
                                             rect:[MTAbilityButton rectForIndex:index]
@@ -145,7 +145,7 @@ const uint32_t	kMTAbilityButtonZoomActionTag = 0xe0c05002;
     return s;
 }
 
-+ (CCSprite *)disabledSpriteForButtonName:(NSString *)buttonName{
++ (CCSprite *)disabledSpriteForAbilityName:(NSString *)buttonName{
     int index = [MTAbilityButton idForButtonName:buttonName];
     CCSprite * s = [CCSprite spriteWithFile:@"Abilities_Disabled.png" 
                                             rect:[MTAbilityButton rectForIndex:index]

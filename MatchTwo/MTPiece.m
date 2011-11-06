@@ -158,7 +158,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
     NSAssert(ability == @"", @"Already Assigned Ability!");
     self.ability = abilityName;
     // Add a badge according to the ability name.
-    badge = [MTAbilityButton spriteForButtonName:self.ability];
+    badge = [MTAbilityButton spriteForAbilityName:self.ability];
     badge.scale = kMTAbilityBadgeSize/kMTAbilityButtonSpriteSize;
     badge.anchorPoint = ccp(0.5,0.5);
     badge.position = ccp(kMTPieceSize - kMTAbilityBadgePadding,
