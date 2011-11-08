@@ -299,6 +299,13 @@ static float boardOffsetY;
         [self gameSuccessMenu];
     }    
     
+    // Update Pieces
+    for (MTPiece * piece in board.children) {
+        if ([piece enabled]) {
+            [piece update];
+        }
+    }
+    
     // Update Abilities
     for (MTAbility * a in abilities){
         [a update:dt];
@@ -313,7 +320,7 @@ static float boardOffsetY;
     for (MTAbility * a in abilities) {
         if (a.type == MTAbilityType_Activate 
             && a.state == MTAbilityState_Ready) {
-            [[board randomPiece] assignAbility:a.name];
+            [[board randomPiece] assignAbility:a];
         }
     }
 

@@ -103,7 +103,6 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
 //        self.scale = kMTPieceSize/64;
         self.enabled = YES;
         self.type = theType;
-        self.ability = @"";
         self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);        
         self.anchorPoint = ccp(0.5, 0.5);         
         self.color = [MTTheme foregroundColor];
@@ -111,6 +110,24 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
     return self;
 }
 
+#define kBadgeBlinkTag 0xBAD9EB17
+
+- (void)update{
+    if (ability && ability.state == MTAbilityState_Disappearing) {
+        NSAssert(badge, @"Must have a badge!");
+        CCAction * action = [badge getActionByTag:kBadgeBlinkTag];
+        if (action == nil || [action isDone]) {
+            CCActionInterval * blink = [CCBlink actionWithDuration:1.0 blinks:5];
+            blink.tag = kBadgeBlinkTag;
+            [badge runAction:blink];
+        }
+    }
+    if (ability && ![ability ready]) {
+        ability = nil;
+        [badge removeFromParentAndCleanup:YES];
+        badge = nil;
+    }
+}
 
 - (void)draw{
 
@@ -150,15 +167,15 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
     self.enabled = NO;
     [self runAction:[CCScaleTo actionWithDuration:kMTPieceDisappearTime scale:0]];
     // Fly the badge to the upside, then ability will be activated
-    [game flyBadge:badge forAbility:ability];
+    [game flyBadge:badge forAbility:ability.name];
     [self playSound];
 }
 
-- (void)assignAbility:(NSString *)abilityName{
-    NSAssert(ability == @"", @"Already Assigned Ability!");
-    self.ability = abilityName;
+- (void)assignAbility:(MTAbility *)newAbility{
+    NSAssert(self.ability == nil, @"Already Assigned Ability!");
+    self.ability = newAbility;
     // Add a badge according to the ability name.
-    badge = [MTAbilityButton spriteForAbilityName:self.ability];
+    badge = [MTAbilityButton spriteForAbilityName:ability.name];
     badge.scale = kMTAbilityBadgeSize/kMTAbilityButtonSpriteSize;
     badge.anchorPoint = ccp(0.5,0.5);
     badge.position = ccp(kMTPieceSize - kMTAbilityBadgePadding,

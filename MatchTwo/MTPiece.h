@@ -11,6 +11,7 @@
 #import "GameConfig.h"
 
 @class MTGame;
+@class MTAbility;
 
 @interface MTPiece : CCSprite {
     int row;
@@ -34,7 +35,7 @@
     
     // Used for ability activation
     CCSprite * badge;
-    NSString * ability;
+    MTAbility * ability;
 }
 
 @property int row;
@@ -46,18 +47,19 @@
 @property (assign) MTPiece * pairedPiece;
 @property (assign) MTPiece * shufflePiece;
 @property (assign) MTGame * game;
-@property (retain) NSString * ability;
+@property (assign) MTAbility * ability;
 
 - (id)initWithType:(int)type;
 
 //- (id)initWithRow:(int)theRow andColumn:(int)theColumn;
 //+ (MTPiece *)pieceWithRow:(int)theRow andColumn:(int)theColumn;
 
+- (void)update;
 - (void)disappear;
 - (void)shake;
 - (void)shuffle;
 
-- (void)assignAbility:(NSString *)abilityName;
+- (void)assignAbility:(MTAbility *)ability;
 - (void)moveToRow:(int)nextRow andColumn:(int)nextColumn;
 
 @end

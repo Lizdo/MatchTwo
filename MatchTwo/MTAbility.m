@@ -54,6 +54,18 @@
             break;
         case MTAbilityState_Assigned:
             // Do nothing
+            if (type == MTAbilityType_Activate
+                && tickingTime >= availableTime * 3/4) {
+                // Don't reset the ticking time here, continue to tick
+                state = MTAbilityState_Disappearing;
+            }
+            break;
+        case MTAbilityState_Disappearing:
+            // Do nothing
+            if (type == MTAbilityType_Activate
+                && tickingTime >= availableTime) {
+                self.state = MTAbilityState_CoolDown;
+            }            
             break;
         case MTAbilityState_Active:
             if (tickingTime >= activeTime) {
@@ -89,7 +101,9 @@
 }
 
 - (BOOL)ready{
-    return state == MTAbilityState_Ready || state == MTAbilityState_Assigned;
+    return state == MTAbilityState_Ready 
+    || state == MTAbilityState_Assigned 
+    || state == MTAbilityState_Disappearing;
 }
 - (BOOL)active{
     return state == MTAbilityState_Active;
@@ -225,6 +239,7 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
+        availableTime = 20.0f;
         activeTime = 10.0f;
         cooldownTime = 20.0f;
         name = kMTAbilityDoubleScore;
@@ -243,6 +258,7 @@
     self = [super init];
     if (self) {
         // Possible to query SharedManager for Player Info
+        availableTime = 20.0f;        
         activeTime = 1.0f;
         cooldownTime = 10.0f;
         name = kMTAbilityExtraTime;

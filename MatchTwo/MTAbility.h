@@ -20,11 +20,12 @@
 #define kMTAbilityExtraTime     @"ExtraTime"
 
 
-// Ready -> Active -> Cooldown
+// Ready -> Assigned -> Active -> Cooldown
 
 typedef enum {
     MTAbilityState_Ready,
     MTAbilityState_Assigned,        // Used by activate style abilities.
+    MTAbilityState_Disappearing,    // Used by activate style abilities.
     MTAbilityState_Active,
     MTAbilityState_CoolDown,
 }MTAbilityState;
@@ -40,6 +41,7 @@ typedef enum {
 #pragma mark MTAbility Base Class
 
 @interface MTAbility : NSObject{
+    float availableTime;            // Used by activate style abilities.
     float tickingTime;
     float activeTime;
     float cooldownTime;

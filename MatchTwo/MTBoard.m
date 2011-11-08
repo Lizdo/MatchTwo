@@ -426,7 +426,7 @@
 - (MTPiece *)randomPiece{
     NSMutableArray * array = [NSMutableArray arrayWithCapacity:10];
     for (MTPiece * p in self.children) {
-        if (p.enabled && p.ability == @"") {
+        if (p.enabled && p.ability == nil) {
             [array addObject:p];
         }
     }
