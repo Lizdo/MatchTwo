@@ -18,7 +18,7 @@
 
 - (void)gameFailMenu;
 - (void)gameSuccessMenu;
-- (void)pauseMenu;
+- (void)gamePauseMenu;
 - (void)pushPauseMenu;
 
 - (void)flyBadge:(CCSprite *)b to:(CGPoint)p ability:(NSString *)abilityName;
@@ -35,7 +35,7 @@
 
 @implementation MTGame
 
-@synthesize menu, menuBackground, levelID, obj, timeBonus, completeBonus, objBonus;
+@synthesize menu, menuBackground, levelID, obj, timeBonus, completeBonus, objBonus, pauseMenu;
 
 - (MTObjectiveState)objState{
     return objState;
@@ -406,14 +406,21 @@ static float boardOffsetY;
 
 - (void)gameFailMenu{
     [self stopRunning];
-
-    pauseMenu = [MTLevelFailPage node];
-    [self pushPauseMenu];
+    
+    // Delay the launch
+    self.pauseMenu = [MTLevelFailPage node];
+    [gameLayer addChild:[CCParticleSystemQuad particleWithFile:@"FlowerStorm.plist"]];    
+    [self runAction:[CCSequence actions:
+                     [CCDelayTime actionWithDuration:3.0],
+                     [CCCallBlock actionWithBlock:^{
+        [self pushPauseMenu];
+    }],
+                     nil]];
 }
 
-- (void)pauseMenu{
+- (void)gamePauseMenu{
     [self stopRunning];
-    pauseMenu = [MTPausePage node];
+    self.pauseMenu = [MTPausePage node];
 
     [self pushPauseMenu];
 }
@@ -432,14 +439,22 @@ static float boardOffsetY;
     // Record the current level status
     [[MTSharedManager instance] completeLevel:levelID andObjective:NO];
     
-    pauseMenu = [MTLevelCompletePage node];
-    [self pushPauseMenu];
+    // Delay the launch
+    self.pauseMenu = [MTLevelCompletePage node];
+    [gameLayer addChild:[CCParticleSystemQuad particleWithFile:@"FlowerStorm.plist"]];
+    [self runAction:[CCSequence actions:
+                     [CCDelayTime actionWithDuration:3.0],
+                     [CCCallBlock actionWithBlock:^{
+        [self pushPauseMenu];
+    }],
+                     nil]];
+
 }
 
 #define kMTParallexOffset 40.0f
 
 - (void)pushPauseMenu{
-    pauseMenu.game = self;
+    self.pauseMenu.game = self;
     [pauseMenu show];    
     [menuLayer addChild:pauseMenu];
     
@@ -509,7 +524,7 @@ static float boardOffsetY;
 
 - (void)pause{
     board.visible = NO;
-    [self pauseMenu];
+    [self gamePauseMenu];
 }
 
 - (void)stopRunning{

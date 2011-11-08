@@ -95,6 +95,7 @@
 
 @property (retain) CCMenu * menu;
 @property (retain) CCNode * menuBackground;
+@property (retain) MTPausePage * pauseMenu;
 @property int levelID;
 @property (readonly) float remainingTime;
 @property MTObjective obj;
