@@ -438,6 +438,7 @@
 		6E307C351466616F00C4296D /* AbilityDetailDisplayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AbilityDetailDisplayBackground.png; path = Resources/AbilityDetailDisplayBackground.png; sourceTree = "<group>"; };
 		6E307C3B146975E000C4296D /* FlowerStorm.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlowerStorm.plist; path = Resources/FlowerStorm.plist; sourceTree = "<group>"; };
 		6E307C3C146975E000C4296D /* Particle_Flower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle_Flower.png; path = Resources/Particle_Flower.png; sourceTree = "<group>"; };
+		6E307C40146C22BF00C4296D /* TypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeDef.h; sourceTree = "<group>"; };
 		6E333A7B1435F7D400B7C2D4 /* MTUnlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUnlockManager.h; sourceTree = "<group>"; };
 		6E333A7C1435F7D400B7C2D4 /* MTUnlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUnlockManager.m; sourceTree = "<group>"; };
 		6E335B3F144F1AB600FDC996 /* MTTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTransition.h; sourceTree = "<group>"; };
@@ -585,6 +586,7 @@
 				6E05295013E6EE8C002BA347 /* RootViewController.h */,
 				6E05295113E6EE8C002BA347 /* RootViewController.m */,
 				6E05295613E6EE8D002BA347 /* GameConfig.h */,
+				6E307C40146C22BF00C4296D /* TypeDef.h */,
 				6E0527FC13E6EE88002BA347 /* Resources */,
 				6E05281013E6EE88002BA347 /* libs */,
 				6E05294913E6EE8C002BA347 /* Supporting Files */,

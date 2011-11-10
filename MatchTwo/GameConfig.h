@@ -9,6 +9,7 @@
 #import "ccTypes.h"
 #import "CCSprite+RectForIndex.h"
 #import "MTTheme.h"
+#import "TypeDef.h"
 
 #ifndef __GAME_CONFIG_H
 #define __GAME_CONFIG_H
@@ -45,7 +46,7 @@
 #error(unknown architecture)
 #endif
 
-#endif // __GAME_CONFIG_H
+
 
 //#define COCOS2D_DEBUG
 
@@ -121,26 +122,6 @@
 #define kMTScorePerSecond 2
 #define kMTScorePerObj 1000
 
-typedef enum {
-    kMTObjectiveNone = 0,
-    kMTObjectiveFinishFast = 1,
-    kMTObjectiveNoAbility = 2,
-    kMTObjectiveThreeInARow = 3,
-}MTObjective;
-
-typedef enum {
-    kMTObjectiveStateInProgress = 0,
-    kMTObjectiveStateComplete = 1,
-    kMTObjectiveStateFailed = 2,
-}MTObjectiveState;
-
-typedef enum{
-    kMTGameModeNormal = 0,
-    kMTGameModeDown = 1,
-    kMTGameModeUp = 2,
-    kMTGameModeLeft = 3,    
-    kMTGameModeRight = 4,        
-}MTGameMode;
 
 
 #define kMTCollapseTime 0.4
@@ -155,5 +136,5 @@ static const ccColor3B kMTColorDebuff = {255, 29, 37};
 static const ccColor3B kMTColorFrozen = {41, 171, 226};
 static const ccColor3B kMTColorBackground = {252, 246, 234};
 
-
+#endif // __GAME_CONFIG_H
 

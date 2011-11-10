@@ -50,19 +50,21 @@ typedef enum {
     MTAbilityState state;
     MTAbilityType type;
     NSString * name;
+    CCNode * fx;
 }
 
 @property MTAbilityState state;
 @property (readonly) MTAbilityType type;
 @property (readonly, retain) NSString * name;
+@property (retain) CCNode * fx;
 
 - (void)update:(ccTime)dt;
 
 - (float)cooldownPercentage;
 - (void)activate;
-- (BOOL)ready;
-- (BOOL)active;
-- (BOOL)available;
+- (BOOL)isReady;
+- (BOOL)isActive;
+- (BOOL)isAvailable;
 
 // A list for all available abiliteis, pass to MTGame during init
 + (NSMutableArray *)abilities;

@@ -122,7 +122,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
             [badge runAction:blink];
         }
     }
-    if (ability && ![ability ready]) {
+    if (ability && ![ability isReady]) {
         ability = nil;
         [badge removeFromParentAndCleanup:YES];
         badge = nil;

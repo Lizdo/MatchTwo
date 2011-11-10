@@ -21,6 +21,7 @@
 - (void)addMenu;
 - (void)addScoreDisplay;
 - (void)addScoreDetailDisplay;
+- (void)cacheMenuImages;
 
 @end
 
@@ -58,6 +59,7 @@
         [self addScoreDisplay];
         [self addScoreDetailDisplay];
         self.isTouchEnabled = YES;
+        [self cacheMenuImages];
 	}
 	return self;
 }
@@ -138,6 +140,11 @@
 }
 
 - (void) settingMenu{
+}
+
+- (void)cacheMenuImages{
+    [[CCTextureCache sharedTextureCache] addImage:@"Curtain.png"];
+    [[CCTextureCache sharedTextureCache] addImage:@"Menu.png"];    
 }
 
 

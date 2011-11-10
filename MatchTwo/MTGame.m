@@ -149,8 +149,8 @@ static float boardOffsetY;
     timeDisplay = [MTTimeDisplay labelWithString:@""
                                      fontName:kMTFontNumbers
                                      fontSize:kMTFontSizeLarge];
-    timeDisplay.anchorPoint = ccp(1.0, 0.0);
-    timeDisplay.position = ccp(768-30,1024-131);
+    timeDisplay.anchorPoint = ccp(0.5, 0.5);
+    timeDisplay.position = ccp(768-80,1024-131);
     timeDisplay.game = self;
     [gameLayer addChild:timeDisplay];
     //        
@@ -177,7 +177,7 @@ static float boardOffsetY;
     abilityButtons = [[NSMutableArray arrayWithCapacity:6]retain];
     
     for (MTAbility * ability in abilities) {
-        if (ability.type == MTAbilityType_Button && [ability available]) {
+        if (ability.type == MTAbilityType_Button && [ability isAvailable]) {
             MTAbilityButton * button = [MTAbilityButton abilityButtonWithName:ability.name
                                                                        target:self
                                                                      selector:@selector(abilityButtonClicked:)
@@ -213,6 +213,28 @@ static float boardOffsetY;
     tapToStart = [MTTouchToStartLayer layerWithColor:ccc4(0, 0, 0, 120)];
     [self addChild:tapToStart];
     tapToStart.delegate = self;
+    
+    
+    // Handle Notification from Abilities
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMTAbilityDidActivateNotification
+                                                      object:nil 
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      MTAbility * a = note.object;
+                                                      if (a.fx) {
+                                                          [gameLayer addChild:a.fx z:-1];
+                                                      }
+
+                                                  }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMTAbilityWillDeactivateNotification
+                                                      object:nil 
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      MTAbility * a = note.object;
+                                                      if (a.fx) {
+                                                          [a.fx removeFromParentAndCleanup:NO];
+                                                      }
+                                                  }];    
 
 }
 
@@ -611,7 +633,7 @@ static float boardOffsetY;
 
 - (BOOL)isAbilityActive:(NSString *)name{
     MTAbility * a = [self abilityNamed:name];
-    if (a != nil && a.active) {
+    if (a != nil && [a isActive]) {
         return YES;
     }
     return NO;
@@ -619,7 +641,7 @@ static float boardOffsetY;
 
 - (BOOL)isAbilityReady:(NSString *)name{
     MTAbility * a = [self abilityNamed:name];
-    if (a != nil && a.ready) {
+    if (a != nil && [a isReady]) {
         return YES;
     }
     return NO;    

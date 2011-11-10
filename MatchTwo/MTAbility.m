@@ -16,7 +16,7 @@
 
 @implementation MTAbility
 
-@synthesize type;
+@synthesize type,fx;
 
 - (void)setState:(MTAbilityState)newState{
     if (newState == state) {
@@ -70,6 +70,8 @@
         case MTAbilityState_Active:
             if (tickingTime >= activeTime) {
                 self.state = MTAbilityState_CoolDown;
+                // Hide Activation FX When deactivated
+                [[NSNotificationCenter defaultCenter]postNotificationName:kMTAbilityWillDeactivateNotification object:self];                
             }
             break;
         case MTAbilityState_CoolDown:
@@ -83,7 +85,7 @@
 }
 
 - (float)cooldownPercentage{
-    if ([self ready]) {
+    if ([self isReady]) {
         return 1.0f;
     }
     if (state == MTAbilityState_Active) {
@@ -95,21 +97,23 @@
 }
 
 - (void)activate{
-    if ([self ready]) {
+    if ([self isReady]) {
         self.state = MTAbilityState_Active;
     }
+    // Show Activation FX When activated
+    [[NSNotificationCenter defaultCenter]postNotificationName:kMTAbilityDidActivateNotification object:self];
 }
 
-- (BOOL)ready{
+- (BOOL)isReady{
     return state == MTAbilityState_Ready 
     || state == MTAbilityState_Assigned 
     || state == MTAbilityState_Disappearing;
 }
-- (BOOL)active{
+- (BOOL)isActive{
     return state == MTAbilityState_Active;
 }
 
-- (BOOL)available{
+- (BOOL)isAvailable{
     if (type == MTAbilityType_Activate) {
         return YES;
     }
@@ -171,6 +175,9 @@
         level = [[MTSharedManager instance] levelForAbility:name];        
         activeTime = 10.0f * level;
         cooldownTime = 30.0f;
+        ccColor4B startColor = ccc4(143, 190, 221, 250);
+        ccColor4B endColor = ccc4(186, 214, 233, 150);        
+        self.fx = [CCLayerGradient layerWithColor:startColor fadingTo:endColor];
     }
     return self;
 }
@@ -207,7 +214,9 @@
         level = [[MTSharedManager instance] levelForAbility:name];                
         activeTime = 10.0f * level;
         cooldownTime = 60.0f;
-
+        ccColor4B startColor = ccc4(231, 210, 52, 150);        
+        ccColor4B endColor = ccc4(241, 234, 175, 250);
+        self.fx = [CCLayerGradient layerWithColor:startColor fadingTo:endColor];
     }
     return self;
 }
