@@ -694,13 +694,14 @@ static float boardOffsetY;
 
 - (void)flyBadge:(CCSprite *)badge forAbility:(NSString *)abilityName{
     if (abilityName == kMTAbilityExtraTime){
-        CGPoint p = timeDisplay.position;
+        CGPoint p = ccpAdd(timeDisplay.position,
+                           ccp(100,0));
         [self flyBadge:badge to:p ability:abilityName];        
         return;
     }
     if (abilityName == kMTAbilityDoubleScore){    
         [self flyBadge:badge
-                    to:ccp(kMTScoreDisplayWidth, scoreDisplay.position.y + 15)
+                    to:ccp(kMTScoreDisplayWidth+100, scoreDisplay.position.y + 15)
                     ability:abilityName
          ];
         return;
