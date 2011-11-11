@@ -87,7 +87,7 @@
     [menu alignItemsVerticallyWithPadding: 20.0f];        
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];        
-    menu.position = ccp(winSize.width/2, 300);
+    menu.position = ccp(winSize.width/2+150, 300);
     
     [self addChild:menu];
     
