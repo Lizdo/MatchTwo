@@ -9,7 +9,16 @@
 #ifndef MatchTwo_TypeDef_h
 #define MatchTwo_TypeDef_h
 
-
+//! helper macro that creates an ccColor3B type
+static inline ccColor3B
+ccc3FromHex(int rgb)
+{
+    int r = (rgb >> 16) & 0xFF;
+    int g = (rgb >> 8) & 0xFF;
+    int b = (rgb >> 0) & 0xFF;
+	ccColor3B c = ccc3(r, g, b);
+	return c;
+}
 
 typedef enum {
     kMTObjectiveNone = 0,

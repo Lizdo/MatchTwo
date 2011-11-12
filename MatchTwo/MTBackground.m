@@ -17,7 +17,7 @@
     if (self) {
         //[self addChild:[[[MTParticleLoopingStar alloc]init]autorelease]];
         CGSize winSize = [[CCDirector sharedDirector] winSize];        
-        CCSprite * image = [CCSprite spriteWithFile:[MTTheme backgroundRight]];
+        CCSprite * image = [CCSprite spriteWithFile:[MTTheme background]];
         image.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:image];
 

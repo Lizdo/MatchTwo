@@ -25,8 +25,7 @@ typedef enum{
 + (ccColor3B)foregroundColor;
 + (ccColor3B)backgroundColor;
 
-+ (NSString *)backgroundLeft;
-+ (NSString *)backgroundRight;
++ (NSString *)background;
 
 + (void)setTheme:(MTThemeConfig)config;
 + (MTThemeConfig)randomConfig;
