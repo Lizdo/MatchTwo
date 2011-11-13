@@ -41,6 +41,9 @@ typedef enum{
     kMTGameModeRight = 4,        
 }MTGameMode;
 
+#pragma mark -
+#pragma mark Notifications
+
 #define kMTAbilityDidActivateNotification       @"kMTAbilityDidActivateNotification"
 #define kMTAbilityWillDeactivateNotification    @"kMTAbilityWillDeactivateNotification"
 

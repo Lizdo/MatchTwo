@@ -131,7 +131,6 @@
                                               [[MTSharedManager instance] replaceSceneWithID:0];}],                         
                  nil];
     stamp = [CCSprite spriteWithFile:@"Stamp_Pause.png"];
-    [stamp setColor:[MTTheme primaryColor]];
 }
 
 - (void)setupMenus{    

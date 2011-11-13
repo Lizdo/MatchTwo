@@ -71,7 +71,7 @@
     [self addChild:image z:-2];
     
     logo = [CCSprite spriteWithFile:@"Game_Logo.png"];
-    logo.position = ccp(winSize.width/2, 1024-361);
+    logo.position = ccp(winSize.width/2, winSize.height/2);
     [self addChild:logo];
     logo.opacity = 0.0f;
 

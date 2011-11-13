@@ -19,10 +19,10 @@ static NSString * background;
 
 
 
-#define kMTColorSpring ccc3(123, 169, 13)
-#define kMTColorSummer ccc3(255, 167, 23)
-#define kMTColorAutumn ccc3(251, 132, 14)
-#define kMTColorWinter ccc3FromHex(0x0095A8)
+#define kMTColorSpring ccc3FromHex(0x06B16C)
+#define kMTColorSummer ccc3FromHex(0xF7450F)
+#define kMTColorAutumn ccc3FromHex(0x8A4940)
+#define kMTColorWinter ccc3FromHex(0x0F4988)
 #define kMTColorDefault ccc3(247, 147, 30)
 
 #define kMTBackgroundSpring @"Background_Spring.png"
@@ -55,9 +55,9 @@ static NSString * background;
         case kMTThemeSpring:
             primaryColor = kMTColorSpring;
             background = kMTBackgroundSpring;
-            // Because the bkg is more black than white
-            foregroundColor = kMTColorInactive;
-            backgroundColor = kMTColorActive;
+//            // Because the bkg is more black than white
+//            foregroundColor = kMTColorInactive;
+//            backgroundColor = kMTColorActive;
             break;
         case kMTThemeSummer:
             primaryColor = kMTColorSummer;
@@ -84,7 +84,7 @@ static NSString * background;
 }
 
 + (MTThemeConfig)randomConfig{
-    return rand()%5;
+    return arc4random()%4+1;
 }
 
 @end

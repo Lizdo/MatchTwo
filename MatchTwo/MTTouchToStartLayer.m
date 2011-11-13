@@ -25,7 +25,7 @@
                                                          fontSize:kMTFontSizeNormal];
         tapToStartText.color = ccWHITE;
         tapToStartText.anchorPoint = ccp(0.5, 0.5);
-        tapToStartText.position = ccp(winSize.width/2, 80);
+        tapToStartText.position = ccp(winSize.width/2, 150);
         [self addChild:tapToStartText];
         
         self.isTouchEnabled = YES;
@@ -33,10 +33,10 @@
 	return self;
 }
 
--(void) registerWithTouchDispatcher
-{
+-(void) registerWithTouchDispatcher{
+    // Must have a lower priority than the Menu.
 	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self
-                                                     priority:0
+                                                     priority:kCCMenuTouchPriority-1
                                               swallowsTouches:YES];
 }
 

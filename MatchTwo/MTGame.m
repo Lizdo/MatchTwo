@@ -222,7 +222,11 @@ static float boardOffsetY;
                                                   usingBlock:^(NSNotification *note) {
                                                       MTAbility * a = note.object;
                                                       if (a.fx) {
+                                                          if (a.fx.parent) {
+                                                              [a.fx removeFromParentAndCleanup:NO];
+                                                          }
                                                           [gameLayer addChild:a.fx z:-1];
+                                                          [a.fx runAction:[CCFadeIn actionWithDuration:1]];
                                                       }
 
                                                   }];
@@ -232,7 +236,14 @@ static float boardOffsetY;
                                                   usingBlock:^(NSNotification *note) {
                                                       MTAbility * a = note.object;
                                                       if (a.fx) {
-                                                          [a.fx removeFromParentAndCleanup:NO];
+                                                          CCSequence * actions = [CCSequence actions:
+                                                                                  [CCFadeOut actionWithDuration:1],
+                                                                                  [CCCallBlock actionWithBlock:^{
+                                                              [a.fx removeFromParentAndCleanup:NO];
+                                                          }],
+                                                                                  nil];
+                                                          
+                                                          [a.fx runAction:actions];                                                       
                                                       }
                                                   }];    
 
@@ -473,7 +484,7 @@ static float boardOffsetY;
 
 }
 
-#define kMTParallexOffset 40.0f
+#define kMTParallexOffset 60.0f
 
 - (void)pushPauseMenu{
     self.pauseMenu.game = self;

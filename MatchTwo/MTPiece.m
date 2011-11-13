@@ -111,6 +111,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
 }
 
 #define kBadgeBlinkTag 0xBAD9EB17
+#define kMTPieceDrawBorder NO
 
 - (void)update{
     if (ability && ability.state == MTAbilityState_Disappearing) {
@@ -143,7 +144,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
         HSVtoRGB(&r, &g, &b, type*30, 0.2, 0.5);
         glColor4f(r,g,b,0.5);
         ccDrawPolyFill(points, 4, YES);
-    }else{
+    }else if (kMTPieceDrawBorder){
         glColor4f([MTTheme backgroundColor].r/255.0,
                   [MTTheme backgroundColor].g/255.0,
                   [MTTheme backgroundColor].b/255.0,
