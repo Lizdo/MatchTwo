@@ -66,7 +66,7 @@
 
 - (void)addBackground{
     CGSize winSize = [[CCDirector sharedDirector] winSize];        
-    CCSprite * image = [CCSprite spriteWithFile:@"Background_Left.png"];
+    CCSprite * image = [CCSprite spriteWithFile:@"Background_Default.png"];
     image.position = ccp(winSize.width/2, winSize.height/2);
     [self addChild:image z:-2];
     
