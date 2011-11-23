@@ -94,7 +94,7 @@
 #define kMTScoreDisplayStartingX 35.0f
 #define kMTScoreDisplayStartingY (1024.0f - 160.0f)
 
-#define kMTMenuPadding 10.0f
+#define kMTMenuPadding 30.0f
 
 #define kMTFont @"STHeitiSC-Light" //@"FZLanTingHei-R-GBK"
 #define kMTFontCaption @"STHeitiSC-Light" //@"FZLanTingHei-R-GBK"

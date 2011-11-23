@@ -78,13 +78,11 @@
 }
 
 - (void)addMenu{
-    [CCMenuItemFont setFontName:kMTFont];
-    [CCMenuItemFont setFontSize:kMTFontSizeNormal];
-    menu = [CCMenu menuWithItems:[CCMenuItemFont itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
-            [CCMenuItemFont itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
-            [CCMenuItemFont itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
+    menu = [CCMenu menuWithItems:[MTMenuItem itemFromString:@"每日挑战" target:self selector:@selector(dailyChallenge)],
+            [MTMenuItem itemFromString:@"关卡模式" target:self selector:@selector(challengeMenu)],
+            [MTMenuItem itemFromString:@"设置菜单" target:self selector:@selector(settingMenu)],
             nil];
-    [menu alignItemsVerticallyWithPadding: 20.0f];        
+    [menu alignItemsVerticallyWithPadding: 30.0f];        
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];        
     menu.position = ccp(winSize.width/2+150, 300);

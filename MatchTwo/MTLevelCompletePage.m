@@ -22,10 +22,10 @@
 - (void)addMenus{        
         // Buttons
     menu = [CCMenu menuWithItems:
-            [CCMenuItemFont itemFromString:@"下一关"
+            [MTMenuItem itemFromString:@"下一关"
                                      block:^(id sender){
                                          [[MTSharedManager instance] gotoNextLevel:game.levelID];}],
-            [CCMenuItemFont itemFromString:@"主菜单"
+            [MTMenuItem itemFromString:@"主菜单"
                                      block:^(id sender){
                                          [[MTSharedManager instance] replaceSceneWithID:0];}],                     
             nil];

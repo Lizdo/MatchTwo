@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "MTScoreDisplay.h"
 #import "MTScoreDetailDisplay.h"
+#import "MTMenuItem.h"
 
 @interface MainMenuScene : CCLayer {
     CCSprite * logo;

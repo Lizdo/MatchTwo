@@ -9,6 +9,7 @@
 #import "MTPausePage.h"
 #import "MTGame.h"
 #import "MTTheme.h"
+#import "MTMenuItem.h"
 
 @interface MTPausePage ()
 - (void)addBackground;
@@ -122,11 +123,11 @@
 
 - (void)addMenus{
     menu = [CCMenu menuWithItems:
-                 [CCMenuItemFont itemFromString:@"继续游戏"
+                 [MTMenuItem itemFromString:@"继续游戏"
                                           block:^(id sender){[game resumeFromPauseMenu];}],
-                 [CCMenuItemFont itemFromString:@"重新开始"
+                 [MTMenuItem itemFromString:@"重新开始"
                                           block:^(id sender){[game restartFromPauseMenu];}],
-                 [CCMenuItemFont itemFromString:@"回主菜单"
+                 [MTMenuItem itemFromString:@"回主菜单"
                                           block:^(id sender){
                                               [[MTSharedManager instance] replaceSceneWithID:0];}],                         
                  nil];
@@ -134,7 +135,7 @@
 }
 
 - (void)setupMenus{    
-    for (CCMenuItemFont * child in menu.children) {
+    for (MTMenuItem * child in menu.children) {
         child.color = [MTTheme foregroundColor];
     }
     [menu alignItemsVerticallyWithPadding:kMTMenuPadding];

@@ -16,9 +16,9 @@
 
 - (void)addMenus{
     menu = [CCMenu menuWithItems:
-            [CCMenuItemFont itemFromString:@"重新开始"
+            [MTMenuItem itemFromString:@"重新开始"
                                      block:^(id sender){[game restartFromPauseMenu];}],
-            [CCMenuItemFont itemFromString:@"主菜单"
+            [MTMenuItem itemFromString:@"主菜单"
                                      block:^(id sender){
                                          [[MTSharedManager instance] replaceSceneWithID:0];}],                         
             nil];
