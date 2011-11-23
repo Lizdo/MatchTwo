@@ -215,14 +215,24 @@
      [NSNumber numberWithInt:3],
      nil];
     
-    // Add Lebel
-    NSString * worldLabel = [NSString stringWithFormat:@"世界 %d", pageID+1];
-    CCLabelTTF * label = [CCLabelTTF labelWithString:worldLabel
-                                            fontName:kMTFontCaption 
-                                            fontSize:kMTFontSizeLarge];
     CGSize winSize = [[CCDirector sharedDirector] winSize];     
+    
+    menu.position = ccp(winSize.width/2, winSize.height/2 - 50);
+    
+    // Add Header
+    CCSprite * header  = [CCSprite spriteWithFile:@"MenuHeader.png"];
+    header.position = ccp(100, 700);
+    header.anchorPoint = ccp(0,0);
+    [page addChild:header];
+    
+    // Add Lebel
+    NSString * worldLabel = [NSString stringWithFormat:@"%d", pageID+1];
+    CCLabelTTF * label = [CCLabelTTF labelWithString:worldLabel
+                                            fontName:kMTFontCaption
+                                            fontSize:kMTFontSizeNormal];
     label.color = kMTColorActive;
-    label.position = ccp(winSize.width/2, winSize.height - 150);
+    label.position = ccpAdd(header.position, ccp(198,256-38));
+
     [page addChild:label];
     
     [page addChild:menu];
