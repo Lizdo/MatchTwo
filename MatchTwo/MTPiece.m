@@ -105,7 +105,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
         self.type = theType;
         self.contentSize = CGSizeMake(kMTPieceSize, kMTPieceSize);        
         self.anchorPoint = ccp(0.5, 0.5);         
-        self.color = [MTTheme foregroundColor];
+//        self.color = [MTTheme foregroundColor];
     }
     return self;
 }
